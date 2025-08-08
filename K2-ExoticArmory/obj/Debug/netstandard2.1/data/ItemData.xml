@@ -1,0 +1,29 @@
+﻿<ArrayOfCustomEquipment xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<CustomEquipment>
+		<Name>Test Weapon</Name>
+		<Description>"this weapon sucks"</Description>
+		<Slots>
+			<string>MainWeapon</string>
+		</Slots>
+		<Slots>
+			<string>OffhandWeapon</string>
+		</Slots>
+		<StatModifierInfos>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_physical_power</StatName>
+				<ModifyAmount>20</ModifyAmount>
+			</StatModifierInfo>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_lust_power</StatName>
+				<ModifyAmount>10</ModifyAmount>
+			</StatModifierInfo>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_attack_range</StatName>
+				<ModifyAmount>5</ModifyAmount>
+			</StatModifierInfo>
+		</StatModifierInfos>
+	</CustomEquipment>
+</ArrayOfCustomEquipment>
