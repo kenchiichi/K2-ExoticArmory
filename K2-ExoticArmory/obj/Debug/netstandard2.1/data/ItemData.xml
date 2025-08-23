@@ -1,6 +1,6 @@
 ﻿<ArrayOfCustomEquipment xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<CustomEquipment>
-		<Name>The Last Word</Name>
+		<Name>A bad weapon</Name>
 		<PreviewImage>assets\the_last_word.png</PreviewImage>
 		<Description>"this weapon sucks"</Description>
 		<Slots>
@@ -9,13 +9,6 @@
 		<Slots>
 			<string>OffhandWeapon</string>
 		</Slots>
-		<Sprites>
-			<ModEquipmentSprite>
-				<Name>The Last Word</Name>
-				<Image>assets\the_last_word.png</Image>
-				<Color>#FFFFFFFF</Color>
-			</ModEquipmentSprite>
-		</Sprites>
 		<StatModifierInfos>
 			<StatModifierInfo>
 				<Type>Value</Type>
