@@ -22,9 +22,7 @@ namespace K2ExoticArmory
         public List<StatModifierInfo> StatModifierInfos;
         public void OnDialogueStarted(Dialogue dialogue) { }
         public void OnFrame(float deltaTime) { }
-        public void OnLevelChanged(string oldLevel, string newLevel) {
-            StartCombat();
-        }
+        public void OnLevelChanged(string oldLevel, string newLevel) { }
         public void OnLineStarted(DialogueLine line) { }
         public static T Deserialize<T>(string xmlString)
         {
@@ -51,44 +49,26 @@ namespace K2ExoticArmory
                 }
             }
         }
-        public void StartCombat()
+        public class CustomWeapons : Asuna.Items.Weapon
         {
-            // Note, that shouldClone: true is important here, so that each enemy has their own health pool instead of a shared one.
-            var soldier1 = CharacterHandler.Create(Character.Get("Soldier"), shouldClone: true);
-            var soldier2 = CharacterHandler.Create(Character.Get("Soldier"), shouldClone: true);
-            var soldier3 = CharacterHandler.Create(Character.Get("Soldier"), shouldClone: true);
-
-            var combatData = new Asuna.NewCombat.CombatData()
+            public List<StatModifierInfo> StatModifierInfos;
+            public static CustomWeapons CreateWeapon(string name)
             {
-                InvolvedCharacters = new List<CharacterHandler>()
+                Item item = Create(name);
+                if (item is CustomWeapons)
                 {
-                    soldier1, soldier2, soldier3, Character.Get("Jenna").Handlers.First()
-                },
-                PathfindingData = new ANToolkit.Pathfinding.ANPathfindingData()
-                {
-                    Center = new Vector3(2f, 10f),
-                    // This defines the size that the involved characters can traverse
-                    Width = 50,
-                    Depth = 50
-                },
-                EndCondition = EndCondition.DefeatEnemies,
-                InvolveParty = true
-            };
-
-            var combatGameObject = new GameObject();
-            var starter = combatGameObject.AddComponent<Asuna.NewCombat.CombatStarter>();
-            starter.data = combatData;
-            // This instantly starts the combat
-            starter.Fire();
-
-            Asuna.NewCombat.Combat.OnCombatEnd.AddSingleTimeListener(result =>
-            {
-                if (result == Asuna.NewCombat.CombatResult.Victory)
-                {
-                    Debug.Log("Player won the fight!");
+                    typeof(Equipment)
+                       .GetField("_dynamicStatModifiers", BindingFlags.Instance | BindingFlags.NonPublic)
+                       .SetValue(item, (item as CustomWeapons).StatModifierInfos);
+                    typeof(Equipment)
+                        .GetField("StatModifiers", BindingFlags.Instance | BindingFlags.NonPublic)
+                        .SetValue(item, (item as CustomWeapons).StatModifierInfos);
+                    return (item as CustomWeapons);
                 }
-            });
+                return null;
+            }
         }
+
         public void OnModUnLoaded()
         {
             foreach (string itemName in NewItemNames)
@@ -112,6 +92,33 @@ namespace K2ExoticArmory
                 weapon.Description = Description;
                 weapon.StatModifierInfos = StatModifierInfos;
                 weapon.SetData(PreviewImage, "true");
+                Ability ability = new Ability();
+                ability.ID = ("akimbo_id");
+                ability.name = "Akimbo_Name";
+                ability.Tooltip = "This is a test tooltip";
+                ability.Data.Print();
+                ability.DisplayName = "this is the display name!";
+                ability.RestraintID = "akimbo_id";
+                ability.Owner = new Character();
+
+
+
+
+
+                Debug.Log(ability.ID);
+                Debug.Log(ability.name);
+                Debug.Log(ability.Tooltip);
+                Debug.Log(ability.DisplayName);
+                Debug.Log(ability.RestraintID);
+
+
+
+                weapon.SetAbility(ability, ability.RestraintID, true);
+                weapon.AddAbility(ability, "akimbo_id");
+                weapon.Abilities.Add(ability);
+
+
+                //weapon.;
                 //weapon.Data.Add(Asuna.NewCombat.CombatStats.Range, 2);
                 //Stat.Get(Asuna.NewCombat.);
                 weapon.Slots.AddRange(Slots.Select((string x) => (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), x)));
@@ -132,25 +139,6 @@ namespace K2ExoticArmory
                     Debug.LogError("Did not register Item \"" + Name + "\", because an item with the same name already exists.");
                 }
             }
-        }
-    }
-    public class CustomWeapons : Asuna.Items.Weapon
-    {
-        public List<StatModifierInfo> StatModifierInfos;
-        public static CustomWeapons CreateWeapon(string name)
-        {
-            Item item = Create(name);
-            if (item is CustomWeapons)
-            {
-                typeof(Equipment)
-                   .GetField("_dynamicStatModifiers", BindingFlags.Instance | BindingFlags.NonPublic)
-                   .SetValue(item, (item as CustomWeapons).StatModifierInfos);
-                typeof(Equipment)
-                    .GetField("StatModifiers", BindingFlags.Instance | BindingFlags.NonPublic)
-                    .SetValue(item, (item as CustomWeapons).StatModifierInfos);
-                return (item as CustomWeapons);
-            }
-            return null;
         }
     }
 }
