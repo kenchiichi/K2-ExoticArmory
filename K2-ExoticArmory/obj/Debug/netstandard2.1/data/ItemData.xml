@@ -1,8 +1,34 @@
 ﻿<ArrayOfCustomEquipment xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<CustomEquipment>
-		<Name>A bad weapon</Name>
+		<Name>The Last Word</Name>
+		<Price>700</Price>
 		<PreviewImage>assets\the_last_word.png</PreviewImage>
-		<Description>this weapon sucks</Description>
+		<Description>"Yours…not mine."— Renegade Hunter Shin Malphur to Dredgen Yor</Description>
+		<Slots>
+			<string>MainWeapon</string>
+		</Slots>
+		<StatModifierInfos>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_physical_power</StatName>
+				<ModifyAmount>22</ModifyAmount>
+			</StatModifierInfo>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_attack_range</StatName>
+				<ModifyAmount>2</ModifyAmount>
+			</StatModifierInfo>
+		</StatModifierInfos>
+		<AbilityName>Fan Fire</AbilityName>
+		<AbilityID>Abl_Akimbo</AbilityID>
+		<AbilityTooltip>The weapon can be fired quickly and continuously.</AbilityTooltip>
+		<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
+	</CustomEquipment>
+	<CustomEquipment>
+		<Name>Raze-Lighter</Name>
+		<Price>1000</Price>
+		<PreviewImage>assets\raze-lighter.png</PreviewImage>
+		<Description>With your own hands you forged the mighty Raze-Lighter. Now take it in hand and feed its flames.</Description>
 		<Slots>
 			<string>MainWeapon</string>
 		</Slots>
@@ -13,20 +39,12 @@
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_physical_power</StatName>
-				<ModifyAmount>30</ModifyAmount>
-			</StatModifierInfo>
-			<StatModifierInfo>
-				<Type>Value</Type>
-				<StatName>stat_lust_power</StatName>
-				<ModifyAmount>0</ModifyAmount>
-			</StatModifierInfo>
-			<StatModifierInfo>
-				<Type>Value</Type>
-				<StatName>stat_attack_range</StatName>
-				<ModifyAmount>2</ModifyAmount>
+				<ModifyAmount>35</ModifyAmount>
 			</StatModifierInfo>
 		</StatModifierInfos>
-		<AbilityID>Abl_ExplodeOnDeath</AbilityID>
-		<AbilityTooltip>Causes the Enemy to Explode on Death (maybe).</AbilityTooltip>
+		<AbilityName>Phoenix Uppercut</AbilityName>
+		<AbilityID>Abl_Attack_Knockback</AbilityID>
+		<AbilityTooltip>A powerful single-target swipe that will knock the enemy into the air. The uppercut will kill or nearly kill just about any minor enemy.</AbilityTooltip>
+		<WeaponAttackVFXType>UnarmedMelee</WeaponAttackVFXType>
 	</CustomEquipment>
 </ArrayOfCustomEquipment>
