@@ -3,8 +3,8 @@ using ANToolkit.Debugging;
 using ANToolkit.ResourceManagement;
 using ANToolkit.Save;
 using ANToolkit.UI;
-using ANToolkit.UI;
 using ANToolkit.UI.Themes;
+using ANToolkit.Utility;
 using Asuna.CharManagement;
 using Asuna.Combat;
 using Asuna.Dialogues;
@@ -13,23 +13,16 @@ using Asuna.NewCombat;
 using Asuna.UI;
 using HutongGames.PlayMaker.Actions;
 using Modding;
-using Modding;
 using System;
-using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Collections.Generic;
-using System.IO;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Reflection;
+using System.Text;
 using System.Xml.Serialization;
-using UnityEngine;
 using Unity;
-using UnityEngine;
-
-using System.Collections.Generic;
-using System.IO;
-using ANToolkit.ResourceManagement;
 using UnityEngine;
 
 namespace K2ExoticArmory
@@ -45,6 +38,14 @@ namespace K2ExoticArmory
         public void OnFrame(float deltaTime) { }
         public void OnLevelChanged(string oldLevel, string newLevel) { }
         public void OnLineStarted(DialogueLine line) { }
+        public void OnModUnLoaded()
+        {
+            foreach (string itemName in NewItemNames)
+            {
+                Debug.Log("Remove " + itemName);
+                Item.All.Remove(itemName.ToLower());
+            }
+        }
         public static T Deserialize<T>(string xmlString)
         {
             if (xmlString == null) return default;
@@ -52,14 +53,6 @@ namespace K2ExoticArmory
             using (var reader = new StringReader(xmlString))
             {
                 return (T)serializer.Deserialize(reader);
-            }
-        }
-        public void OnModUnLoaded()
-        {
-            foreach (string itemName in NewItemNames)
-            {
-                Debug.Log("Remove " + itemName);
-                Item.All.Remove(itemName.ToLower());
             }
         }
         public void OnModLoaded(ModManifest manifest)
@@ -73,63 +66,65 @@ namespace K2ExoticArmory
                 foreach (CustomEquipment customEquipment in customEquipments)
                 {
                     customEquipment.CustomInitialize(manifest.SpriteResolver);
-                    Weapon item = Weapon.CreateWeapon(customEquipment.Name);
+                    CustomWeapon item = CustomWeapon.CreateWeapon(customEquipment.Name);
                     NewItemNames.Add(item.Name);
 
                 }
             }
         }
-        public class Weapon : Asuna.Items.Weapon
+        public class CustomWeapon : Asuna.Items.Weapon
         {
             public List<StatModifierInfo> StatModifierInfos;
-            public static Weapon CreateWeapon(string name)
+            public static CustomWeapon CreateWeapon(string name)
             {
                 Item item = Create(name);
-                if (item is Weapon)
+                if (item is CustomWeapon)
                 {
                     typeof(Equipment)
                        .GetField("_dynamicStatModifiers", BindingFlags.Instance | BindingFlags.NonPublic)
-                       .SetValue(item, (item as Weapon).StatModifierInfos);
+                       .SetValue(item, (item as CustomWeapon).StatModifierInfos);
                     typeof(Equipment)
                         .GetField("StatModifiers", BindingFlags.Instance | BindingFlags.NonPublic)
-                        .SetValue(item, (item as Weapon).StatModifierInfos);
-                    return (item as Weapon);
+                        .SetValue(item, (item as CustomWeapon).StatModifierInfos);
+                    return (item as CustomWeapon);
                 }
                 return null;
             }
         }
 
-        public class CustomEquipment : ModEquipment
+        public class CustomEquipment
         {
+            public string Name;
+            public string PreviewImage;
             public string Description;
+            public string AbilityTooltip;
+            public string AbilityID;
+            public List<string> Slots;
             public List<StatModifierInfo> StatModifierInfos;
-            private Weapon _instance;
+            private CustomWeapon _instance;
 
             public void CustomInitialize(ModSpriteResolver modSpriteResolver)
             {
+                CustomWeapon weapon = ScriptableObject.CreateInstance<CustomWeapon>();
+                Ability ability = ANToolkit.ScriptableManagement.ScriptableManager.Get<Asuna.NewCombat.Ability>(AbilityID);
+                ANResourceSprite aNResourceSprite = modSpriteResolver.ResolveAsResource(PreviewImage);
+                
+                ability.Tooltip = AbilityTooltip;
 
-                Weapon weapon = ScriptableObject.CreateInstance<Weapon>();
+                aNResourceSprite.MOD_ONLY_USE = true;
+
                 weapon.Name = Name;
                 weapon.Slots.AddRange(Slots.Select((string x) => (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), x)));
                 weapon.AttackVFXType = AttackVFXType.EnergyGunBurst;
                 weapon.Category = ItemCategory.Weapon;
                 weapon.Description = Description;
-                ANResourceSprite aNResourceSprite = modSpriteResolver.ResolveAsResource(PreviewImage);
-                weapon.DisplaySpriteResource = aNResourceSprite;
-                PopupData popupData = new PopupData
-                {
-                    Image = aNResourceSprite,
-                    YesLabel = "Ok",
-                    NoLabel = null
-                };
-                Popup.CreateBanner(popupData);
+                weapon.AddAbility(ability, ability.RestraintID);
                 weapon.StatModifierInfos = StatModifierInfos;
-                // ability Abl_Akimbo
-                // ANToolkit.ScriptableManagement.ScriptableManager.GetAll<Asuna.NewCombat.Ability>()
 
+                weapon.DisplaySprite = aNResourceSprite;
+                weapon.DisplaySpriteResource = aNResourceSprite;
 
                 _instance = weapon;
-                Debug.Log(weapon.DisplaySpriteResource);
                 typeof(Equipment)
                     .GetField("_dynamicStatModifiers", BindingFlags.Instance | BindingFlags.NonPublic)
                     .SetValue(weapon, weapon.StatModifierInfos);

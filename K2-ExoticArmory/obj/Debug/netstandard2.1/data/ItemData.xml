@@ -2,7 +2,7 @@
 	<CustomEquipment>
 		<Name>A bad weapon</Name>
 		<PreviewImage>assets\the_last_word.png</PreviewImage>
-		<Description>"this weapon sucks"</Description>
+		<Description>this weapon sucks</Description>
 		<Slots>
 			<string>MainWeapon</string>
 		</Slots>
@@ -13,18 +13,20 @@
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_physical_power</StatName>
-				<ModifyAmount>20</ModifyAmount>
+				<ModifyAmount>30</ModifyAmount>
 			</StatModifierInfo>
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_lust_power</StatName>
-				<ModifyAmount>10</ModifyAmount>
+				<ModifyAmount>0</ModifyAmount>
 			</StatModifierInfo>
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_attack_range</StatName>
-				<ModifyAmount>5</ModifyAmount>
+				<ModifyAmount>2</ModifyAmount>
 			</StatModifierInfo>
 		</StatModifierInfos>
+		<AbilityID>Abl_ExplodeOnDeath</AbilityID>
+		<AbilityTooltip>Causes the Enemy to Explode on Death (maybe).</AbilityTooltip>
 	</CustomEquipment>
 </ArrayOfCustomEquipment>
