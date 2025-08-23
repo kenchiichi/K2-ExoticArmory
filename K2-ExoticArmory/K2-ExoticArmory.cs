@@ -20,6 +20,9 @@ namespace K2ExoticArmory
         public List<string> NewItemNames = new List<string>();
         private CustomWeapons _instance;
         public List<StatModifierInfo> StatModifierInfos;
+
+
+
         public void OnDialogueStarted(Dialogue dialogue) { }
         public void OnFrame(float deltaTime) { }
         public void OnLevelChanged(string oldLevel, string newLevel) { }
@@ -42,7 +45,7 @@ namespace K2ExoticArmory
 
                 foreach (CustomEquipment customEquipment in customEquipments)
                 {
-                    customEquipment.CustomInitialize();
+                    customEquipment.CustomInitialize(manifest.SpriteResolver);
                     CustomWeapons item = CustomWeapons.CreateWeapon(customEquipment.Name);
                     NewItemNames.Add(item.Name);
 
@@ -83,45 +86,18 @@ namespace K2ExoticArmory
             public string Description;
             public List<StatModifierInfo> StatModifierInfos;
             private CustomWeapons _instance;
-            public void CustomInitialize()
+
+            public void CustomInitialize(ModSpriteResolver spriteResolver)
             {
                 CustomWeapons weapon = ScriptableObject.CreateInstance<CustomWeapons>();
                 weapon.Name = Name;
+                weapon.Slots.AddRange(Slots.Select((string x) => (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), x)));
                 weapon.AttackVFXType = AttackVFXType.EnergyGunBurst;
                 weapon.Category = ItemCategory.Weapon;
                 weapon.Description = Description;
                 weapon.StatModifierInfos = StatModifierInfos;
-                weapon.SetData(PreviewImage, "true");
-                Ability ability = new Ability();
-                ability.ID = ("akimbo_id");
-                ability.name = "Akimbo_Name";
-                ability.Tooltip = "This is a test tooltip";
-                ability.Data.Print();
-                ability.DisplayName = "this is the display name!";
-                ability.RestraintID = "akimbo_id";
-                ability.Owner = new Character();
+                weapon.DisplaySpriteResource = spriteResolver.ResolveAsResource(PreviewImage);
 
-
-
-
-
-                Debug.Log(ability.ID);
-                Debug.Log(ability.name);
-                Debug.Log(ability.Tooltip);
-                Debug.Log(ability.DisplayName);
-                Debug.Log(ability.RestraintID);
-
-
-
-                weapon.SetAbility(ability, ability.RestraintID, true);
-                weapon.AddAbility(ability, "akimbo_id");
-                weapon.Abilities.Add(ability);
-
-
-                //weapon.;
-                //weapon.Data.Add(Asuna.NewCombat.CombatStats.Range, 2);
-                //Stat.Get(Asuna.NewCombat.);
-                weapon.Slots.AddRange(Slots.Select((string x) => (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), x)));
                 typeof(Equipment)
                     .GetField("_dynamicStatModifiers", BindingFlags.Instance | BindingFlags.NonPublic)
                     .SetValue(weapon, weapon.StatModifierInfos);
