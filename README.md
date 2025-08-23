@@ -26,9 +26,9 @@ K2-ExoticArmory is a mod that adds Destiny, by Bungie, themed weapons to a shop 
 #IMPORTANT INSTRUCTIONS
 
 This mod is not complete. You MUST follow these steps, in order if you want to get it to work.
-  1.Install my other mod [K2-SimpleZoom](https://github.com/kenchiichi/K2-SimpleZoom.git), I am borrowing a method for ease of use, and it will not be a requirment later in development.
-  2.Install THIS mod
-  3.Use the 'i' key to access the shop
+  - 1.Install my other mod [K2-SimpleZoom](https://github.com/kenchiichi/K2-SimpleZoom.git), I am borrowing a method for ease of use, and it will not be a requirment later in development.
+  - 2.Install THIS mod
+  - 3.Use the 'i' key to access the shop
 
 Thanks to BlauKitten for the support in making this SDK! ♥
 
