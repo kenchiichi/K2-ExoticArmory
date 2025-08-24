@@ -2,7 +2,7 @@
 	<CustomEquipment>
 		<Name>The Last Word</Name>
 		<Price>700</Price>
-		<PreviewImage>assets\the_last_word.png</PreviewImage>
+		<PreviewImage>assets\sprites\the_last_word.png</PreviewImage>
 		<Description>"Yours…not mine."— Renegade Hunter Shin Malphur to Dredgen Yor</Description>
 		<Slots>
 			<string>MainWeapon</string>
@@ -19,15 +19,16 @@
 				<ModifyAmount>2</ModifyAmount>
 			</StatModifierInfo>
 		</StatModifierInfos>
-		<AbilityName>Fan Fire</AbilityName>
+		<Sound>assets\sfx\the_last_word.ogg</Sound>
 		<AbilityID>Abl_Akimbo</AbilityID>
+		<AbilityName>Fan Fire</AbilityName>
 		<AbilityTooltip>The weapon can be fired quickly and continuously.</AbilityTooltip>
 		<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
 	</CustomEquipment>
 	<CustomEquipment>
 		<Name>Raze-Lighter</Name>
 		<Price>1000</Price>
-		<PreviewImage>assets\raze-lighter.png</PreviewImage>
+		<PreviewImage>assets\sprites\raze-lighter.png</PreviewImage>
 		<Description>With your own hands you forged the mighty Raze-Lighter. Now take it in hand and feed its flames.</Description>
 		<Slots>
 			<string>MainWeapon</string>
@@ -42,15 +43,16 @@
 				<ModifyAmount>35</ModifyAmount>
 			</StatModifierInfo>
 		</StatModifierInfos>
-		<AbilityName>Phoenix Uppercut</AbilityName>
+		<Sound>assets\sfx\raze-lighter.ogg</Sound>
 		<AbilityID>Abl_Attack_Knockback</AbilityID>
+		<AbilityName>Phoenix Uppercut</AbilityName>
 		<AbilityTooltip>A powerful single-target swipe that will knock the enemy into the air. The uppercut will kill or nearly kill just about any major enemy.</AbilityTooltip>
 		<WeaponAttackVFXType>UnarmedMelee</WeaponAttackVFXType>
 	</CustomEquipment>
 	<CustomEquipment>
 		<Name>Icebreaker</Name>
 		<Price>700</Price>
-		<PreviewImage>assets\icebreaker.png</PreviewImage>
+		<PreviewImage>assets\sprites\icebreaker.png</PreviewImage>
 		<Description>Please replace these components if use causes fatal damage: HEAT SINK. MAGAZINE. OPERATOR.</Description>
 		<Slots>
 			<string>MainWeapon</string>
@@ -75,15 +77,16 @@
 				<ModifyAmount>5</ModifyAmount>
 			</StatModifierInfo>
 		</StatModifierInfos>
-		<AbilityName>No Backpack</AbilityName>
+		<Sound>assets\sfx\icebreaker.ogg</Sound>
 		<AbilityID>Abl_ExplodeOnDeath</AbilityID>
+		<AbilityName>No Backpack</AbilityName>
 		<AbilityTooltip>Using an ancient PEITHO_ARC0 core, this weapon fires a single high-powered, long range shot, that is sure to put it's foes on the ground.  If the user is defeated, it may cause the magazine to violently burst, in an erotic fashon.</AbilityTooltip>
 		<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
 	</CustomEquipment>
 	<CustomEquipment>
 		<Name>Red Death</Name>
 		<Price>600</Price>
-		<PreviewImage>assets\red_death.png</PreviewImage>
+		<PreviewImage>assets\sprites\red_death.png</PreviewImage>
 		<Description>Peitho policy urges Guards to destroy this weapon on sight.</Description>
 		<Slots>
 			<string>MainWeapon</string>
@@ -108,15 +111,16 @@
 				<ModifyAmount>4</ModifyAmount>
 			</StatModifierInfo>
 		</StatModifierInfos>
-		<AbilityName>Red Death</AbilityName>
+		<Sound>assets\sfx\red_death.ogg</Sound>
 		<AbilityID>Abl_Sexual_Healing</AbilityID>
+		<AbilityName>Red Death</AbilityName>
 		<AbilityTooltip>Using Ancient AIRSHIP technology, this weapon allows the user to convert lust damage into health.</AbilityTooltip>
 		<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
 	</CustomEquipment>
 	<CustomEquipment>
 		<Name>Le Monarque</Name>
 		<Price>600</Price>
-		<PreviewImage>assets\le_monarque.png</PreviewImage>
+		<PreviewImage>assets\sprites\le_monarque.png</PreviewImage>
 		<Description>"Wings flutter. Beauty distracts. Poison injects. The butterfly's curse extends to your enemies. A short life, shortened further by your hand." —Ada-1</Description>
 		<Slots>
 			<string>MainWeapon</string>
@@ -141,8 +145,9 @@
 				<ModifyAmount>6</ModifyAmount>
 			</StatModifierInfo>
 		</StatModifierInfos>
-		<AbilityName>Poison Arrows</AbilityName>
+		<Sound>assets\sfx\le_monarque.ogg</Sound>
 		<AbilityID>Abl_Lust_Mist</AbilityID>
+		<AbilityName>Poison Arrows</AbilityName>
 		<AbilityTooltip>This bow uses custom modified arrows that allows the user to fire an afrodisiac mist on a target.</AbilityTooltip>
 		<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
 	</CustomEquipment>
