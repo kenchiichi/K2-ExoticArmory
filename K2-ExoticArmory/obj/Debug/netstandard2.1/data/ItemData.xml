@@ -44,7 +44,7 @@
 		</StatModifierInfos>
 		<AbilityName>Phoenix Uppercut</AbilityName>
 		<AbilityID>Abl_Attack_Knockback</AbilityID>
-		<AbilityTooltip>A powerful single-target swipe that will knock the enemy into the air. The uppercut will kill or nearly kill just about any minor enemy.</AbilityTooltip>
+		<AbilityTooltip>A powerful single-target swipe that will knock the enemy into the air. The uppercut will kill or nearly kill just about any major enemy.</AbilityTooltip>
 		<WeaponAttackVFXType>UnarmedMelee</WeaponAttackVFXType>
 	</CustomEquipment>
 	<CustomEquipment>
