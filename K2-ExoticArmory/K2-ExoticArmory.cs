@@ -26,6 +26,7 @@ using System.Text;
 using System.Xml.Serialization;
 using Unity;
 using UnityEngine;
+using static DynamicBoneColliderBase;
 using CombatCharacter = Asuna.NewCombat.CombatCharacter;
 
 namespace K2ExoticArmory
@@ -53,7 +54,6 @@ namespace K2ExoticArmory
         {
             foreach (string itemName in NewItemNames)
             {
-                Debug.Log("Remove " + itemName);
                 Item.All.Remove(itemName.ToLower());
             }
         }
@@ -97,86 +97,6 @@ namespace K2ExoticArmory
                 {
                     Catalogue = catalogue,
                 };
-            }
-        }
-        public class CustomWeapon : Asuna.Items.Weapon
-        {
-            public bool IsLocked;
-            public int Price;
-            public List<StatModifierInfo> StatModifierInfos;
-            public static CustomWeapon CreateWeapon(string name)
-            {
-                Item item = Create(name);
-                if (item is CustomWeapon)
-                {
-                    typeof(Equipment)
-                       .GetField("_dynamicStatModifiers", BindingFlags.Instance | BindingFlags.NonPublic)
-                       .SetValue(item, (item as CustomWeapon).StatModifierInfos);
-                    typeof(Equipment)
-                        .GetField("StatModifiers", BindingFlags.Instance | BindingFlags.NonPublic)
-                        .SetValue(item, (item as CustomWeapon).StatModifierInfos);
-                    return (item as CustomWeapon);
-                }
-                return null;
-            }
-        }
-
-        public class CustomEquipment
-        {
-            public string Name;
-            public string PreviewImage;
-            public string Description;
-            public string AbilityTooltip;
-            public string AbilityID;
-            public string AbilityName;
-            public bool IsLocked = false;
-            public int Price;
-            public AttackVFXType WeaponAttackVFXType;
-            public List<string> Slots;
-            public List<StatModifierInfo> StatModifierInfos;
-            private CustomWeapon _instance;
-
-            public void CustomInitialize(ModSpriteResolver modSpriteResolver)
-            {
-                CustomWeapon weapon = ScriptableObject.CreateInstance<CustomWeapon>();
-                Ability ability = ANToolkit.ScriptableManagement.ScriptableManager.Get<Asuna.NewCombat.Ability>(AbilityID);
-                ANResourceSprite aNResourceSprite = modSpriteResolver.ResolveAsResource(PreviewImage);
-
-
-                ability.Tooltip = AbilityTooltip;
-                ability.DisplayName = AbilityName;
-
-                aNResourceSprite.MOD_ONLY_USE = true;
-
-                weapon.Name = Name;
-                weapon.Slots.AddRange(Slots.Select((string x) => (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), x)));
-                weapon.AttackVFXType = WeaponAttackVFXType;
-                weapon.Category = ItemCategory.Weapon;
-                weapon.Description = Description;
-                weapon.AddAbility(ability, ability.RestraintID);
-                weapon.StatModifierInfos = StatModifierInfos;
-                weapon.Price = Price;
-                weapon.IsLocked = IsLocked;
-
-                weapon.DisplaySprite = aNResourceSprite;
-                weapon.DisplaySpriteResource = aNResourceSprite;
-
-                _instance = weapon;
-                typeof(Equipment)
-                    .GetField("_dynamicStatModifiers", BindingFlags.Instance | BindingFlags.NonPublic)
-                    .SetValue(weapon, weapon.StatModifierInfos);
-                typeof(Equipment)
-                    .GetField("StatModifiers", BindingFlags.Instance | BindingFlags.NonPublic)
-                    .SetValue(weapon, weapon.StatModifierInfos);
-                
-                if (!Item.All.ContainsKey(Name.ToLower()))
-                {
-                    Item.All.Add(Name.ToLower(), _instance);
-                }
-                else
-                {
-                    Debug.LogError("Did not register Item \"" + Name + "\", because an item with the same name already exists.");
-                }
             }
         }
     }
