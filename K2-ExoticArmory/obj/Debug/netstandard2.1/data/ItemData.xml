@@ -47,4 +47,32 @@
 		<AbilityTooltip>A powerful single-target swipe that will knock the enemy into the air. The uppercut will kill or nearly kill just about any minor enemy.</AbilityTooltip>
 		<WeaponAttackVFXType>UnarmedMelee</WeaponAttackVFXType>
 	</CustomEquipment>
+	<CustomEquipment>
+		<Name>Icebreaker</Name>
+		<Price>1000</Price>
+		<PreviewImage>assets\icebreaker.png</PreviewImage>
+		<Description>Please replace these components if use causes fatal damage: HEAT SINK. MAGAZINE. OPERATOR.</Description>
+		<Slots>
+			<string>MainWeapon</string>
+		</Slots>
+		<Slots>
+			<string>OffhandWeapon</string>
+		</Slots>
+		<StatModifierInfos>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_physical_power</StatName>
+				<ModifyAmount>18</ModifyAmount>
+			</StatModifierInfo>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_attack_range</StatName>
+				<ModifyAmount>5</ModifyAmount>
+			</StatModifierInfo>
+		</StatModifierInfos>
+		<AbilityName>No Backpack</AbilityName>
+		<AbilityID>Abl_ExplodeOnDeath</AbilityID>
+		<AbilityTooltip>Fires a single high-powered, long range shot.  If user is defeated, it causes the magazine to violently detonate.</AbilityTooltip>
+		<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
+	</CustomEquipment>
 </ArrayOfCustomEquipment>
