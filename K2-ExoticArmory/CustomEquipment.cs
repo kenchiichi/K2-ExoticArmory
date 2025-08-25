@@ -1,10 +1,14 @@
-﻿using ANToolkit.ResourceManagement;
+﻿using ANToolkit.PlayMakerExtension;
+using ANToolkit.ResourceManagement;
+using ANToolkit.ScriptableManagement;
+using ANToolkit.UI;
 using Asuna.CharManagement;
 using Asuna.Items;
 using Asuna.NewCombat;
 using Modding;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -32,13 +36,14 @@ namespace K2ExoticArmory
         public void CustomInitialize(ModSpriteResolver modSpriteResolver)
         {
             CustomWeapon weapon = ScriptableObject.CreateInstance<CustomWeapon>();
-            Ability ability = ANToolkit.ScriptableManagement.ScriptableManager.Get<Asuna.NewCombat.Ability>(AbilityID);
+            Ability ability = ANToolkit.ScriptableManagement.ScriptableManager.Get<Asuna.NewCombat.Ability>(AbilityID).Clone();
             ANResourceSprite aNResourceSprite = modSpriteResolver.ResolveAsResource(PreviewImage);
 
-            AudioClip sound = Resources.Load<AudioClip>(Sound);
+            //AudioClip sound = Resources.Load<AudioClip>(Sound);
 
             ability.Tooltip = AbilityTooltip;
             ability.DisplayName = AbilityName;
+            ANToolkit.ScriptableManagement.ScriptableManager.Add(ability);
 
             aNResourceSprite.MOD_ONLY_USE = true;
 
@@ -51,9 +56,7 @@ namespace K2ExoticArmory
             weapon.StatModifierInfos = StatModifierInfos;
             weapon.Price = Price;
             weapon.IsLocked = IsLocked;
-            weapon.UseSound = sound;
-
-            //weapon.DisplaySpriteResource = aNResourceSprite; //For when the Sprites actually work
+            weapon.DisplaySpriteResource = aNResourceSprite;
 
             _instance = weapon;
             typeof(Equipment)
