@@ -43,6 +43,7 @@ namespace K2ExoticArmory
 
             ability.Tooltip = AbilityTooltip;
             ability.DisplayName = AbilityName;
+            ANToolkit.ScriptableManagement.ScriptableManager.Add(ability);
             aNResourceSprite.MOD_ONLY_USE = true;
 
             weapon.Name = Name;
