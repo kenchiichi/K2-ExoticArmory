@@ -7,6 +7,13 @@
 		<Slots>
 			<string>MainWeapon</string>
 		</Slots>
+		<Sprites>
+			<ModEquipmentSprite>
+				<Name>The Last Word</Name>
+				<SortingLayer>Outfit</SortingLayer>
+				<SortingOrder>1</SortingOrder>
+			</ModEquipmentSprite>
+		</Sprites>
 		<StatModifierInfos>
 			<StatModifierInfo>
 				<Type>Value</Type>
@@ -36,6 +43,13 @@
 		<Slots>
 			<string>OffhandWeapon</string>
 		</Slots>
+		<Sprites>
+			<ModEquipmentSprite>
+				<Name>Raze-Lighter</Name>
+				<SortingLayer>Outfit</SortingLayer>
+				<SortingOrder>1</SortingOrder>
+			</ModEquipmentSprite>
+		</Sprites>
 		<StatModifierInfos>
 			<StatModifierInfo>
 				<Type>Value</Type>
@@ -60,6 +74,13 @@
 		<Slots>
 			<string>OffhandWeapon</string>
 		</Slots>
+		<Sprites>
+			<ModEquipmentSprite>
+				<Name>Icebreaker</Name>
+				<SortingLayer>Outfit</SortingLayer>
+				<SortingOrder>1</SortingOrder>
+			</ModEquipmentSprite>
+		</Sprites>
 		<StatModifierInfos>
 			<StatModifierInfo>
 				<Type>Value</Type>
@@ -94,6 +115,13 @@
 		<Slots>
 			<string>OffhandWeapon</string>
 		</Slots>
+		<Sprites>
+			<ModEquipmentSprite>
+				<Name>Red Death</Name>
+				<SortingLayer>Outfit</SortingLayer>
+				<SortingOrder>1</SortingOrder>
+			</ModEquipmentSprite>
+		</Sprites>
 		<StatModifierInfos>
 			<StatModifierInfo>
 				<Type>Value</Type>
@@ -128,6 +156,13 @@
 		<Slots>
 			<string>OffhandWeapon</string>
 		</Slots>
+		<Sprites>
+			<ModEquipmentSprite>
+				<Name>Le Monarque</Name>
+				<SortingLayer>Outfit</SortingLayer>
+				<SortingOrder>1</SortingOrder>
+			</ModEquipmentSprite>
+		</Sprites>
 		<StatModifierInfos>
 			<StatModifierInfo>
 				<Type>Value</Type>

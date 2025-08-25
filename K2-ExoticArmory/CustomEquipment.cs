@@ -1,5 +1,6 @@
 ﻿using ANToolkit.ResourceManagement;
 using Asuna.CharManagement;
+using Asuna.CharManagement.CharacterCreator;
 using Asuna.Items;
 using Asuna.NewCombat;
 using Modding;
@@ -8,10 +9,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace K2ExoticArmory
 {
-    public class CustomEquipment
+
+    public class CustomModEquipmentSprite : ModEquipmentSprite
+    {
+        public DurabilityLayerInfo WeaponGet(ModSpriteResolver spriteResolver)
+        {
+            DurabilityLayerInfo durabilityLayerInfo = new DurabilityLayerInfo();
+            durabilityLayerInfo.Name = Name;
+            durabilityLayerInfo.SortingOrder = SortingOrder;
+
+            ANResourceSprite aNResourceSprite = spriteResolver.ResolveAsResource(Image);
+            durabilityLayerInfo.DurabilitySprites.IntactResource = aNResourceSprite;
+            durabilityLayerInfo.DisplaySprite = aNResourceSprite;
+            return durabilityLayerInfo;
+        }
+    }
+
+
+
+
+
+    public class CustomEquipment : ModEquipment
     {
         public string Name;
         public string Sound;
@@ -24,6 +46,7 @@ namespace K2ExoticArmory
         public int Price;
         public AttackVFXType WeaponAttackVFXType;
         public List<string> Slots;
+        public List<StatModifierInfo> StatRequirements;
         public List<StatModifierInfo> StatModifierInfos;
         private CustomWeapon _instance;
 
@@ -33,15 +56,20 @@ namespace K2ExoticArmory
             Ability ability = ANToolkit.ScriptableManagement.ScriptableManager.Get<Asuna.NewCombat.Ability>(AbilityID).Clone();
             ANResourceSprite aNResourceSprite = modSpriteResolver.ResolveAsResource(PreviewImage);
 
+
             //AudioClip sound = Resources.Load<AudioClip>(Sound);
+
 
             ability.Tooltip = AbilityTooltip;
             ability.DisplayName = AbilityName;
             ANToolkit.ScriptableManagement.ScriptableManager.Add(ability);
             aNResourceSprite.MOD_ONLY_USE = true;
-
+            weapon.DisplaySpriteResource = aNResourceSprite;
             weapon.Name = Name;
             weapon.Slots.AddRange(Slots.Select((string x) => (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), x)));
+
+            weapon.DurabilityDisplayLayers.AddRange(Sprites.Select((ModEquipmentSprite x) => x.Get(modSpriteResolver)));
+
             //weapon.AttackVFXType = WeaponAttackVFXType;
             weapon.Category = ItemCategory.Weapon;
             weapon.Description = Description;
@@ -49,7 +77,6 @@ namespace K2ExoticArmory
             weapon.StatModifierInfos = StatModifierInfos;
             weapon.Price = Price;
             weapon.IsLocked = IsLocked;
-            weapon.DisplaySpriteResource = aNResourceSprite;
 
             _instance = weapon;
             typeof(Equipment)

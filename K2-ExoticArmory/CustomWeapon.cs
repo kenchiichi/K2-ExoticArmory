@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace K2ExoticArmory
 {
-    public class CustomWeapon : Asuna.Items.Weapon
+    public class CustomWeapon : Asuna.Items.Apparel
     {
         public bool IsLocked;
         public int Price;
