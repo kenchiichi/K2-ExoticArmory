@@ -1,19 +1,13 @@
-﻿using ANToolkit.PlayMakerExtension;
-using ANToolkit.ResourceManagement;
-using ANToolkit.ScriptableManagement;
-using ANToolkit.UI;
+﻿using ANToolkit.ResourceManagement;
 using Asuna.CharManagement;
 using Asuna.Items;
 using Asuna.NewCombat;
 using Modding;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using UnityEngine;
-using static K2ExoticArmory.K2ExoticArmory;
 
 namespace K2ExoticArmory
 {
@@ -48,7 +42,7 @@ namespace K2ExoticArmory
 
             weapon.Name = Name;
             weapon.Slots.AddRange(Slots.Select((string x) => (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), x)));
-            weapon.AttackVFXType = WeaponAttackVFXType;
+            //weapon.AttackVFXType = WeaponAttackVFXType;
             weapon.Category = ItemCategory.Weapon;
             weapon.Description = Description;
             weapon.AddAbility(ability, ability.RestraintID);

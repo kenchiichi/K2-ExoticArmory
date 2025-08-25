@@ -1,33 +1,11 @@
-﻿using ANToolkit;
-using ANToolkit.Cam;
-using ANToolkit.Debugging;
-using ANToolkit.Effects;
-using ANToolkit.ResourceManagement;
-using ANToolkit.Save;
-using ANToolkit.UI;
-using ANToolkit.UI.Themes;
-using ANToolkit.Utility;
-using Asuna.CharManagement;
-using Asuna.Combat;
+﻿using Asuna.CharManagement;
 using Asuna.Dialogues;
 using Asuna.Items;
-using Asuna.NewCombat;
-using Asuna.UI;
-using HutongGames.PlayMaker.Actions;
 using Modding;
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Reflection;
-using System.Text;
 using System.Xml.Serialization;
-using Unity;
 using UnityEngine;
-using static DynamicBoneColliderBase;
-using CombatCharacter = Asuna.NewCombat.CombatCharacter;
 
 namespace K2ExoticArmory
 {
@@ -38,10 +16,10 @@ namespace K2ExoticArmory
         private Weapon _instance;
         public List<StatModifierInfo> StatModifierInfos;
         public ItemVendor vendor;
-        public K2SimpleZoom.K2SZ k2SZ = new K2SimpleZoom.K2SZ(); 
+        public K2SimpleZoom.K2SZ k2SZ = new K2SimpleZoom.K2SZ();
 
         public void OnDialogueStarted(Dialogue dialogue) { }
-        public void OnFrame(float deltaTime) 
+        public void OnFrame(float deltaTime)
         {
             if (Input.GetKeyDown("i") && k2SZ.DetectMenu())
             {
