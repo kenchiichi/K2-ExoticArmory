@@ -6,33 +6,15 @@ using Asuna.NewCombat;
 using Modding;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
 using static System.Net.Mime.MediaTypeNames;
 
+
 namespace K2ExoticArmory
 {
-
-    public class CustomModEquipmentSprite : ModEquipmentSprite
-    {
-        public DurabilityLayerInfo WeaponGet(ModSpriteResolver spriteResolver)
-        {
-            DurabilityLayerInfo durabilityLayerInfo = new DurabilityLayerInfo();
-            durabilityLayerInfo.Name = Name;
-            durabilityLayerInfo.SortingOrder = SortingOrder;
-
-            ANResourceSprite aNResourceSprite = spriteResolver.ResolveAsResource(Image);
-            durabilityLayerInfo.DurabilitySprites.IntactResource = aNResourceSprite;
-            durabilityLayerInfo.DisplaySprite = aNResourceSprite;
-            return durabilityLayerInfo;
-        }
-    }
-
-
-
-
-
     public class CustomEquipment : ModEquipment
     {
         public string Name;
@@ -53,23 +35,21 @@ namespace K2ExoticArmory
         public void CustomInitialize(ModSpriteResolver modSpriteResolver)
         {
             CustomWeapon weapon = ScriptableObject.CreateInstance<CustomWeapon>();
+            
+
             Ability ability = ANToolkit.ScriptableManagement.ScriptableManager.Get<Asuna.NewCombat.Ability>(AbilityID).Clone();
             ANResourceSprite aNResourceSprite = modSpriteResolver.ResolveAsResource(PreviewImage);
 
-
             //AudioClip sound = Resources.Load<AudioClip>(Sound);
-
 
             ability.Tooltip = AbilityTooltip;
             ability.DisplayName = AbilityName;
             ANToolkit.ScriptableManagement.ScriptableManager.Add(ability);
-            aNResourceSprite.MOD_ONLY_USE = true;
             weapon.DisplaySpriteResource = aNResourceSprite;
             weapon.Name = Name;
             weapon.Slots.AddRange(Slots.Select((string x) => (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), x)));
 
             weapon.DurabilityDisplayLayers.AddRange(Sprites.Select((ModEquipmentSprite x) => x.Get(modSpriteResolver)));
-
             //weapon.AttackVFXType = WeaponAttackVFXType;
             weapon.Category = ItemCategory.Weapon;
             weapon.Description = Description;

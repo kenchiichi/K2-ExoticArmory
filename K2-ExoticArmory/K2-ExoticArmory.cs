@@ -56,7 +56,7 @@ namespace K2ExoticArmory
                 foreach (CustomEquipment customEquipment in customEquipments)
                 {
                     customEquipment.CustomInitialize(manifest.SpriteResolver);
-                    CustomWeapon item = CustomWeapon.CreateWeapon(customEquipment.Name);
+                    CustomWeapon item = CustomWeapon.CreateWeapon(customEquipment);
                     NewItemNames.Add(item.Name);
 
                     shopItems.Add(

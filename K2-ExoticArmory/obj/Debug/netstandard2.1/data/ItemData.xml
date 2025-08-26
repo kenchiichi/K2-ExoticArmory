@@ -7,6 +7,9 @@
 		<Slots>
 			<string>MainWeapon</string>
 		</Slots>
+		<Slots>
+			<string>OffhandWeapon</string>
+		</Slots>
 		<Sprites>
 			<ModEquipmentSprite>
 				<Name>The Last Word</Name>
