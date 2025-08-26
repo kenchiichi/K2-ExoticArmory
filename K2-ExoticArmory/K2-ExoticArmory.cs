@@ -52,7 +52,7 @@ namespace K2ExoticArmory
             });
 
             List<ShopItemInfo> shopItems = new List<ShopItemInfo>();
-            using (StreamReader reader = new StreamReader(Path.Combine(manifest.ModPath, "data\\ItemDataStore.xml")))
+            using (StreamReader reader = new StreamReader(Path.Combine(manifest.ModPath, "data\\StoreItemData.xml")))
             {
                 string xml = reader.ReadToEnd();
                 List<CustomEquipment> customEquipments = Deserialize<List<CustomEquipment>>(xml);
@@ -71,7 +71,7 @@ namespace K2ExoticArmory
                 }
             }
 
-            using (StreamReader reader = new StreamReader(Path.Combine(manifest.ModPath, "data\\ItemDataWorld.xml")))
+            using (StreamReader reader = new StreamReader(Path.Combine(manifest.ModPath, "data\\WorldItemData.xml")))
             {
                 string xml = reader.ReadToEnd();
                 List<CustomEquipment> customEquipments = Deserialize<List<CustomEquipment>>(xml);
