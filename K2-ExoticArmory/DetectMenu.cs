@@ -10,7 +10,7 @@ namespace K2ExoticArmory
 {
     public class DetectMenus
 {
-        public bool GameObjNotActive(List<String> objects)
+        private bool GameObjNotActive(List<String> objects)
         {
             bool objectNotActive = true;
             foreach (String obj in objects)

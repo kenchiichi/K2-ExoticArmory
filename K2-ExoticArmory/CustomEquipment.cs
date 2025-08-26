@@ -3,14 +3,16 @@ using ANToolkit.ResourceManagement;
 using Asuna.CharManagement;
 using Asuna.Items;
 using Asuna.NewCombat;
+using HutongGames.PlayMaker;
 using Modding;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using UnityEngine;
-
-
+using UnityEngine.Networking;
 namespace K2ExoticArmory
 {
     public class CustomEquipment : ModEquipment
@@ -19,14 +21,13 @@ namespace K2ExoticArmory
         public string AbilityTooltip;
         public string AbilityID;
         public string AbilityName;
+        public string OggAudioClip;
         public int Price;
         public List<StatModifierInfo> StatModifierInfos;
         private CustomWeapon _instance;
         public AttackVFXType WeaponAttackVFXType;
-        //public bool IsLocked = false;
         //public List<StatModifierInfo> StatRequirements;
-        //public string Sound;
-        public CustomWeapon CustomInitialize(ModSpriteResolver modSpriteResolver)
+        public CustomWeapon CustomInitialize(ModManifest manifest)
         {
             var weapon = ScriptableObject.CreateInstance<CustomWeapon>();
             if (AbilityID != null)
@@ -48,17 +49,14 @@ namespace K2ExoticArmory
                     .SetValue(weapon, StatModifierInfos);
             }
 
-            ANResourceSprite aNResourceSprite = modSpriteResolver.ResolveAsResource(PreviewImage);
+            ANResourceSprite aNResourceSprite = manifest.SpriteResolver.ResolveAsResource(PreviewImage);
             weapon.DisplaySpriteResource = aNResourceSprite;
-
             weapon.Name = Name;
             weapon.Slots.AddRange(Slots.Select((string x) => (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), x)));
             weapon.Category = ItemCategory.Weapon;
             weapon.Description = Description;
             weapon.Price = Price;
-            //AudioClip sound = Resources.Load<AudioClip>(Sound);
             weapon.AttackVFXType = WeaponAttackVFXType;
-            //weapon.IsLocked = IsLocked;
 
             _instance = weapon;
 
@@ -71,56 +69,47 @@ namespace K2ExoticArmory
                 Debug.LogError("Did not register Item \"" + Name + "\", because an item with the same name already exists.");
             }
 
-            //AddAbility(weapon, (Sprite)aNResourceSprite);
-
+            //AddShootingVFXHook(weapon, (Sprite)aNResourceSprite);
             return weapon;
         }
 
-        private void AddAbility(CustomWeapon weapon, Sprite sprite)
+        private void AddShootingVFXHook(Weapon weapon, Sprite sprite)
         {
-            // Create your VFX gameobject with a spriterenderer
-            var vfxGameObject = new GameObject("VFX_Custom");
-            var sfxGameObject = new GameObject("SFX_Custom");
-            var vfxSpriteRenderer = vfxGameObject.AddComponent<SpriteRenderer>();
-            //var sfxClipLoader = sfxGameObject.GetComponent<AudioSource>();
-            vfxSpriteRenderer.sprite = sprite;
-            //sfxClipLoader.clip = sound; // FIXME
+            //Debug.Log("Adding ability hook to Turn Start");
+            CombatTurnManager.OnTurnStart.AddListener(() =>
+            {
+                var jenna = Character.Get("Jenna");
+
+                // Make sure that Jenna has this weapon equipped
+                if (!jenna.EquippedItems.Contains(weapon)) return;
+                var ability = jenna.GetAbilities().First(x => x.DisplayName == "Attack");
+
+                // Create dummy gameobject to make duplicates of when shooting
+                var vfxGameObject = new GameObject("VFX_Custom");
+                // move out of level so that the prefab isn't visible
+                vfxGameObject.transform.position = new Vector3(9999999999, 0);
+                var vfxSpriteRenderer = vfxGameObject.AddComponent<SpriteRenderer>();
+
+                vfxSpriteRenderer.sprite = Sprite.Create(sprite.texture,
+                    new Rect(0, 0, sprite.texture.width, sprite.texture.height), new Vector2(0.5f, 0.5f),
+                    800f);
+
+                // get the logic from the Abl_Attack FIXME
+                var cachedFSM = typeof(Ability)
+                    .GetField("CachedFsm", BindingFlags.Instance | BindingFlags.NonPublic)
+                    .GetValue(ability) as Fsm;
+
+                // edit the playmaker action that does the spawning of the visual effects
+                var energyGunBurstState = cachedFSM.States.First(x => x.Name == "EnergyGunBurst");
 
 
+                var combatVFX = energyGunBurstState.Actions[0] as PMA_CombatVisualEffect;
+                combatVFX.Prefab = vfxGameObject;
 
-            // Get the attack ability and clone it
-            var fakeAttackAbility = ANToolkit.ScriptableManagement.ScriptableManager.Get<Ability>("Abl_Attack").Clone();
-            ANToolkit.ScriptableManagement.ScriptableManager.Add(fakeAttackAbility);
-
-            // get the logic from the Abl_Attack FIXME
-            var logicTemplate = typeof(Ability)
-                .GetField("logic", BindingFlags.Instance | BindingFlags.NonPublic)
-                .GetValue(fakeAttackAbility) as FsmTemplate;
-
-            // make a copy of it
-            logicTemplate = UnityEngine.Object.Instantiate(logicTemplate);
-
-            // edit the playmaker action that does the spawning of the visual effects
-            var energyGunBurstState = logicTemplate.fsm.States.First(x => x.Name == "EnergyGunBurst");
-            Debug.Log("Is initialized? " + energyGunBurstState.IsInitialized);
-
-
-            energyGunBurstState.Fsm.Reinitialize();
-
-            var combatVFX = energyGunBurstState.Actions[0] as PMA_CombatVisualEffect;
-            Debug.Log("combatVFX");
-            var combatSFX = energyGunBurstState.Actions[0] as PMA_PlaySound;
-            Debug.Log("combatSFX");
-            combatVFX.Prefab = vfxGameObject;
-            Debug.Log("combatVFX.Prefab");
-            combatSFX.ClipToPlay = sfxGameObject;
-            Debug.Log("combatSFX.ClipToPlay");
-
-            // apply the custom logic
-            typeof(Equipment)
-                .GetField("logic", BindingFlags.Instance | BindingFlags.NonPublic)
-                .SetValue(weapon, logicTemplate);
+                var combatSFX = energyGunBurstState.Actions[1] as PMA_PlaySound;
+                // This needs to be an AudioClip
+                //combatSFX.ClipToPlay = sfxGameObject;
+            });
         }
     }
-
 }

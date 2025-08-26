@@ -12,12 +12,17 @@ namespace K2ExoticArmory
     public class K2ExoticArmory : ITCMod
     {
         public List<string> NewItemNames = new List<string>();
-        private Weapon _instance;
+
         public List<StatModifierInfo> StatModifierInfos;
+
         public ItemVendor vendor;
+
         public DetectMenus detectMenus = new DetectMenus();
+        public void OnLevelChanged(string oldLevel, string newLevel) { }
 
         public void OnDialogueStarted(Dialogue dialogue) { }
+        public void OnLineStarted(DialogueLine line) { }
+
         public void OnFrame(float deltaTime)
         {
             if (Input.GetKeyDown("i") && detectMenus.DetectMenu())
@@ -25,8 +30,6 @@ namespace K2ExoticArmory
                 vendor.Catalogue.OpenShop();
             }
         }
-        public void OnLevelChanged(string oldLevel, string newLevel) { }
-        public void OnLineStarted(DialogueLine line) { }
         public void OnModUnLoaded()
         {
             foreach (string itemName in NewItemNames)
@@ -59,7 +62,7 @@ namespace K2ExoticArmory
 
                 foreach (CustomEquipment customEquipment in customEquipments)
                 {
-                    var item = customEquipment.CustomInitialize(manifest.SpriteResolver);
+                    var item = customEquipment.CustomInitialize(manifest);
                     NewItemNames.Add(item.Name);
                     shopItems.Add(
                         new ShopItemInfo()
@@ -78,7 +81,7 @@ namespace K2ExoticArmory
 
                 foreach (CustomEquipment customEquipment in customEquipments)
                 {
-                    var item = customEquipment.CustomInitialize(manifest.SpriteResolver);
+                    var item = customEquipment.CustomInitialize(manifest);
                     NewItemNames.Add(item.Name);
                     shopItems.Add(
                         new ShopItemInfo()

@@ -17,28 +17,10 @@ namespace K2ExoticArmory
 {
     public class CustomWeapon : Asuna.Items.Weapon
     {
-        public bool IsLocked;
         public int Price;
         public List<StatModifierInfo> StatModifierInfos;
         private List<StatModifierInfo> dynamicStatModifiers;
         public List<ApparelExtraSpriteInfo> ExtraSpriteInfos = ScriptableObject.CreateInstance<Apparel>().ExtraSpriteInfos;
-
-        public static CustomWeapon CreateWeapon(CustomEquipment customEquipment)
-        {
-            Item item = CreateItem(customEquipment.Name);
-            if (item is CustomWeapon)
-            {
-                typeof(Equipment)
-                   .GetField("_dynamicStatModifiers", BindingFlags.Instance | BindingFlags.NonPublic)
-                   .SetValue(item, (item as CustomWeapon).StatModifierInfos);
-                typeof(Equipment)
-                    .GetField("StatModifiers", BindingFlags.Instance | BindingFlags.NonPublic)
-                    .SetValue(item, (item as CustomWeapon).StatModifierInfos);
-                return (item as CustomWeapon);
-            }
-            return null;
-        }
-
 
         protected override void Initialize()
         {
@@ -77,7 +59,7 @@ namespace K2ExoticArmory
             CheckExtraSprites();
         }
 
-        public virtual void UnEquipped(Character User)
+        public override void UnEquipped(Character User)
         {
             OnUnEquipped.Invoke(User);
             OnEquipToggled.Invoke(arg0: false);
@@ -174,19 +156,6 @@ namespace K2ExoticArmory
                     item6.DisableRestraint.Set(restrainer, flag);
                 }
             }
-        }
-
-
-        private static Item CreateItem(string name)
-        {
-            if (All.TryGetValue(name.ToLower(), out var value))
-            {
-                if (value == null)
-                {
-                    return null;
-                }
-            }
-            return value;
         }
     }
 }
