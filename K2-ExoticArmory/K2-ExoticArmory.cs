@@ -16,12 +16,11 @@ namespace K2ExoticArmory
         private Weapon _instance;
         public List<StatModifierInfo> StatModifierInfos;
         public ItemVendor vendor;
-        public K2SimpleZoom.K2SZ k2SZ = new K2SimpleZoom.K2SZ();
 
         public void OnDialogueStarted(Dialogue dialogue) { }
         public void OnFrame(float deltaTime)
         {
-            if (Input.GetKeyDown("i") && k2SZ.DetectMenu())
+            if (Input.GetKeyDown("i"))
             {
                 vendor.Catalogue.OpenShop();
             }
@@ -46,6 +45,12 @@ namespace K2ExoticArmory
         }
         public void OnModLoaded(ModManifest manifest)
         {
+            Item.OnItemCloned.AddListener((newItem, oldItem) =>
+            {
+                newItem.DisplaySprite = oldItem.DisplaySprite;
+                newItem.DisplaySpriteResource = oldItem.DisplaySpriteResource;
+            });
+
             modManifest = manifest;
             using (StreamReader reader = new StreamReader(Path.Combine(manifest.ModPath, "data\\ItemData.xml")))
             {
@@ -55,10 +60,8 @@ namespace K2ExoticArmory
 
                 foreach (CustomEquipment customEquipment in customEquipments)
                 {
-                    customEquipment.CustomInitialize(manifest.SpriteResolver);
-                    CustomWeapon item = CustomWeapon.CreateWeapon(customEquipment);
+                    var item = customEquipment.CustomInitialize(manifest.SpriteResolver);
                     NewItemNames.Add(item.Name);
-                    GiveItems.GiveToCharacter(Character.Player.Get(), false, item);
                     shopItems.Add(
                         new ShopItemInfo()
                         {
@@ -69,7 +72,7 @@ namespace K2ExoticArmory
                 }
                 ItemShopCatalogue catalogue = ScriptableObject.CreateInstance<ItemShopCatalogue>();
                 catalogue.Items = shopItems;
-                
+
                 vendor = new ItemVendor()
                 {
                     Catalogue = catalogue,
