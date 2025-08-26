@@ -35,16 +35,16 @@ namespace K2ExoticArmory
         public void CustomInitialize(ModSpriteResolver modSpriteResolver)
         {
             CustomWeapon weapon = ScriptableObject.CreateInstance<CustomWeapon>();
-            
 
             Ability ability = ANToolkit.ScriptableManagement.ScriptableManager.Get<Asuna.NewCombat.Ability>(AbilityID).Clone();
+            ANToolkit.ScriptableManagement.ScriptableManager.Add(ability);
+
             ANResourceSprite aNResourceSprite = modSpriteResolver.ResolveAsResource(PreviewImage);
 
             //AudioClip sound = Resources.Load<AudioClip>(Sound);
 
             ability.Tooltip = AbilityTooltip;
             ability.DisplayName = AbilityName;
-            ANToolkit.ScriptableManagement.ScriptableManager.Add(ability);
             weapon.DisplaySpriteResource = aNResourceSprite;
             weapon.Name = Name;
             weapon.Slots.AddRange(Slots.Select((string x) => (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), x)));
