@@ -11,16 +11,16 @@ namespace K2ExoticArmory
 {
     public class K2ExoticArmory : ITCMod
     {
-        public ModManifest modManifest;
         public List<string> NewItemNames = new List<string>();
         private Weapon _instance;
         public List<StatModifierInfo> StatModifierInfos;
         public ItemVendor vendor;
+        public DetectMenus detectMenus = new DetectMenus();
 
         public void OnDialogueStarted(Dialogue dialogue) { }
         public void OnFrame(float deltaTime)
         {
-            if (Input.GetKeyDown("i"))
+            if (Input.GetKeyDown("i") && detectMenus.DetectMenu())
             {
                 vendor.Catalogue.OpenShop();
             }
@@ -51,12 +51,11 @@ namespace K2ExoticArmory
                 newItem.DisplaySpriteResource = oldItem.DisplaySpriteResource;
             });
 
-            modManifest = manifest;
-            using (StreamReader reader = new StreamReader(Path.Combine(manifest.ModPath, "data\\ItemData.xml")))
+            List<ShopItemInfo> shopItems = new List<ShopItemInfo>();
+            using (StreamReader reader = new StreamReader(Path.Combine(manifest.ModPath, "data\\ItemDataStore.xml")))
             {
                 string xml = reader.ReadToEnd();
                 List<CustomEquipment> customEquipments = Deserialize<List<CustomEquipment>>(xml);
-                List<ShopItemInfo> shopItems = new List<ShopItemInfo>();
 
                 foreach (CustomEquipment customEquipment in customEquipments)
                 {
@@ -70,14 +69,33 @@ namespace K2ExoticArmory
                         }
                     );
                 }
-                ItemShopCatalogue catalogue = ScriptableObject.CreateInstance<ItemShopCatalogue>();
-                catalogue.Items = shopItems;
-
-                vendor = new ItemVendor()
-                {
-                    Catalogue = catalogue,
-                };
             }
+
+            using (StreamReader reader = new StreamReader(Path.Combine(manifest.ModPath, "data\\ItemDataWorld.xml")))
+            {
+                string xml = reader.ReadToEnd();
+                List<CustomEquipment> customEquipments = Deserialize<List<CustomEquipment>>(xml);
+
+                foreach (CustomEquipment customEquipment in customEquipments)
+                {
+                    var item = customEquipment.CustomInitialize(manifest.SpriteResolver);
+                    NewItemNames.Add(item.Name);
+                    shopItems.Add(
+                        new ShopItemInfo()
+                        {
+                            Item = item,
+                            Cost = item.Price,
+                        }
+                    );
+                }
+            }
+            ItemShopCatalogue catalogue = ScriptableObject.CreateInstance<ItemShopCatalogue>();
+            catalogue.Items = shopItems;
+
+            vendor = new ItemVendor()
+            {
+                Catalogue = catalogue,
+            };
         }
     }
 }

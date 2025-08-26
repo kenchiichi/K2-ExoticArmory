@@ -51,8 +51,6 @@ namespace K2ExoticArmory
             ANResourceSprite aNResourceSprite = modSpriteResolver.ResolveAsResource(PreviewImage);
             weapon.DisplaySpriteResource = aNResourceSprite;
 
-            //weapon.DurabilityDisplayLayers.AddRange(Sprites.Select((ModEquipmentSprite x) => x.Get(modSpriteResolver)));
-
             weapon.Name = Name;
             weapon.Slots.AddRange(Slots.Select((string x) => (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), x)));
             weapon.Category = ItemCategory.Weapon;
