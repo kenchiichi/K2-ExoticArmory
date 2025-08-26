@@ -17,55 +17,55 @@ namespace K2ExoticArmory
 {
     public class CustomEquipment : ModEquipment
     {
-        public string Name;
-        public string Sound;
-        public string PreviewImage;
         public string Description;
         public string AbilityTooltip;
         public string AbilityID;
         public string AbilityName;
-        public bool IsLocked = false;
         public int Price;
-        public AttackVFXType WeaponAttackVFXType;
-        public List<string> Slots;
-        public List<StatModifierInfo> StatRequirements;
         public List<StatModifierInfo> StatModifierInfos;
         private CustomWeapon _instance;
-
+        //public bool IsLocked = false;
+        //public AttackVFXType WeaponAttackVFXType;
+        //public List<StatModifierInfo> StatRequirements;
+        //public string Sound;
         public void CustomInitialize(ModSpriteResolver modSpriteResolver)
         {
             CustomWeapon weapon = ScriptableObject.CreateInstance<CustomWeapon>();
-
-            Ability ability = ANToolkit.ScriptableManagement.ScriptableManager.Get<Asuna.NewCombat.Ability>(AbilityID).Clone();
-            ANToolkit.ScriptableManagement.ScriptableManager.Add(ability);
+            if (AbilityID != null)
+            {
+                Ability ability = ANToolkit.ScriptableManagement.ScriptableManager.Get<Asuna.NewCombat.Ability>(AbilityID).Clone();
+                ability.Tooltip = AbilityTooltip;
+                ability.DisplayName = AbilityName;
+                ANToolkit.ScriptableManagement.ScriptableManager.Add(ability);
+                weapon.AddAbility(ability, ability.RestraintID);
+            }
+            if (StatModifierInfos != null)
+            {
+                weapon.StatModifierInfos = StatModifierInfos;
+                typeof(Equipment)
+                    .GetField("_dynamicStatModifiers", BindingFlags.Instance | BindingFlags.NonPublic)
+                    .SetValue(weapon, weapon.StatModifierInfos);
+                typeof(Equipment)
+                    .GetField("StatModifiers", BindingFlags.Instance | BindingFlags.NonPublic)
+                    .SetValue(weapon, weapon.StatModifierInfos);
+            }
 
             ANResourceSprite aNResourceSprite = modSpriteResolver.ResolveAsResource(PreviewImage);
-
-            //AudioClip sound = Resources.Load<AudioClip>(Sound);
-
-            ability.Tooltip = AbilityTooltip;
-            ability.DisplayName = AbilityName;
             weapon.DisplaySpriteResource = aNResourceSprite;
-            weapon.Name = Name;
-            weapon.Slots.AddRange(Slots.Select((string x) => (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), x)));
 
             weapon.DurabilityDisplayLayers.AddRange(Sprites.Select((ModEquipmentSprite x) => x.Get(modSpriteResolver)));
-            //weapon.AttackVFXType = WeaponAttackVFXType;
+
+            weapon.Name = Name;
+            weapon.Slots.AddRange(Slots.Select((string x) => (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), x)));
             weapon.Category = ItemCategory.Weapon;
             weapon.Description = Description;
-            weapon.AddAbility(ability, ability.RestraintID);
-            weapon.StatModifierInfos = StatModifierInfos;
             weapon.Price = Price;
-            weapon.IsLocked = IsLocked;
+            //AudioClip sound = Resources.Load<AudioClip>(Sound);
+            //weapon.AttackVFXType = WeaponAttackVFXType;
+            //weapon.IsLocked = IsLocked;
 
             _instance = weapon;
-            typeof(Equipment)
-                .GetField("_dynamicStatModifiers", BindingFlags.Instance | BindingFlags.NonPublic)
-                .SetValue(weapon, weapon.StatModifierInfos);
-            typeof(Equipment)
-                .GetField("StatModifiers", BindingFlags.Instance | BindingFlags.NonPublic)
-                .SetValue(weapon, weapon.StatModifierInfos);
-
+            
             if (!Item.All.ContainsKey(Name.ToLower()))
             {
                 Item.All.Add(Name.ToLower(), _instance);
@@ -76,4 +76,5 @@ namespace K2ExoticArmory
             }
         }
     }
+
 }

@@ -189,4 +189,58 @@
 		<AbilityTooltip>This bow uses custom modified arrows that allows the user to fire an afrodisiac mist on a target.</AbilityTooltip>
 		<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
 	</CustomEquipment>
+	<CustomEquipment>
+		<Name>Half-Truths</Name>
+		<Price>150</Price>
+		<PreviewImage>assets\sprites\half_truths.png</PreviewImage>
+		<Description>An incomplete weapon, perhaps there's a companion weapon that'll make it whole?</Description>
+		<Slots>
+			<string>MainWeapon</string>
+		</Slots>
+		<Sprites>
+			<ModEquipmentSprite>
+				<Name>Half-Truths</Name>
+				<SortingLayer>Outfit</SortingLayer>
+				<SortingOrder>1</SortingOrder>
+			</ModEquipmentSprite>
+		</Sprites>
+		<StatModifierInfos>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_physical_power</StatName>
+				<ModifyAmount>15</ModifyAmount>
+			</StatModifierInfo>
+		</StatModifierInfos>
+		<AbilityID>Abl_Akimbo</AbilityID>
+		<AbilityName>One-Handed Blade</AbilityName>
+		<AbilityTooltip>This sword is suspiciously light, as if it were made of... light.  This allows the weapon to be swung, with one hand.</AbilityTooltip>
+		<WeaponAttackVFXType>UnarmedMelee</WeaponAttackVFXType>
+	</CustomEquipment>
+	<CustomEquipment>
+		<Name>The Other Half</Name>
+		<Price>2000</Price>
+		<PreviewImage>assets\sprites\the_other_half.png</PreviewImage>
+		<Description>An incomplete weapon, perhaps there's a companion weapon that'll make it whole?</Description>
+		<Slots>
+			<string>OffhandWeapon</string>
+		</Slots>
+		<Sprites>
+		<StatModifierInfos>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_physical_power</StatName>
+				<ModifyAmount>15</ModifyAmount>
+			</StatModifierInfo>
+		</StatModifierInfos>
+			<ModEquipmentSprite>
+				<Name>The Other Half</Name>
+				<SortingLayer>Outfit</SortingLayer>
+				<SortingOrder>1</SortingOrder>
+			</ModEquipmentSprite>
+		</Sprites>
+		<AbilityID>Abl_Vibrodash_Flashback</AbilityID>
+		<AbilityName>Eager Edge</AbilityName>
+		<AbilityTooltip>This weapon can swing so fast, it can break the laws of space-time, and can seemingly teleport the user in almost any direction, though, because it moves so fast, it simply passes harmlessly through your enemies.</AbilityTooltip>
+		<WeaponAttackVFXType>UnarmedMelee</WeaponAttackVFXType>
+	</CustomEquipment>
 </ArrayOfCustomEquipment>

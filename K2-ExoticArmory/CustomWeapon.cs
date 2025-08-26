@@ -15,7 +15,7 @@ using UnityEngine.Serialization;
 
 namespace K2ExoticArmory
 {
-    public class CustomWeapon : Asuna.Items.Apparel
+    public class CustomWeapon : Asuna.Items.Equipment
     {
         public bool IsLocked;
         public int Price;

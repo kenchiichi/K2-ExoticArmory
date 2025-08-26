@@ -58,7 +58,7 @@ namespace K2ExoticArmory
                     customEquipment.CustomInitialize(manifest.SpriteResolver);
                     CustomWeapon item = CustomWeapon.CreateWeapon(customEquipment);
                     NewItemNames.Add(item.Name);
-
+                    GiveItems.GiveToCharacter(Character.Player.Get(), false, item);
                     shopItems.Add(
                         new ShopItemInfo()
                         {
@@ -69,8 +69,7 @@ namespace K2ExoticArmory
                 }
                 ItemShopCatalogue catalogue = ScriptableObject.CreateInstance<ItemShopCatalogue>();
                 catalogue.Items = shopItems;
-
-
+                
                 vendor = new ItemVendor()
                 {
                     Catalogue = catalogue,
