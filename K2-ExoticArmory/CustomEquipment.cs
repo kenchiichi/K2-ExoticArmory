@@ -29,13 +29,13 @@ namespace K2ExoticArmory
         public int Price;
         public int BurstCount;
         public List<StatModifierInfo> StatModifierInfos;
+        public List<MapCoordinate> LocationCoordinates;
         private CustomWeapon _instance;
         public AttackVFXType WeaponAttackVFXType;
         //public List<StatModifierInfo> StatRequirements;
         public CustomWeapon CustomInitialize(ModManifest manifest)
         {
             var weapon = ScriptableObject.CreateInstance<CustomWeapon>();
-            //ANResourceSprite weaponAttackVFXSprite = new ANResourceSprite();
             if (AbilityID != null)
             {
                 Ability ability = ANToolkit.ScriptableManagement.ScriptableManager.Get<Asuna.NewCombat.Ability>(AbilityID).Clone();
@@ -46,7 +46,7 @@ namespace K2ExoticArmory
             }
             if (StatModifierInfos != null)
             {
-                //weapon.StatModifierInfos = StatModifierInfos;
+                weapon.StatModifierInfos = StatModifierInfos;
                 typeof(Equipment)
                     .GetField("_dynamicStatModifiers", BindingFlags.Instance | BindingFlags.NonPublic)
                     .SetValue(weapon, StatModifierInfos);
@@ -57,8 +57,8 @@ namespace K2ExoticArmory
             ANResourceSprite previewImage = manifest.SpriteResolver.ResolveAsResource(PreviewImage);
             weapon.DisplaySpriteResource = previewImage;
 
+            weapon.LocationCoordinates = LocationCoordinates;
             
-
             weapon.Name = Name;
             weapon.Slots.AddRange(Slots.Select((string x) => (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), x)));
             weapon.Category = ItemCategory.Weapon;
@@ -88,6 +88,7 @@ namespace K2ExoticArmory
             }
             return weapon;
         }
+
 
         private void AddShootingVFXHook(Weapon weapon, Sprite sprite, int burstCount, String WeaponAttackVFXType)
         {

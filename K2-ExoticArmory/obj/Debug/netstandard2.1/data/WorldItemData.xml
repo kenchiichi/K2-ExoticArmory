@@ -1,6 +1,13 @@
 ﻿<ArrayOfCustomEquipment xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<CustomEquipment>
 		<Name>The Last Word</Name>
+		<LocationCoordinates>
+			<MapCoordinate>
+				<xCoordinate>2.49</xCoordinate>
+				<yCoordinate>5.48</yCoordinate>
+				<MapName>House1</MapName>
+			</MapCoordinate>
+		</LocationCoordinates>
 		<Price>700</Price>
 		<PreviewImage>assets\sprites\icons\the_last_word.png</PreviewImage>
 		<Description>"Yours…not mine."— Renegade Hunter Shin Malphur to Dredgen Yor</Description>
@@ -32,6 +39,13 @@
 	</CustomEquipment>
 	<CustomEquipment>
 		<Name>Raze-Lighter</Name>
+		<LocationCoordinates>
+			<MapCoordinate>
+				<xCoordinate>10.78</xCoordinate>
+				<yCoordinate>6.28</yCoordinate>
+				<MapName>Carcen_Mines</MapName>
+			</MapCoordinate>
+		</LocationCoordinates>
 		<Price>1000</Price>
 		<PreviewImage>assets\sprites\icons\raze-lighter.png</PreviewImage>
 		<Description>With your own hands you forged the mighty Raze-Lighter. Now take it in hand and feed its flames.</Description>
@@ -57,6 +71,13 @@
 	</CustomEquipment>
 	<CustomEquipment>
 		<Name>Icebreaker</Name>
+		<LocationCoordinates>
+			<MapCoordinate>
+				<xCoordinate>18.76</xCoordinate>
+				<yCoordinate>7.60</yCoordinate>
+				<MapName>DestroyedStronghold</MapName>
+			</MapCoordinate>
+		</LocationCoordinates>
 		<Price>700</Price>
 		<PreviewImage>assets\sprites\icons\icebreaker.png</PreviewImage>
 		<Description>Please replace these components if use causes fatal damage: HEAT SINK. MAGAZINE. OPERATOR.</Description>
@@ -93,6 +114,13 @@
 	</CustomEquipment>
 	<CustomEquipment>
 		<Name>Red Death</Name>
+		<LocationCoordinates>
+			<MapCoordinate>
+				<xCoordinate>-3.28</xCoordinate>
+				<yCoordinate>-2.83</yCoordinate>
+				<MapName>Toilets</MapName>
+			</MapCoordinate>
+		</LocationCoordinates>
 		<Price>600</Price>
 		<PreviewImage>assets\sprites\icons\red_death.png</PreviewImage>
 		<Description>Peitho policy urges Guards to destroy this weapon on sight.</Description>
@@ -129,6 +157,13 @@
 	</CustomEquipment>
 	<CustomEquipment>
 		<Name>Le Monarque</Name>
+		<LocationCoordinates>
+			<MapCoordinate>
+				<xCoordinate>11.93</xCoordinate>
+				<yCoordinate>18.50</yCoordinate>
+				<MapName>Carceburg</MapName>
+			</MapCoordinate>
+		</LocationCoordinates>
 		<Price>600</Price>
 		<PreviewImage>assets\sprites\icons\le_monarque.png</PreviewImage>
 		<Description>"Wings flutter. Beauty distracts. Poison injects. The butterfly's curse extends to your enemies. A short life, shortened further by your hand." —Ada-1</Description>
@@ -162,10 +197,16 @@
 		<AbilityTooltip>This bow uses custom modified arrows that allows the user to fire an afrodisiac mist on a target.</AbilityTooltip>
 		<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
 		<WeaponAttackVFXSprite>assets\sprites\vfx\single\void_bullet.png</WeaponAttackVFXSprite>
-
 	</CustomEquipment>
 	<CustomEquipment>
 		<Name>The Other Half</Name>
+		<LocationCoordinates>
+			<MapCoordinate>
+				<xCoordinate>-4.45</xCoordinate>
+				<yCoordinate>-4.05</yCoordinate>
+				<MapName>OuterSH_Outskirts_House_AfterExplosion</MapName>
+			</MapCoordinate>
+		</LocationCoordinates>
 		<Price>2000</Price>
 		<PreviewImage>assets\sprites\icons\the_other_half.png</PreviewImage>
 		<Description>An incomplete weapon, perhaps there's a companion weapon that'll make it whole?</Description>

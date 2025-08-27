@@ -1,4 +1,5 @@
-﻿using Asuna.CharManagement;
+﻿using ANToolkit.Controllers;
+using Asuna.CharManagement;
 using Asuna.Dialogues;
 using Asuna.Items;
 using Modding;
@@ -13,12 +14,40 @@ namespace K2ExoticArmory
     {
         public List<string> NewItemNames = new List<string>();
 
+        public List<CustomWeapon> EarnableWeapons = new List<CustomWeapon>();
+
         public List<StatModifierInfo> StatModifierInfos;
+
+        public CustomWeapon customWeapon;
 
         public ItemVendor vendor;
 
         public DetectMenus detectMenus = new DetectMenus();
-        public void OnLevelChanged(string oldLevel, string newLevel) { }
+        public void OnLevelChanged(string oldLevel, string newLevel) 
+        {
+            foreach (CustomWeapon item in EarnableWeapons)
+            {
+                foreach (MapCoordinate location in item.LocationCoordinates)
+                {
+                    //Debug.Log(item.Name + "\n" + location.MapName + ": x = " + location.xCoordinate + ", y = " + location.yCoordinate + " ");
+                    if (location.MapName == newLevel && !Character.Player.Inventory.Contains(item))
+                    {
+                        var interactableGameObject = new GameObject();
+                        interactableGameObject.transform.position = new Vector3((float)location.xCoordinate, (float)location.yCoordinate);
+                        var boxCollider = interactableGameObject.AddComponent<BoxCollider>();
+                        boxCollider.size = new Vector3(1f, 1f);
+                        
+                        var interactable = interactableGameObject.AddComponent<Interactable>();
+                        interactable.TypeOfInteraction = InteractionType.Talk;
+                        interactable.OnInteracted.AddListener(x =>
+                        {
+                            GiveItems.GiveToCharacter(Character.Get("Jenna"), false, true, item);
+                            interactable.gameObject.SetActive(false);
+                        });
+                    }
+                }
+            }
+        }
 
         public void OnDialogueStarted(Dialogue dialogue) { }
         public void OnLineStarted(DialogueLine line) { }
@@ -83,6 +112,7 @@ namespace K2ExoticArmory
                 {
                     var item = customEquipment.CustomInitialize(manifest);
                     NewItemNames.Add(item.Name);
+                    EarnableWeapons.Add(item);
                     shopItems.Add(
                         new ShopItemInfo()
                         {

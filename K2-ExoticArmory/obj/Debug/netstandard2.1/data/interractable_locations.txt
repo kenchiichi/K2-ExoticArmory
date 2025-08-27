@@ -1,0 +1,13 @@
+14.06, 16.10 = Motel_UpperFloor = right dildo
+4.27, 0.48   = FF_Hub_HQTent = hq's tent top right crate
+4.42, -38.66 = FF_Hub_SubLevel_2 = floria room top right glass cylinder
+-34.69, 59.65= Sub level 3 - Fixed = gas room electrical box top left
+
+
+
+The Last Word    - 2.49, 5.48   = House1                                 = right nightstand in top left house with garage door to enter
+Le Monarque      - 11.93, 18.50 = Carceburg                              = carceburg top right behind trees
+Red Death        - -3.28, -2.83 = Toilets                                = bar bathroom trashcan
+The Other Half   - -4.45, -4.05 = OuterSH_Outskirts_House_AfterExplosion = ruined house after tutorial barrels bottom left
+Icebreaker       - 18.76, 7.60  = DestroyedStronghold                    = ruined peitho base computer console north west of lights computer
+Raze-Lighter     - 10.78, 6.28  = Carcen_Mines                           = cock shaped rock room left of the shrine 
