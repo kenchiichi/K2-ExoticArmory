@@ -49,48 +49,6 @@ namespace K2ExoticArmory
             Equipment.OnDurabilitySet.AddListener(AnyDurabilitySet);
         }
 
-        public override void Equipped(Character User)
-        {
-            base.Equipped(User);
-            UseText = "Unequip";
-            User.EquippedItems.OnSlotChanged.AddListener(OnSlotChanged);
-            OnSlotChanged(null);
-
-            CheckExtraSprites();
-        }
-
-        public override void UnEquipped(Character User)
-        {
-            OnUnEquipped.Invoke(User);
-            OnEquipToggled.Invoke(arg0: false);
-            RemoveStats();
-            UseText = "Equip";
-            if (cachedFsm != null)
-            {
-                cachedFsm.GetFsmObject("User").Value = User;
-                cachedFsm.GetFsmObject("Owner").Value = User;
-                cachedFsm.ProcessEventByName("OnUnEquipped");
-            }
-        }
-
-        private void RemoveStats()
-        {
-            if (!base.Owner)
-            {
-                return;
-            }
-
-            foreach (StatModifierInfo dynamicStatModifier in dynamicStatModifiers)
-            {
-                Stat stat = base.Owner.GetStat(dynamicStatModifier.StatName);
-                if (stat != null)
-                {
-                    dynamicStatModifier.ModifierID = "Equipment_" + base.name;
-                    stat.RemoveModifier(dynamicStatModifier);
-                }
-            }
-        }
-
         public void OnSlotChanged(SlotEventInfo info)
         {
             CheckExtraSprites();
