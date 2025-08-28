@@ -237,12 +237,18 @@
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_physical_power</StatName>
-				<ModifyAmount>15</ModifyAmount>
+				<ModifyAmount>0</ModifyAmount>
 			</StatModifierInfo>
 		</StatModifierInfos>
 		<BurstCount>0</BurstCount>
 		<OggAudioClip>assets\sfx\two_halves.ogg</OggAudioClip>
 		<CustomAbilityItems>
+			<CustomAbility>
+				<AbilityID>Abl_Akimbo</AbilityID>
+				<AbilityName>Lightweight Blade</AbilityName>
+				<AbilityTooltip>This sword is suspiciously light, as if it were made of... light.  This allows the user to attack more frequently than a normal.</AbilityTooltip>
+				<WeaponAttackVFXType>UnarmedMelee</WeaponAttackVFXType>
+			</CustomAbility>
 			<CustomAbility>
 				<AbilityID>Abl_Vibrodash_Flashback</AbilityID>
 				<AbilityName>Eager Edge</AbilityName>
@@ -250,5 +256,30 @@
 			</CustomAbility>
 		</CustomAbilityItems>
 		<WeaponAttackVFXType>UnarmedMelee</WeaponAttackVFXType>
+	</CustomEquipment>
+	<CustomEquipment>
+		<Name>Half-Truths</Name>
+		<LocationCoordinates>
+			<MapCoordinate>
+				<xCoordinate>6.01</xCoordinate>
+				<yCoordinate>10.64</yCoordinate>
+				<MapName>Motel_GroundFloor</MapName>
+			</MapCoordinate>
+		</LocationCoordinates>
+		<Price>150</Price>
+		<PreviewImage>assets\sprites\icons\half_truths.png</PreviewImage>
+		<Description>An incomplete weapon, perhaps there's a companion weapon that'll make it whole?</Description>
+		<Slots>
+			<string>MainWeapon</string>
+		</Slots>
+		<StatModifierInfos>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_physical_power</StatName>
+				<ModifyAmount>18</ModifyAmount>
+			</StatModifierInfo>
+		</StatModifierInfos>
+		<BurstCount>0</BurstCount>
+		<OggAudioClip>assets\sfx\two_halves.ogg</OggAudioClip>
 	</CustomEquipment>
 </ArrayOfCustomEquipment>
