@@ -31,9 +31,13 @@
 		</StatModifierInfos>
 		<BurstCount>3</BurstCount>
 		<OggAudioClip>assets\sfx\the_last_word.ogg</OggAudioClip>
-		<AbilityID>Abl_Akimbo</AbilityID>
-		<AbilityName>Fan Fire</AbilityName>
-		<AbilityTooltip>The weapon can be fired quickly and continuously.</AbilityTooltip>
+		<CustomAbilityItems>
+			<CustomAbility>
+				<AbilityID>Abl_Akimbo</AbilityID>
+				<AbilityName>Fan Fire</AbilityName>
+				<AbilityTooltip>The weapon can be fired quickly and continuously.</AbilityTooltip>
+			</CustomAbility>
+		</CustomAbilityItems>
 		<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
 		<WeaponAttackVFXSprite>assets\sprites\vfx\burst\kenetic_bullet.png</WeaponAttackVFXSprite>
 	</CustomEquipment>
@@ -64,9 +68,13 @@
 		</StatModifierInfos>
 		<BurstCount>0</BurstCount>
 		<OggAudioClip>assets\sfx\raze-lighter.ogg</OggAudioClip>
-		<AbilityID>Abl_Attack_Knockback</AbilityID>
-		<AbilityName>Phoenix Uppercut</AbilityName>
-		<AbilityTooltip>A powerful single-target swipe that will knock the enemy into the air. The uppercut will kill or nearly kill just about any major enemy.</AbilityTooltip>
+		<CustomAbilityItems>
+			<CustomAbility>
+				<AbilityID>Abl_Attack_Knockback</AbilityID>
+				<AbilityName>Phoenix Uppercut</AbilityName>
+				<AbilityTooltip>A powerful single-target swipe that will knock the enemy into the air. The uppercut will kill or nearly kill just about any major enemy.</AbilityTooltip>
+			</CustomAbility>
+		</CustomAbilityItems>
 		<WeaponAttackVFXType>UnarmedMelee</WeaponAttackVFXType>
 	</CustomEquipment>
 	<CustomEquipment>
@@ -106,9 +114,13 @@
 		</StatModifierInfos>
 		<BurstCount>1</BurstCount>
 		<OggAudioClip>assets\sfx\icebreaker.ogg</OggAudioClip>
-		<AbilityID>Abl_ExplodeOnDeath</AbilityID>
-		<AbilityName>No Backpack</AbilityName>
-		<AbilityTooltip>Using an ancient PEITHO_ARC0 core, this weapon fires a single high-powered, long range shot, that is sure to put it's foes on the ground.  If the user is defeated, it may cause the magazine to violently burst, in an erotic fashon.</AbilityTooltip>
+		<CustomAbilityItems>
+			<CustomAbility>
+				<AbilityID>Abl_ExplodeOnDeath</AbilityID>
+				<AbilityName>No Backpack</AbilityName>
+				<AbilityTooltip>Using an ancient PEITHO_ARC0 core, this weapon fires a single high-powered, long range shot, that is sure to put it's foes on the ground.  If the user is defeated, it may cause the magazine to violently burst, in an &lt;color=#FF64FF&gt;erotic&lt;/color&gt; fashon.</AbilityTooltip>
+			</CustomAbility>
+		</CustomAbilityItems>
 		<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
 		<WeaponAttackVFXSprite>assets\sprites\vfx\single\solar_bullet.png</WeaponAttackVFXSprite>
 	</CustomEquipment>
@@ -149,9 +161,13 @@
 		</StatModifierInfos>
 		<BurstCount>3</BurstCount>
 		<OggAudioClip>assets\sfx\red_death.ogg</OggAudioClip>
-		<AbilityID>Abl_Sexual_Healing</AbilityID>
-		<AbilityName>Red Death</AbilityName>
-		<AbilityTooltip>Using Ancient AIRSHIP technology, this weapon allows the user to convert lust damage into health.</AbilityTooltip>
+		<CustomAbilityItems>
+			<CustomAbility>
+				<AbilityID>Abl_Sexual_Healing</AbilityID>
+				<AbilityName>Red Death</AbilityName>
+				<AbilityTooltip>Using Ancient AIRSHIP technology, this weapon allows the user to convert lust damage into health.</AbilityTooltip>
+			</CustomAbility>
+		</CustomAbilityItems>
 		<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
 		<WeaponAttackVFXSprite>assets\sprites\vfx\burst\kenetic_bullet.png</WeaponAttackVFXSprite>
 	</CustomEquipment>
@@ -192,9 +208,13 @@
 		</StatModifierInfos>
 		<BurstCount>1</BurstCount>
 		<OggAudioClip>assets\sfx\le_monarque.ogg</OggAudioClip>
-		<AbilityID>Abl_Lust_Mist</AbilityID>
-		<AbilityName>Poison Arrows</AbilityName>
-		<AbilityTooltip>This bow uses custom modified arrows that allows the user to fire an afrodisiac mist on a target.</AbilityTooltip>
+		<CustomAbilityItems>
+			<CustomAbility>
+				<AbilityID>Abl_Lust_Mist</AbilityID>
+				<AbilityName>Poison Arrows</AbilityName>
+				<AbilityTooltip>This bow uses custom modified arrows that allows the user to fire an &lt;color=#FF64FF&gt;afrodisiac&lt;/color&gt; mist on a target.</AbilityTooltip>
+			</CustomAbility>
+		</CustomAbilityItems>
 		<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
 		<WeaponAttackVFXSprite>assets\sprites\vfx\single\void_bullet.png</WeaponAttackVFXSprite>
 	</CustomEquipment>
@@ -222,9 +242,13 @@
 		</StatModifierInfos>
 		<BurstCount>0</BurstCount>
 		<OggAudioClip>assets\sfx\two_halves.ogg</OggAudioClip>
-		<AbilityID>Abl_Vibrodash_Flashback</AbilityID>
-		<AbilityName>Eager Edge</AbilityName>
-		<AbilityTooltip>This weapon can swing so fast, it can break the laws of space-time, and can seemingly teleport the user in almost any direction, though, because it moves so fast, it simply passes harmlessly through your enemies.</AbilityTooltip>
+		<CustomAbilityItems>
+			<CustomAbility>
+				<AbilityID>Abl_Vibrodash_Flashback</AbilityID>
+				<AbilityName>Eager Edge</AbilityName>
+				<AbilityTooltip>This weapon can swing so fast, it can break the laws of space-time, and can seemingly teleport the user in almost any direction, though, because it moves so fast, it simply passes harmlessly through your enemies.</AbilityTooltip>
+			</CustomAbility>
+		</CustomAbilityItems>
 		<WeaponAttackVFXType>UnarmedMelee</WeaponAttackVFXType>
 	</CustomEquipment>
 </ArrayOfCustomEquipment>

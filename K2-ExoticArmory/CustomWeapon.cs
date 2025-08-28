@@ -1,6 +1,4 @@
-﻿using ANToolkit.ResourceManagement;
-using ANToolkit.UI;
-using Asuna.CharManagement;
+﻿using Asuna.CharManagement;
 using Asuna.Items;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,11 +11,11 @@ namespace K2ExoticArmory
 
         public List<StatModifierInfo> StatModifierInfos;
 
-        private List<StatModifierInfo> dynamicStatModifiers;
-
         public List<ApparelExtraSpriteInfo> ExtraSpriteInfos = ScriptableObject.CreateInstance<Apparel>().ExtraSpriteInfos;
 
         public List<MapCoordinate> LocationCoordinates;
+
+        public List<CustomAbility> CustomAbilityItems;
     }
 
     public class MapCoordinate

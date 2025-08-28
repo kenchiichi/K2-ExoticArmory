@@ -3,13 +3,12 @@ using ANToolkit.UI;
 using Asuna.UI;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace K2ExoticArmory
 {
     public class DetectMenus
-{
+    {
         private bool GameObjNotActive(List<String> objects)
         {
             bool objectNotActive = true;

@@ -16,9 +16,13 @@
 		</StatModifierInfos>
 		<BurstCount>0</BurstCount>
 		<OggAudioClip>assets\sfx\two_halves.ogg</OggAudioClip>
-		<AbilityID>Abl_Akimbo</AbilityID>
-		<AbilityName>Lightweight Blade</AbilityName>
-		<AbilityTooltip>This sword is suspiciously light, as if it were made of... light.  This allows the weapon to be swung, with one hand, and more frequently than a normal sword.</AbilityTooltip>
-		<WeaponAttackVFXType>UnarmedMelee</WeaponAttackVFXType>
+		<CustomAbilityItems>
+			<CustomAbility>
+				<AbilityID>Abl_Akimbo</AbilityID>
+				<AbilityName>Lightweight Blade</AbilityName>
+				<AbilityTooltip>This sword is suspiciously light, as if it were made of... light.  This allows the weapon to be swung, with one hand, and more frequently than a normal sword.</AbilityTooltip>
+				<WeaponAttackVFXType>UnarmedMelee</WeaponAttackVFXType>
+			</CustomAbility>
+		</CustomAbilityItems>
 	</CustomEquipment>
 </ArrayOfCustomEquipment>
