@@ -3,8 +3,8 @@
 		<Name>The Last Word</Name>
 		<LocationCoordinates>
 			<MapCoordinate>
-				<xCoordinate>2.49</xCoordinate>
-				<yCoordinate>5.48</yCoordinate>
+				<xCoordinate>2.50</xCoordinate>
+				<yCoordinate>6.00</yCoordinate>
 				<MapName>House1</MapName>
 			</MapCoordinate>
 		</LocationCoordinates>
@@ -45,8 +45,8 @@
 		<Name>Raze-Lighter</Name>
 		<LocationCoordinates>
 			<MapCoordinate>
-				<xCoordinate>10.78</xCoordinate>
-				<yCoordinate>6.28</yCoordinate>
+				<xCoordinate>11.50</xCoordinate>
+				<yCoordinate>6.80</yCoordinate>
 				<MapName>Carcen_Mines</MapName>
 			</MapCoordinate>
 		</LocationCoordinates>
@@ -81,8 +81,8 @@
 		<Name>Icebreaker</Name>
 		<LocationCoordinates>
 			<MapCoordinate>
-				<xCoordinate>18.76</xCoordinate>
-				<yCoordinate>7.60</yCoordinate>
+				<xCoordinate>19.00</xCoordinate>
+				<yCoordinate>8.80</yCoordinate>
 				<MapName>DestroyedStronghold</MapName>
 			</MapCoordinate>
 		</LocationCoordinates>
@@ -128,8 +128,8 @@
 		<Name>Red Death</Name>
 		<LocationCoordinates>
 			<MapCoordinate>
-				<xCoordinate>-3.28</xCoordinate>
-				<yCoordinate>-2.83</yCoordinate>
+				<xCoordinate>-3.00</xCoordinate>
+				<yCoordinate>-2.50</yCoordinate>
 				<MapName>Toilets</MapName>
 			</MapCoordinate>
 		</LocationCoordinates>
@@ -175,8 +175,8 @@
 		<Name>Le Monarque</Name>
 		<LocationCoordinates>
 			<MapCoordinate>
-				<xCoordinate>11.93</xCoordinate>
-				<yCoordinate>18.50</yCoordinate>
+				<xCoordinate>12.00</xCoordinate>
+				<yCoordinate>20.00</yCoordinate>
 				<MapName>Carceburg</MapName>
 			</MapCoordinate>
 		</LocationCoordinates>
@@ -222,8 +222,8 @@
 		<Name>The Other Half</Name>
 		<LocationCoordinates>
 			<MapCoordinate>
-				<xCoordinate>-4.45</xCoordinate>
-				<yCoordinate>-4.05</yCoordinate>
+				<xCoordinate>-4.50</xCoordinate>
+				<yCoordinate>-4.00</yCoordinate>
 				<MapName>OuterSH_Outskirts_House_AfterExplosion</MapName>
 			</MapCoordinate>
 		</LocationCoordinates>
@@ -261,8 +261,8 @@
 		<Name>Half-Truths</Name>
 		<LocationCoordinates>
 			<MapCoordinate>
-				<xCoordinate>6.01</xCoordinate>
-				<yCoordinate>10.64</yCoordinate>
+				<xCoordinate>6.00</xCoordinate>
+				<yCoordinate>10.50</yCoordinate>
 				<MapName>Motel_GroundFloor</MapName>
 			</MapCoordinate>
 		</LocationCoordinates>

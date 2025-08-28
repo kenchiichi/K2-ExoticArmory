@@ -33,7 +33,7 @@ namespace K2ExoticArmory
         {
             if (Input.GetKeyDown("i") && detectMenus.DetectMenu())
             {
-                vendor.Catalogue.OpenShop();
+                //vendor.Catalogue.OpenShop();
             }
         }
         public void OnModUnLoaded()
@@ -57,7 +57,7 @@ namespace K2ExoticArmory
                         var interactableGameObject = new GameObject();
                         interactableGameObject.transform.position = new Vector3((float)location.xCoordinate, (float)location.yCoordinate);
                         var boxCollider = interactableGameObject.AddComponent<BoxCollider>();
-                        boxCollider.size = new Vector3(1f, 1f);
+                        boxCollider.size = new Vector3((float)0.25, (float)0.25);
 
                         var interactable = interactableGameObject.AddComponent<Interactable>();
                         interactable.TypeOfInteraction = InteractionType.Talk;

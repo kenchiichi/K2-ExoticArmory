@@ -4,10 +4,10 @@
 -34.69, 59.65= Sub level 3 - Fixed = gas room electrical box top left
 
 
-Half-Truths      - 6.01, 10.64  = Motel_GroundFloor                      = Jenna's hotel room nightstand .
-The Last Word    - 2.49, 5.48   = House1                                 = Right nightstand in top left house with enterabl garage door.
-Le Monarque      - 11.93, 18.50 = Carceburg                              = Carceburg top right behind trees.
-Red Death        - -3.28, -2.83 = Toilets                                = Bar bathroom trashcan.
-The Other Half   - -4.45, -4.05 = OuterSH_Outskirts_House_AfterExplosion = Ruined house after tutorial barrels bottom left.
-Icebreaker       - 18.76, 7.60  = DestroyedStronghold                    = Ruined peitho base computer console north west of lights computer.
-Raze-Lighter     - 10.78, 6.28  = Carcen_Mines                           = Cock shaped rock room left of the shrine.
+Half-Truths      - 6.00, 10.50  = Motel_GroundFloor                      = Jenna's hotel room nightstand .
+The Last Word    - 2.50, 6.00   = House1                                 = Right nightstand in top left house with enterabl garage door.
+Le Monarque      - 12.00, 20.00 = Carceburg                              = Carceburg top right behind trees.
+Red Death        - -3.00, -3.00 = Toilets                                = Bar bathroom trashcan.
+The Other Half   - -4.50, -4.00 = OuterSH_Outskirts_House_AfterExplosion = Ruined house after tutorial barrels bottom left.
+Icebreaker       - 19.00, 8.80  = DestroyedStronghold                    = Ruined peitho base computer console north west of lights computer.
+Raze-Lighter     - 17.50, 6.80  = Carcen_Mines                           = Cock shaped rock room left of the shrine.
