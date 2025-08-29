@@ -2,12 +2,12 @@
 4.42, -38.66 = FF_Hub_SubLevel_2 = floria room top right glass cylinder
 -34.69, 59.65= Sub level 3 - Fixed = gas room electrical box top left
 
-Half-Truths      - 6.00, 10.50  = Motel_GroundFloor                      = Jenna's hotel room nightstand .
-The Last Word    - 2.50, 6.00   = House1                                 = Right nightstand in top left house with enterabl garage door.
-Le Monarque      - 12.00, 20.00 = Carceburg                              = Carceburg top right behind trees.
-Red Death        - -3.00, -3.00 = Toilets                                = Bar bathroom trashcan.
-Dead Man's Tale  - 37.50, -16.00= Carceburg 							 = Ruined house cellar entrance
-Monte Carlo      - 14.00, 16.00 = Motel_UpperFloor                       = right dildo
-The Other Half   - -4.50, -4.00 = OuterSH_Outskirts_House_AfterExplosion = Ruined house after tutorial barrels bottom left.
-Icebreaker       - 19.00, 8.80  = DestroyedStronghold                    = Ruined peitho base computer console north west of lights computer.
-Raze-Lighter     - 17.50, 6.80  = Carcen_Mines                           = Cock shaped rock room left of the shrine.
+Half-Truths      - 6.00, 10.50   = Motel_GroundFloor                      = Jenna's hotel room nightstand.
+The Last Word    - 2.50, 6.00    = House1                                 = Right nightstand in top left house with enterabl garage door.
+Le Monarque      - 12.00, 20.00  = Carceburg                              = Carceburg top right behind trees.
+Red Death        - -3.00, -3.00  = Toilets                                = Bar bathroom trashcan.
+Dead Man's Tale  - 37.50, -16.00 = Carceburg 							  = Ruined house cellar entrance.
+Monte Carlo      - 14.00, 16.00  = Motel_UpperFloor                       = Motel upstairs right dildo.
+The Other Half   - -4.50, -4.00  = OuterSH_Outskirts_House_AfterExplosion = Ruined house after tutorial barrels bottom left.
+Icebreaker       - 19.00, 8.80   = DestroyedStronghold                    = Ruined peitho base computer console north west of lights computer.
+Raze-Lighter     - 17.50, 6.80   = Carcen_Mines                           = Cock shaped rock room left of the shrine.
