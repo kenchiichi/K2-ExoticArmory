@@ -12,34 +12,42 @@ using System.Reflection;
 using UnityEngine;
 namespace K2ExoticArmory
 {
-    public class CustomEquipment : ModEquipment
+    public class CustomEquipment
     {
-        public string Description;
-        public string OggAudioClip;
-        public string WeaponAttackVFXSprite;
+        public string Name;
+
         public int Price;
-        public int BurstCount;
+
+        public string PreviewImage;
+
+        public string Description;
+
+        public List<string> Slots;
+
         public List<StatModifierInfo> StatModifierInfos;
+
         public List<MapCoordinate> LocationCoordinates;
+
         public List<CustomAbility> CustomAbilityItems;
-        //public List<StatModifierInfo> StatRequirements;
+
+        public List<CustomVFX> customVFX;
+
+        public List<StatModifierInfo> StatRequirements;
+
         private CustomWeapon _instance;
-        public AttackVFXType WeaponAttackVFXType;
+
+        private ModManifest _manifest;
+
         public CustomWeapon CustomInitialize(ModManifest manifest)
         {
             CustomWeapon weapon = ScriptableObject.CreateInstance<CustomWeapon>();
+
             ANResourceSprite previewImage = manifest.SpriteResolver.ResolveAsResource(PreviewImage);
+
+            _manifest = manifest;
 
             _instance = weapon;
 
-            if (CustomAbilityItems != null)
-            {
-                foreach (var item in CustomAbilityItems)
-                {
-                    weapon.AddAbility(CustomWeaponAbility(item), "Ability");
-                }
-
-            }
             if (StatModifierInfos != null)
             {
                 weapon.StatModifierInfos = StatModifierInfos;
@@ -51,44 +59,63 @@ namespace K2ExoticArmory
                     .SetValue(weapon, StatModifierInfos);
             }
 
+            if (!Item.All.ContainsKey(Name.ToLower()))
+            {
+                Item.All.Add(Name.ToLower(), _instance);
+            }
+
+            if (customVFX[0].BurstCount > 0)
+            {
+                weapon.AttackVFXType = AttackVFXType.EnergyGunBurst;
+                ANResourceSprite weaponAttackVFXSprite = manifest.SpriteResolver.ResolveAsResource(customVFX[0].WeaponAttackVFXSprite);
+                AddShootingVFXHook(weapon, (Sprite)weaponAttackVFXSprite, customVFX[0].BurstCount);
+            }
+            else
+            {
+                weapon.AttackVFXType = AttackVFXType.UnarmedMelee;
+            }
+
             weapon.DisplaySpriteResource = previewImage;
             weapon.LocationCoordinates = LocationCoordinates; weapon.Name = Name;
             weapon.Slots.AddRange(Slots.Select((string x) => (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), x)));
             weapon.Category = ItemCategory.Weapon;
             weapon.Description = Description;
             weapon.Price = Price;
-            weapon.AttackVFXType = WeaponAttackVFXType;
+            weapon.StatRequirements = StatRequirements;
 
+            AddAbilitiesToWeapon(weapon);
             //var musicDir = Path.Combine(manifest.ModPath, Sound);
             //var audioLoader = new WWW("file://" + musicDir);
             //var audioClip = audioLoader.GetAudioClip(false, false, AudioType.WAV);
 
-
-            if (!Item.All.ContainsKey(Name.ToLower()))
-            {
-                Item.All.Add(Name.ToLower(), _instance);
-            }
-
-            if (BurstCount > 0)
-            {
-                ANResourceSprite weaponAttackVFXSprite = manifest.SpriteResolver.ResolveAsResource(WeaponAttackVFXSprite);
-                AddShootingVFXHook(weapon, (Sprite)weaponAttackVFXSprite, BurstCount, WeaponAttackVFXType.ToString());
-            }
             return weapon;
         }
 
-        private Ability CustomWeaponAbility(CustomAbility item)
+        private void AddAbilitiesToWeapon(CustomWeapon weapon)
         {
-            Ability ability = ANToolkit.ScriptableManagement.ScriptableManager.Get<Asuna.NewCombat.Ability>(item.AbilityID).Clone();
-            ability.name = item.AbilityName.Replace(' ', '_');
-            ability.Tooltip = item.AbilityTooltip;
-            ability.DisplayName = item.AbilityName;
-            ANToolkit.ScriptableManagement.ScriptableManager.Add(ability);
-            return ability;
+            if (CustomAbilityItems != null)
+            {
+                foreach (var item in CustomAbilityItems)
+                {
+                    Ability ability = ANToolkit.ScriptableManagement.ScriptableManager.Get<Asuna.NewCombat.Ability>(item.AbilityID).Clone();
+                    ability.name = item.AbilityName.Replace(' ', '_');
+                    ability.Tooltip = item.AbilityTooltip;
+                    ability.DisplayName = item.AbilityName;
+                    ability.DisplaySprite = _manifest.SpriteResolver.ResolveAsResource(item.DisplaySprite);
+                    ability.EnergyCost = 1;
+                    ANToolkit.ScriptableManagement.ScriptableManager.Add(ability);
+                    weapon.AddAbility(ability, "Ability");
+                }
+            }
         }
 
-        private void AddShootingVFXHook(Weapon weapon, Sprite sprite, int burstCount, String WeaponAttackVFXType)
+        private void AddShootingVFXHook(Weapon weapon, Sprite sprite, int burstCount)
         {
+            string WeaponAttackVFXType = "UnarmedMelee";
+            if (burstCount > 0) 
+            {
+                WeaponAttackVFXType = "EnergyGunBurst";
+            }
             //Debug.Log("Adding ability hook to Turn Start");
             CombatTurnManager.OnTurnStart.AddListener(() =>
             {
@@ -126,12 +153,4 @@ namespace K2ExoticArmory
             });
         }
     }
-    public class CustomAbility
-    {
-        public string AbilityID = "";
-
-        public string AbilityName = "";
-
-        public string AbilityTooltip = "";
-    };
 }

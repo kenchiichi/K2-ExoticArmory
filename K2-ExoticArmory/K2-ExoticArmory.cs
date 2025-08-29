@@ -108,6 +108,13 @@ namespace K2ExoticArmory
                     var item = customEquipment.CustomInitialize(manifest);
                     NewItemNames.Add(item.Name);
                     EarnableWeapons.Add(item);
+                    shopItems.Add(
+                        new ShopItemInfo()
+                        {
+                            Item = item,
+                            Cost = item.Price,
+                        }
+                    );
                 }
             }
             ItemShopCatalogue catalogue = ScriptableObject.CreateInstance<ItemShopCatalogue>();

@@ -11,11 +11,11 @@ namespace K2ExoticArmory
 
         public List<StatModifierInfo> StatModifierInfos;
 
-        public List<ApparelExtraSpriteInfo> ExtraSpriteInfos = ScriptableObject.CreateInstance<Apparel>().ExtraSpriteInfos;
-
         public List<MapCoordinate> LocationCoordinates;
 
         public List<CustomAbility> CustomAbilityItems;
+        
+        public CustomVFX customVFX;
     }
 
     public class MapCoordinate
@@ -25,6 +25,27 @@ namespace K2ExoticArmory
         public double xCoordinate;
 
         public double yCoordinate;
-    };
+    }
+    public class CustomAbility
+    {
+        public string AbilityID = "";
+
+        public string AbilityName = "";
+
+        public string AbilityTooltip = "";
+
+        public string DisplaySprite = "";
+    }
+
+    public class CustomVFX
+    {
+        public int BurstCount;
+
+        public string WeaponAttackVFXType = "UnarmedMelee";
+
+        public string OggAudioClip = "";
+
+        public string WeaponAttackVFXSprite = "";
+    }
 
 }

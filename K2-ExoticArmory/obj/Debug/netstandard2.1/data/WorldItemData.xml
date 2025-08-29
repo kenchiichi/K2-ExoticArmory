@@ -1,14 +1,6 @@
 ﻿<ArrayOfCustomEquipment xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<CustomEquipment>
 		<Name>The Last Word</Name>
-		<LocationCoordinates>
-			<MapCoordinate>
-				<xCoordinate>2.50</xCoordinate>
-				<yCoordinate>6.00</yCoordinate>
-				<MapName>House1</MapName>
-			</MapCoordinate>
-		</LocationCoordinates>
-		<Price>700</Price>
 		<PreviewImage>assets\sprites\icons\the_last_word.png</PreviewImage>
 		<Description>"Yours…not mine."— Renegade Hunter Shin Malphur to Dredgen Yor</Description>
 		<Slots>
@@ -17,6 +9,13 @@
 		<Slots>
 			<string>OffhandWeapon</string>
 		</Slots>
+		<LocationCoordinates>
+			<MapCoordinate>
+				<xCoordinate>2.50</xCoordinate>
+				<yCoordinate>6.00</yCoordinate>
+				<MapName>House1</MapName>
+			</MapCoordinate>
+		</LocationCoordinates>
 		<StatModifierInfos>
 			<StatModifierInfo>
 				<Type>Value</Type>
@@ -29,28 +28,25 @@
 				<ModifyAmount>2</ModifyAmount>
 			</StatModifierInfo>
 		</StatModifierInfos>
-		<BurstCount>3</BurstCount>
-		<OggAudioClip>assets\sfx\the_last_word.ogg</OggAudioClip>
 		<CustomAbilityItems>
 			<CustomAbility>
 				<AbilityID>Abl_Akimbo</AbilityID>
 				<AbilityName>Fan Fire</AbilityName>
 				<AbilityTooltip>The weapon can be fired quickly and continuously.</AbilityTooltip>
+				<DisplaySprite>assets\sprites\abl_icons\fan_fire.png</DisplaySprite>
 			</CustomAbility>
 		</CustomAbilityItems>
-		<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
-		<WeaponAttackVFXSprite>assets\sprites\vfx\burst\kenetic_bullet.png</WeaponAttackVFXSprite>
+		<customVFX>
+			<CustomVFX>
+				<BurstCount>3</BurstCount>
+				<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
+				<OggAudioClip>assets\sfx\the_last_word.ogg</OggAudioClip>
+				<WeaponAttackVFXSprite>assets\sprites\vfx\burst\kenetic_bullet.png</WeaponAttackVFXSprite>
+			</CustomVFX>
+		</customVFX>
 	</CustomEquipment>
 	<CustomEquipment>
 		<Name>Raze-Lighter</Name>
-		<LocationCoordinates>
-			<MapCoordinate>
-				<xCoordinate>11.50</xCoordinate>
-				<yCoordinate>6.80</yCoordinate>
-				<MapName>Carcen_Mines</MapName>
-			</MapCoordinate>
-		</LocationCoordinates>
-		<Price>1000</Price>
 		<PreviewImage>assets\sprites\icons\raze-lighter.png</PreviewImage>
 		<Description>With your own hands you forged the mighty Raze-Lighter. Now take it in hand and feed its flames.</Description>
 		<Slots>
@@ -59,6 +55,13 @@
 		<Slots>
 			<string>OffhandWeapon</string>
 		</Slots>
+		<LocationCoordinates>
+			<MapCoordinate>
+				<xCoordinate>11.50</xCoordinate>
+				<yCoordinate>6.80</yCoordinate>
+				<MapName>Carcen_Mines</MapName>
+			</MapCoordinate>
+		</LocationCoordinates>
 		<StatModifierInfos>
 			<StatModifierInfo>
 				<Type>Value</Type>
@@ -66,19 +69,26 @@
 				<ModifyAmount>35</ModifyAmount>
 			</StatModifierInfo>
 		</StatModifierInfos>
-		<BurstCount>0</BurstCount>
-		<OggAudioClip>assets\sfx\raze-lighter.ogg</OggAudioClip>
 		<CustomAbilityItems>
 			<CustomAbility>
 				<AbilityID>Abl_Attack_Knockback</AbilityID>
 				<AbilityName>Phoenix Uppercut</AbilityName>
 				<AbilityTooltip>A powerful single-target swipe that will knock the enemy into the air. The uppercut will kill or nearly kill just about any major enemy.</AbilityTooltip>
+				<DisplaySprite>assets\sprites\abl_icons\pheonix_uppercut.png</DisplaySprite>
 			</CustomAbility>
 		</CustomAbilityItems>
-		<WeaponAttackVFXType>UnarmedMelee</WeaponAttackVFXType>
+		<customVFX>
+			<CustomVFX>
+				<BurstCount>0</BurstCount>
+				<WeaponAttackVFXType>UnarmedMelee</WeaponAttackVFXType>
+				<OggAudioClip>assets\sfx\raze-lighter.ogg</OggAudioClip>
+			</CustomVFX>
+		</customVFX>
 	</CustomEquipment>
 	<CustomEquipment>
-		<Name>Icebreaker</Name>
+		<Name>Ice breaker</Name>
+		<PreviewImage>assets\sprites\icons\ice_breaker.png</PreviewImage>
+		<Description>Please replace these components if use causes fatal damage: HEAT SINK. MAGAZINE. OPERATOR.</Description>
 		<LocationCoordinates>
 			<MapCoordinate>
 				<xCoordinate>19.00</xCoordinate>
@@ -86,9 +96,6 @@
 				<MapName>DestroyedStronghold</MapName>
 			</MapCoordinate>
 		</LocationCoordinates>
-		<Price>700</Price>
-		<PreviewImage>assets\sprites\icons\icebreaker.png</PreviewImage>
-		<Description>Please replace these components if use causes fatal damage: HEAT SINK. MAGAZINE. OPERATOR.</Description>
 		<Slots>
 			<string>MainWeapon</string>
 		</Slots>
@@ -99,7 +106,7 @@
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_physical_power</StatName>
-				<ModifyAmount>18</ModifyAmount>
+				<ModifyAmount>20</ModifyAmount>
 			</StatModifierInfo>
 			<StatModifierInfo>
 				<Type>Value</Type>
@@ -112,20 +119,27 @@
 				<ModifyAmount>5</ModifyAmount>
 			</StatModifierInfo>
 		</StatModifierInfos>
-		<BurstCount>1</BurstCount>
-		<OggAudioClip>assets\sfx\icebreaker.ogg</OggAudioClip>
 		<CustomAbilityItems>
 			<CustomAbility>
 				<AbilityID>Abl_ExplodeOnDeath</AbilityID>
 				<AbilityName>No Backpack</AbilityName>
-				<AbilityTooltip>Using an ancient PEITHO_ARC0 core, this weapon fires a single high-powered, long range shot, that is sure to put it's foes on the ground.  If the user is defeated, it may cause the magazine to violently burst, in an &lt;color=#FF64FF&gt;erotic&lt;/color&gt; fashon.</AbilityTooltip>
+				<AbilityTooltip>Using an ancient PEITHO_ARC0 core, this weapon fires a single high-powered, long range shot, that is sure to put it's foes on the ground.  If the user is defeated, it may cause the magazine to violently burst, causing an &lt;color=#FF64FF&gt;afrodisiac explosion&lt;/color&gt;.</AbilityTooltip>
+				<DisplaySprite>assets\sprites\abl_icons\no_backpack.png</DisplaySprite>
 			</CustomAbility>
 		</CustomAbilityItems>
-		<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
-		<WeaponAttackVFXSprite>assets\sprites\vfx\single\solar_bullet.png</WeaponAttackVFXSprite>
+		<customVFX>
+			<CustomVFX>
+				<BurstCount>1</BurstCount>
+				<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
+				<OggAudioClip>assets\sfx\icebreaker.ogg</OggAudioClip>
+				<WeaponAttackVFXSprite>assets\sprites\vfx\single\solar_bullet.png</WeaponAttackVFXSprite>
+			</CustomVFX>
+		</customVFX>
 	</CustomEquipment>
 	<CustomEquipment>
 		<Name>Red Death</Name>
+		<PreviewImage>assets\sprites\icons\red_death.png</PreviewImage>
+		<Description>Peitho policy urges Guards to destroy this weapon on sight.</Description>
 		<LocationCoordinates>
 			<MapCoordinate>
 				<xCoordinate>-3.00</xCoordinate>
@@ -133,9 +147,6 @@
 				<MapName>Toilets</MapName>
 			</MapCoordinate>
 		</LocationCoordinates>
-		<Price>600</Price>
-		<PreviewImage>assets\sprites\icons\red_death.png</PreviewImage>
-		<Description>Peitho policy urges Guards to destroy this weapon on sight.</Description>
 		<Slots>
 			<string>MainWeapon</string>
 		</Slots>
@@ -146,7 +157,7 @@
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_physical_power</StatName>
-				<ModifyAmount>18</ModifyAmount>
+				<ModifyAmount>16</ModifyAmount>
 			</StatModifierInfo>
 			<StatModifierInfo>
 				<Type>Value</Type>
@@ -159,20 +170,119 @@
 				<ModifyAmount>4</ModifyAmount>
 			</StatModifierInfo>
 		</StatModifierInfos>
-		<BurstCount>3</BurstCount>
-		<OggAudioClip>assets\sfx\red_death.ogg</OggAudioClip>
 		<CustomAbilityItems>
 			<CustomAbility>
 				<AbilityID>Abl_Sexual_Healing</AbilityID>
 				<AbilityName>Red Death</AbilityName>
 				<AbilityTooltip>Using Ancient AIRSHIP technology, this weapon allows the user to convert lust damage into health.</AbilityTooltip>
+				<DisplaySprite>assets\sprites\abl_icons\red_death.png</DisplaySprite>
 			</CustomAbility>
 		</CustomAbilityItems>
-		<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
-		<WeaponAttackVFXSprite>assets\sprites\vfx\burst\kenetic_bullet.png</WeaponAttackVFXSprite>
+		<customVFX>
+			<CustomVFX>
+				<BurstCount>3</BurstCount>
+				<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
+				<OggAudioClip>assets\sfx\red_death.ogg</OggAudioClip>
+				<WeaponAttackVFXSprite>assets\sprites\vfx\burst\kenetic_bullet.png</WeaponAttackVFXSprite>
+			</CustomVFX>
+		</customVFX>
+	</CustomEquipment>
+	<CustomEquipment>
+		<Name>Dead Man's Tale</Name>
+		<PreviewImage>assets\sprites\icons\dead_mans_tale.png</PreviewImage>
+		<Description>"Long, short, they all end the same way." —Katabasis</Description>
+		<LocationCoordinates>
+			<MapCoordinate>
+				<xCoordinate>37.50</xCoordinate>
+				<yCoordinate>-16.00</yCoordinate>
+				<MapName>Carceburg</MapName>
+			</MapCoordinate>
+		</LocationCoordinates>
+		<Slots>
+			<string>MainWeapon</string>
+		</Slots>
+		<Slots>
+			<string>OffhandWeapon</string>
+		</Slots>
+		<StatModifierInfos>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_physical_power</StatName>
+				<ModifyAmount>14</ModifyAmount>
+			</StatModifierInfo>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_attack_range</StatName>
+				<ModifyAmount>6</ModifyAmount>
+			</StatModifierInfo>
+		</StatModifierInfos>
+		<CustomAbilityItems>
+			<CustomAbility>
+				<AbilityID>Abl_Akimbo</AbilityID>
+				<AbilityName>Cranial Spike</AbilityName>
+				<AbilityTooltip>A custom modified bolt-action loading mechanism, allows this weapon to load it's rounds more quickly, than a traditional magazine-based weapon.</AbilityTooltip>
+				<DisplaySprite>assets\sprites\abl_icons\cranial_spike.png</DisplaySprite>
+			</CustomAbility>
+		</CustomAbilityItems>
+		<customVFX>
+			<CustomVFX>
+				<BurstCount>1</BurstCount>
+				<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
+				<OggAudioClip>assets\sfx\monte_carlo.ogg(not implemented)</OggAudioClip>
+				<WeaponAttackVFXSprite>assets\sprites\vfx\burst\kenetic_bullet.png</WeaponAttackVFXSprite>
+			</CustomVFX>
+		</customVFX>
+	</CustomEquipment>
+	<CustomEquipment>
+		<Name>Monte Carlo</Name>
+		<PreviewImage>assets\sprites\icons\monte_carlo.png</PreviewImage>
+		<Description>There will always be paths to tread and methods to try. Roll with it.</Description>
+		<LocationCoordinates>
+			<MapCoordinate>
+				<xCoordinate>14.50</xCoordinate>
+				<yCoordinate>16.50</yCoordinate>
+				<MapName>Motel_UpperFloor</MapName>
+			</MapCoordinate>
+		</LocationCoordinates>
+		<Slots>
+			<string>MainWeapon</string>
+		</Slots>
+		<Slots>
+			<string>OffhandWeapon</string>
+		</Slots>
+		<StatModifierInfos>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_physical_power</StatName>
+				<ModifyAmount>18</ModifyAmount>
+			</StatModifierInfo>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_attack_range</StatName>
+				<ModifyAmount>3</ModifyAmount>
+			</StatModifierInfo>
+		</StatModifierInfos>
+		<CustomAbilityItems>
+			<CustomAbility>
+				<AbilityID>Abl_Dash</AbilityID>
+				<AbilityName>Markov Chain</AbilityName>
+				<AbilityTooltip>Equips this weapon with a bayonet, allowing the user to slam into their enemy, pushing them aside, and causing damage.</AbilityTooltip>
+				<DisplaySprite>assets\sprites\abl_icons\markov_chain.png</DisplaySprite>
+			</CustomAbility>
+		</CustomAbilityItems>
+		<customVFX>
+			<CustomVFX>
+				<BurstCount>7</BurstCount>
+				<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
+				<OggAudioClip>assets\sfx\monte_carlo.ogg(not implemented)</OggAudioClip>
+				<WeaponAttackVFXSprite>assets\sprites\vfx\burst\kenetic_bullet.png</WeaponAttackVFXSprite>
+			</CustomVFX>
+		</customVFX>
 	</CustomEquipment>
 	<CustomEquipment>
 		<Name>Le Monarque</Name>
+		<PreviewImage>assets\sprites\icons\le_monarque.png</PreviewImage>
+		<Description>"Wings flutter. Beauty distracts. Poison injects. The butterfly's curse extends to your enemies. A short life, shortened further by your hand." —Ada-1</Description>
 		<LocationCoordinates>
 			<MapCoordinate>
 				<xCoordinate>12.00</xCoordinate>
@@ -180,9 +290,6 @@
 				<MapName>Carceburg</MapName>
 			</MapCoordinate>
 		</LocationCoordinates>
-		<Price>600</Price>
-		<PreviewImage>assets\sprites\icons\le_monarque.png</PreviewImage>
-		<Description>"Wings flutter. Beauty distracts. Poison injects. The butterfly's curse extends to your enemies. A short life, shortened further by your hand." —Ada-1</Description>
 		<Slots>
 			<string>MainWeapon</string>
 		</Slots>
@@ -206,20 +313,27 @@
 				<ModifyAmount>6</ModifyAmount>
 			</StatModifierInfo>
 		</StatModifierInfos>
-		<BurstCount>1</BurstCount>
-		<OggAudioClip>assets\sfx\le_monarque.ogg</OggAudioClip>
 		<CustomAbilityItems>
 			<CustomAbility>
 				<AbilityID>Abl_Lust_Mist</AbilityID>
 				<AbilityName>Poison Arrows</AbilityName>
-				<AbilityTooltip>This bow uses custom modified arrows that allows the user to fire an &lt;color=#FF64FF&gt;afrodisiac&lt;/color&gt; mist on a target.</AbilityTooltip>
+				<AbilityTooltip>This bow uses custom modified arrows that allows the user to fire an area of &lt;color=#FF64FF&gt;afrodisiac mist&lt;/color&gt; on a target.</AbilityTooltip>
+				<DisplaySprite>assets\sprites\abl_icons\poison_arrows.png</DisplaySprite>
 			</CustomAbility>
 		</CustomAbilityItems>
-		<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
-		<WeaponAttackVFXSprite>assets\sprites\vfx\single\void_bullet.png</WeaponAttackVFXSprite>
+		<customVFX>
+			<CustomVFX>
+				<BurstCount>1</BurstCount>
+				<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
+				<OggAudioClip>assets\sfx\le_monarque.ogg</OggAudioClip>
+				<WeaponAttackVFXSprite>assets\sprites\vfx\single\void_bullet.png</WeaponAttackVFXSprite>
+			</CustomVFX>
+		</customVFX>
 	</CustomEquipment>
 	<CustomEquipment>
 		<Name>The Other Half</Name>
+		<PreviewImage>assets\sprites\icons\the_other_half.png</PreviewImage>
+		<Description>An incomplete weapon, perhaps there's a companion weapon that'll make it whole?</Description>
 		<LocationCoordinates>
 			<MapCoordinate>
 				<xCoordinate>-4.50</xCoordinate>
@@ -227,9 +341,6 @@
 				<MapName>OuterSH_Outskirts_House_AfterExplosion</MapName>
 			</MapCoordinate>
 		</LocationCoordinates>
-		<Price>2000</Price>
-		<PreviewImage>assets\sprites\icons\the_other_half.png</PreviewImage>
-		<Description>An incomplete weapon, perhaps there's a companion weapon that'll make it whole?</Description>
 		<Slots>
 			<string>OffhandWeapon</string>
 		</Slots>
@@ -240,25 +351,33 @@
 				<ModifyAmount>0</ModifyAmount>
 			</StatModifierInfo>
 		</StatModifierInfos>
-		<BurstCount>0</BurstCount>
-		<OggAudioClip>assets\sfx\two_halves.ogg</OggAudioClip>
 		<CustomAbilityItems>
 			<CustomAbility>
 				<AbilityID>Abl_Akimbo</AbilityID>
 				<AbilityName>Lightweight Blade</AbilityName>
-				<AbilityTooltip>This sword is suspiciously light, as if it were made of... light.  This allows the user to attack more frequently than a normal.</AbilityTooltip>
-				<WeaponAttackVFXType>UnarmedMelee</WeaponAttackVFXType>
+				<AbilityTooltip>This sword is suspiciously light, as if it were made of... light.  This allows the user to attack more frequently than normal.</AbilityTooltip>
+				<DisplaySprite>assets\sprites\abl_icons\lightweight_frame.png</DisplaySprite>
 			</CustomAbility>
 			<CustomAbility>
 				<AbilityID>Abl_Vibrodash_Flashback</AbilityID>
 				<AbilityName>Eager Edge</AbilityName>
 				<AbilityTooltip>This weapon can swing so fast, it can break the laws of space-time, and can seemingly teleport the user in almost any direction, though, because it moves so fast, it simply passes harmlessly through your enemies.</AbilityTooltip>
+				<DisplaySprite>assets\sprites\abl_icons\eager_edge.png</DisplaySprite>
 			</CustomAbility>
 		</CustomAbilityItems>
-		<WeaponAttackVFXType>UnarmedMelee</WeaponAttackVFXType>
+		<customVFX>
+			<CustomVFX>
+				<BurstCount>0</BurstCount>
+				<WeaponAttackVFXType>UnarmedMelee</WeaponAttackVFXType>
+				<OggAudioClip>assets\sfx\two_halves.ogg</OggAudioClip>
+			</CustomVFX>
+		</customVFX>
 	</CustomEquipment>
 	<CustomEquipment>
 		<Name>Half-Truths</Name>
+		<Price>150</Price>
+		<PreviewImage>assets\sprites\icons\half_truths.png</PreviewImage>
+		<Description>An incomplete weapon, perhaps there's a companion weapon that'll make it whole?</Description>
 		<LocationCoordinates>
 			<MapCoordinate>
 				<xCoordinate>6.00</xCoordinate>
@@ -266,9 +385,6 @@
 				<MapName>Motel_GroundFloor</MapName>
 			</MapCoordinate>
 		</LocationCoordinates>
-		<Price>150</Price>
-		<PreviewImage>assets\sprites\icons\half_truths.png</PreviewImage>
-		<Description>An incomplete weapon, perhaps there's a companion weapon that'll make it whole?</Description>
 		<Slots>
 			<string>MainWeapon</string>
 		</Slots>
@@ -279,7 +395,12 @@
 				<ModifyAmount>18</ModifyAmount>
 			</StatModifierInfo>
 		</StatModifierInfos>
-		<BurstCount>0</BurstCount>
-		<OggAudioClip>assets\sfx\two_halves.ogg</OggAudioClip>
+		<customVFX>
+			<CustomVFX>
+				<BurstCount>0</BurstCount>
+				<WeaponAttackVFXType>UnarmedMelee</WeaponAttackVFXType>
+				<OggAudioClip>assets\sfx\two_halves.ogg</OggAudioClip>
+			</CustomVFX>
+		</customVFX>
 	</CustomEquipment>
 </ArrayOfCustomEquipment>
