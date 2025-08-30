@@ -40,7 +40,7 @@
 			<CustomVFX>
 				<BurstCount>3</BurstCount>
 				<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
-				<OggAudioClip>assets\sfx\the_last_word.ogg</OggAudioClip>
+				<wavAudioClip>assets\sfx\the_last_word.wav</wavAudioClip>
 				<WeaponAttackVFXSprite>assets\sprites\vfx\burst\kenetic_bullet.png</WeaponAttackVFXSprite>
 			</CustomVFX>
 		</customVFX>
@@ -81,7 +81,7 @@
 			<CustomVFX>
 				<BurstCount>0</BurstCount>
 				<WeaponAttackVFXType>UnarmedMelee</WeaponAttackVFXType>
-				<OggAudioClip>assets\sfx\raze-lighter.ogg</OggAudioClip>
+				<wavAudioClip>assets\sfx\raze-lighter.wav</wavAudioClip>
 			</CustomVFX>
 		</customVFX>
 	</CustomEquipment>
@@ -131,7 +131,7 @@
 			<CustomVFX>
 				<BurstCount>1</BurstCount>
 				<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
-				<OggAudioClip>assets\sfx\icebreaker.ogg</OggAudioClip>
+				<wavAudioClip>assets\sfx\icebreaker.wav</wavAudioClip>
 				<WeaponAttackVFXSprite>assets\sprites\vfx\single\solar_bullet.png</WeaponAttackVFXSprite>
 			</CustomVFX>
 		</customVFX>
@@ -182,7 +182,7 @@
 			<CustomVFX>
 				<BurstCount>3</BurstCount>
 				<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
-				<OggAudioClip>assets\sfx\red_death.ogg</OggAudioClip>
+				<wavAudioClip>assets\sfx\red_death.wav</wavAudioClip>
 				<WeaponAttackVFXSprite>assets\sprites\vfx\burst\kenetic_bullet.png</WeaponAttackVFXSprite>
 			</CustomVFX>
 		</customVFX>
@@ -220,7 +220,7 @@
 			<CustomAbility>
 				<AbilityID>Abl_Akimbo</AbilityID>
 				<AbilityName>Cranial Spike</AbilityName>
-				<AbilityTooltip>A custom modified bolt-action loading mechanism, allows this weapon to load it's rounds more quickly, than a traditional magazine-based weapon.</AbilityTooltip>
+				<AbilityTooltip>A custom modified bolt-action loading mechanism, allows this weapon to load it's rounds more quickly than a traditional magazine-based weapon.</AbilityTooltip>
 				<DisplaySprite>assets\sprites\abl_icons\cranial_spike.png</DisplaySprite>
 			</CustomAbility>
 		</CustomAbilityItems>
@@ -228,7 +228,7 @@
 			<CustomVFX>
 				<BurstCount>1</BurstCount>
 				<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
-				<OggAudioClip>assets\sfx\monte_carlo.ogg(not implemented)</OggAudioClip>
+				<wavAudioClip>assets\sfx\monte_carlo.wav(not implemented)</wavAudioClip>
 				<WeaponAttackVFXSprite>assets\sprites\vfx\burst\kenetic_bullet.png</WeaponAttackVFXSprite>
 			</CustomVFX>
 		</customVFX>
@@ -274,7 +274,7 @@
 			<CustomVFX>
 				<BurstCount>7</BurstCount>
 				<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
-				<OggAudioClip>assets\sfx\monte_carlo.ogg(not implemented)</OggAudioClip>
+				<wavAudioClip>assets\sfx\monte_carlo.wav(not implemented)</wavAudioClip>
 				<WeaponAttackVFXSprite>assets\sprites\vfx\burst\kenetic_bullet.png</WeaponAttackVFXSprite>
 			</CustomVFX>
 		</customVFX>
@@ -325,7 +325,7 @@
 			<CustomVFX>
 				<BurstCount>1</BurstCount>
 				<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
-				<OggAudioClip>assets\sfx\le_monarque.ogg</OggAudioClip>
+				<wavAudioClip>assets\sfx\le_monarque.wav</wavAudioClip>
 				<WeaponAttackVFXSprite>assets\sprites\vfx\single\void_bullet.png</WeaponAttackVFXSprite>
 			</CustomVFX>
 		</customVFX>
@@ -369,7 +369,7 @@
 			<CustomVFX>
 				<BurstCount>0</BurstCount>
 				<WeaponAttackVFXType>UnarmedMelee</WeaponAttackVFXType>
-				<OggAudioClip>assets\sfx\two_halves.ogg</OggAudioClip>
+				<wavAudioClip>assets\sfx\two_halves.wav</wavAudioClip>
 			</CustomVFX>
 		</customVFX>
 	</CustomEquipment>
@@ -399,7 +399,7 @@
 			<CustomVFX>
 				<BurstCount>0</BurstCount>
 				<WeaponAttackVFXType>UnarmedMelee</WeaponAttackVFXType>
-				<OggAudioClip>assets\sfx\two_halves.ogg</OggAudioClip>
+				<wavAudioClip>assets\sfx\two_halves.wav</wavAudioClip>
 			</CustomVFX>
 		</customVFX>
 	</CustomEquipment>

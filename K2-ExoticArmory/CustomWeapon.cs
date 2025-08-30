@@ -43,7 +43,7 @@ namespace K2ExoticArmory
 
         public string WeaponAttackVFXType = "UnarmedMelee";
 
-        public string OggAudioClip = "";
+        public string wavAudioClip = "";
 
         public string WeaponAttackVFXSprite = "";
     }
