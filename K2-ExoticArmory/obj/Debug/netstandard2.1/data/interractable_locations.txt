@@ -3,7 +3,7 @@
 -34.69, 59.65= Sub level 3 - Fixed = gas room electrical box top left
 
 Half-Truths      - 6.00, 10.50   = Motel_GroundFloor                      = Jenna's hotel room nightstand.
-The Last Word    - 2.50, 6.00    = House1                                 = Right nightstand in top left house with enterabl garage door.
+The Last Word    - 2.50, 6.00    = House1                                 = Right nightstand in top left house with enterable garage door.
 Le Monarque      - 12.00, 20.00  = Carceburg                              = Carceburg top right behind trees.
 Red Death        - -3.00, -3.00  = Toilets                                = Bar bathroom trashcan.
 Dead Man's Tale  - 37.50, -16.00 = Carceburg 							  = Ruined house cellar entrance.
