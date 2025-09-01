@@ -16,10 +16,6 @@ namespace K2ExoticArmory
 
         public List<CustomWeapon> EarnableWeapons = new List<CustomWeapon>();
 
-        public List<StatModifierInfo> StatModifierInfos;
-
-        public CustomWeapon customWeapon;
-
         public ItemVendor vendor;
         public void OnDialogueStarted(Dialogue dialogue)
         {
@@ -31,7 +27,7 @@ namespace K2ExoticArmory
         }
         public void OnFrame(float deltaTime)
         {
-            if (Input.GetKeyDown("i") && detectMenus.DetectMenu())
+            if (Input.GetKeyDown("i"))
             {
                 //vendor.Catalogue.OpenShop();
             }
@@ -43,8 +39,6 @@ namespace K2ExoticArmory
                 Item.All.Remove(itemName.ToLower());
             }
         }
-
-        public DetectMenus detectMenus = new DetectMenus();
         public void OnLevelChanged(string oldLevel, string newLevel)
         {
             foreach (CustomWeapon item in EarnableWeapons)
