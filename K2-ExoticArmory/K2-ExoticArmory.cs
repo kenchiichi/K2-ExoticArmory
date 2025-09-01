@@ -17,6 +17,7 @@ namespace K2ExoticArmory
         public List<CustomWeapon> EarnableWeapons = new List<CustomWeapon>();
 
         public ItemVendor vendor;
+        
         public void OnDialogueStarted(Dialogue dialogue)
         {
             return;
