@@ -45,7 +45,6 @@ namespace K2ExoticArmory
             {
                 foreach (MapCoordinate location in item.LocationCoordinates)
                 {
-                    //Debug.Log(item.Name + "\n" + location.MapName + ": x = " + location.xCoordinate + ", y = " + location.yCoordinate + " ");
                     if (location.MapName == newLevel && !Character.Player.Inventory.Contains(item))
                     {
                         var interactableGameObject = new GameObject();
