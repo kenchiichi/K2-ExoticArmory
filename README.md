@@ -23,11 +23,9 @@ Requirements for C# modding:
 
 K2-ExoticArmory is a mod that adds Destiny, by Bungie, themed weapons to a shop for you to use
 
-
-
 This mod is not complete.
-I've hidden most of the items around the world, eyes up guardian!
 
+I've hidden most of the items around the world, eyes up guardian!
 
 
 Thanks to BlauKitten for the support in making this SDK! ♥
