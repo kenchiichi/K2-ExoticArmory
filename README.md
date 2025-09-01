@@ -27,7 +27,7 @@ This mod is not complete.
 
 I've hidden most of the items around the world, eyes up guardian!
 
-
+<h2>Special Thanks</h2>
 Thanks to BlauKitten for the support in making this SDK! ♥
 
 Thanks to Anduo Games for creating Third Crisis!
