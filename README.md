@@ -26,8 +26,7 @@ K2-ExoticArmory is a mod that adds Destiny, by Bungie, themed weapons to a shop 
 
 
 This mod is not complete.
-Use the 'i' key to access the shop
-Or if you want more of a challenge, I've hidden most of the items around the world, eyes up guardian!
+I've hidden most of the items around the world, eyes up guardian!
 
 
 
