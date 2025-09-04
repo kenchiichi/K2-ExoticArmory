@@ -7,8 +7,6 @@ namespace K2ExoticArmory
 {
     public class CustomWeapon : Asuna.Items.Weapon
     {
-        public int Price;
-
         public List<StatModifierInfo> StatModifierInfos;
 
         public List<MapCoordinate> LocationCoordinates;
@@ -16,6 +14,8 @@ namespace K2ExoticArmory
         public List<CustomAbility> CustomAbilityItems;
         
         public CustomVFX customVFX;
+
+        public int Price;
     }
 
     public class MapCoordinate
