@@ -16,23 +16,9 @@ namespace K2ExoticArmory
 
         public List<CustomWeapon> EarnableWeapons = new List<CustomWeapon>();
 
-        public ItemVendor vendor;
-        
-        public void OnDialogueStarted(Dialogue dialogue)
-        {
-            return;
-        }
-        public void OnLineStarted(DialogueLine line)
-        {
-            return;
-        }
-        public void OnFrame(float deltaTime)
-        {
-            if (Input.GetKeyDown("i"))
-            {
-                //vendor.Catalogue.OpenShop();
-            }
-        }
+        public void OnDialogueStarted(Dialogue dialogue){}
+        public void OnLineStarted(DialogueLine line){}
+        public void OnFrame(float deltaTime){}
         public void OnModUnLoaded()
         {
             foreach (string itemName in NewItemNames)
@@ -71,8 +57,6 @@ namespace K2ExoticArmory
                 newItem.DisplaySprite = oldItem.DisplaySprite;
                 newItem.DisplaySpriteResource = oldItem.DisplaySpriteResource;
             });
-
-            List<ShopItemInfo> shopItems = new List<ShopItemInfo>();
             using (StreamReader reader = new StreamReader(Path.Combine(manifest.ModPath, "data\\StoreItemData.xml")))
             {
                 string xml = reader.ReadToEnd();
@@ -82,13 +66,6 @@ namespace K2ExoticArmory
                 {
                     var item = customEquipment.CustomInitialize(manifest);
                     NewItemNames.Add(item.Name);
-                    shopItems.Add(
-                        new ShopItemInfo()
-                        {
-                            Item = item,
-                            Cost = item.Price,
-                        }
-                    );
                 }
             }
 
@@ -102,22 +79,8 @@ namespace K2ExoticArmory
                     var item = customEquipment.CustomInitialize(manifest);
                     NewItemNames.Add(item.Name);
                     EarnableWeapons.Add(item);
-                    shopItems.Add(
-                        new ShopItemInfo()
-                        {
-                            Item = item,
-                            Cost = item.Price,
-                        }
-                    );
                 }
             }
-            ItemShopCatalogue catalogue = ScriptableObject.CreateInstance<ItemShopCatalogue>();
-            catalogue.Items = shopItems;
-
-            vendor = new ItemVendor()
-            {
-                Catalogue = catalogue,
-            };
         }
         public static T Deserialize<T>(string xmlString)
         {
