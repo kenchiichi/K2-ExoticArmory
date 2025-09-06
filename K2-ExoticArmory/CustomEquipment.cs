@@ -34,6 +34,8 @@ namespace K2ExoticArmory
 
         public List<StatModifierInfo> StatRequirements;
 
+        public List<Restrictions> restrictions;
+
         private CustomWeapon _instance;
 
         private ModManifest _manifest;
@@ -82,6 +84,7 @@ namespace K2ExoticArmory
             weapon.Description = Description;
             weapon.Price = Price;
             weapon.StatRequirements = StatRequirements;
+            weapon.restrictions = restrictions;
 
             AddAbilitiesToWeapon(weapon);
             //var musicDir = Path.Combine(manifest.ModPath, Sound);

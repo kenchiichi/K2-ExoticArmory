@@ -348,7 +348,7 @@
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_physical_power</StatName>
-				<ModifyAmount>0</ModifyAmount>
+				<ModifyAmount>18</ModifyAmount>
 			</StatModifierInfo>
 		</StatModifierInfos>
 		<CustomAbilityItems>
@@ -361,7 +361,7 @@
 			<CustomAbility>
 				<AbilityID>Abl_Vibrodash_Flashback</AbilityID>
 				<AbilityName>Eager Edge</AbilityName>
-				<AbilityTooltip>This weapon can swing so fast, it can break the laws of space-time, and can seemingly teleport the user in almost any direction, though, because it moves so fast, it simply passes harmlessly through your enemies.</AbilityTooltip>
+				<AbilityTooltip>This weapon can swing so fast, it can break the laws of space-time, and can seemingly teleport the user in almost any direction.</AbilityTooltip>
 				<DisplaySprite>assets\sprites\abl_icons\eager_edge.png</DisplaySprite>
 			</CustomAbility>
 		</CustomAbilityItems>
@@ -372,6 +372,11 @@
 				<wavAudioClip>assets\sfx\two_halves.wav</wavAudioClip>
 			</CustomVFX>
 		</customVFX>
+		<restrictions>
+			<Restrictions>
+				<RequiredItemEquipped>Half-Truths</RequiredItemEquipped>
+			</Restrictions>
+		</restrictions>
 	</CustomEquipment>
 	<CustomEquipment>
 		<Name>Half-Truths</Name>
@@ -392,7 +397,7 @@
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_physical_power</StatName>
-				<ModifyAmount>18</ModifyAmount>
+				<ModifyAmount>9</ModifyAmount>
 			</StatModifierInfo>
 		</StatModifierInfos>
 		<customVFX>
