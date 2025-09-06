@@ -44,7 +44,8 @@ namespace K2ExoticArmory
                         interactable.TypeOfInteraction = InteractionType.Talk;
                         interactable.OnInteracted.AddListener(x =>
                         {
-                            GiveItems.GiveToCharacter(Character.Get("Jenna"), false, true, item);
+                            Item.GenerateErrorDialogue(Character.Player, "I found <color=#00ffff>" + item.Name + "</color> laying here!", "Happy");
+                            GiveItems.GiveToCharacter(Character.Get("Jenna"), false, false, item);
                             interactable.gameObject.SetActive(false);
                         });
                     }
@@ -104,10 +105,9 @@ namespace K2ExoticArmory
             {
                 foreach (CustomWeapon item in EarnableWeapons)
                 {
-                    List<Restrictions> restrictions = item.restrictions;
                     if (equipAttemptInfo.Equipment.Name.ToLower() == item.Name.ToLower() && item.restrictions != null)
                     {
-                        foreach (Restrictions restriction in restrictions)
+                        foreach (Restrictions restriction in item.restrictions)
                         {
                             foreach (CustomWeapon itemRequirement in EarnableWeapons)
                             {
@@ -136,13 +136,13 @@ namespace K2ExoticArmory
                                         {
                                             knownItem = itemRequirement.Name;
                                         }
-                                        Item.GenerateErrorDialogue(Character.Player, "I need " + knownItem + " equipped to equip this!", "Distressed");
+                                        Item.GenerateErrorDialogue(Character.Player, "I need <color=#00ffff>" + knownItem + "</color> equipped to equip this!", "Distressed");
                                     }
                                 }
                             }
                         }
                     }
-                    foreach (Restrictions restriction in restrictions)
+                    foreach (Restrictions restriction in item.restrictions)
                     {
                         Item newitem = null;
                         bool itemInEquipmentSlot = false;
@@ -160,7 +160,6 @@ namespace K2ExoticArmory
                         if (equipAttemptInfo.Equipment.Name.ToLower() == restriction.RequiredItemEquipped.ToLower() && itemInEquipmentSlot)
                         {
                             Character.Player.UnequipItem((Equipment)newitem);
-                            Debug.Log("Item unequipped: " + item.Name);
                         }
                     }
                 }

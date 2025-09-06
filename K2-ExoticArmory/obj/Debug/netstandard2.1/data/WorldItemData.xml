@@ -33,6 +33,7 @@
 				<AbilityID>Abl_Akimbo</AbilityID>
 				<AbilityName>Fan Fire</AbilityName>
 				<AbilityTooltip>The weapon can be fired quickly and continuously.</AbilityTooltip>
+				<AbilityCooldown>0</AbilityCooldown>
 				<DisplaySprite>assets\sprites\abl_icons\fan_fire.png</DisplaySprite>
 			</CustomAbility>
 		</CustomAbilityItems>
@@ -74,6 +75,7 @@
 				<AbilityID>Abl_Attack_Knockback</AbilityID>
 				<AbilityName>Phoenix Uppercut</AbilityName>
 				<AbilityTooltip>A powerful single-target swipe that will knock the enemy into the air. The uppercut will kill or nearly kill just about any major enemy.</AbilityTooltip>
+				<AbilityCooldown>0</AbilityCooldown>
 				<DisplaySprite>assets\sprites\abl_icons\pheonix_uppercut.png</DisplaySprite>
 			</CustomAbility>
 		</CustomAbilityItems>
@@ -86,14 +88,14 @@
 		</customVFX>
 	</CustomEquipment>
 	<CustomEquipment>
-		<Name>Ice breaker</Name>
+		<Name>Ice Breaker</Name>
 		<PreviewImage>assets\sprites\icons\ice_breaker.png</PreviewImage>
 		<Description>Please replace these components if use causes fatal damage: HEAT SINK. MAGAZINE. OPERATOR.</Description>
 		<LocationCoordinates>
 			<MapCoordinate>
-				<xCoordinate>19.00</xCoordinate>
-				<yCoordinate>8.80</yCoordinate>
-				<MapName>DestroyedStronghold</MapName>
+				<xCoordinate>4.50</xCoordinate>
+				<yCoordinate>-38.50</yCoordinate>
+				<MapName>FF_Hub_SubLevel_2</MapName>
 			</MapCoordinate>
 		</LocationCoordinates>
 		<Slots>
@@ -124,6 +126,7 @@
 				<AbilityID>Abl_ExplodeOnDeath</AbilityID>
 				<AbilityName>No Backpack</AbilityName>
 				<AbilityTooltip>Using an ancient PEITHO_ARC0 core, this weapon fires a single high-powered, long range shot, that is sure to put it's foes on the ground.  If the user is defeated, it may cause the magazine to violently burst, causing an &lt;color=#FF64FF&gt;afrodisiac explosion&lt;/color&gt;.</AbilityTooltip>
+				<AbilityCooldown>0</AbilityCooldown>
 				<DisplaySprite>assets\sprites\abl_icons\no_backpack.png</DisplaySprite>
 			</CustomAbility>
 		</CustomAbilityItems>
@@ -175,6 +178,7 @@
 				<AbilityID>Abl_Sexual_Healing</AbilityID>
 				<AbilityName>Red Death</AbilityName>
 				<AbilityTooltip>Using Ancient AIRSHIP technology, this weapon allows the user to convert lust damage into health.</AbilityTooltip>
+				<AbilityCooldown>0</AbilityCooldown>
 				<DisplaySprite>assets\sprites\abl_icons\red_death.png</DisplaySprite>
 			</CustomAbility>
 		</CustomAbilityItems>
@@ -221,6 +225,7 @@
 				<AbilityID>Abl_Akimbo</AbilityID>
 				<AbilityName>Cranial Spike</AbilityName>
 				<AbilityTooltip>A custom modified bolt-action loading mechanism, allows this weapon to load it's rounds more quickly than a traditional magazine-based weapon.</AbilityTooltip>
+				<AbilityCooldown>0</AbilityCooldown>
 				<DisplaySprite>assets\sprites\abl_icons\cranial_spike.png</DisplaySprite>
 			</CustomAbility>
 		</CustomAbilityItems>
@@ -267,6 +272,7 @@
 				<AbilityID>Abl_Dash</AbilityID>
 				<AbilityName>Markov Chain</AbilityName>
 				<AbilityTooltip>Equips this weapon with a bayonet, allowing the user to slam into their enemy, pushing them aside, and causing damage.</AbilityTooltip>
+				<AbilityCooldown>0</AbilityCooldown>
 				<DisplaySprite>assets\sprites\abl_icons\markov_chain.png</DisplaySprite>
 			</CustomAbility>
 		</CustomAbilityItems>
@@ -318,6 +324,7 @@
 				<AbilityID>Abl_Lust_Mist</AbilityID>
 				<AbilityName>Poison Arrows</AbilityName>
 				<AbilityTooltip>This bow uses custom modified arrows that allows the user to fire an area of &lt;color=#FF64FF&gt;afrodisiac mist&lt;/color&gt; on a target.</AbilityTooltip>
+				<AbilityCooldown>0</AbilityCooldown>
 				<DisplaySprite>assets\sprites\abl_icons\poison_arrows.png</DisplaySprite>
 			</CustomAbility>
 		</CustomAbilityItems>
@@ -327,6 +334,58 @@
 				<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
 				<wavAudioClip>assets\sfx\le_monarque.wav</wavAudioClip>
 				<WeaponAttackVFXSprite>assets\sprites\vfx\single\void_bullet.png</WeaponAttackVFXSprite>
+			</CustomVFX>
+		</customVFX>
+	</CustomEquipment>
+	<CustomEquipment>
+		<Name>Tractor Cannon</Name>
+		<PreviewImage>assets\sprites\icons\tractor_cannon.png</PreviewImage>
+		<Description>Property of Peitho. WARNING: Gravity propulsor beam can cause serious injury or even death.</Description>
+		<LocationCoordinates>
+			<MapCoordinate>
+				<xCoordinate>19.00</xCoordinate>
+				<yCoordinate>8.80</yCoordinate>
+				<MapName>DestroyedStronghold</MapName>
+			</MapCoordinate>
+		</LocationCoordinates>
+		<Slots>
+			<string>MainWeapon</string>
+		</Slots>
+		<Slots>
+			<string>OffhandWeapon</string>
+		</Slots>
+		<StatModifierInfos>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_physical_power</StatName>
+				<ModifyAmount>6</ModifyAmount>
+			</StatModifierInfo>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_lust_power</StatName>
+				<ModifyAmount>25</ModifyAmount>
+			</StatModifierInfo>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_attack_range</StatName>
+				<ModifyAmount>1</ModifyAmount>
+			</StatModifierInfo>
+		</StatModifierInfos>
+		<CustomAbilityItems>
+			<CustomAbility>
+				<AbilityID>Abl_Throw</AbilityID>
+				<AbilityName>Repulsor Force</AbilityName>
+				<AbilityTooltip>This weapon has the ability to throw an enemy away from you.</AbilityTooltip>
+				<AbilityCooldown>0</AbilityCooldown>
+				<DisplaySprite>assets\sprites\abl_icons\repulsor_force.png</DisplaySprite>
+			</CustomAbility>
+		</CustomAbilityItems>
+		<customVFX>
+			<CustomVFX>
+				<BurstCount>1</BurstCount>
+				<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
+				<wavAudioClip>assets\sfx\le_monarque.wav</wavAudioClip>
+				<WeaponAttackVFXSprite>assets\sprites\vfx\custom\repulsor_blast.png</WeaponAttackVFXSprite>
 			</CustomVFX>
 		</customVFX>
 	</CustomEquipment>
@@ -362,6 +421,7 @@
 				<AbilityID>Abl_Vibrodash_Flashback</AbilityID>
 				<AbilityName>Eager Edge</AbilityName>
 				<AbilityTooltip>This weapon can swing so fast, it can break the laws of space-time, and can seemingly teleport the user in almost any direction.</AbilityTooltip>
+				<AbilityCooldown>0</AbilityCooldown>
 				<DisplaySprite>assets\sprites\abl_icons\eager_edge.png</DisplaySprite>
 			</CustomAbility>
 		</CustomAbilityItems>
