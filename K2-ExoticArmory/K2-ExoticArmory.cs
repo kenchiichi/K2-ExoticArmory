@@ -1,5 +1,4 @@
-﻿using ANToolkit.Achievements;
-using ANToolkit.Controllers;
+﻿using ANToolkit.Controllers;
 using ANToolkit.Utility;
 using Asuna.CharManagement;
 using Asuna.Dialogues;
@@ -18,9 +17,9 @@ namespace K2ExoticArmory
 
         public List<CustomWeapon> EarnableWeapons = new List<CustomWeapon>();
 
-        public void OnDialogueStarted(Dialogue dialogue){}
-        public void OnLineStarted(DialogueLine line){}
-        public void OnFrame(float deltaTime){}
+        public void OnDialogueStarted(Dialogue dialogue) { }
+        public void OnLineStarted(DialogueLine line) { }
+        public void OnFrame(float deltaTime) { }
         public void OnModUnLoaded()
         {
             foreach (string itemName in NewItemNames)

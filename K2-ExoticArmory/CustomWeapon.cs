@@ -1,7 +1,5 @@
 ﻿using Asuna.CharManagement;
-using Asuna.Items;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace K2ExoticArmory
 {
