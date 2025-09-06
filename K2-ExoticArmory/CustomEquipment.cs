@@ -84,6 +84,7 @@ namespace K2ExoticArmory
             weapon.Description = Description;
             weapon.Price = Price;
             weapon.StatRequirements = StatRequirements;
+            weapon.restrictions = restrictions;
 
             AddAbilitiesToWeapon(weapon);
             //var musicDir = Path.Combine(manifest.ModPath, Sound);

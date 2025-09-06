@@ -1,4 +1,6 @@
-﻿using ANToolkit.Controllers;
+﻿using ANToolkit.Achievements;
+using ANToolkit.Controllers;
+using ANToolkit.Utility;
 using Asuna.CharManagement;
 using Asuna.Dialogues;
 using Asuna.Items;
@@ -52,38 +54,7 @@ namespace K2ExoticArmory
         }
         public void OnModLoaded(ModManifest manifest)
         {
-            Item.OnItemCloned.AddListener((newItem, oldItem) =>
-            {
-                newItem.DisplaySprite = oldItem.DisplaySprite;
-                newItem.DisplaySpriteResource = oldItem.DisplaySpriteResource;
-            });
-
-
-            CustomWeapon.OnEquipAttempt.AddListener(equipAttemptInfo =>
-            {
-                Debug.Log(1);
-                foreach (CustomWeapon item in EarnableWeapons)
-                {
-                    Debug.Log(2);
-                    if (equipAttemptInfo.Equipment.Name == item.Name)
-                    {
-                        Debug.Log(3);
-                        foreach (Restrictions restriction in item.restrictions)
-                        {
-                            Debug.Log(4);
-                            foreach (CustomWeapon equippedItem in EarnableWeapons)
-                            {
-                                Debug.Log(5);
-                                if (restriction.RequiredItemEquipped != "" && restriction.RequiredItemEquipped == equippedItem.Name && equippedItem.IsEquipped)
-                                {
-                                    Debug.Log("Required item: " + equippedItem.Name + " is equipped");
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-
+            AddListenersAtRuntime();
             using (StreamReader reader = new StreamReader(Path.Combine(manifest.ModPath, "data\\StoreItemData.xml")))
             {
                 string xml = reader.ReadToEnd();
@@ -117,6 +88,81 @@ namespace K2ExoticArmory
             {
                 return (T)serializer.Deserialize(reader);
             }
+        }
+        private void AddListenersAtRuntime()
+        {
+
+            Item.OnItemCloned.AddListener((newItem, oldItem) =>
+            {
+                newItem.DisplaySprite = oldItem.DisplaySprite;
+                newItem.DisplaySpriteResource = oldItem.DisplaySpriteResource;
+            });
+
+            CustomWeapon.OnEquipAttempt.AddListener(equipAttemptInfo =>
+            {
+                foreach (CustomWeapon item in EarnableWeapons)
+                {
+                    List<Restrictions> restrictions = item.restrictions;
+                    if (equipAttemptInfo.Equipment.Name.ToLower() == item.Name.ToLower() && item.restrictions != null)
+                    {
+                        foreach (Restrictions restriction in restrictions)
+                        {
+                            foreach (CustomWeapon itemRequirement in EarnableWeapons)
+                            {
+                                if (restriction.RequiredItemEquipped == itemRequirement.Name)
+                                {
+                                    Restraint restraint = new Restraint();
+                                    bool itemInEquipmentSlot = false;
+                                    foreach (var EquipmentSlot in Character.Player.EquippedItems.GetAll<Item>())
+                                    {
+                                        if (EquipmentSlot.Name.ToLower() == itemRequirement.Name.ToLower())
+                                        {
+                                            itemInEquipmentSlot = true;
+                                        }
+                                    }
+                                    if (itemInEquipmentSlot)
+                                    {
+                                        restraint.Set("CanEquip", true);
+                                        equipAttemptInfo.CanEquip = restraint;
+                                    }
+                                    else
+                                    {
+                                        restraint.Set("CanEquip", false);
+                                        equipAttemptInfo.CanEquip = restraint;
+                                        string knownItem = "another item";
+                                        if (Character.Player.Inventory.Contains(itemRequirement.Name))
+                                        {
+                                            knownItem = itemRequirement.Name;
+                                        }
+                                        Item.GenerateErrorDialogue(Character.Player, "I need " + knownItem + " equipped to equip this!", "Distressed");
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    foreach (Restrictions restriction in restrictions)
+                    {
+                        Item newitem = null;
+                        bool itemInEquipmentSlot = false;
+                        foreach (var EquipmentSlot in Character.Player.EquippedItems.GetAll<Item>())
+                        {
+                            if (EquipmentSlot.Name.ToLower() == restriction.RequiredItemEquipped.ToLower())
+                            {
+                                itemInEquipmentSlot = true;
+                            }
+                            if (EquipmentSlot.Name.ToLower() == item.Name.ToLower())
+                            {
+                                newitem = EquipmentSlot;
+                            }
+                        }
+                        if (equipAttemptInfo.Equipment.Name.ToLower() == restriction.RequiredItemEquipped.ToLower() && itemInEquipmentSlot)
+                        {
+                            Character.Player.UnequipItem((Equipment)newitem);
+                            Debug.Log("Item unequipped: " + item.Name);
+                        }
+                    }
+                }
+            });
         }
     }
 }
