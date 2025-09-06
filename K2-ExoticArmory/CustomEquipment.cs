@@ -87,9 +87,6 @@ namespace K2ExoticArmory
             weapon.restrictions = restrictions;
 
             AddAbilitiesToWeapon(weapon);
-            //var musicDir = Path.Combine(manifest.ModPath, Sound);
-            //var audioLoader = new WWW("file://" + musicDir);
-            //var audioClip = audioLoader.GetAudioClip(false, false, AudioType.WAV);
 
             return weapon;
         }
@@ -114,23 +111,12 @@ namespace K2ExoticArmory
 
         private void AddShootingVFXHook(Weapon weapon, Sprite sprite, int burstCount)
         {
-            string WeaponAttackVFXType = "UnarmedMelee";
-            if (burstCount > 0) 
-            {
-                WeaponAttackVFXType = "EnergyGunBurst";
-            }
-            //Debug.Log("Adding ability hook to Turn Start");
             CombatTurnManager.OnTurnStart.AddListener(() =>
             {
-                var jenna = Character.Get("Jenna");
+                if (!Character.Get("Jenna").EquippedItems.Contains(weapon)) return;
+                var ability = Character.Get("Jenna").GetAbilities().First(x => x.DisplayName == "Attack");
 
-                // Make sure that Jenna has this weapon equipped
-                if (!jenna.EquippedItems.Contains(weapon)) return;
-                var ability = jenna.GetAbilities().First(x => x.DisplayName == "Attack");
-
-                // Create dummy gameobject to make duplicates of when shooting
                 var vfxGameObject = new GameObject("VFX_Custom");
-                // move out of level so that the prefab isn't visible
                 vfxGameObject.transform.position = new Vector3(9999999999, 0);
                 var vfxSpriteRenderer = vfxGameObject.AddComponent<SpriteRenderer>();
 
@@ -138,13 +124,11 @@ namespace K2ExoticArmory
                     new Rect(0, 0, sprite.texture.width, sprite.texture.height), new Vector2(0.5f, 0.5f),
                     800f);
 
-                // get the logic from the Abl_Attack FIXME
                 var cachedFSM = typeof(Ability)
                     .GetField("CachedFsm", BindingFlags.Instance | BindingFlags.NonPublic)
                     .GetValue(ability) as Fsm;
 
-                // edit the playmaker action that does the spawning of the visual effects
-                var energyGunBurstState = cachedFSM.States.First(x => x.Name == WeaponAttackVFXType);
+                var energyGunBurstState = cachedFSM.States.First(x => x.Name == "EnergyGunBurst");
 
                 var combatVFX = energyGunBurstState.Actions[0] as PMA_CombatVisualEffect;
                 combatVFX.Prefab = vfxGameObject;

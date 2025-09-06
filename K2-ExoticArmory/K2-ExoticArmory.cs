@@ -54,7 +54,8 @@ namespace K2ExoticArmory
         }
         public void OnModLoaded(ModManifest manifest)
         {
-            AddListenersAtRuntime();
+            AddSpriteListener();
+            AddRequirementListener();
             using (StreamReader reader = new StreamReader(Path.Combine(manifest.ModPath, "data\\StoreItemData.xml")))
             {
                 string xml = reader.ReadToEnd();
@@ -80,7 +81,7 @@ namespace K2ExoticArmory
                 }
             }
         }
-        public static T Deserialize<T>(string xmlString)
+        private static T Deserialize<T>(string xmlString)
         {
             if (xmlString == null) return default;
             var serializer = new XmlSerializer(typeof(T));
@@ -89,7 +90,7 @@ namespace K2ExoticArmory
                 return (T)serializer.Deserialize(reader);
             }
         }
-        private void AddListenersAtRuntime()
+        private void AddSpriteListener()
         {
 
             Item.OnItemCloned.AddListener((newItem, oldItem) =>
@@ -97,7 +98,9 @@ namespace K2ExoticArmory
                 newItem.DisplaySprite = oldItem.DisplaySprite;
                 newItem.DisplaySpriteResource = oldItem.DisplaySpriteResource;
             });
-
+        }
+        private void AddRequirementListener()
+        {
             CustomWeapon.OnEquipAttempt.AddListener(equipAttemptInfo =>
             {
                 foreach (CustomWeapon item in EarnableWeapons)
