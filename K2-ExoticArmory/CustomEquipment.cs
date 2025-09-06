@@ -34,6 +34,8 @@ namespace K2ExoticArmory
 
         public List<StatModifierInfo> StatRequirements;
 
+        public List<Restrictions> restrictions;
+
         private CustomWeapon _instance;
 
         private ModManifest _manifest;

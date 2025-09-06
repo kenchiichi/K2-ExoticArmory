@@ -12,7 +12,9 @@ namespace K2ExoticArmory
         public List<MapCoordinate> LocationCoordinates;
 
         public List<CustomAbility> CustomAbilityItems;
-        
+
+        public List<Restrictions> restrictions;
+
         public CustomVFX customVFX;
 
         public int Price;
@@ -47,5 +49,8 @@ namespace K2ExoticArmory
 
         public string WeaponAttackVFXSprite = "";
     }
-
+    public class Restrictions
+    {
+        public string RequiredItemEquipped = "";
+    }
 }

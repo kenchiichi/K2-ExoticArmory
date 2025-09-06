@@ -57,6 +57,33 @@ namespace K2ExoticArmory
                 newItem.DisplaySprite = oldItem.DisplaySprite;
                 newItem.DisplaySpriteResource = oldItem.DisplaySpriteResource;
             });
+
+
+            CustomWeapon.OnEquipAttempt.AddListener(equipAttemptInfo =>
+            {
+                Debug.Log(1);
+                foreach (CustomWeapon item in EarnableWeapons)
+                {
+                    Debug.Log(2);
+                    if (equipAttemptInfo.Equipment.Name == item.Name)
+                    {
+                        Debug.Log(3);
+                        foreach (Restrictions restriction in item.restrictions)
+                        {
+                            Debug.Log(4);
+                            foreach (CustomWeapon equippedItem in EarnableWeapons)
+                            {
+                                Debug.Log(5);
+                                if (restriction.RequiredItemEquipped != "" && restriction.RequiredItemEquipped == equippedItem.Name && equippedItem.IsEquipped)
+                                {
+                                    Debug.Log("Required item: " + equippedItem.Name + " is equipped");
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
             using (StreamReader reader = new StreamReader(Path.Combine(manifest.ModPath, "data\\StoreItemData.xml")))
             {
                 string xml = reader.ReadToEnd();
