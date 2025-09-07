@@ -1,8 +1,10 @@
 4.27, 0.48   = FF_Hub_HQTent = hq's tent top right crate
 -34.69, 59.65= Sub level 3 - Fixed = gas room electrical box top left
 
+6.00, 10.50   = Motel_GroundFloor                      = Jenna's hotel room nightstand.
+
+
 Ice Breaker      - 4.50, -38.50  = FF_Hub_SubLevel_2                      = floria room top right glass cylinder
-Half-Truths      - 6.00, 10.50   = Motel_GroundFloor                      = Jenna's hotel room nightstand.
 The Last Word    - 2.50, 6.00    = House1                                 = Right nightstand in top left house with enterable garage door.
 Le Monarque      - 12.00, 20.00  = Carceburg                              = Carceburg top right behind trees.
 Red Death        - -3.00, -3.00  = Toilets                                = Bar bathroom trashcan.
