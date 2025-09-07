@@ -102,6 +102,11 @@
 				<StatName>stat_attack_range</StatName>
 				<ModifyAmount>3</ModifyAmount>
 			</StatModifierInfo>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_hitpoints</StatName>
+				<ModifyAmount>10</ModifyAmount>
+			</StatModifierInfo>
 		</StatModifierInfos>
 		<customVFX>
 			<BurstCount>7</BurstCount>
@@ -111,9 +116,9 @@
 		</customVFX>
 		<CustomAbilityItems>
 			<CustomAbility>
-				<AbilityID>Abl_Shredding_Grip</AbilityID>
+				<AbilityID>Abl_Attack</AbilityID>
 				<AbilityName>The Right Choice</AbilityName>
-				<AbilityTooltip>Allows the user to have an uncanny ability to &lt;color=#FF64FF&gt;shred&lt;/color&gt; anything within melee range.</AbilityTooltip>
+				<AbilityTooltip>Gives the user 10 extra hit points.</AbilityTooltip>
 				<AbilityCooldown>0</AbilityCooldown>
 				<DisplaySprite>assets\sprites\abl_icons\the_right_choice.png</DisplaySprite>
 			</CustomAbility>
