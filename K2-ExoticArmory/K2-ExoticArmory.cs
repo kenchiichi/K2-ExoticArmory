@@ -1,5 +1,6 @@
 ﻿using ANToolkit.Controllers;
 using ANToolkit.FPS.Weapons;
+using ANToolkit.ResourceManagement;
 using ANToolkit.Utility;
 using Asuna.CharManagement;
 using Asuna.Dialogues;
@@ -15,6 +16,8 @@ namespace K2ExoticArmory
     public class K2ExoticArmory : ITCMod
     {
         public ItemVendor vendor;
+
+        private ModManifest _manifest;
 
         public List<K2ExoticArmoryWeapon.CustomWeapon> PurchasableWeapons = new List<K2ExoticArmoryWeapon.CustomWeapon>();
 
@@ -68,10 +71,32 @@ namespace K2ExoticArmory
                 }
             }
 
-            vendor.Catalogue.OpenShop();
+            if (newLevel == "Motel_UpperFloor")
+            {
+                double xPos = -6.00;
+                double  yPos = 15.00;
+                GameObject andrNPC = new GameObject();
+                andrNPC.transform.position = new Vector3((float)xPos, (float)yPos);
+                BoxCollider andrNPCCollider = andrNPC.AddComponent<BoxCollider>();
+                andrNPCCollider.size = new Vector3(1f, 1f);
+                GameObject andrNPCSprite = new GameObject();
+                andrNPCSprite.transform.position = new Vector3((float)(xPos - .7), (float)(yPos - .7));
+                SpriteRenderer andrNPCSpriteRenderer = andrNPCSprite.AddComponent<SpriteRenderer>();
+                andrNPCSpriteRenderer.sprite = _manifest.SpriteResolver.ResolveAsResource("assets\\sprites\\npc\\ada_overworld.png");
+                andrNPCSpriteRenderer.transform.localScale = new Vector3(1f, 1f);
+
+                Interactable andrNPCInteractable = andrNPC.AddComponent<Interactable>();
+                andrNPCInteractable.TypeOfInteraction = InteractionType.Talk;
+                andrNPCInteractable.OnInteracted.AddListener(x =>
+                {
+                    vendor.Catalogue.OpenShop();
+                });
+            }
         }
         public void OnModLoaded(ModManifest manifest)
         {
+            _manifest = manifest;
+
             AddSpriteListener();
 
             AddRequirementListener();
