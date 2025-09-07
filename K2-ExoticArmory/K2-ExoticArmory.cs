@@ -31,24 +31,21 @@ namespace K2ExoticArmory
         {
             foreach (CustomWeapon item in EarnableWeapons)
             {
-                foreach (MapCoordinate location in item.LocationCoordinates)
+                if (item.LocationCoordinates.MapName == newLevel && !Character.Player.Inventory.Contains(item))
                 {
-                    if (location.MapName == newLevel && !Character.Player.Inventory.Contains(item))
-                    {
-                        var interactableGameObject = new GameObject();
-                        interactableGameObject.transform.position = new Vector3((float)location.xCoordinate, (float)location.yCoordinate);
-                        var boxCollider = interactableGameObject.AddComponent<BoxCollider>();
-                        boxCollider.size = new Vector3((float)0.25, (float)0.25);
+                    var interactableGameObject = new GameObject();
+                    interactableGameObject.transform.position = new Vector3((float)item.LocationCoordinates.xCoordinate, (float)item.LocationCoordinates.yCoordinate);
+                    var boxCollider = interactableGameObject.AddComponent<BoxCollider>();
+                    boxCollider.size = new Vector3((float)0.25, (float)0.25);
 
-                        var interactable = interactableGameObject.AddComponent<Interactable>();
-                        interactable.TypeOfInteraction = InteractionType.Talk;
-                        interactable.OnInteracted.AddListener(x =>
-                        {
-                            Item.GenerateErrorDialogue(Character.Player, "I found <color=#00ffff>" + item.Name + "</color> laying here!", "Happy");
-                            GiveItems.GiveToCharacter(Character.Get("Jenna"), false, false, item);
-                            interactable.gameObject.SetActive(false);
-                        });
-                    }
+                    var interactable = interactableGameObject.AddComponent<Interactable>();
+                    interactable.TypeOfInteraction = InteractionType.Talk;
+                    interactable.OnInteracted.AddListener(x =>
+                    {
+                        Item.GenerateErrorDialogue(Character.Player, "I found <color=#00ffff>" + item.Name + "</color> laying here!", "Happy");
+                        GiveItems.GiveToCharacter(Character.Get("Jenna"), false, false, item);
+                        interactable.gameObject.SetActive(false);
+                    });
                 }
             }
         }
@@ -56,7 +53,7 @@ namespace K2ExoticArmory
         {
             AddSpriteListener();
             AddRequirementListener();
-            using (StreamReader reader = new StreamReader(Path.Combine(manifest.ModPath, "data\\StoreItemData.xml")))
+            using (StreamReader reader = new StreamReader(Path.Combine(manifest.ModPath, "data\\StoreWeaponData.xml")))
             {
                 string xml = reader.ReadToEnd();
                 List<CustomEquipment> customEquipments = Deserialize<List<CustomEquipment>>(xml);
@@ -68,7 +65,7 @@ namespace K2ExoticArmory
                 }
             }
 
-            using (StreamReader reader = new StreamReader(Path.Combine(manifest.ModPath, "data\\WorldItemData.xml")))
+            using (StreamReader reader = new StreamReader(Path.Combine(manifest.ModPath, "data\\WorldWeaponData.xml")))
             {
                 string xml = reader.ReadToEnd();
                 List<CustomEquipment> customEquipments = Deserialize<List<CustomEquipment>>(xml);

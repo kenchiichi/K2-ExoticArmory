@@ -26,15 +26,15 @@ namespace K2ExoticArmory
 
         public List<StatModifierInfo> StatModifierInfos;
 
-        public List<MapCoordinate> LocationCoordinates;
-
         public List<CustomAbility> CustomAbilityItems;
-
-        public List<CustomVFX> customVFX;
 
         public List<StatModifierInfo> StatRequirements;
 
         public List<Restrictions> restrictions;
+
+        public MapCoordinate LocationCoordinates;
+
+        public CustomVFX customVFX;
 
         private CustomWeapon _instance;
 
@@ -66,11 +66,11 @@ namespace K2ExoticArmory
                 Item.All.Add(Name.ToLower(), _instance);
             }
 
-            if (customVFX[0].BurstCount > 0)
+            if (customVFX.BurstCount > 0)
             {
                 weapon.AttackVFXType = AttackVFXType.EnergyGunBurst;
-                ANResourceSprite weaponAttackVFXSprite = manifest.SpriteResolver.ResolveAsResource(customVFX[0].WeaponAttackVFXSprite);
-                AddShootingVFXHook(weapon, (Sprite)weaponAttackVFXSprite, customVFX[0].BurstCount);
+                ANResourceSprite weaponAttackVFXSprite = manifest.SpriteResolver.ResolveAsResource(customVFX.WeaponAttackVFXSprite);
+                AddShootingVFXHook(weapon, (Sprite)weaponAttackVFXSprite, customVFX.BurstCount);
             }
             else
             {
@@ -78,7 +78,8 @@ namespace K2ExoticArmory
             }
 
             weapon.DisplaySpriteResource = previewImage;
-            weapon.LocationCoordinates = LocationCoordinates; weapon.Name = Name;
+            weapon.LocationCoordinates = LocationCoordinates; 
+            weapon.Name = Name;
             weapon.Slots.AddRange(Slots.Select((string x) => (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), x)));
             weapon.Category = ItemCategory.Weapon;
             weapon.Description = Description;
@@ -102,7 +103,8 @@ namespace K2ExoticArmory
                     ability.Tooltip = item.AbilityTooltip;
                     ability.DisplayName = item.AbilityName;
                     ability.DisplaySprite = _manifest.SpriteResolver.ResolveAsResource(item.DisplaySprite);
-                    ability.EnergyCost = 1;
+                    ability.EnergyCost = item.AbilityEnergyCost;
+                    ability.CooldownOnUse = item.AbilityCooldown;
                     ANToolkit.ScriptableManagement.ScriptableManager.Add(ability);
                     weapon.AddAbility(ability, "Ability");
                 }
@@ -120,9 +122,7 @@ namespace K2ExoticArmory
                 vfxGameObject.transform.position = new Vector3(9999999999, 0);
                 var vfxSpriteRenderer = vfxGameObject.AddComponent<SpriteRenderer>();
 
-                vfxSpriteRenderer.sprite = Sprite.Create(sprite.texture,
-                    new Rect(0, 0, sprite.texture.width, sprite.texture.height), new Vector2(0.5f, 0.5f),
-                    800f);
+                vfxSpriteRenderer.sprite = Sprite.Create(sprite.texture, new Rect(0, 0, sprite.texture.width, sprite.texture.height), new Vector2(0.5f, 0.5f), 800f);
 
                 var cachedFSM = typeof(Ability)
                     .GetField("CachedFsm", BindingFlags.Instance | BindingFlags.NonPublic)

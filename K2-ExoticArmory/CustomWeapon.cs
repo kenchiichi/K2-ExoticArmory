@@ -7,11 +7,11 @@ namespace K2ExoticArmory
     {
         public List<StatModifierInfo> StatModifierInfos;
 
-        public List<MapCoordinate> LocationCoordinates;
-
         public List<CustomAbility> CustomAbilityItems;
 
         public List<Restrictions> restrictions;
+
+        public MapCoordinate LocationCoordinates;
 
         public CustomVFX customVFX;
 
@@ -35,6 +35,10 @@ namespace K2ExoticArmory
         public string AbilityTooltip = "";
 
         public string DisplaySprite = "";
+
+        public int AbilityCooldown = 0;
+
+        public int AbilityEnergyCost = 0;
     }
 
     public class CustomVFX

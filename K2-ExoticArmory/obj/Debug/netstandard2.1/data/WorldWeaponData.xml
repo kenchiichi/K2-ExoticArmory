@@ -10,11 +10,9 @@
 			<string>OffhandWeapon</string>
 		</Slots>
 		<LocationCoordinates>
-			<MapCoordinate>
-				<xCoordinate>2.50</xCoordinate>
-				<yCoordinate>6.00</yCoordinate>
-				<MapName>House1</MapName>
-			</MapCoordinate>
+			<xCoordinate>2.50</xCoordinate>
+			<yCoordinate>6.00</yCoordinate>
+			<MapName>House1</MapName>
 		</LocationCoordinates>
 		<StatModifierInfos>
 			<StatModifierInfo>
@@ -33,17 +31,15 @@
 				<AbilityID>Abl_Akimbo</AbilityID>
 				<AbilityName>Fan Fire</AbilityName>
 				<AbilityTooltip>The weapon can be fired quickly and continuously.</AbilityTooltip>
-				<AbilityCooldown>0</AbilityCooldown>
+				<AbilityCooldown>1</AbilityCooldown>
 				<DisplaySprite>assets\sprites\abl_icons\fan_fire.png</DisplaySprite>
 			</CustomAbility>
 		</CustomAbilityItems>
 		<customVFX>
-			<CustomVFX>
-				<BurstCount>3</BurstCount>
-				<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
-				<wavAudioClip>assets\sfx\the_last_word.wav</wavAudioClip>
-				<WeaponAttackVFXSprite>assets\sprites\vfx\burst\kenetic_bullet.png</WeaponAttackVFXSprite>
-			</CustomVFX>
+			<BurstCount>3</BurstCount>
+			<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
+			<wavAudioClip>assets\sfx\the_last_word.wav</wavAudioClip>
+			<WeaponAttackVFXSprite>assets\sprites\vfx\burst\kenetic_bullet.png</WeaponAttackVFXSprite>
 		</customVFX>
 	</CustomEquipment>
 	<CustomEquipment>
@@ -57,11 +53,9 @@
 			<string>OffhandWeapon</string>
 		</Slots>
 		<LocationCoordinates>
-			<MapCoordinate>
-				<xCoordinate>11.50</xCoordinate>
-				<yCoordinate>6.80</yCoordinate>
-				<MapName>Carcen_Mines</MapName>
-			</MapCoordinate>
+			<xCoordinate>11.50</xCoordinate>
+			<yCoordinate>6.80</yCoordinate>
+			<MapName>Carcen_Mines</MapName>
 		</LocationCoordinates>
 		<StatModifierInfos>
 			<StatModifierInfo>
@@ -80,11 +74,9 @@
 			</CustomAbility>
 		</CustomAbilityItems>
 		<customVFX>
-			<CustomVFX>
-				<BurstCount>0</BurstCount>
-				<WeaponAttackVFXType>UnarmedMelee</WeaponAttackVFXType>
-				<wavAudioClip>assets\sfx\raze-lighter.wav</wavAudioClip>
-			</CustomVFX>
+			<BurstCount>0</BurstCount>
+			<WeaponAttackVFXType>UnarmedMelee</WeaponAttackVFXType>
+			<wavAudioClip>assets\sfx\raze-lighter.wav</wavAudioClip>
 		</customVFX>
 	</CustomEquipment>
 	<CustomEquipment>
@@ -92,11 +84,9 @@
 		<PreviewImage>assets\sprites\icons\ice_breaker.png</PreviewImage>
 		<Description>Please replace these components if use causes fatal damage: HEAT SINK. MAGAZINE. OPERATOR.</Description>
 		<LocationCoordinates>
-			<MapCoordinate>
-				<xCoordinate>4.50</xCoordinate>
-				<yCoordinate>-38.50</yCoordinate>
-				<MapName>FF_Hub_SubLevel_2</MapName>
-			</MapCoordinate>
+			<xCoordinate>4.50</xCoordinate>
+			<yCoordinate>-38.50</yCoordinate>
+			<MapName>FF_Hub_SubLevel_2</MapName>
 		</LocationCoordinates>
 		<Slots>
 			<string>MainWeapon</string>
@@ -131,12 +121,10 @@
 			</CustomAbility>
 		</CustomAbilityItems>
 		<customVFX>
-			<CustomVFX>
-				<BurstCount>1</BurstCount>
-				<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
-				<wavAudioClip>assets\sfx\icebreaker.wav</wavAudioClip>
-				<WeaponAttackVFXSprite>assets\sprites\vfx\single\solar_bullet.png</WeaponAttackVFXSprite>
-			</CustomVFX>
+			<BurstCount>1</BurstCount>
+			<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
+			<wavAudioClip>assets\sfx\icebreaker.wav</wavAudioClip>
+			<WeaponAttackVFXSprite>assets\sprites\vfx\single\solar_bullet.png</WeaponAttackVFXSprite>
 		</customVFX>
 	</CustomEquipment>
 	<CustomEquipment>
@@ -144,11 +132,9 @@
 		<PreviewImage>assets\sprites\icons\red_death.png</PreviewImage>
 		<Description>Peitho policy urges Guards to destroy this weapon on sight.</Description>
 		<LocationCoordinates>
-			<MapCoordinate>
-				<xCoordinate>-3.00</xCoordinate>
-				<yCoordinate>-2.50</yCoordinate>
-				<MapName>Toilets</MapName>
-			</MapCoordinate>
+			<xCoordinate>-3.00</xCoordinate>
+			<yCoordinate>-2.50</yCoordinate>
+			<MapName>Toilets</MapName>
 		</LocationCoordinates>
 		<Slots>
 			<string>MainWeapon</string>
@@ -183,12 +169,10 @@
 			</CustomAbility>
 		</CustomAbilityItems>
 		<customVFX>
-			<CustomVFX>
-				<BurstCount>3</BurstCount>
-				<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
-				<wavAudioClip>assets\sfx\red_death.wav</wavAudioClip>
-				<WeaponAttackVFXSprite>assets\sprites\vfx\burst\kenetic_bullet.png</WeaponAttackVFXSprite>
-			</CustomVFX>
+			<BurstCount>3</BurstCount>
+			<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
+			<wavAudioClip>assets\sfx\red_death.wav</wavAudioClip>
+			<WeaponAttackVFXSprite>assets\sprites\vfx\burst\kenetic_bullet.png</WeaponAttackVFXSprite>
 		</customVFX>
 	</CustomEquipment>
 	<CustomEquipment>
@@ -196,11 +180,9 @@
 		<PreviewImage>assets\sprites\icons\dead_mans_tale.png</PreviewImage>
 		<Description>"Long, short, they all end the same way." —Katabasis</Description>
 		<LocationCoordinates>
-			<MapCoordinate>
-				<xCoordinate>37.50</xCoordinate>
-				<yCoordinate>-16.00</yCoordinate>
-				<MapName>Carceburg</MapName>
-			</MapCoordinate>
+			<xCoordinate>37.50</xCoordinate>
+			<yCoordinate>-16.00</yCoordinate>
+			<MapName>Carceburg</MapName>
 		</LocationCoordinates>
 		<Slots>
 			<string>MainWeapon</string>
@@ -225,17 +207,15 @@
 				<AbilityID>Abl_Akimbo</AbilityID>
 				<AbilityName>Cranial Spike</AbilityName>
 				<AbilityTooltip>A custom modified bolt-action loading mechanism, allows this weapon to load it's rounds more quickly than a traditional magazine-based weapon.</AbilityTooltip>
-				<AbilityCooldown>0</AbilityCooldown>
+				<AbilityCooldown>1</AbilityCooldown>
 				<DisplaySprite>assets\sprites\abl_icons\cranial_spike.png</DisplaySprite>
 			</CustomAbility>
 		</CustomAbilityItems>
 		<customVFX>
-			<CustomVFX>
-				<BurstCount>1</BurstCount>
-				<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
-				<wavAudioClip>assets\sfx\monte_carlo.wav(not implemented)</wavAudioClip>
-				<WeaponAttackVFXSprite>assets\sprites\vfx\burst\kenetic_bullet.png</WeaponAttackVFXSprite>
-			</CustomVFX>
+			<BurstCount>1</BurstCount>
+			<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
+			<wavAudioClip>assets\sfx\monte_carlo.wav(not implemented)</wavAudioClip>
+			<WeaponAttackVFXSprite>assets\sprites\vfx\burst\kenetic_bullet.png</WeaponAttackVFXSprite>
 		</customVFX>
 	</CustomEquipment>
 	<CustomEquipment>
@@ -243,11 +223,9 @@
 		<PreviewImage>assets\sprites\icons\monte_carlo.png</PreviewImage>
 		<Description>There will always be paths to tread and methods to try. Roll with it.</Description>
 		<LocationCoordinates>
-			<MapCoordinate>
-				<xCoordinate>14.50</xCoordinate>
-				<yCoordinate>16.50</yCoordinate>
-				<MapName>Motel_UpperFloor</MapName>
-			</MapCoordinate>
+			<xCoordinate>14.50</xCoordinate>
+			<yCoordinate>16.50</yCoordinate>
+			<MapName>Motel_UpperFloor</MapName>
 		</LocationCoordinates>
 		<Slots>
 			<string>MainWeapon</string>
@@ -272,17 +250,15 @@
 				<AbilityID>Abl_Dash</AbilityID>
 				<AbilityName>Markov Chain</AbilityName>
 				<AbilityTooltip>Equips this weapon with a bayonet, allowing the user to slam into their enemy, pushing them aside, and causing damage.</AbilityTooltip>
-				<AbilityCooldown>0</AbilityCooldown>
+				<AbilityCooldown>2</AbilityCooldown>
 				<DisplaySprite>assets\sprites\abl_icons\markov_chain.png</DisplaySprite>
 			</CustomAbility>
 		</CustomAbilityItems>
 		<customVFX>
-			<CustomVFX>
-				<BurstCount>7</BurstCount>
-				<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
-				<wavAudioClip>assets\sfx\monte_carlo.wav(not implemented)</wavAudioClip>
-				<WeaponAttackVFXSprite>assets\sprites\vfx\burst\kenetic_bullet.png</WeaponAttackVFXSprite>
-			</CustomVFX>
+			<BurstCount>7</BurstCount>
+			<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
+			<wavAudioClip>assets\sfx\monte_carlo.wav(not implemented)</wavAudioClip>
+			<WeaponAttackVFXSprite>assets\sprites\vfx\burst\kenetic_bullet.png</WeaponAttackVFXSprite>
 		</customVFX>
 	</CustomEquipment>
 	<CustomEquipment>
@@ -290,11 +266,9 @@
 		<PreviewImage>assets\sprites\icons\le_monarque.png</PreviewImage>
 		<Description>"Wings flutter. Beauty distracts. Poison injects. The butterfly's curse extends to your enemies. A short life, shortened further by your hand." —Ada-1</Description>
 		<LocationCoordinates>
-			<MapCoordinate>
-				<xCoordinate>12.00</xCoordinate>
-				<yCoordinate>20.00</yCoordinate>
-				<MapName>Carceburg</MapName>
-			</MapCoordinate>
+			<xCoordinate>12.00</xCoordinate>
+			<yCoordinate>20.00</yCoordinate>
+			<MapName>Carceburg</MapName>
 		</LocationCoordinates>
 		<Slots>
 			<string>MainWeapon</string>
@@ -324,17 +298,15 @@
 				<AbilityID>Abl_Lust_Mist</AbilityID>
 				<AbilityName>Poison Arrows</AbilityName>
 				<AbilityTooltip>This bow uses custom modified arrows that allows the user to fire an area of &lt;color=#FF64FF&gt;afrodisiac mist&lt;/color&gt; on a target.</AbilityTooltip>
-				<AbilityCooldown>0</AbilityCooldown>
+				<AbilityCooldown>1</AbilityCooldown>
 				<DisplaySprite>assets\sprites\abl_icons\poison_arrows.png</DisplaySprite>
 			</CustomAbility>
 		</CustomAbilityItems>
 		<customVFX>
-			<CustomVFX>
-				<BurstCount>1</BurstCount>
-				<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
-				<wavAudioClip>assets\sfx\le_monarque.wav</wavAudioClip>
-				<WeaponAttackVFXSprite>assets\sprites\vfx\single\void_bullet.png</WeaponAttackVFXSprite>
-			</CustomVFX>
+			<BurstCount>1</BurstCount>
+			<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
+			<wavAudioClip>assets\sfx\le_monarque.wav</wavAudioClip>
+			<WeaponAttackVFXSprite>assets\sprites\vfx\single\void_bullet.png</WeaponAttackVFXSprite>
 		</customVFX>
 	</CustomEquipment>
 	<CustomEquipment>
@@ -342,11 +314,9 @@
 		<PreviewImage>assets\sprites\icons\tractor_cannon.png</PreviewImage>
 		<Description>Property of Peitho. WARNING: Gravity propulsor beam can cause serious injury or even death.</Description>
 		<LocationCoordinates>
-			<MapCoordinate>
-				<xCoordinate>19.00</xCoordinate>
-				<yCoordinate>8.80</yCoordinate>
-				<MapName>DestroyedStronghold</MapName>
-			</MapCoordinate>
+			<xCoordinate>19.00</xCoordinate>
+			<yCoordinate>8.80</yCoordinate>
+			<MapName>DestroyedStronghold</MapName>
 		</LocationCoordinates>
 		<Slots>
 			<string>MainWeapon</string>
@@ -381,12 +351,10 @@
 			</CustomAbility>
 		</CustomAbilityItems>
 		<customVFX>
-			<CustomVFX>
-				<BurstCount>1</BurstCount>
-				<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
-				<wavAudioClip>assets\sfx\le_monarque.wav</wavAudioClip>
-				<WeaponAttackVFXSprite>assets\sprites\vfx\custom\repulsor_blast.png</WeaponAttackVFXSprite>
-			</CustomVFX>
+			<BurstCount>1</BurstCount>
+			<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
+			<wavAudioClip>assets\sfx\le_monarque.wav</wavAudioClip>
+			<WeaponAttackVFXSprite>assets\sprites\vfx\custom\repulsor_blast.png</WeaponAttackVFXSprite>
 		</customVFX>
 	</CustomEquipment>
 	<CustomEquipment>
@@ -394,11 +362,9 @@
 		<PreviewImage>assets\sprites\icons\the_other_half.png</PreviewImage>
 		<Description>An incomplete weapon, perhaps there's a companion weapon that'll make it whole?</Description>
 		<LocationCoordinates>
-			<MapCoordinate>
-				<xCoordinate>-4.50</xCoordinate>
-				<yCoordinate>-4.00</yCoordinate>
-				<MapName>OuterSH_Outskirts_House_AfterExplosion</MapName>
-			</MapCoordinate>
+			<xCoordinate>-4.50</xCoordinate>
+			<yCoordinate>-4.00</yCoordinate>
+			<MapName>OuterSH_Outskirts_House_AfterExplosion</MapName>
 		</LocationCoordinates>
 		<Slots>
 			<string>OffhandWeapon</string>
@@ -415,22 +381,22 @@
 				<AbilityID>Abl_Akimbo</AbilityID>
 				<AbilityName>Lightweight Blade</AbilityName>
 				<AbilityTooltip>This sword is suspiciously light, as if it were made of... light.  This allows the user to attack more frequently than normal.</AbilityTooltip>
+				<AbilityCooldown>1</AbilityCooldown>
 				<DisplaySprite>assets\sprites\abl_icons\lightweight_frame.png</DisplaySprite>
 			</CustomAbility>
 			<CustomAbility>
 				<AbilityID>Abl_Vibrodash_Flashback</AbilityID>
 				<AbilityName>Eager Edge</AbilityName>
 				<AbilityTooltip>This weapon can swing so fast, it can break the laws of space-time, and can seemingly teleport the user in almost any direction.</AbilityTooltip>
-				<AbilityCooldown>0</AbilityCooldown>
+				<AbilityEnergyCost>0</AbilityEnergyCost>
+				<AbilityCooldown>1</AbilityCooldown>
 				<DisplaySprite>assets\sprites\abl_icons\eager_edge.png</DisplaySprite>
 			</CustomAbility>
 		</CustomAbilityItems>
 		<customVFX>
-			<CustomVFX>
-				<BurstCount>0</BurstCount>
-				<WeaponAttackVFXType>UnarmedMelee</WeaponAttackVFXType>
-				<wavAudioClip>assets\sfx\two_halves.wav</wavAudioClip>
-			</CustomVFX>
+			<BurstCount>0</BurstCount>
+			<WeaponAttackVFXType>UnarmedMelee</WeaponAttackVFXType>
+			<wavAudioClip>assets\sfx\two_halves.wav</wavAudioClip>
 		</customVFX>
 		<restrictions>
 			<Restrictions>
@@ -440,15 +406,13 @@
 	</CustomEquipment>
 	<CustomEquipment>
 		<Name>Half-Truths</Name>
-		<Price>150</Price>
+		<Price>120</Price>
 		<PreviewImage>assets\sprites\icons\half_truths.png</PreviewImage>
 		<Description>An incomplete weapon, perhaps there's a companion weapon that'll make it whole?</Description>
 		<LocationCoordinates>
-			<MapCoordinate>
-				<xCoordinate>6.00</xCoordinate>
-				<yCoordinate>10.50</yCoordinate>
-				<MapName>Motel_GroundFloor</MapName>
-			</MapCoordinate>
+			<xCoordinate>6.00</xCoordinate>
+			<yCoordinate>10.50</yCoordinate>
+			<MapName>Motel_GroundFloor</MapName>
 		</LocationCoordinates>
 		<Slots>
 			<string>MainWeapon</string>
@@ -461,11 +425,9 @@
 			</StatModifierInfo>
 		</StatModifierInfos>
 		<customVFX>
-			<CustomVFX>
-				<BurstCount>0</BurstCount>
-				<WeaponAttackVFXType>UnarmedMelee</WeaponAttackVFXType>
-				<wavAudioClip>assets\sfx\two_halves.wav</wavAudioClip>
-			</CustomVFX>
+			<BurstCount>0</BurstCount>
+			<WeaponAttackVFXType>UnarmedMelee</WeaponAttackVFXType>
+			<wavAudioClip>assets\sfx\two_halves.wav</wavAudioClip>
 		</customVFX>
 	</CustomEquipment>
 </ArrayOfCustomEquipment>
