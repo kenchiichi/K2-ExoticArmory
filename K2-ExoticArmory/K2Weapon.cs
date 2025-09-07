@@ -26,23 +26,23 @@ namespace K2ExoticArmory
 
         public List<StatModifierInfo> StatModifierInfos;
 
-        public List<CustomAbility> CustomAbilityItems;
+        public List<K2ExoticArmoryWeapon.CustomAbility> CustomAbilityItems;
 
         public List<StatModifierInfo> StatRequirements;
 
-        public List<Restrictions> restrictions;
+        public List<K2ExoticArmoryWeapon.Restrictions> restrictions;
 
-        public MapCoordinate LocationCoordinates;
+        public K2ExoticArmoryWeapon.MapCoordinate LocationCoordinates;
 
-        public CustomVFX customVFX;
+        public K2ExoticArmoryWeapon.CustomVFX customVFX;
 
-        private CustomWeapon _instance;
+        private K2ExoticArmoryWeapon.CustomWeapon _instance;
 
         private ModManifest _manifest;
 
-        public CustomWeapon CustomInitialize(ModManifest manifest)
+        public K2ExoticArmoryWeapon.CustomWeapon CustomInitialize(ModManifest manifest)
         {
-            CustomWeapon weapon = ScriptableObject.CreateInstance<CustomWeapon>();
+            K2ExoticArmoryWeapon.CustomWeapon weapon = ScriptableObject.CreateInstance<K2ExoticArmoryWeapon.CustomWeapon>();
 
             ANResourceSprite previewImage = manifest.SpriteResolver.ResolveAsResource(PreviewImage);
 
@@ -92,7 +92,7 @@ namespace K2ExoticArmory
             return weapon;
         }
 
-        private void AddAbilitiesToWeapon(CustomWeapon weapon)
+        private void AddAbilitiesToWeapon(K2ExoticArmoryWeapon.CustomWeapon weapon)
         {
             if (CustomAbilityItems != null)
             {

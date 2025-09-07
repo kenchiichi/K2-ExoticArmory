@@ -1,9 +1,9 @@
 ﻿using Asuna.CharManagement;
 using System.Collections.Generic;
 
-namespace K2ExoticArmoryWeapon
+namespace K2ExoticArmoryApparel
 {
-    public class CustomWeapon : Asuna.Items.Weapon
+    public class CustomApparel : Asuna.Items.Apparel
     {
         public List<StatModifierInfo> StatModifierInfos;
 

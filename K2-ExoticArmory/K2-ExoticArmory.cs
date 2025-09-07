@@ -1,4 +1,5 @@
 ﻿using ANToolkit.Controllers;
+using ANToolkit.FPS.Weapons;
 using ANToolkit.Utility;
 using Asuna.CharManagement;
 using Asuna.Dialogues;
@@ -13,23 +14,27 @@ namespace K2ExoticArmory
 {
     public class K2ExoticArmory : ITCMod
     {
-        public List<string> NewItemNames = new List<string>();
+        public List<K2ExoticArmoryWeapon.CustomWeapon> PurchasableWeapons = new List<K2ExoticArmoryWeapon.CustomWeapon>();
 
-        public List<CustomWeapon> EarnableWeapons = new List<CustomWeapon>();
+        public List<K2ExoticArmoryWeapon.CustomWeapon> EarnableWeapons = new List<K2ExoticArmoryWeapon.CustomWeapon>();
 
         public void OnDialogueStarted(Dialogue dialogue) { }
         public void OnLineStarted(DialogueLine line) { }
         public void OnFrame(float deltaTime) { }
         public void OnModUnLoaded()
         {
-            foreach (string itemName in NewItemNames)
+            foreach (var item in PurchasableWeapons)
             {
-                Item.All.Remove(itemName.ToLower());
+                Item.All.Remove(item.Name.ToLower());
+            }
+            foreach (var item in EarnableWeapons)
+            {
+                Item.All.Remove(item.Name.ToLower());
             }
         }
         public void OnLevelChanged(string oldLevel, string newLevel)
         {
-            foreach (CustomWeapon item in EarnableWeapons)
+            foreach (K2ExoticArmoryWeapon.CustomWeapon item in EarnableWeapons)
             {
                 if (item.LocationCoordinates.MapName == newLevel && !Character.Player.Inventory.Contains(item))
                 {
@@ -52,32 +57,41 @@ namespace K2ExoticArmory
         public void OnModLoaded(ModManifest manifest)
         {
             AddSpriteListener();
+
             AddRequirementListener();
-            using (StreamReader reader = new StreamReader(Path.Combine(manifest.ModPath, "data\\StoreWeaponData.xml")))
+
+            WeaponSerialStreamReader(manifest, "data\\StoreWeaponData.xml", PurchasableWeapons);
+
+            WeaponSerialStreamReader(manifest, "data\\WorldWeaponData.xml", EarnableWeapons);
+        }
+
+        private void WeaponSerialStreamReader(ModManifest manifest, string xmlpath, List<K2ExoticArmoryWeapon.CustomWeapon> list)
+        {
+            using (StreamReader reader = new StreamReader(Path.Combine(manifest.ModPath, xmlpath)))
             {
-                string xml = reader.ReadToEnd();
-                List<K2Weapon> customEquipments = Deserialize<List<K2Weapon>>(xml);
+                List<K2Weapon> k2Weapons = Deserialize<List<K2Weapon>>(reader.ReadToEnd());
 
-                foreach (K2Weapon customEquipment in customEquipments)
+                foreach (K2Weapon k2Weapon in k2Weapons)
                 {
-                    var item = customEquipment.CustomInitialize(manifest);
-                    NewItemNames.Add(item.Name);
-                }
-            }
-
-            using (StreamReader reader = new StreamReader(Path.Combine(manifest.ModPath, "data\\WorldWeaponData.xml")))
-            {
-                string xml = reader.ReadToEnd();
-                List<K2Weapon> customEquipments = Deserialize<List<K2Weapon>>(xml);
-
-                foreach (K2Weapon customEquipment in customEquipments)
-                {
-                    var item = customEquipment.CustomInitialize(manifest);
-                    NewItemNames.Add(item.Name);
-                    EarnableWeapons.Add(item);
+                    var item = k2Weapon.CustomInitialize(manifest);
+                    list.Add(item);
                 }
             }
         }
+        private void ApparelSerialStreamReader(ModManifest manifest, string xmlpath, List<K2ExoticArmoryApparel.CustomApparel> list)
+        {
+            using (StreamReader reader = new StreamReader(Path.Combine(manifest.ModPath, xmlpath)))
+            {
+                List<K2Apparel> k2Apparels = Deserialize<List<K2Apparel>>(reader.ReadToEnd());
+
+                foreach (K2Apparel k2Apparel in k2Apparels)
+                {
+                    var item = k2Apparel.CustomInitialize(manifest);
+                    list.Add(item);
+                }
+            }
+        }
+
         private static T Deserialize<T>(string xmlString)
         {
             if (xmlString == null) return default;
@@ -98,15 +112,15 @@ namespace K2ExoticArmory
         }
         private void AddRequirementListener()
         {
-            CustomWeapon.OnEquipAttempt.AddListener(equipAttemptInfo =>
+            K2ExoticArmoryWeapon.CustomWeapon.OnEquipAttempt.AddListener(equipAttemptInfo =>
             {
-                foreach (CustomWeapon item in EarnableWeapons)
+                foreach (K2ExoticArmoryWeapon.CustomWeapon item in EarnableWeapons)
                 {
                     if (equipAttemptInfo.Equipment.Name.ToLower() == item.Name.ToLower() && item.restrictions != null)
                     {
-                        foreach (Restrictions restriction in item.restrictions)
+                        foreach (K2ExoticArmoryWeapon.Restrictions restriction in item.restrictions)
                         {
-                            foreach (CustomWeapon itemRequirement in EarnableWeapons)
+                            foreach (K2ExoticArmoryWeapon.CustomWeapon itemRequirement in EarnableWeapons)
                             {
                                 if (restriction.RequiredItemEquipped == itemRequirement.Name)
                                 {
@@ -139,7 +153,7 @@ namespace K2ExoticArmory
                             }
                         }
                     }
-                    foreach (Restrictions restriction in item.restrictions)
+                    foreach (K2ExoticArmoryWeapon.Restrictions restriction in item.restrictions)
                     {
                         Item newitem = null;
                         bool itemInEquipmentSlot = false;
