@@ -20,4 +20,103 @@
 			<wavAudioClip>assets\sfx\two_halves.wav</wavAudioClip>
 		</customVFX>
 	</K2Weapon>
+	<K2Weapon>
+		<Name>Khvostov 7G-02 (Rusted)</Name>
+		<Price>50</Price>
+		<PreviewImage>assets\sprites\icons\khvostov_rusted.png</PreviewImage>
+		<Description>An ancient instrument of war, battered and worn—but it still fires true. Perhaps it's been waiting for you.</Description>
+		<Slots>
+			<string>MainWeapon</string>
+		</Slots>
+		<Slots>
+			<string>OffhandWeapon</string>
+		</Slots>
+		<StatModifierInfos>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_physical_power</StatName>
+				<ModifyAmount>4</ModifyAmount>
+			</StatModifierInfo>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_attack_range</StatName>
+				<ModifyAmount>3</ModifyAmount>
+			</StatModifierInfo>
+		</StatModifierInfos>
+		<customVFX>
+			<BurstCount>7</BurstCount>
+			<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
+			<wavAudioClip>assets\sfx\khvostov_old.wav(not implemented)</wavAudioClip>
+			<WeaponAttackVFXSprite>assets\sprites\vfx\burst\kenetic_bullet.png</WeaponAttackVFXSprite>
+		</customVFX>
+	</K2Weapon>
+	<K2Weapon>
+		<Name>Khvostov 7G-02 (new)</Name>
+		<Price>500</Price>
+		<PreviewImage>assets\sprites\icons\khvostov_new.png</PreviewImage>
+		<Description>An ancient instrument of war, battered and worn—but it still fires true. Perhaps it's been waiting for you.</Description>
+		<Slots>
+			<string>MainWeapon</string>
+		</Slots>
+		<Slots>
+			<string>OffhandWeapon</string>
+		</Slots>
+		<StatModifierInfos>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_physical_power</StatName>
+				<ModifyAmount>8</ModifyAmount>
+			</StatModifierInfo>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_attack_range</StatName>
+				<ModifyAmount>3</ModifyAmount>
+			</StatModifierInfo>
+		</StatModifierInfos>
+		<customVFX>
+			<BurstCount>7</BurstCount>
+			<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
+			<wavAudioClip>assets\sfx\khvostov_new.wav(not implemented)</wavAudioClip>
+			<WeaponAttackVFXSprite>assets\sprites\vfx\burst\kenetic_bullet.png</WeaponAttackVFXSprite>
+		</customVFX>
+	</K2Weapon>
+	<K2Weapon>
+		<Name>Khvostov 7G-0X (Perfected)</Name>
+		<Price>800</Price>
+		<PreviewImage>assets\sprites\icons\khvostov_improved.png</PreviewImage>
+		<Description>An ancient instrument of war, renewed and enhanced by Guardian power—not unlike you.</Description>
+		<Slots>
+			<string>MainWeapon</string>
+		</Slots>
+		<Slots>
+			<string>OffhandWeapon</string>
+		</Slots>
+		<StatModifierInfos>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_physical_power</StatName>
+				<ModifyAmount>15</ModifyAmount>
+			</StatModifierInfo>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_attack_range</StatName>
+				<ModifyAmount>3</ModifyAmount>
+			</StatModifierInfo>
+		</StatModifierInfos>
+		<customVFX>
+			<BurstCount>7</BurstCount>
+			<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
+			<wavAudioClip>assets\sfx\khvostov_improved.wav(not implemented)</wavAudioClip>
+			<WeaponAttackVFXSprite>assets\sprites\vfx\burst\kenetic_bullet.png</WeaponAttackVFXSprite>
+		</customVFX>
+		<CustomAbilityItems>
+			<CustomAbility>
+				<AbilityID>Abl_Shredding_Grip</AbilityID>
+				<AbilityName>The Right Choice</AbilityName>
+				<AbilityTooltip>Allows the user to have an uncanny ability to &lt;color=#FF64FF&gt;shred&lt;/color&gt; anything within melee range.</AbilityTooltip>
+				<AbilityCooldown>0</AbilityCooldown>
+				<DisplaySprite>assets\sprites\abl_icons\the_right_choice.png</DisplaySprite>
+			</CustomAbility>
+		</CustomAbilityItems>
+	</K2Weapon>
 </ArrayOfK2Weapon>
