@@ -1,5 +1,5 @@
-﻿<ArrayOfCustomEquipment xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-	<CustomEquipment>
+﻿<ArrayOfK2Weapon>
+	<K2Weapon>
 		<Name>The Last Word</Name>
 		<PreviewImage>assets\sprites\icons\the_last_word.png</PreviewImage>
 		<Description>"Yours…not mine."— Renegade Hunter Shin Malphur to Dredgen Yor</Description>
@@ -41,8 +41,8 @@
 			<wavAudioClip>assets\sfx\the_last_word.wav</wavAudioClip>
 			<WeaponAttackVFXSprite>assets\sprites\vfx\burst\kenetic_bullet.png</WeaponAttackVFXSprite>
 		</customVFX>
-	</CustomEquipment>
-	<CustomEquipment>
+	</K2Weapon>
+	<K2Weapon>
 		<Name>Raze-Lighter</Name>
 		<PreviewImage>assets\sprites\icons\raze-lighter.png</PreviewImage>
 		<Description>With your own hands you forged the mighty Raze-Lighter. Now take it in hand and feed its flames.</Description>
@@ -78,8 +78,8 @@
 			<WeaponAttackVFXType>UnarmedMelee</WeaponAttackVFXType>
 			<wavAudioClip>assets\sfx\raze-lighter.wav</wavAudioClip>
 		</customVFX>
-	</CustomEquipment>
-	<CustomEquipment>
+	</K2Weapon>
+	<K2Weapon>
 		<Name>Ice Breaker</Name>
 		<PreviewImage>assets\sprites\icons\ice_breaker.png</PreviewImage>
 		<Description>Please replace these components if use causes fatal damage: HEAT SINK. MAGAZINE. OPERATOR.</Description>
@@ -126,8 +126,8 @@
 			<wavAudioClip>assets\sfx\icebreaker.wav</wavAudioClip>
 			<WeaponAttackVFXSprite>assets\sprites\vfx\single\solar_bullet.png</WeaponAttackVFXSprite>
 		</customVFX>
-	</CustomEquipment>
-	<CustomEquipment>
+	</K2Weapon>
+	<K2Weapon>
 		<Name>Red Death</Name>
 		<PreviewImage>assets\sprites\icons\red_death.png</PreviewImage>
 		<Description>Peitho policy urges Guards to destroy this weapon on sight.</Description>
@@ -174,8 +174,8 @@
 			<wavAudioClip>assets\sfx\red_death.wav</wavAudioClip>
 			<WeaponAttackVFXSprite>assets\sprites\vfx\burst\kenetic_bullet.png</WeaponAttackVFXSprite>
 		</customVFX>
-	</CustomEquipment>
-	<CustomEquipment>
+	</K2Weapon>
+	<K2Weapon>
 		<Name>Dead Man's Tale</Name>
 		<PreviewImage>assets\sprites\icons\dead_mans_tale.png</PreviewImage>
 		<Description>"Long, short, they all end the same way." —Katabasis</Description>
@@ -217,8 +217,8 @@
 			<wavAudioClip>assets\sfx\monte_carlo.wav(not implemented)</wavAudioClip>
 			<WeaponAttackVFXSprite>assets\sprites\vfx\burst\kenetic_bullet.png</WeaponAttackVFXSprite>
 		</customVFX>
-	</CustomEquipment>
-	<CustomEquipment>
+	</K2Weapon>
+	<K2Weapon>
 		<Name>Monte Carlo</Name>
 		<PreviewImage>assets\sprites\icons\monte_carlo.png</PreviewImage>
 		<Description>There will always be paths to tread and methods to try. Roll with it.</Description>
@@ -260,8 +260,8 @@
 			<wavAudioClip>assets\sfx\monte_carlo.wav(not implemented)</wavAudioClip>
 			<WeaponAttackVFXSprite>assets\sprites\vfx\burst\kenetic_bullet.png</WeaponAttackVFXSprite>
 		</customVFX>
-	</CustomEquipment>
-	<CustomEquipment>
+	</K2Weapon>
+	<K2Weapon>
 		<Name>Le Monarque</Name>
 		<PreviewImage>assets\sprites\icons\le_monarque.png</PreviewImage>
 		<Description>"Wings flutter. Beauty distracts. Poison injects. The butterfly's curse extends to your enemies. A short life, shortened further by your hand." —Ada-1</Description>
@@ -308,8 +308,8 @@
 			<wavAudioClip>assets\sfx\le_monarque.wav</wavAudioClip>
 			<WeaponAttackVFXSprite>assets\sprites\vfx\single\void_bullet.png</WeaponAttackVFXSprite>
 		</customVFX>
-	</CustomEquipment>
-	<CustomEquipment>
+	</K2Weapon>
+	<K2Weapon>
 		<Name>Tractor Cannon</Name>
 		<PreviewImage>assets\sprites\icons\tractor_cannon.png</PreviewImage>
 		<Description>Property of Peitho. WARNING: Gravity propulsor beam can cause serious injury or even death.</Description>
@@ -356,8 +356,8 @@
 			<wavAudioClip>assets\sfx\le_monarque.wav</wavAudioClip>
 			<WeaponAttackVFXSprite>assets\sprites\vfx\custom\repulsor_blast.png</WeaponAttackVFXSprite>
 		</customVFX>
-	</CustomEquipment>
-	<CustomEquipment>
+	</K2Weapon>
+	<K2Weapon>
 		<Name>The Other Half</Name>
 		<PreviewImage>assets\sprites\icons\the_other_half.png</PreviewImage>
 		<Description>An incomplete weapon, perhaps there's a companion weapon that'll make it whole?</Description>
@@ -403,8 +403,8 @@
 				<RequiredItemEquipped>Half-Truths</RequiredItemEquipped>
 			</Restrictions>
 		</restrictions>
-	</CustomEquipment>
-	<CustomEquipment>
+	</K2Weapon>
+	<K2Weapon>
 		<Name>Half-Truths</Name>
 		<Price>120</Price>
 		<PreviewImage>assets\sprites\icons\half_truths.png</PreviewImage>
@@ -429,5 +429,5 @@
 			<WeaponAttackVFXType>UnarmedMelee</WeaponAttackVFXType>
 			<wavAudioClip>assets\sfx\two_halves.wav</wavAudioClip>
 		</customVFX>
-	</CustomEquipment>
-</ArrayOfCustomEquipment>
+	</K2Weapon>
+</ArrayOfK2Weapon>

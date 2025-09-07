@@ -12,7 +12,7 @@ using System.Reflection;
 using UnityEngine;
 namespace K2ExoticArmory
 {
-    public class CustomEquipment
+    public class K2Weapon
     {
         public string Name;
 

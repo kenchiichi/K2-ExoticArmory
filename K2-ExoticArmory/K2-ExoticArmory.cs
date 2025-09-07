@@ -56,9 +56,9 @@ namespace K2ExoticArmory
             using (StreamReader reader = new StreamReader(Path.Combine(manifest.ModPath, "data\\StoreWeaponData.xml")))
             {
                 string xml = reader.ReadToEnd();
-                List<CustomEquipment> customEquipments = Deserialize<List<CustomEquipment>>(xml);
+                List<K2Weapon> customEquipments = Deserialize<List<K2Weapon>>(xml);
 
-                foreach (CustomEquipment customEquipment in customEquipments)
+                foreach (K2Weapon customEquipment in customEquipments)
                 {
                     var item = customEquipment.CustomInitialize(manifest);
                     NewItemNames.Add(item.Name);
@@ -68,9 +68,9 @@ namespace K2ExoticArmory
             using (StreamReader reader = new StreamReader(Path.Combine(manifest.ModPath, "data\\WorldWeaponData.xml")))
             {
                 string xml = reader.ReadToEnd();
-                List<CustomEquipment> customEquipments = Deserialize<List<CustomEquipment>>(xml);
+                List<K2Weapon> customEquipments = Deserialize<List<K2Weapon>>(xml);
 
-                foreach (CustomEquipment customEquipment in customEquipments)
+                foreach (K2Weapon customEquipment in customEquipments)
                 {
                     var item = customEquipment.CustomInitialize(manifest);
                     NewItemNames.Add(item.Name);
