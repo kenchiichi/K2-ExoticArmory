@@ -74,13 +74,13 @@ namespace K2ExoticArmory
             if (newLevel == "Motel_UpperFloor")
             {
                 double xPos = -6.00;
-                double  yPos = 15.00;
+                double  yPos = 16.30;
                 GameObject andrNPC = new GameObject();
                 andrNPC.transform.position = new Vector3((float)xPos, (float)yPos);
                 BoxCollider andrNPCCollider = andrNPC.AddComponent<BoxCollider>();
-                andrNPCCollider.size = new Vector3(1f, 1f);
+                andrNPCCollider.size = new Vector3(1f, 2f);
                 GameObject andrNPCSprite = new GameObject();
-                andrNPCSprite.transform.position = new Vector3((float)(xPos - .7), (float)(yPos - .7));
+                andrNPCSprite.transform.position = new Vector3((float)(xPos - .7), (float)(yPos - .65));
                 SpriteRenderer andrNPCSpriteRenderer = andrNPCSprite.AddComponent<SpriteRenderer>();
                 andrNPCSpriteRenderer.sprite = _manifest.SpriteResolver.ResolveAsResource("assets\\sprites\\npc\\ada_overworld.png");
                 andrNPCSpriteRenderer.transform.localScale = new Vector3(1f, 1f);

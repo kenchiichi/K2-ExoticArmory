@@ -11,22 +11,22 @@
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_lust_defense</StatName>
-				<ModifyAmount>5</ModifyAmount>
+				<ModifyAmount>1</ModifyAmount>
 			</StatModifierInfo>
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_physical_defense</StatName>
-				<ModifyAmount>5</ModifyAmount>
+				<ModifyAmount>1</ModifyAmount>
 			</StatModifierInfo>
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_hitpoints</StatName>
-				<ModifyAmount>5</ModifyAmount>
+				<ModifyAmount>1</ModifyAmount>
 			</StatModifierInfo>
 		</StatModifierInfos>
 		<CustomAbilityItems>
 			<CustomAbility>
-				<AbilityID>Abl_Attack_Rida_Stun</AbilityID>
+				<AbilityID>Abl_Attack_Rida_Damage_Return</AbilityID>
 				<AbilityName>Dinklebot</AbilityName>
 				<AbilityTooltip>An ancient compainion, who is now lifeless, but once was a most trusted friend.</AbilityTooltip>
 			</CustomAbility>
