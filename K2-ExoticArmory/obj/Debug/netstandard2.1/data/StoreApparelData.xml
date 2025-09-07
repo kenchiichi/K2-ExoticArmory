@@ -28,7 +28,7 @@
 			<CustomAbility>
 				<AbilityID>Abl_Attack_Rida_Damage_Return</AbilityID>
 				<AbilityName>Dinklebot</AbilityName>
-				<AbilityTooltip>An ancient compainion, who is now lifeless, but once was a most trusted friend.</AbilityTooltip>
+				<AbilityTooltip>An ancient compainion, who is now lifeless, but once was a most trusted friend.  Awakens when the user is attacked, to help attack.</AbilityTooltip>
 			</CustomAbility>
 		</CustomAbilityItems>
 	</K2Apparel>

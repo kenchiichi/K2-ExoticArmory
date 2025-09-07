@@ -4,11 +4,6 @@
 		<Price>120</Price>
 		<PreviewImage>assets\sprites\icons\half_truths.png</PreviewImage>
 		<Description>An incomplete weapon, perhaps there's a companion weapon that'll make it whole?</Description>
-		<LocationCoordinates>
-			<xCoordinate>6.00</xCoordinate>
-			<yCoordinate>10.50</yCoordinate>
-			<MapName>Motel_GroundFloor</MapName>
-		</LocationCoordinates>
 		<Slots>
 			<string>MainWeapon</string>
 		</Slots>
