@@ -1,0 +1,35 @@
+﻿<ArrayOfK2Apparel>
+	<K2Apparel>
+		<Name>Generalist Shell</Name>
+		<Price>50</Price>
+		<PreviewImage>assets\sprites\icons\generalist_shell.png</PreviewImage>
+		<Description>Born from the Traveler, built of machinery and Light, the Ghost is your companion and faithful guide.</Description>
+		<Slots>
+			<string>Accessory2</string>
+		</Slots>
+		<StatModifierInfos>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_lust_defense</StatName>
+				<ModifyAmount>5</ModifyAmount>
+			</StatModifierInfo>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_physical_defense</StatName>
+				<ModifyAmount>5</ModifyAmount>
+			</StatModifierInfo>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_hitpoints</StatName>
+				<ModifyAmount>5</ModifyAmount>
+			</StatModifierInfo>
+		</StatModifierInfos>
+		<CustomAbilityItems>
+			<CustomAbility>
+				<AbilityID>Abl_Attack_Rida_Stun</AbilityID>
+				<AbilityName>Dinklebot</AbilityName>
+				<AbilityTooltip>An ancient compainion, who is now lifeless, but once was a most trusted friend.</AbilityTooltip>
+			</CustomAbility>
+		</CustomAbilityItems>
+	</K2Apparel>
+</ArrayOfK2Apparel>

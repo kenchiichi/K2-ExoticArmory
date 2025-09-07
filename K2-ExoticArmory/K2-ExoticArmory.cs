@@ -14,9 +14,15 @@ namespace K2ExoticArmory
 {
     public class K2ExoticArmory : ITCMod
     {
+        public ItemVendor vendor;
+
         public List<K2ExoticArmoryWeapon.CustomWeapon> PurchasableWeapons = new List<K2ExoticArmoryWeapon.CustomWeapon>();
 
+        public List<K2ExoticArmoryApparel.CustomApparel> PurchasableApparel = new List<K2ExoticArmoryApparel.CustomApparel>();
+
         public List<K2ExoticArmoryWeapon.CustomWeapon> EarnableWeapons = new List<K2ExoticArmoryWeapon.CustomWeapon>();
+
+        public List<K2ExoticArmoryApparel.CustomApparel> EarnableApparel = new List<K2ExoticArmoryApparel.CustomApparel>();
 
         public void OnDialogueStarted(Dialogue dialogue) { }
         public void OnLineStarted(DialogueLine line) { }
@@ -27,7 +33,15 @@ namespace K2ExoticArmory
             {
                 Item.All.Remove(item.Name.ToLower());
             }
+            foreach (var item in PurchasableApparel)
+            {
+                Item.All.Remove(item.Name.ToLower());
+            }
             foreach (var item in EarnableWeapons)
+            {
+                Item.All.Remove(item.Name.ToLower());
+            }
+            foreach (var item in EarnableApparel)
             {
                 Item.All.Remove(item.Name.ToLower());
             }
@@ -53,6 +67,8 @@ namespace K2ExoticArmory
                     });
                 }
             }
+
+            vendor.Catalogue.OpenShop();
         }
         public void OnModLoaded(ModManifest manifest)
         {
@@ -62,7 +78,40 @@ namespace K2ExoticArmory
 
             WeaponSerialStreamReader(manifest, "data\\StoreWeaponData.xml", PurchasableWeapons);
 
+            ApparelSerialStreamReader(manifest, "data\\StoreApparelData.xml", PurchasableApparel);
+
             WeaponSerialStreamReader(manifest, "data\\WorldWeaponData.xml", EarnableWeapons);
+
+            ApparelSerialStreamReader(manifest, "data\\WorldApparelData.xml", EarnableApparel);
+
+            List<ShopItemInfo> shopItems = new List<ShopItemInfo>();
+
+            foreach (var item in PurchasableApparel)
+            {
+                shopItems.Add(
+                    new ShopItemInfo()
+                    {
+                        Item = item,
+                        Cost = item.Price,
+                    }
+                );
+            }
+            foreach (var item in PurchasableWeapons)
+            {
+                shopItems.Add(
+                    new ShopItemInfo()
+                    {
+                        Item = item,
+                        Cost = item.Price,
+                    }
+                );
+            }
+            ItemShopCatalogue catalogue = ScriptableObject.CreateInstance<ItemShopCatalogue>();
+            catalogue.Items = shopItems;
+            vendor = new ItemVendor()
+            {
+                Catalogue = catalogue,
+            };
         }
 
         private void WeaponSerialStreamReader(ModManifest manifest, string xmlpath, List<K2ExoticArmoryWeapon.CustomWeapon> list)

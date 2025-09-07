@@ -13,8 +13,6 @@ namespace K2ExoticArmoryApparel
 
         public MapCoordinate LocationCoordinates;
 
-        public CustomVFX customVFX;
-
         public int Price;
     }
 
@@ -41,16 +39,6 @@ namespace K2ExoticArmoryApparel
         public int AbilityEnergyCost = 0;
     }
 
-    public class CustomVFX
-    {
-        public int BurstCount;
-
-        public string WeaponAttackVFXType = "UnarmedMelee";
-
-        public string wavAudioClip = "";
-
-        public string WeaponAttackVFXSprite = "";
-    }
     public class Restrictions
     {
         public string RequiredItemEquipped = "";

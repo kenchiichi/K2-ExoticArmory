@@ -34,8 +34,6 @@ namespace K2ExoticArmory
 
         public K2ExoticArmoryApparel.MapCoordinate LocationCoordinates;
 
-        public K2ExoticArmoryApparel.CustomVFX customVFX;
-
         private K2ExoticArmoryApparel.CustomApparel _instance;
 
         private ModManifest _manifest;
