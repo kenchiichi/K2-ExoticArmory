@@ -25,7 +25,9 @@ K2-ExoticArmory is a mod that adds Destiny, by Bungie, themed weapons to a shop 
 
 This mod is not complete.
 
-I've hidden most of the items around the world, eyes up guardian!
+Ada-1 will sell you a few miscellaneous items, she likes to camp out on the second floor of the Motel, otherwise, I've hidden most of the items around the world, eyes up guardian!
+
+If you want to skip the search, I've added a command to give all items from my mod.  "givearmory"
 
 <h2>Special Thanks</h2>
 Thanks to BlauKitten for the support in making this SDK! ♥
