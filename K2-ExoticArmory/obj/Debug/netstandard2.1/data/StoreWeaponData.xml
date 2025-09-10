@@ -21,7 +21,7 @@
 		</customVFX>
 	</K2Weapon>
 	<K2Weapon>
-		<Name>Khvostov 7G-02 (Rusted)</Name>
+		<Name>Khvostov 7G-01</Name>
 		<Price>50</Price>
 		<PreviewImage>assets\sprites\icons\khvostov_rusted.png</PreviewImage>
 		<Description>An ancient instrument of war, battered and worn—but it still fires true. Perhaps it's been waiting for you.</Description>
@@ -51,7 +51,7 @@
 		</customVFX>
 	</K2Weapon>
 	<K2Weapon>
-		<Name>Khvostov 7G-02 (new)</Name>
+		<Name>Khvostov 7G-02</Name>
 		<Price>500</Price>
 		<PreviewImage>assets\sprites\icons\khvostov_new.png</PreviewImage>
 		<Description>An ancient instrument of war, battered and worn—but it still fires true. Perhaps it's been waiting for you.</Description>
@@ -81,7 +81,7 @@
 		</customVFX>
 	</K2Weapon>
 	<K2Weapon>
-		<Name>Khvostov 7G-0X (Perfected)</Name>
+		<Name>Khvostov 7G-0X</Name>
 		<Price>800</Price>
 		<PreviewImage>assets\sprites\icons\khvostov_improved.png</PreviewImage>
 		<Description>An ancient instrument of war, renewed and enhanced by Guardian power—not unlike you.</Description>

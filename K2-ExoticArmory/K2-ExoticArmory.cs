@@ -41,15 +41,20 @@ namespace K2ExoticArmory
             {
                 Item.All.Remove(item.Name.ToLower());
                 removedItems += item.Name + "\n";
-
-                foreach (var EquipmentSlot in Character.Player.EquippedItems.GetAll<Item>())
+                foreach (var inventoryItem in Character.Player.Inventory.GetAll<Item>())
                 {
-                    if (EquipmentSlot.Name.ToLower() == item.Name.ToLower())
+                    if (inventoryItem.Name == item.Name)
                     {
-                        Character.Player.EquippedItems.Remove(item.Name);
-                    }
+                        foreach (var EquipmentSlot in Character.Player.EquippedItems.GetAll<Item>())
+                        {
+                            if (EquipmentSlot.Name.ToLower() == item.Name.ToLower())
+                            {
+                                Character.Player.EquippedItems.Remove(item.Name);
+                            }
+                        }
+                        Character.Get("Jenna").Inventory.Remove(item.Name);
+                    } 
                 }
-                Character.Get("Jenna").Inventory.Remove(item.Name);
             }
             Debug.Log(removedItems);
             Item.GenerateErrorDialogue(Character.Player, "I should remember to check to see if I have weapons to defend myself.", "Think");
