@@ -18,17 +18,9 @@ namespace K2ExoticArmory
 
         private ModManifest _manifest;
 
-        public List<K2CustomEquipment.CustomWeapon> PurchasableWeapons = new List<K2CustomEquipment.CustomWeapon>();
-
         public List<K2CustomEquipment.CustomWeapon> K2AllWeapons = new List<K2CustomEquipment.CustomWeapon>();
 
-        public List<K2CustomEquipment.CustomApparel> PurchasableApparel = new List<K2CustomEquipment.CustomApparel>();
-
         public List<K2CustomEquipment.CustomApparel> K2AllApparel = new List<K2CustomEquipment.CustomApparel>();
-
-        public List<K2CustomEquipment.CustomWeapon> EarnableWeapons = new List<K2CustomEquipment.CustomWeapon>();
-
-        public List<K2CustomEquipment.CustomApparel> EarnableApparel = new List<K2CustomEquipment.CustomApparel>();
 
         public List<Item> K2Items = new List<Item>();
 
@@ -42,17 +34,17 @@ namespace K2ExoticArmory
             {
                 Item.All.Remove(item.Name.ToLower());
                 removedItems += item.Name + "\n";
-                foreach (var inventoryItem in Character.Player.Inventory.GetAll<Item>())
+                foreach (Item EquipmentSlot in Character.Player.EquippedItems.GetAll<Item>())
+                {
+                    if (EquipmentSlot.Name.ToLower() == item.Name.ToLower())
+                    {
+                        Character.Player.EquippedItems.Remove(item.Name);
+                    }
+                }
+                foreach (Item inventoryItem in Character.Player.Inventory.GetAll<Item>())
                 {
                     if (inventoryItem.Name == item.Name)
                     {
-                        foreach (var EquipmentSlot in Character.Player.EquippedItems.GetAll<Item>())
-                        {
-                            if (EquipmentSlot.Name.ToLower() == item.Name.ToLower())
-                            {
-                                Character.Player.EquippedItems.Remove(item.Name);
-                            }
-                        }
                         Character.Get("Jenna").Inventory.Remove(item.Name);
                     }
                 }
@@ -62,23 +54,26 @@ namespace K2ExoticArmory
         }
         public void OnLevelChanged(string oldLevel, string newLevel)
         {
-            foreach (K2CustomEquipment.CustomWeapon item in EarnableWeapons)
+            foreach (K2CustomEquipment.CustomWeapon item in K2AllWeapons)
             {
-                if (item.LocationCoordinates.MapName == newLevel && !Character.Player.Inventory.Contains(item))
+                if (item.LocationCoordinates != null)
                 {
-                    var interactableGameObject = new GameObject();
-                    interactableGameObject.transform.position = new Vector3((float)item.LocationCoordinates.xCoordinate, (float)item.LocationCoordinates.yCoordinate);
-                    var boxCollider = interactableGameObject.AddComponent<BoxCollider>();
-                    boxCollider.size = new Vector3((float)0.25, (float)0.25);
-
-                    var interactable = interactableGameObject.AddComponent<Interactable>();
-                    interactable.TypeOfInteraction = InteractionType.Talk;
-                    interactable.OnInteracted.AddListener(x =>
+                    if (item.LocationCoordinates.MapName == newLevel && !Character.Player.Inventory.Contains(item))
                     {
-                        Item.GenerateErrorDialogue(Character.Player, "I found <color=#00ffff>" + item.Name + "</color> laying here!", "Happy");
-                        GiveItems.GiveToCharacter(Character.Get("Jenna"), false, false, item);
-                        interactable.gameObject.SetActive(false);
-                    });
+                        var interactableGameObject = new GameObject();
+                        interactableGameObject.transform.position = new Vector3((float)item.LocationCoordinates.xCoordinate, (float)item.LocationCoordinates.yCoordinate);
+                        var boxCollider = interactableGameObject.AddComponent<BoxCollider>();
+                        boxCollider.size = new Vector3((float)0.25, (float)0.25);
+
+                        var interactable = interactableGameObject.AddComponent<Interactable>();
+                        interactable.TypeOfInteraction = InteractionType.Talk;
+                        interactable.OnInteracted.AddListener(x =>
+                        {
+                            Item.GenerateErrorDialogue(Character.Player, "I found <color=#00ffff>" + item.Name + "</color> laying here!", "Happy");
+                            GiveItems.GiveToCharacter(Character.Get("Jenna"), false, false, item);
+                            interactable.gameObject.SetActive(false);
+                        });
+                    }
                 }
             }
 
@@ -113,37 +108,44 @@ namespace K2ExoticArmory
 
             AddRequirementListener();
 
-            WeaponSerialStreamReader(manifest, "data\\StoreWeaponData.xml", PurchasableWeapons);
+            WeaponSerialStreamReader(manifest, "data\\StoreWeaponData.xml", K2AllWeapons);
 
-            ApparelSerialStreamReader(manifest, "data\\StoreApparelData.xml", PurchasableApparel);
+            ApparelSerialStreamReader(manifest, "data\\StoreApparelData.xml", K2AllApparel);
 
-            WeaponSerialStreamReader(manifest, "data\\WorldWeaponData.xml", EarnableWeapons);
+            WeaponSerialStreamReader(manifest, "data\\WorldWeaponData.xml", K2AllWeapons);
 
-            ApparelSerialStreamReader(manifest, "data\\WorldApparelData.xml", EarnableApparel);
+            ApparelSerialStreamReader(manifest, "data\\WorldApparelData.xml", K2AllApparel);
 
             List<ShopItemInfo> shopItems = new List<ShopItemInfo>();
 
-            foreach (var item in PurchasableApparel)
-            {
-                shopItems.Add(
-                    new ShopItemInfo()
-                    {
-                        Item = item,
-                        Cost = item.Price,
-                    }
-                );
-            }
-            foreach (var item in PurchasableWeapons)
-            {
-                shopItems.Add(
-                    new ShopItemInfo()
-                    {
-                        Item = item,
-                        Cost = item.Price,
-                    }
-                );
-            }
             ItemShopCatalogue catalogue = ScriptableObject.CreateInstance<ItemShopCatalogue>();
+
+            foreach (var item in K2AllApparel)
+            {
+                if (item.Price > 0)
+                {
+                    shopItems.Add(
+                    new ShopItemInfo()
+                    {
+                        Item = item,
+                        Cost = item.Price,
+                    }
+                );
+                }
+            }
+            foreach (var item in K2AllWeapons)
+            {
+                if (item.Price > 0)
+                {
+                    shopItems.Add(
+                        new ShopItemInfo()
+                        {
+                            Item = item,
+                            Cost = item.Price,
+                        }
+                    );
+                }
+            }
             catalogue.Items = shopItems;
             vendor = new ItemVendor()
             {
@@ -172,7 +174,6 @@ namespace K2ExoticArmory
                 var item = k2Weapon.CustomInitialize(manifest);
                 list.Add(item);
                 K2Items.Add(item);
-                K2AllWeapons.Add(item);
             }
         }
         private void ApparelSerialStreamReader(ModManifest manifest, string xmlpath, List<K2CustomEquipment.CustomApparel> list)
@@ -185,7 +186,6 @@ namespace K2ExoticArmory
                 var item = k2Apparel.CustomInitialize(manifest);
                 list.Add(item);
                 K2Items.Add(item);
-                K2AllApparel.Add(item);
             }
         }
 
