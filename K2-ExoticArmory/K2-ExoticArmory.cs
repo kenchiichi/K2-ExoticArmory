@@ -1,12 +1,9 @@
 ﻿using ANToolkit.Controllers;
 using ANToolkit.Debugging;
-using ANToolkit.FPS.Weapons;
-using ANToolkit.ResourceManagement;
 using ANToolkit.Utility;
 using Asuna.CharManagement;
 using Asuna.Dialogues;
 using Asuna.Items;
-using Asuna.UI;
 using Modding;
 using System.Collections.Generic;
 using System.IO;
@@ -53,7 +50,7 @@ namespace K2ExoticArmory
                             }
                         }
                         Character.Get("Jenna").Inventory.Remove(item.Name);
-                    } 
+                    }
                 }
             }
             Debug.Log(removedItems);
@@ -84,7 +81,7 @@ namespace K2ExoticArmory
             if (newLevel == "Motel_UpperFloor")
             {
                 double xPos = -6.00;
-                double  yPos = 16.30;
+                double yPos = 16.30;
 
                 GameObject adaNPC = new GameObject();
                 adaNPC.transform.position = new Vector3((float)xPos, (float)yPos);

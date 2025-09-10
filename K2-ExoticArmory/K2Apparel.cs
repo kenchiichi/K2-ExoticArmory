@@ -1,12 +1,7 @@
-﻿using ANToolkit.PlayMakerExtension;
-using ANToolkit.ResourceManagement;
-using Asuna.CharManagement;
+﻿using ANToolkit.ResourceManagement;
 using Asuna.Items;
-using Asuna.NewCombat;
-using HutongGames.PlayMaker;
 using Modding;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
@@ -44,7 +39,7 @@ namespace K2ExoticArmory
             }
 
             Apparel.DisplaySpriteResource = previewImage;
-            Apparel.LocationCoordinates = LocationCoordinates; 
+            Apparel.LocationCoordinates = LocationCoordinates;
             Apparel.Name = Name;
             Apparel.Slots.AddRange(Slots.Select((string x) => (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), x)));
             Apparel.Category = ItemCategory.Clothing;

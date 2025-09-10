@@ -2,14 +2,12 @@
 using Asuna.Items;
 using Asuna.NewCombat;
 using Modding;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace K2ExoticArmory
 {
     public class K2Equipment
-{
+    {
         public string Name;
 
         public int Price;

@@ -6,7 +6,6 @@ using Asuna.NewCombat;
 using HutongGames.PlayMaker;
 using Modding;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
@@ -58,7 +57,7 @@ namespace K2ExoticArmory
             }
 
             weapon.DisplaySpriteResource = previewImage;
-            weapon.LocationCoordinates = LocationCoordinates; 
+            weapon.LocationCoordinates = LocationCoordinates;
             weapon.Name = Name;
             weapon.Slots.AddRange(Slots.Select((string x) => (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), x)));
             weapon.Category = ItemCategory.Weapon;
