@@ -1,8 +1,22 @@
 ﻿using Asuna.CharManagement;
 using System.Collections.Generic;
 
-namespace K2ExoticArmoryApparel
+namespace K2CustomEquipment
 {
+    public class CustomWeapon : Asuna.Items.Weapon
+    {
+        public List<StatModifierInfo> StatModifierInfos;
+
+        public List<CustomAbility> CustomAbilityItems;
+
+        public List<Restrictions> restrictions;
+
+        public MapCoordinate LocationCoordinates;
+
+        public CustomVFX customVFX;
+
+        public int Price;
+    }
     public class CustomApparel : Asuna.Items.Apparel
     {
         public List<StatModifierInfo> StatModifierInfos;
@@ -15,7 +29,6 @@ namespace K2ExoticArmoryApparel
 
         public int Price;
     }
-
     public class MapCoordinate
     {
         public string MapName = "";
@@ -38,7 +51,16 @@ namespace K2ExoticArmoryApparel
 
         public int AbilityEnergyCost = 0;
     }
+    public class CustomVFX
+    {
+        public int BurstCount;
 
+        public string WeaponAttackVFXType = "UnarmedMelee";
+
+        public string wavAudioClip = "";
+
+        public string WeaponAttackVFXSprite = "";
+    }
     public class Restrictions
     {
         public string RequiredItemEquipped = "";

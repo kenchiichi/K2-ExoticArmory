@@ -12,35 +12,14 @@ using System.Reflection;
 using UnityEngine;
 namespace K2ExoticArmory
 {
-    public class K2Apparel
+    public class K2Apparel : K2Equipment
     {
-        public string Name;
-
-        public int Price;
-
-        public string PreviewImage;
-
-        public string Description;
-
-        public List<string> Slots;
-
-        public List<StatModifierInfo> StatModifierInfos;
-
-        public List<K2ExoticArmoryApparel.CustomAbility> CustomAbilityItems;
-
-        public List<StatModifierInfo> StatRequirements;
-
-        public List<K2ExoticArmoryApparel.Restrictions> restrictions;
-
-        public K2ExoticArmoryApparel.MapCoordinate LocationCoordinates;
-
-        private K2ExoticArmoryApparel.CustomApparel _instance;
+        private K2CustomEquipment.CustomApparel _instance;
 
         private ModManifest _manifest;
-
-        public K2ExoticArmoryApparel.CustomApparel CustomInitialize(ModManifest manifest)
+        public K2CustomEquipment.CustomApparel CustomInitialize(ModManifest manifest)
         {
-            K2ExoticArmoryApparel.CustomApparel Apparel = ScriptableObject.CreateInstance<K2ExoticArmoryApparel.CustomApparel>();
+            K2CustomEquipment.CustomApparel Apparel = ScriptableObject.CreateInstance<K2CustomEquipment.CustomApparel>();
 
             ANResourceSprite previewImage = manifest.SpriteResolver.ResolveAsResource(PreviewImage);
 
@@ -74,28 +53,9 @@ namespace K2ExoticArmory
             Apparel.StatRequirements = StatRequirements;
             Apparel.restrictions = restrictions;
 
-            AddAbilitiesToApparel(Apparel);
+            AddAbilitiesToEquipment(Apparel, _manifest);
 
             return Apparel;
-        }
-
-        private void AddAbilitiesToApparel(Equipment Apparel)
-        {
-            if (CustomAbilityItems != null)
-            {
-                foreach (var item in CustomAbilityItems)
-                {
-                    Ability ability = ANToolkit.ScriptableManagement.ScriptableManager.Get<Asuna.NewCombat.Ability>(item.AbilityID).Clone();
-                    ability.name = item.AbilityName.Replace(' ', '_');
-                    ability.Tooltip = item.AbilityTooltip;
-                    ability.DisplayName = item.AbilityName;
-                    ability.DisplaySprite = _manifest.SpriteResolver.ResolveAsResource(item.DisplaySprite);
-                    ability.EnergyCost = item.AbilityEnergyCost;
-                    ability.CooldownOnUse = item.AbilityCooldown;
-                    ANToolkit.ScriptableManagement.ScriptableManager.Add(ability);
-                    Apparel.AddAbility(ability, "Ability");
-                }
-            }
         }
     }
 }

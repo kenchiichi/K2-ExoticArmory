@@ -12,37 +12,17 @@ using System.Reflection;
 using UnityEngine;
 namespace K2ExoticArmory
 {
-    public class K2Weapon
+    public class K2Weapon : K2Equipment
     {
-        public string Name;
+        public K2CustomEquipment.CustomVFX customVFX;
 
-        public int Price;
-
-        public string PreviewImage;
-
-        public string Description;
-
-        public List<string> Slots;
-
-        public List<StatModifierInfo> StatModifierInfos;
-
-        public List<K2ExoticArmoryWeapon.CustomAbility> CustomAbilityItems;
-
-        public List<StatModifierInfo> StatRequirements;
-
-        public List<K2ExoticArmoryWeapon.Restrictions> restrictions;
-
-        public K2ExoticArmoryWeapon.MapCoordinate LocationCoordinates;
-
-        public K2ExoticArmoryWeapon.CustomVFX customVFX;
-
-        private K2ExoticArmoryWeapon.CustomWeapon _instance;
+        private K2CustomEquipment.CustomWeapon _instance;
 
         private ModManifest _manifest;
 
-        public K2ExoticArmoryWeapon.CustomWeapon CustomInitialize(ModManifest manifest)
+        public K2CustomEquipment.CustomWeapon CustomInitialize(ModManifest manifest)
         {
-            K2ExoticArmoryWeapon.CustomWeapon weapon = ScriptableObject.CreateInstance<K2ExoticArmoryWeapon.CustomWeapon>();
+            K2CustomEquipment.CustomWeapon weapon = ScriptableObject.CreateInstance<K2CustomEquipment.CustomWeapon>();
 
             ANResourceSprite previewImage = manifest.SpriteResolver.ResolveAsResource(PreviewImage);
 
@@ -87,30 +67,10 @@ namespace K2ExoticArmory
             weapon.StatRequirements = StatRequirements;
             weapon.restrictions = restrictions;
 
-            AddAbilitiesToWeapon(weapon);
+            AddAbilitiesToEquipment(weapon, _manifest);
 
             return weapon;
         }
-
-        private void AddAbilitiesToWeapon(Equipment weapon)
-        {
-            if (CustomAbilityItems != null)
-            {
-                foreach (var item in CustomAbilityItems)
-                {
-                    Ability ability = ANToolkit.ScriptableManagement.ScriptableManager.Get<Asuna.NewCombat.Ability>(item.AbilityID).Clone();
-                    ability.name = item.AbilityName.Replace(' ', '_');
-                    ability.Tooltip = item.AbilityTooltip;
-                    ability.DisplayName = item.AbilityName;
-                    ability.DisplaySprite = _manifest.SpriteResolver.ResolveAsResource(item.DisplaySprite);
-                    ability.EnergyCost = item.AbilityEnergyCost;
-                    ability.CooldownOnUse = item.AbilityCooldown;
-                    ANToolkit.ScriptableManagement.ScriptableManager.Add(ability);
-                    weapon.AddAbility(ability, "Ability");
-                }
-            }
-        }
-
         private void AddShootingVFXHook(Weapon weapon, Sprite sprite, int burstCount)
         {
             CombatTurnManager.OnTurnStart.AddListener(() =>

@@ -21,13 +21,13 @@ namespace K2ExoticArmory
 
         private ModManifest _manifest;
 
-        public List<K2ExoticArmoryWeapon.CustomWeapon> PurchasableWeapons = new List<K2ExoticArmoryWeapon.CustomWeapon>();
+        public List<K2CustomEquipment.CustomWeapon> PurchasableWeapons = new List<K2CustomEquipment.CustomWeapon>();
 
-        public List<K2ExoticArmoryApparel.CustomApparel> PurchasableApparel = new List<K2ExoticArmoryApparel.CustomApparel>();
+        public List<K2CustomEquipment.CustomApparel> PurchasableApparel = new List<K2CustomEquipment.CustomApparel>();
 
-        public List<K2ExoticArmoryWeapon.CustomWeapon> EarnableWeapons = new List<K2ExoticArmoryWeapon.CustomWeapon>();
+        public List<K2CustomEquipment.CustomWeapon> EarnableWeapons = new List<K2CustomEquipment.CustomWeapon>();
 
-        public List<K2ExoticArmoryApparel.CustomApparel> EarnableApparel = new List<K2ExoticArmoryApparel.CustomApparel>();
+        public List<K2CustomEquipment.CustomApparel> EarnableApparel = new List<K2CustomEquipment.CustomApparel>();
 
         public void OnDialogueStarted(Dialogue dialogue) { }
         public void OnLineStarted(DialogueLine line) { }
@@ -53,7 +53,7 @@ namespace K2ExoticArmory
         }
         public void OnLevelChanged(string oldLevel, string newLevel)
         {
-            foreach (K2ExoticArmoryWeapon.CustomWeapon item in EarnableWeapons)
+            foreach (K2CustomEquipment.CustomWeapon item in EarnableWeapons)
             {
                 if (item.LocationCoordinates.MapName == newLevel && !Character.Player.Inventory.Contains(item))
                 {
@@ -168,7 +168,7 @@ namespace K2ExoticArmory
             });
         }
 
-        private void WeaponSerialStreamReader(ModManifest manifest, string xmlpath, List<K2ExoticArmoryWeapon.CustomWeapon> list)
+        private void WeaponSerialStreamReader(ModManifest manifest, string xmlpath, List<K2CustomEquipment.CustomWeapon> list)
         {
             using (StreamReader reader = new StreamReader(Path.Combine(manifest.ModPath, xmlpath)))
             {
@@ -181,7 +181,7 @@ namespace K2ExoticArmory
                 }
             }
         }
-        private void ApparelSerialStreamReader(ModManifest manifest, string xmlpath, List<K2ExoticArmoryApparel.CustomApparel> list)
+        private void ApparelSerialStreamReader(ModManifest manifest, string xmlpath, List<K2CustomEquipment.CustomApparel> list)
         {
             using (StreamReader reader = new StreamReader(Path.Combine(manifest.ModPath, xmlpath)))
             {
@@ -215,15 +215,15 @@ namespace K2ExoticArmory
         }
         private void AddRequirementListener()
         {
-            K2ExoticArmoryWeapon.CustomWeapon.OnEquipAttempt.AddListener(equipAttemptInfo =>
+            K2CustomEquipment.CustomWeapon.OnEquipAttempt.AddListener(equipAttemptInfo =>
             {
-                foreach (K2ExoticArmoryWeapon.CustomWeapon item in EarnableWeapons)
+                foreach (K2CustomEquipment.CustomWeapon item in EarnableWeapons)
                 {
                     if (equipAttemptInfo.Equipment.Name.ToLower() == item.Name.ToLower() && item.restrictions != null)
                     {
-                        foreach (K2ExoticArmoryWeapon.Restrictions restriction in item.restrictions)
+                        foreach (K2CustomEquipment.Restrictions restriction in item.restrictions)
                         {
-                            foreach (K2ExoticArmoryWeapon.CustomWeapon itemRequirement in EarnableWeapons)
+                            foreach (K2CustomEquipment.CustomWeapon itemRequirement in EarnableWeapons)
                             {
                                 if (restriction.RequiredItemEquipped == itemRequirement.Name)
                                 {
@@ -256,7 +256,7 @@ namespace K2ExoticArmory
                             }
                         }
                     }
-                    foreach (K2ExoticArmoryWeapon.Restrictions restriction in item.restrictions)
+                    foreach (K2CustomEquipment.Restrictions restriction in item.restrictions)
                     {
                         Item newitem = null;
                         bool itemInEquipmentSlot = false;
