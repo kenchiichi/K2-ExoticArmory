@@ -20,7 +20,11 @@ namespace K2ExoticArmory
 
         public List<K2CustomEquipment.CustomWeapon> PurchasableWeapons = new List<K2CustomEquipment.CustomWeapon>();
 
+        public List<K2CustomEquipment.CustomWeapon> K2AllWeapons = new List<K2CustomEquipment.CustomWeapon>();
+
         public List<K2CustomEquipment.CustomApparel> PurchasableApparel = new List<K2CustomEquipment.CustomApparel>();
+
+        public List<K2CustomEquipment.CustomApparel> K2AllApparel = new List<K2CustomEquipment.CustomApparel>();
 
         public List<K2CustomEquipment.CustomWeapon> EarnableWeapons = new List<K2CustomEquipment.CustomWeapon>();
 
@@ -168,6 +172,7 @@ namespace K2ExoticArmory
                 var item = k2Weapon.CustomInitialize(manifest);
                 list.Add(item);
                 K2Items.Add(item);
+                K2AllWeapons.Add(item);
             }
         }
         private void ApparelSerialStreamReader(ModManifest manifest, string xmlpath, List<K2CustomEquipment.CustomApparel> list)
@@ -180,6 +185,7 @@ namespace K2ExoticArmory
                 var item = k2Apparel.CustomInitialize(manifest);
                 list.Add(item);
                 K2Items.Add(item);
+                K2AllApparel.Add(item);
             }
         }
 
@@ -203,13 +209,13 @@ namespace K2ExoticArmory
         {
             K2CustomEquipment.CustomWeapon.OnEquipAttempt.AddListener(equipAttemptInfo =>
             {
-                foreach (K2CustomEquipment.CustomWeapon item in EarnableWeapons)
+                foreach (K2CustomEquipment.CustomWeapon item in K2AllWeapons)
                 {
                     if (equipAttemptInfo.Equipment.Name.ToLower() == item.Name.ToLower() && item.restrictions != null)
                     {
                         foreach (K2CustomEquipment.Restrictions restriction in item.restrictions)
                         {
-                            foreach (K2CustomEquipment.CustomWeapon itemRequirement in EarnableWeapons)
+                            foreach (K2CustomEquipment.CustomWeapon itemRequirement in K2AllWeapons)
                             {
                                 if (restriction.RequiredItemEquipped == itemRequirement.Name)
                                 {
