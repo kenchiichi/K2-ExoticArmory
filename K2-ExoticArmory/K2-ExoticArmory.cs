@@ -29,27 +29,30 @@ namespace K2ExoticArmory
 
         public List<K2CustomEquipment.CustomApparel> EarnableApparel = new List<K2CustomEquipment.CustomApparel>();
 
+        public List<Item> K2Items = new List<Item>();
+
         public void OnDialogueStarted(Dialogue dialogue) { }
         public void OnLineStarted(DialogueLine line) { }
         public void OnFrame(float deltaTime) { }
         public void OnModUnLoaded()
         {
-            foreach (var item in PurchasableWeapons)
+            string removedItems = "Items removed: \n";
+            foreach (var item in K2Items)
             {
                 Item.All.Remove(item.Name.ToLower());
+                removedItems += item.Name + "\n";
+
+                foreach (var EquipmentSlot in Character.Player.EquippedItems.GetAll<Item>())
+                {
+                    if (EquipmentSlot.Name.ToLower() == item.Name.ToLower())
+                    {
+                        Character.Player.EquippedItems.Remove(item.Name);
+                    }
+                }
+                Character.Get("Jenna").Inventory.Remove(item.Name);
             }
-            foreach (var item in PurchasableApparel)
-            {
-                Item.All.Remove(item.Name.ToLower());
-            }
-            foreach (var item in EarnableWeapons)
-            {
-                Item.All.Remove(item.Name.ToLower());
-            }
-            foreach (var item in EarnableApparel)
-            {
-                Item.All.Remove(item.Name.ToLower());
-            }
+            Debug.Log(removedItems);
+            Item.GenerateErrorDialogue(Character.Player, "I should remember to check to see if I have weapons to defend myself.", "Think");
         }
         public void OnLevelChanged(string oldLevel, string newLevel)
         {
@@ -144,22 +147,7 @@ namespace K2ExoticArmory
             ConCommand.Add("GiveArmory", delegate
             {
                 string items = "K2-ExoticAromory items: \n";
-                foreach (var item in PurchasableApparel)
-                {
-                    items += item.Name + "\n";
-                    GiveItems.GiveToCharacter(Character.Get("Jenna"), false, false, item);
-                }
-                foreach (var item in PurchasableWeapons)
-                {
-                    items += item.Name + "\n";
-                    GiveItems.GiveToCharacter(Character.Get("Jenna"), false, false, item);
-                }
-                foreach (var item in EarnableApparel)
-                {
-                    items += item.Name + "\n";
-                    GiveItems.GiveToCharacter(Character.Get("Jenna"), false, false, item);
-                }
-                foreach (var item in EarnableWeapons)
+                foreach (var item in K2Items)
                 {
                     items += item.Name + "\n";
                     GiveItems.GiveToCharacter(Character.Get("Jenna"), false, false, item);
@@ -178,6 +166,7 @@ namespace K2ExoticArmory
                 {
                     var item = k2Weapon.CustomInitialize(manifest);
                     list.Add(item);
+                    K2Items.Add(item);
                 }
             }
         }
@@ -191,6 +180,7 @@ namespace K2ExoticArmory
                 {
                     var item = k2Apparel.CustomInitialize(manifest);
                     list.Add(item);
+                    K2Items.Add(item);
                 }
             }
         }
