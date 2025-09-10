@@ -163,30 +163,26 @@ namespace K2ExoticArmory
 
         private void WeaponSerialStreamReader(ModManifest manifest, string xmlpath, List<K2CustomEquipment.CustomWeapon> list)
         {
-            using (StreamReader reader = new StreamReader(Path.Combine(manifest.ModPath, xmlpath)))
-            {
-                List<K2Weapon> k2Weapons = Deserialize<List<K2Weapon>>(reader.ReadToEnd());
+            using StreamReader reader = new StreamReader(Path.Combine(manifest.ModPath, xmlpath));
+            List<K2Weapon> k2Weapons = Deserialize<List<K2Weapon>>(reader.ReadToEnd());
 
-                foreach (K2Weapon k2Weapon in k2Weapons)
-                {
-                    var item = k2Weapon.CustomInitialize(manifest);
-                    list.Add(item);
-                    K2Items.Add(item);
-                }
+            foreach (K2Weapon k2Weapon in k2Weapons)
+            {
+                var item = k2Weapon.CustomInitialize(manifest);
+                list.Add(item);
+                K2Items.Add(item);
             }
         }
         private void ApparelSerialStreamReader(ModManifest manifest, string xmlpath, List<K2CustomEquipment.CustomApparel> list)
         {
-            using (StreamReader reader = new StreamReader(Path.Combine(manifest.ModPath, xmlpath)))
-            {
-                List<K2Apparel> k2Apparels = Deserialize<List<K2Apparel>>(reader.ReadToEnd());
+            using StreamReader reader = new StreamReader(Path.Combine(manifest.ModPath, xmlpath));
+            List<K2Apparel> k2Apparels = Deserialize<List<K2Apparel>>(reader.ReadToEnd());
 
-                foreach (K2Apparel k2Apparel in k2Apparels)
-                {
-                    var item = k2Apparel.CustomInitialize(manifest);
-                    list.Add(item);
-                    K2Items.Add(item);
-                }
+            foreach (K2Apparel k2Apparel in k2Apparels)
+            {
+                var item = k2Apparel.CustomInitialize(manifest);
+                list.Add(item);
+                K2Items.Add(item);
             }
         }
 
@@ -194,10 +190,8 @@ namespace K2ExoticArmory
         {
             if (xmlString == null) return default;
             var serializer = new XmlSerializer(typeof(T));
-            using (var reader = new StringReader(xmlString))
-            {
-                return (T)serializer.Deserialize(reader);
-            }
+            using var reader = new StringReader(xmlString);
+            return (T)serializer.Deserialize(reader);
         }
         private void AddSpriteListener()
         {
