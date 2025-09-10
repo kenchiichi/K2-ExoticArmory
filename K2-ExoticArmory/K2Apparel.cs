@@ -79,7 +79,7 @@ namespace K2ExoticArmory
             return Apparel;
         }
 
-        private void AddAbilitiesToApparel(K2ExoticArmoryApparel.CustomApparel Apparel)
+        private void AddAbilitiesToApparel(Equipment Apparel)
         {
             if (CustomAbilityItems != null)
             {

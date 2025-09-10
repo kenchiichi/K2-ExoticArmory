@@ -92,7 +92,7 @@ namespace K2ExoticArmory
             return weapon;
         }
 
-        private void AddAbilitiesToWeapon(K2ExoticArmoryWeapon.CustomWeapon weapon)
+        private void AddAbilitiesToWeapon(Equipment weapon)
         {
             if (CustomAbilityItems != null)
             {

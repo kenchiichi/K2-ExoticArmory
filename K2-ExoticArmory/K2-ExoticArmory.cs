@@ -1,10 +1,12 @@
 ﻿using ANToolkit.Controllers;
+using ANToolkit.Debugging;
 using ANToolkit.FPS.Weapons;
 using ANToolkit.ResourceManagement;
 using ANToolkit.Utility;
 using Asuna.CharManagement;
 using Asuna.Dialogues;
 using Asuna.Items;
+using Asuna.UI;
 using Modding;
 using System.Collections.Generic;
 using System.IO;
@@ -75,6 +77,7 @@ namespace K2ExoticArmory
             {
                 double xPos = -6.00;
                 double  yPos = 16.30;
+
                 GameObject adaNPC = new GameObject();
                 adaNPC.transform.position = new Vector3((float)xPos, (float)yPos);
                 BoxCollider adaNPCCollider = adaNPC.AddComponent<BoxCollider>();
@@ -83,8 +86,6 @@ namespace K2ExoticArmory
                 adaNPCSprite.transform.position = new Vector3((float)(xPos - .7), (float)(yPos - .65));
                 SpriteRenderer adaNPCSpriteRenderer = adaNPCSprite.AddComponent<SpriteRenderer>();
                 adaNPCSpriteRenderer.sprite = _manifest.SpriteResolver.ResolveAsResource("assets\\sprites\\npc\\ada_overworld.png");
-                adaNPCSpriteRenderer.staticShadowCaster = true;
-                adaNPCSpriteRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
                 adaNPCSpriteRenderer.transform.localScale = new Vector3(1f, 1f);
 
                 Interactable adaNPCInteractable = adaNPC.AddComponent<Interactable>();
@@ -139,6 +140,32 @@ namespace K2ExoticArmory
             {
                 Catalogue = catalogue,
             };
+
+            ConCommand.Add("GiveArmory", delegate
+            {
+                string items = "K2-ExoticAromory items: \n";
+                foreach (var item in PurchasableApparel)
+                {
+                    items += item.Name + "\n";
+                    GiveItems.GiveToCharacter(Character.Get("Jenna"), false, false, item);
+                }
+                foreach (var item in PurchasableWeapons)
+                {
+                    items += item.Name + "\n";
+                    GiveItems.GiveToCharacter(Character.Get("Jenna"), false, false, item);
+                }
+                foreach (var item in EarnableApparel)
+                {
+                    items += item.Name + "\n";
+                    GiveItems.GiveToCharacter(Character.Get("Jenna"), false, false, item);
+                }
+                foreach (var item in EarnableWeapons)
+                {
+                    items += item.Name + "\n";
+                    GiveItems.GiveToCharacter(Character.Get("Jenna"), false, false, item);
+                }
+                Debug.Log(items);
+            });
         }
 
         private void WeaponSerialStreamReader(ModManifest manifest, string xmlpath, List<K2ExoticArmoryWeapon.CustomWeapon> list)
