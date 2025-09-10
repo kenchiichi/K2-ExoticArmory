@@ -38,7 +38,7 @@ namespace K2ExoticArmory
                 {
                     if (EquipmentSlot.Name.ToLower() == item.Name.ToLower())
                     {
-                        Character.Player.EquippedItems.Remove(item.Name);
+                        Character.Get("Jenna").EquippedItems.Remove(item.Name);
                     }
                 }
                 foreach (Item inventoryItem in Character.Player.Inventory.GetAll<Item>())
@@ -84,10 +84,13 @@ namespace K2ExoticArmory
 
                 GameObject adaNPC = new GameObject();
                 adaNPC.transform.position = new Vector3((float)xPos, (float)yPos);
+
                 BoxCollider adaNPCCollider = adaNPC.AddComponent<BoxCollider>();
                 adaNPCCollider.size = new Vector3(1f, 2f);
+
                 GameObject adaNPCSprite = new GameObject();
                 adaNPCSprite.transform.position = new Vector3((float)(xPos - .7), (float)(yPos - .65));
+
                 SpriteRenderer adaNPCSpriteRenderer = adaNPCSprite.AddComponent<SpriteRenderer>();
                 adaNPCSpriteRenderer.sprite = _manifest.SpriteResolver.ResolveAsResource("assets\\sprites\\npc\\ada_overworld.png");
                 adaNPCSpriteRenderer.transform.localScale = new Vector3(1f, 1f);
@@ -110,9 +113,9 @@ namespace K2ExoticArmory
 
             WeaponSerialStreamReader(manifest, "data\\StoreWeaponData.xml", K2AllWeapons);
 
-            ApparelSerialStreamReader(manifest, "data\\StoreApparelData.xml", K2AllApparel);
-
             WeaponSerialStreamReader(manifest, "data\\WorldWeaponData.xml", K2AllWeapons);
+
+            ApparelSerialStreamReader(manifest, "data\\StoreApparelData.xml", K2AllApparel);
 
             ApparelSerialStreamReader(manifest, "data\\WorldApparelData.xml", K2AllApparel);
 
