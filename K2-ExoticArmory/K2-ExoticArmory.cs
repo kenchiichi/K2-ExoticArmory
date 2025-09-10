@@ -75,19 +75,21 @@ namespace K2ExoticArmory
             {
                 double xPos = -6.00;
                 double  yPos = 16.30;
-                GameObject andrNPC = new GameObject();
-                andrNPC.transform.position = new Vector3((float)xPos, (float)yPos);
-                BoxCollider andrNPCCollider = andrNPC.AddComponent<BoxCollider>();
-                andrNPCCollider.size = new Vector3(1f, 2f);
-                GameObject andrNPCSprite = new GameObject();
-                andrNPCSprite.transform.position = new Vector3((float)(xPos - .7), (float)(yPos - .65));
-                SpriteRenderer andrNPCSpriteRenderer = andrNPCSprite.AddComponent<SpriteRenderer>();
-                andrNPCSpriteRenderer.sprite = _manifest.SpriteResolver.ResolveAsResource("assets\\sprites\\npc\\ada_overworld.png");
-                andrNPCSpriteRenderer.transform.localScale = new Vector3(1f, 1f);
+                GameObject adaNPC = new GameObject();
+                adaNPC.transform.position = new Vector3((float)xPos, (float)yPos);
+                BoxCollider adaNPCCollider = adaNPC.AddComponent<BoxCollider>();
+                adaNPCCollider.size = new Vector3(1f, 2f);
+                GameObject adaNPCSprite = new GameObject();
+                adaNPCSprite.transform.position = new Vector3((float)(xPos - .7), (float)(yPos - .65));
+                SpriteRenderer adaNPCSpriteRenderer = adaNPCSprite.AddComponent<SpriteRenderer>();
+                adaNPCSpriteRenderer.sprite = _manifest.SpriteResolver.ResolveAsResource("assets\\sprites\\npc\\ada_overworld.png");
+                adaNPCSpriteRenderer.staticShadowCaster = true;
+                adaNPCSpriteRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
+                adaNPCSpriteRenderer.transform.localScale = new Vector3(1f, 1f);
 
-                Interactable andrNPCInteractable = andrNPC.AddComponent<Interactable>();
-                andrNPCInteractable.TypeOfInteraction = InteractionType.Talk;
-                andrNPCInteractable.OnInteracted.AddListener(x =>
+                Interactable adaNPCInteractable = adaNPC.AddComponent<Interactable>();
+                adaNPCInteractable.TypeOfInteraction = InteractionType.Talk;
+                adaNPCInteractable.OnInteracted.AddListener(x =>
                 {
                     vendor.Catalogue.OpenShop();
                 });
