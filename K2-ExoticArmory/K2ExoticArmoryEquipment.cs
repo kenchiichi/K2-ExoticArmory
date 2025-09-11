@@ -15,6 +15,8 @@ namespace K2CustomEquipment
 
         public CustomVFX customVFX;
 
+        public int K2ItemCategory = 2;
+
         public int Price;
     }
     public class CustomApparel : Asuna.Items.Apparel
@@ -26,6 +28,8 @@ namespace K2CustomEquipment
         public List<Restrictions> restrictions;
 
         public MapCoordinate LocationCoordinates;
+
+        public int K2ItemCategory = 1;
 
         public int Price;
     }

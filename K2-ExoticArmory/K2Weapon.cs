@@ -60,7 +60,7 @@ namespace K2ExoticArmory
             weapon.LocationCoordinates = LocationCoordinates;
             weapon.Name = Name;
             weapon.Slots.AddRange(Slots.Select((string x) => (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), x)));
-            weapon.Category = ItemCategory.Weapon;
+            weapon.Category = (ItemCategory)weapon.K2ItemCategory;
             weapon.Description = Description;
             weapon.Price = Price;
             weapon.StatRequirements = StatRequirements;

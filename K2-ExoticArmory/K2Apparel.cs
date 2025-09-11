@@ -37,12 +37,11 @@ namespace K2ExoticArmory
             {
                 Item.All.Add(Name.ToLower(), _instance);
             }
-
             Apparel.DisplaySpriteResource = previewImage;
             Apparel.LocationCoordinates = LocationCoordinates;
             Apparel.Name = Name;
             Apparel.Slots.AddRange(Slots.Select((string x) => (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), x)));
-            Apparel.Category = ItemCategory.Clothing;
+            Apparel.Category = (ItemCategory)Apparel.K2ItemCategory;
             Apparel.Description = Description;
             Apparel.Price = Price;
             Apparel.StatRequirements = StatRequirements;
