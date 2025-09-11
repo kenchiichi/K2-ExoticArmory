@@ -98,7 +98,7 @@
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_physical_power</StatName>
-				<ModifyAmount>20</ModifyAmount>
+				<ModifyAmount>22</ModifyAmount>
 			</StatModifierInfo>
 			<StatModifierInfo>
 				<Type>Value</Type>
@@ -311,7 +311,6 @@
 	</K2Weapon>
 	<K2Weapon>
 		<Name>Tractor Cannon</Name>
-		<Price>800</Price>
 		<PreviewImage>assets\sprites\icons\tractor_cannon.png</PreviewImage>
 		<Description>Property of Peitho. WARNING: Gravity propulsor beam can cause serious injury or even death.</Description>
 		<LocationCoordinates>
