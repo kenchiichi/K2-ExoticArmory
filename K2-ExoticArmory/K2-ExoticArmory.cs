@@ -4,6 +4,8 @@ using ANToolkit.Utility;
 using Asuna.CharManagement;
 using Asuna.Dialogues;
 using Asuna.Items;
+using Asuna.UI;
+using K2CustomEquipment;
 using Modding;
 using System.Collections.Generic;
 using System.IO;
@@ -18,11 +20,13 @@ namespace K2ExoticArmory
 
         private ModManifest _manifest;
 
+        private StartupListeners listener = new StartupListeners();
+
         public List<K2CustomEquipment.CustomWeapon> K2AllWeapons = new List<K2CustomEquipment.CustomWeapon>();
 
         public List<K2CustomEquipment.CustomApparel> K2AllApparel = new List<K2CustomEquipment.CustomApparel>();
 
-        public List<Item> K2Items = new List<Item>();
+        public List<Equipment> K2Items = new List<Equipment>();
 
         public void OnDialogueStarted(Dialogue dialogue) { }
         public void OnLineStarted(DialogueLine line) { }
@@ -107,9 +111,9 @@ namespace K2ExoticArmory
         {
             _manifest = manifest;
 
-            AddSpriteListener();
+            listener.AddSpriteListener();
 
-            AddRequirementListener();
+            listener.AddRequirementListener(K2AllApparel, K2AllWeapons);
 
             WeaponSerialStreamReader(manifest, "data\\StoreWeaponData.xml", K2AllWeapons);
 
@@ -198,81 +202,6 @@ namespace K2ExoticArmory
             var serializer = new XmlSerializer(typeof(T));
             using var reader = new StringReader(xmlString);
             return (T)serializer.Deserialize(reader);
-        }
-        private void AddSpriteListener()
-        {
-
-            Item.OnItemCloned.AddListener((newItem, oldItem) =>
-            {
-                newItem.DisplaySprite = oldItem.DisplaySprite;
-                newItem.DisplaySpriteResource = oldItem.DisplaySpriteResource;
-            });
-        }
-        private void AddRequirementListener()
-        {
-            K2CustomEquipment.CustomWeapon.OnEquipAttempt.AddListener(equipAttemptInfo =>
-            {
-                foreach (K2CustomEquipment.CustomWeapon item in K2AllWeapons)
-                {
-                    if (equipAttemptInfo.Equipment.Name.ToLower() == item.Name.ToLower() && item.restrictions != null)
-                    {
-                        foreach (K2CustomEquipment.Restrictions restriction in item.restrictions)
-                        {
-                            foreach (K2CustomEquipment.CustomWeapon itemRequirement in K2AllWeapons)
-                            {
-                                if (restriction.RequiredItemEquipped == itemRequirement.Name)
-                                {
-                                    Restraint restraint = new Restraint();
-                                    bool itemInEquipmentSlot = false;
-                                    foreach (var EquipmentSlot in Character.Player.EquippedItems.GetAll<Item>())
-                                    {
-                                        if (EquipmentSlot.Name.ToLower() == itemRequirement.Name.ToLower())
-                                        {
-                                            itemInEquipmentSlot = true;
-                                        }
-                                    }
-                                    if (itemInEquipmentSlot)
-                                    {
-                                        restraint.Set("CanEquip", true);
-                                        equipAttemptInfo.CanEquip = restraint;
-                                    }
-                                    else
-                                    {
-                                        restraint.Set("CanEquip", false);
-                                        equipAttemptInfo.CanEquip = restraint;
-                                        string knownItem = "another item";
-                                        if (Character.Player.Inventory.Contains(itemRequirement.Name))
-                                        {
-                                            knownItem = itemRequirement.Name;
-                                        }
-                                        Item.GenerateErrorDialogue(Character.Player, "I need <color=#00ffff>" + knownItem + "</color> equipped to equip this!", "Distressed");
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    foreach (K2CustomEquipment.Restrictions restriction in item.restrictions)
-                    {
-                        Item newitem = null;
-                        bool itemInEquipmentSlot = false;
-                        foreach (var EquipmentSlot in Character.Player.EquippedItems.GetAll<Item>())
-                        {
-                            if (EquipmentSlot.Name.ToLower() == restriction.RequiredItemEquipped.ToLower())
-                            {
-                                itemInEquipmentSlot = true;
-                            }
-                            if (EquipmentSlot.Name.ToLower() == item.Name.ToLower())
-                            {
-                                newitem = EquipmentSlot;
-                            }
-                        }
-                        if (equipAttemptInfo.Equipment.Name.ToLower() == restriction.RequiredItemEquipped.ToLower() && itemInEquipmentSlot)
-                        {
-                            Character.Player.UnequipItem((Equipment)newitem);
-                        }
-                    }
-                }
-            });
         }
     }
 }
