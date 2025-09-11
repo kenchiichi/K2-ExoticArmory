@@ -1,11 +1,8 @@
 ﻿using ANToolkit.Controllers;
 using ANToolkit.Debugging;
-using ANToolkit.Utility;
 using Asuna.CharManagement;
 using Asuna.Dialogues;
 using Asuna.Items;
-using Asuna.UI;
-using K2CustomEquipment;
 using Modding;
 using System.Collections.Generic;
 using System.IO;

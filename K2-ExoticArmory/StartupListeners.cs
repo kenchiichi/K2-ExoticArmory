@@ -2,9 +2,7 @@
 using Asuna.CharManagement;
 using Asuna.Items;
 using K2CustomEquipment;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace K2ExoticArmory
@@ -20,7 +18,7 @@ namespace K2ExoticArmory
                 newItem.DisplaySpriteResource = oldItem.DisplaySpriteResource;
             });
         }
-        public void AddRequirementListener(List <CustomApparel> K2AllApparel, List <CustomWeapon> K2AllWeapons)
+        public void AddRequirementListener(List<CustomApparel> K2AllApparel, List<CustomWeapon> K2AllWeapons)
         {
             K2CustomEquipment.CustomWeapon.OnEquipAttempt.AddListener(equipAttemptInfo =>
             {
