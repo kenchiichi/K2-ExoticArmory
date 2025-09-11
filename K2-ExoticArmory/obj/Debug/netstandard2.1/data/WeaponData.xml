@@ -404,4 +404,129 @@
 			</Restrictions>
 		</restrictions>
 	</K2Weapon>
+	<K2Weapon>
+		<Name>Half-Truths</Name>
+		<Price>120</Price>
+		<PreviewImage>assets\sprites\icons\half_truths.png</PreviewImage>
+		<Description>An incomplete weapon, perhaps there's a companion weapon that'll make it whole?</Description>
+		<Slots>
+			<string>MainWeapon</string>
+		</Slots>
+		<StatModifierInfos>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_physical_power</StatName>
+				<ModifyAmount>9</ModifyAmount>
+			</StatModifierInfo>
+		</StatModifierInfos>
+		<customVFX>
+			<BurstCount>0</BurstCount>
+			<WeaponAttackVFXType>UnarmedMelee</WeaponAttackVFXType>
+			<wavAudioClip>assets\sfx\two_halves.wav</wavAudioClip>
+		</customVFX>
+	</K2Weapon>
+	<K2Weapon>
+		<Name>Khvostov 7G-01</Name>
+		<Price>50</Price>
+		<PreviewImage>assets\sprites\icons\khvostov_rusted.png</PreviewImage>
+		<Description>An ancient instrument of war, battered and worn—but it still fires true. Perhaps it's been waiting for you.</Description>
+		<Slots>
+			<string>MainWeapon</string>
+		</Slots>
+		<Slots>
+			<string>OffhandWeapon</string>
+		</Slots>
+		<StatModifierInfos>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_physical_power</StatName>
+				<ModifyAmount>4</ModifyAmount>
+			</StatModifierInfo>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_attack_range</StatName>
+				<ModifyAmount>3</ModifyAmount>
+			</StatModifierInfo>
+		</StatModifierInfos>
+		<customVFX>
+			<BurstCount>7</BurstCount>
+			<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
+			<wavAudioClip>assets\sfx\khvostov_old.wav(not implemented)</wavAudioClip>
+			<WeaponAttackVFXSprite>assets\sprites\vfx\burst\kenetic_bullet.png</WeaponAttackVFXSprite>
+		</customVFX>
+	</K2Weapon>
+	<K2Weapon>
+		<Name>Khvostov 7G-02</Name>
+		<Price>500</Price>
+		<PreviewImage>assets\sprites\icons\khvostov_new.png</PreviewImage>
+		<Description>An ancient instrument of war, battered and worn—but it still fires true. Perhaps it's been waiting for you.</Description>
+		<Slots>
+			<string>MainWeapon</string>
+		</Slots>
+		<Slots>
+			<string>OffhandWeapon</string>
+		</Slots>
+		<StatModifierInfos>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_physical_power</StatName>
+				<ModifyAmount>8</ModifyAmount>
+			</StatModifierInfo>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_attack_range</StatName>
+				<ModifyAmount>3</ModifyAmount>
+			</StatModifierInfo>
+		</StatModifierInfos>
+		<customVFX>
+			<BurstCount>7</BurstCount>
+			<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
+			<wavAudioClip>assets\sfx\khvostov_new.wav(not implemented)</wavAudioClip>
+			<WeaponAttackVFXSprite>assets\sprites\vfx\burst\kenetic_bullet.png</WeaponAttackVFXSprite>
+		</customVFX>
+	</K2Weapon>
+	<K2Weapon>
+		<Name>Khvostov 7G-0X</Name>
+		<Price>800</Price>
+		<PreviewImage>assets\sprites\icons\khvostov_improved.png</PreviewImage>
+		<Description>An ancient instrument of war, renewed and enhanced by Guardian power—not unlike you.</Description>
+		<Slots>
+			<string>MainWeapon</string>
+		</Slots>
+		<Slots>
+			<string>OffhandWeapon</string>
+		</Slots>
+		<StatModifierInfos>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_physical_power</StatName>
+				<ModifyAmount>15</ModifyAmount>
+			</StatModifierInfo>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_attack_range</StatName>
+				<ModifyAmount>3</ModifyAmount>
+			</StatModifierInfo>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_hitpoints</StatName>
+				<ModifyAmount>10</ModifyAmount>
+			</StatModifierInfo>
+		</StatModifierInfos>
+		<customVFX>
+			<BurstCount>7</BurstCount>
+			<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
+			<wavAudioClip>assets\sfx\khvostov_improved.wav(not implemented)</wavAudioClip>
+			<WeaponAttackVFXSprite>assets\sprites\vfx\burst\kenetic_bullet.png</WeaponAttackVFXSprite>
+		</customVFX>
+		<CustomAbilityItems>
+			<CustomAbility>
+				<AbilityID>Abl_Attack</AbilityID>
+				<AbilityName>The Right Choice</AbilityName>
+				<AbilityTooltip>Gives the user 10 extra hit points.</AbilityTooltip>
+				<AbilityCooldown>0</AbilityCooldown>
+				<DisplaySprite>assets\sprites\abl_icons\the_right_choice.png</DisplaySprite>
+			</CustomAbility>
+		</CustomAbilityItems>
+	</K2Weapon>
 </ArrayOfK2Weapon>

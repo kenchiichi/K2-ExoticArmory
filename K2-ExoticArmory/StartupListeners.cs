@@ -1,7 +1,6 @@
 ﻿using ANToolkit.Utility;
 using Asuna.CharManagement;
 using Asuna.Items;
-using K2CustomEquipment;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,14 +17,14 @@ namespace K2ExoticArmory
                 newItem.DisplaySpriteResource = oldItem.DisplaySpriteResource;
             });
         }
-        public void AddRequirementListener(List<CustomApparel> K2AllApparel, List<CustomWeapon> K2AllWeapons)
+        public void AddRequirementListener(List<K2Items.K2Apparel> K2AllApparel, List<K2Items.K2Weapon> K2AllWeapons)
         {
-            K2CustomEquipment.CustomWeapon.OnEquipAttempt.AddListener(equipAttemptInfo =>
+            K2Items.K2Weapon.OnEquipAttempt.AddListener(equipAttemptInfo =>
             {
-                List<Restrictions> itemRequirementName = new List<Restrictions>();
-                CustomApparel customApparel = ScriptableObject.CreateInstance<K2CustomEquipment.CustomApparel>();
-                CustomWeapon customWeapon = ScriptableObject.CreateInstance<K2CustomEquipment.CustomWeapon>();
-                foreach (K2CustomEquipment.CustomWeapon item in K2AllWeapons)
+                List<K2Items.Restrictions> itemRequirementName = new List<K2Items.Restrictions>();
+                K2Items.K2Apparel customApparel = ScriptableObject.CreateInstance<K2Items.K2Apparel>();
+                K2Items.K2Weapon customWeapon = ScriptableObject.CreateInstance<K2Items.K2Weapon>();
+                foreach (K2Items.K2Weapon item in K2AllWeapons)
                 {
                     if (equipAttemptInfo.Equipment.Name.ToLower() == item.Name.ToLower())
                     {
@@ -33,7 +32,7 @@ namespace K2ExoticArmory
                         customWeapon = item;
                     }
                 }
-                foreach (K2CustomEquipment.CustomApparel item in K2AllApparel)
+                foreach (K2Items.K2Apparel item in K2AllApparel)
                 {
                     if (equipAttemptInfo.Equipment.Name.ToLower() == item.Name.ToLower())
                     {
@@ -41,21 +40,21 @@ namespace K2ExoticArmory
                         customApparel = item;
                     }
                 }
-                foreach (K2CustomEquipment.Restrictions restriction in itemRequirementName)
+                foreach (K2Items.Restrictions restriction in itemRequirementName)
                 {
-                    foreach (K2CustomEquipment.CustomWeapon itemRequirement in K2AllWeapons)
+                    foreach (K2Items.K2Weapon itemRequirement in K2AllWeapons)
                     {
                         RequiredItemInInventory(restriction, itemRequirement.Name, equipAttemptInfo);
                     }
-                    foreach (K2CustomEquipment.CustomApparel itemRequirement in K2AllApparel)
+                    foreach (K2Items.K2Apparel itemRequirement in K2AllApparel)
                     {
                         RequiredItemInInventory(restriction, itemRequirement.Name, equipAttemptInfo);
                     }
                 }
 
-                foreach (CustomWeapon item in K2AllWeapons)
+                foreach (K2Items.K2Weapon item in K2AllWeapons)
                 {
-                    foreach (Restrictions restriction in item.restrictions)
+                    foreach (K2Items.Restrictions restriction in item.restrictions)
                     {
                         Item newitem = null;
                         bool itemInEquipmentSlot = false;
@@ -76,9 +75,9 @@ namespace K2ExoticArmory
                         }
                     }
                 }
-                foreach (CustomApparel item in K2AllApparel)
+                foreach (K2Items.K2Apparel item in K2AllApparel)
                 {
-                    foreach (Restrictions restriction in item.restrictions)
+                    foreach (K2Items.Restrictions restriction in item.restrictions)
                     {
                         Item newitem = null;
                         bool itemInEquipmentSlot = false;
@@ -101,7 +100,7 @@ namespace K2ExoticArmory
                 }
             });
         }
-        private void RequiredItemInInventory(Restrictions restriction, string itemRequirement, EquipAttemptInfo equipAttemptInfo)
+        private void RequiredItemInInventory(K2Items.Restrictions restriction, string itemRequirement, EquipAttemptInfo equipAttemptInfo)
         {
             bool canEquip = false;
             if (restriction.RequiredItemEquipped == itemRequirement)

@@ -11,17 +11,17 @@ using System.Reflection;
 using UnityEngine;
 namespace K2ExoticArmory
 {
-    public class K2Weapon : K2Equipment
+    public class K2Weapon : K2Items.K2Equipment
     {
-        public K2CustomEquipment.CustomVFX customVFX;
+        public K2Items.CustomVFX customVFX;
 
-        private K2CustomEquipment.CustomWeapon _instance;
+        private K2Items.K2Weapon _instance;
 
         private ModManifest _manifest;
 
-        public K2CustomEquipment.CustomWeapon CustomInitialize(ModManifest manifest)
+        public K2Items.K2Weapon CustomInitialize(ModManifest manifest)
         {
-            K2CustomEquipment.CustomWeapon weapon = ScriptableObject.CreateInstance<K2CustomEquipment.CustomWeapon>();
+            K2Items.K2Weapon weapon = ScriptableObject.CreateInstance<K2Items.K2Weapon>();
 
             ANResourceSprite previewImage = manifest.SpriteResolver.ResolveAsResource(PreviewImage);
 

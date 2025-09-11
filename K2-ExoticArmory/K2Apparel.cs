@@ -7,14 +7,14 @@ using System.Reflection;
 using UnityEngine;
 namespace K2ExoticArmory
 {
-    public class K2Apparel : K2Equipment
+    public class K2Apparel : K2Items.K2Equipment
     {
-        private K2CustomEquipment.CustomApparel _instance;
+        private K2Items.K2Apparel _instance;
 
         private ModManifest _manifest;
-        public K2CustomEquipment.CustomApparel CustomInitialize(ModManifest manifest)
+        public K2Items.K2Apparel CustomInitialize(ModManifest manifest)
         {
-            K2CustomEquipment.CustomApparel Apparel = ScriptableObject.CreateInstance<K2CustomEquipment.CustomApparel>();
+            K2Items.K2Apparel Apparel = ScriptableObject.CreateInstance<K2Items.K2Apparel>();
 
             ANResourceSprite previewImage = manifest.SpriteResolver.ResolveAsResource(PreviewImage);
 

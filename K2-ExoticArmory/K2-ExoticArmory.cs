@@ -19,9 +19,9 @@ namespace K2ExoticArmory
 
         private StartupListeners listener = new StartupListeners();
 
-        public List<K2CustomEquipment.CustomWeapon> K2AllWeapons = new List<K2CustomEquipment.CustomWeapon>();
+        public List<K2Items.K2Weapon> K2AllWeapons = new List<K2Items.K2Weapon>();
 
-        public List<K2CustomEquipment.CustomApparel> K2AllApparel = new List<K2CustomEquipment.CustomApparel>();
+        public List<K2Items.K2Apparel> K2AllApparel = new List<K2Items.K2Apparel>();
 
         public List<Equipment> K2Items = new List<Equipment>();
 
@@ -55,7 +55,29 @@ namespace K2ExoticArmory
         }
         public void OnLevelChanged(string oldLevel, string newLevel)
         {
-            foreach (K2CustomEquipment.CustomWeapon item in K2AllWeapons)
+            foreach (K2Items.K2Weapon item in K2AllWeapons)
+            {
+                if (item.LocationCoordinates != null)
+                {
+                    if (item.LocationCoordinates.MapName == newLevel && !Character.Player.Inventory.Contains(item))
+                    {
+                        var interactableGameObject = new GameObject();
+                        interactableGameObject.transform.position = new Vector3((float)item.LocationCoordinates.xCoordinate, (float)item.LocationCoordinates.yCoordinate);
+                        var boxCollider = interactableGameObject.AddComponent<BoxCollider>();
+                        boxCollider.size = new Vector3((float)0.25, (float)0.25);
+
+                        var interactable = interactableGameObject.AddComponent<Interactable>();
+                        interactable.TypeOfInteraction = InteractionType.Talk;
+                        interactable.OnInteracted.AddListener(x =>
+                        {
+                            Item.GenerateErrorDialogue(Character.Player, "I found <color=#00ffff>" + item.Name + "</color> laying here!", "Happy");
+                            GiveItems.GiveToCharacter(Character.Get("Jenna"), false, false, item);
+                            interactable.gameObject.SetActive(false);
+                        });
+                    }
+                }
+            }
+            foreach (K2Items.K2Apparel item in K2AllApparel)
             {
                 if (item.LocationCoordinates != null)
                 {
@@ -112,13 +134,9 @@ namespace K2ExoticArmory
 
             listener.AddRequirementListener(K2AllApparel, K2AllWeapons);
 
-            WeaponSerialStreamReader(manifest, "data\\StoreWeaponData.xml", K2AllWeapons);
+            WeaponSerialStreamReader(manifest, "data\\WeaponData.xml", K2AllWeapons);
 
-            WeaponSerialStreamReader(manifest, "data\\WorldWeaponData.xml", K2AllWeapons);
-
-            ApparelSerialStreamReader(manifest, "data\\StoreApparelData.xml", K2AllApparel);
-
-            ApparelSerialStreamReader(manifest, "data\\WorldApparelData.xml", K2AllApparel);
+            ApparelSerialStreamReader(manifest, "data\\ApparelData.xml", K2AllApparel);
 
             List<ShopItemInfo> shopItems = new List<ShopItemInfo>();
 
@@ -168,7 +186,7 @@ namespace K2ExoticArmory
             });
         }
 
-        private void WeaponSerialStreamReader(ModManifest manifest, string xmlpath, List<K2CustomEquipment.CustomWeapon> list)
+        private void WeaponSerialStreamReader(ModManifest manifest, string xmlpath, List<K2Items.K2Weapon> list)
         {
             using StreamReader reader = new StreamReader(Path.Combine(manifest.ModPath, xmlpath));
             List<K2Weapon> k2Weapons = Deserialize<List<K2Weapon>>(reader.ReadToEnd());
@@ -180,7 +198,7 @@ namespace K2ExoticArmory
                 K2Items.Add(item);
             }
         }
-        private void ApparelSerialStreamReader(ModManifest manifest, string xmlpath, List<K2CustomEquipment.CustomApparel> list)
+        private void ApparelSerialStreamReader(ModManifest manifest, string xmlpath, List<K2Items.K2Apparel> list)
         {
             using StreamReader reader = new StreamReader(Path.Combine(manifest.ModPath, xmlpath));
             List<K2Apparel> k2Apparels = Deserialize<List<K2Apparel>>(reader.ReadToEnd());
