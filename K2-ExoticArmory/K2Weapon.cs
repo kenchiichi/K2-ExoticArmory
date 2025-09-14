@@ -4,6 +4,7 @@ using Asuna.CharManagement;
 using Asuna.Items;
 using Asuna.NewCombat;
 using HutongGames.PlayMaker;
+using K2Items;
 using Modding;
 using System;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace K2ExoticArmory
 {
     public class K2Weapon : K2Items.K2Equipment
     {
-        public K2Items.CustomVFX customVFX;
+        public CustomVFX customVFX;
 
         private K2Items.K2Weapon _instance;
 
@@ -54,6 +55,13 @@ namespace K2ExoticArmory
             else
             {
                 weapon.AttackVFXType = AttackVFXType.UnarmedMelee;
+            }
+
+
+            if (questModifiers != null)
+            {
+                weapon.questModifiers = questModifiers;
+                Quest_Template(questModifiers.DisplayName, questModifiers.Description, questModifiers.name, questModifiers.Repeatable);
             }
 
             weapon.DisplaySpriteResource = previewImage;

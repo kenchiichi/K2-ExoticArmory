@@ -3,6 +3,9 @@ using ANToolkit.Debugging;
 using Asuna.CharManagement;
 using Asuna.Dialogues;
 using Asuna.Items;
+using Asuna.Missions;
+using Asuna.NewMissions;
+using K2Items;
 using Modding;
 using System.Collections.Generic;
 using System.IO;
@@ -23,7 +26,7 @@ namespace K2ExoticArmory
 
         public List<K2Items.K2Apparel> K2AllApparel = new List<K2Items.K2Apparel>();
 
-        public List<Equipment> K2Items = new List<Equipment>();
+        public List<Equipment> K2ItemList = new List<Equipment>();
 
         public void OnDialogueStarted(Dialogue dialogue) { }
         public void OnLineStarted(DialogueLine line) { }
@@ -31,7 +34,7 @@ namespace K2ExoticArmory
         public void OnModUnLoaded()
         {
             string removedItems = "Items removed: \n";
-            foreach (var item in K2Items)
+            foreach (var item in K2ItemList)
             {
                 Item.All.Remove(item.Name.ToLower());
                 removedItems += item.Name + "\n";
@@ -52,28 +55,101 @@ namespace K2ExoticArmory
             }
             Debug.Log(removedItems);
             Item.GenerateErrorDialogue(Character.Player, "I should remember to check to see if I have weapons to defend myself.", "Think");
+            UnityEngine.Events.UnityEvent unityEvent = new UnityEngine.Events.UnityEvent();
+            unityEvent.RemoveAllListeners();
         }
         public void OnLevelChanged(string oldLevel, string newLevel)
         {
             foreach (K2Items.K2Weapon item in K2AllWeapons)
             {
+                K2Items.K2Weapon itemRequired = null;
+                foreach (K2Items.K2Weapon item2 in K2AllWeapons)
+                {
+                    if (item.LocationCoordinates != null)
+                    {
+                        if (item2.Name == item.LocationCoordinates.PrerequisiteQuestWeapon)
+                        {
+                            itemRequired = item2;
+                        }
+                    }
+                }
                 if (item.LocationCoordinates != null)
                 {
                     if (item.LocationCoordinates.MapName == newLevel && !Character.Player.Inventory.Contains(item))
                     {
-                        var interactableGameObject = new GameObject();
-                        interactableGameObject.transform.position = new Vector3((float)item.LocationCoordinates.xCoordinate, (float)item.LocationCoordinates.yCoordinate);
-                        var boxCollider = interactableGameObject.AddComponent<BoxCollider>();
-                        boxCollider.size = new Vector3((float)0.25, (float)0.25);
-
-                        var interactable = interactableGameObject.AddComponent<Interactable>();
-                        interactable.TypeOfInteraction = InteractionType.Talk;
-                        interactable.OnInteracted.AddListener(x =>
+                        if (itemRequired != null)
                         {
-                            Item.GenerateErrorDialogue(Character.Player, "I found <color=#00ffff>" + item.Name + "</color> laying here!", "Happy");
-                            GiveItems.GiveToCharacter(Character.Get("Jenna"), false, false, item);
-                            interactable.gameObject.SetActive(false);
-                        });
+                            Debug.Log("oldItem: " + itemRequired.Name + "\nnewItem: " + item.Name);
+                            Debug.Log("oldItem: " + "null" + "\nnewItem: " + item.questModifiers.name);
+                            if (Character.Player.Inventory.Contains(itemRequired))
+                            {
+                                var interactableGameObject = new GameObject();
+                                interactableGameObject.transform.position = new Vector3((float)item.LocationCoordinates.xCoordinate, (float)item.LocationCoordinates.yCoordinate);
+                                var boxCollider = interactableGameObject.AddComponent<BoxCollider>();
+                                boxCollider.size = new Vector3((float)0.25, (float)0.25);
+
+                                var interactable = interactableGameObject.AddComponent<Interactable>();
+                                interactable.TypeOfInteraction = InteractionType.Talk;
+
+
+                                interactable.OnInteracted.AddListener(x =>
+                                {
+                                    if (itemRequired != null)
+                                    {
+                                        if (itemRequired.questModifiers.name != null)
+                                        {
+                                            var oldMission = MissionContainer.GetMission(itemRequired.questModifiers.name + "_Quest");
+                                            var oldTask = oldMission.StartTask(itemRequired.questModifiers.name + "_Task");
+                                            oldMission.Completion = TaskCompletion.Complete;
+                                            MissionContainer.AddMissionToLookup(oldMission);
+                                            MissionContainer.AddTaskToLookup(oldTask);
+
+                                        }
+                                        foreach (Item EquipmentSlot in Character.Player.EquippedItems.GetAll<Item>())
+                                        {
+                                            if (EquipmentSlot.Name.ToLower() == itemRequired.Name.ToLower())
+                                            {
+                                                Character.Get("Jenna").EquippedItems.Remove(itemRequired.Name);
+                                            }
+                                        }
+                                        foreach (Item inventoryItem in Character.Player.Inventory.GetAll<Item>())
+                                        {
+                                            if (inventoryItem.Name == itemRequired.Name)
+                                            {
+                                                Character.Get("Jenna").Inventory.Remove(itemRequired.Name);
+                                            }
+                                        }
+                                        if (item.questModifiers.next != null)
+                                        {
+                                            var newMission = NewMission.StartMissionByID(item.questModifiers.next + "_Quest");
+                                            var newTask = newMission.StartTask(item.questModifiers.next + "_Task");
+                                            newMission.Completion = TaskCompletion.InProgress;
+                                            MissionContainer.AddMissionToLookup(newMission);
+                                            MissionContainer.AddTaskToLookup(newTask);
+                                        }
+                                    }
+                                    Item.GenerateErrorDialogue(Character.Player, "I found <color=#00ffff>" + item.Name + "</color> laying here!", "Happy");
+                                    GiveItems.GiveToCharacter(Character.Get("Jenna"), false, false, item);
+                                    interactable.gameObject.SetActive(false);
+                                });
+                            }
+                        }
+                        else
+                        {
+                            var interactableGameObject = new GameObject();
+                            interactableGameObject.transform.position = new Vector3((float)item.LocationCoordinates.xCoordinate, (float)item.LocationCoordinates.yCoordinate);
+                            var boxCollider = interactableGameObject.AddComponent<BoxCollider>();
+                            boxCollider.size = new Vector3((float)0.25, (float)0.25);
+
+                            var interactable = interactableGameObject.AddComponent<Interactable>();
+                            interactable.TypeOfInteraction = InteractionType.Talk;
+                            interactable.OnInteracted.AddListener(x =>
+                            {
+                                Item.GenerateErrorDialogue(Character.Player, "I found <color=#00ffff>" + item.Name + "</color> laying here!", "Happy");
+                                GiveItems.GiveToCharacter(Character.Get("Jenna"), false, false, item);
+                                interactable.gameObject.SetActive(false);
+                            });
+                        }
                     }
                 }
             }
@@ -105,6 +181,8 @@ namespace K2ExoticArmory
                 double xPos = -6.00;
                 double yPos = 16.30;
 
+                var missionInstance = MissionContainer.GetMission("KHVOSTOV_01_Quest");
+
                 GameObject adaNPC = new GameObject();
                 adaNPC.transform.position = new Vector3((float)xPos, (float)yPos);
 
@@ -122,10 +200,21 @@ namespace K2ExoticArmory
                 adaNPCInteractable.TypeOfInteraction = InteractionType.Talk;
                 adaNPCInteractable.OnInteracted.AddListener(x =>
                 {
+                    Debug.Log("before shop");
                     vendor.Catalogue.OpenShop();
+                    if (missionInstance.Completion == TaskCompletion.None)
+                    {
+                        missionInstance = NewMission.StartMissionByID("KHVOSTOV_01_Quest");
+                        var taskInstance = missionInstance.StartTask("KHVOSTOV_01_Task");
+                        taskInstance.Completion = TaskCompletion.InProgress;
+                        missionInstance.Completion = TaskCompletion.InProgress;
+                        MissionContainer.AddMissionToLookup(missionInstance);
+                        MissionContainer.AddTaskToLookup(taskInstance);
+                    }
                 });
             }
         }
+
         public void OnModLoaded(ModManifest manifest)
         {
             _manifest = manifest;
@@ -174,13 +263,37 @@ namespace K2ExoticArmory
                 Catalogue = catalogue,
             };
 
-            ConCommand.Add("GiveArmory", delegate
+            ConCommand.Add("ProgressK2Quest", delegate
+            {
+                var mission = MissionContainer.GetMission("KHVOSTOV_01_Quest");
+                var mission2 = MissionContainer.GetMission("KHVOSTOV_02_Quest");
+                Debug.Log("start " + mission.ID + "\n" + mission.Completion.ToString());
+                if (mission.Completion == TaskCompletion.InProgress)
+                {
+                    mission.Completion = TaskCompletion.Complete;
+                    MissionContainer.AddMissionToLookup(mission);
+                    var missionInstance = NewMission.StartMissionByID("KHVOSTOV_02_Quest");
+                    var taskInstance = missionInstance.StartTask("KHVOSTOV_02_Task");
+                    taskInstance.Completion = TaskCompletion.InProgress;
+                    missionInstance.Completion = TaskCompletion.InProgress;
+                    MissionContainer.AddMissionToLookup(missionInstance);
+                    MissionContainer.AddTaskToLookup(taskInstance);
+                }
+                else if (mission2.Completion == TaskCompletion.InProgress)
+                {
+                    mission2.Completion = TaskCompletion.Complete;
+                    MissionContainer.AddMissionToLookup(mission2);
+                }
+
+            });
+
+                ConCommand.Add("GiveArmory", delegate
             {
                 string items = "K2-ExoticAromory items: \n";
-                foreach (var item in K2Items)
+                foreach (var item in K2ItemList)
                 {
                     items += item.Name + "\n";
-                    GiveItems.GiveToCharacter(Character.Get("Jenna"), false, false, item);
+                    GiveItems.GiveToCharacter(Character.Get("Jenna"), false, item);
                 }
                 Debug.Log(items);
             });
@@ -195,7 +308,7 @@ namespace K2ExoticArmory
             {
                 var item = k2Weapon.CustomInitialize(manifest);
                 list.Add(item);
-                K2Items.Add(item);
+                K2ItemList.Add(item);
             }
         }
         private void ApparelSerialStreamReader(ModManifest manifest, string xmlpath, List<K2Items.K2Apparel> list)
@@ -207,7 +320,7 @@ namespace K2ExoticArmory
             {
                 var item = k2Apparel.CustomInitialize(manifest);
                 list.Add(item);
-                K2Items.Add(item);
+                K2ItemList.Add(item);
             }
         }
 
