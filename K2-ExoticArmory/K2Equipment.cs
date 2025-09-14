@@ -1,8 +1,10 @@
 ﻿using Asuna.CharManagement;
 using Asuna.Items;
 using Asuna.NewCombat;
+using Asuna.NewMissions;
 using Modding;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace K2Items
 {
@@ -20,13 +22,15 @@ namespace K2Items
 
         public List<StatModifierInfo> StatModifierInfos;
 
-        public List<K2Items.CustomAbility> CustomAbilityItems;
+        public List<CustomAbility> CustomAbilityItems;
 
         public List<StatModifierInfo> StatRequirements;
 
-        public List<K2Items.Restrictions> restrictions;
+        public List<Restrictions> restrictions;
 
-        public K2Items.MapCoordinate LocationCoordinates;
+        public QuestModifiers questModifiers;
+
+        public MapCoordinate LocationCoordinates;
 
         public void AddAbilitiesToEquipment(Equipment equipment, ModManifest manifest)
         {
@@ -46,6 +50,26 @@ namespace K2Items
                 }
             }
         }
+
+        public void Quest_Template(string DisplayName, string Description, string name, bool Repeatable)
+        {
+            // Create the Template Mission
+            var moddedMission = ScriptableObject.CreateInstance<NewMission>();
+            moddedMission.DisplayName = DisplayName;
+            moddedMission.Description = Description;
+            moddedMission.name = name + "_Quest";
+            moddedMission.Repeatable = Repeatable;
+
+            // Create the Template Task
+            var moddedTask1 = ScriptableObject.CreateInstance<NewTask>();
+            moddedTask1.DefaultDisplayName = "Decipher the riddle.";
+            //moddedTask1.TargetCharacter = Character.Get("Klaus");
+            moddedTask1.name = name + "_Task";
+
+            // Add both Mission and Task to the cache
+            MissionContainer.AddMissionToLookup(moddedMission);
+            MissionContainer.AddTaskToLookup(moddedTask1);
+        }
     }
     public class K2Weapon : Asuna.Items.Weapon
     {
@@ -54,6 +78,8 @@ namespace K2Items
         public List<CustomAbility> CustomAbilityItems;
 
         public List<Restrictions> restrictions;
+
+        public QuestModifiers questModifiers;
 
         public MapCoordinate LocationCoordinates;
 
@@ -71,6 +97,8 @@ namespace K2Items
 
         public List<Restrictions> restrictions;
 
+        public QuestModifiers questModifiers;
+
         public MapCoordinate LocationCoordinates;
 
         public int K2ItemCategory = 1;
@@ -84,6 +112,8 @@ namespace K2Items
         public double xCoordinate;
 
         public double yCoordinate;
+
+        public string PrerequisiteQuestWeapon = "";
     }
     public class CustomAbility
     {
@@ -112,5 +142,19 @@ namespace K2Items
     public class Restrictions
     {
         public string RequiredItemEquipped = "";
+
+        public string PrerequisiteQuestWeapon = "";
+    }
+    public class QuestModifiers
+    {
+        public string DisplayName = "";
+
+        public string Description = "";
+
+        public string name = "";
+
+        public string next = "";
+
+        public bool Repeatable = false;
     }
 }

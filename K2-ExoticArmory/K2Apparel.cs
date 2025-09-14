@@ -1,5 +1,7 @@
-﻿using ANToolkit.ResourceManagement;
+﻿using ANToolkit.FPS.Weapons;
+using ANToolkit.ResourceManagement;
 using Asuna.Items;
+using K2Items;
 using Modding;
 using System;
 using System.Linq;
@@ -14,42 +16,47 @@ namespace K2ExoticArmory
         private ModManifest _manifest;
         public K2Items.K2Apparel CustomInitialize(ModManifest manifest)
         {
-            K2Items.K2Apparel Apparel = ScriptableObject.CreateInstance<K2Items.K2Apparel>();
+            K2Items.K2Apparel apparel = ScriptableObject.CreateInstance<K2Items.K2Apparel>();
 
             ANResourceSprite previewImage = manifest.SpriteResolver.ResolveAsResource(PreviewImage);
 
             _manifest = manifest;
 
-            _instance = Apparel;
+            _instance = apparel;
 
             if (StatModifierInfos != null)
             {
-                Apparel.StatModifierInfos = StatModifierInfos;
+                apparel.StatModifierInfos = StatModifierInfos;
                 typeof(Equipment)
                     .GetField("_dynamicStatModifiers", BindingFlags.Instance | BindingFlags.NonPublic)
-                    .SetValue(Apparel, StatModifierInfos);
+                    .SetValue(apparel, StatModifierInfos);
                 typeof(Equipment)
                     .GetField("StatModifiers", BindingFlags.Instance | BindingFlags.NonPublic)
-                    .SetValue(Apparel, StatModifierInfos);
+                    .SetValue(apparel, StatModifierInfos);
             }
 
             if (!Item.All.ContainsKey(Name.ToLower()))
             {
                 Item.All.Add(Name.ToLower(), _instance);
             }
-            Apparel.DisplaySpriteResource = previewImage;
-            Apparel.LocationCoordinates = LocationCoordinates;
-            Apparel.Name = Name;
-            Apparel.Slots.AddRange(Slots.Select((string x) => (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), x)));
-            Apparel.Category = (ItemCategory)Apparel.K2ItemCategory;
-            Apparel.Description = Description;
-            Apparel.Price = Price;
-            Apparel.StatRequirements = StatRequirements;
-            Apparel.restrictions = restrictions;
+            if (questModifiers != null)
+            {
+                apparel.questModifiers = questModifiers;
+            }
+            apparel.DisplaySpriteResource = previewImage;
+            apparel.LocationCoordinates = LocationCoordinates;
+            apparel.Name = Name;
+            apparel.Slots.AddRange(Slots.Select((string x) => (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), x)));
+            apparel.Category = (ItemCategory)apparel.K2ItemCategory;
+            apparel.Description = Description;
+            apparel.Price = Price;
+            apparel.StatRequirements = StatRequirements;
+            apparel.restrictions = restrictions;
+            apparel.questModifiers = questModifiers;
 
-            AddAbilitiesToEquipment(Apparel, _manifest);
+            AddAbilitiesToEquipment(apparel, _manifest);
 
-            return Apparel;
+            return apparel;
         }
     }
 }

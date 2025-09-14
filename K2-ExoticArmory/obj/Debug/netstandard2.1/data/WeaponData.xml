@@ -457,9 +457,14 @@
 	</K2Weapon>
 	<K2Weapon>
 		<Name>Khvostov 7G-02</Name>
-		<Price>500</Price>
 		<PreviewImage>assets\sprites\icons\khvostov_new.png</PreviewImage>
 		<Description>An ancient instrument of war, battered and worn—but it still fires true. Perhaps it's been waiting for you.</Description>
+		<LocationCoordinates>
+			<xCoordinate>42.00</xCoordinate>
+			<yCoordinate>17.50</yCoordinate>
+			<MapName>DestroyedStronghold</MapName>
+			<PrerequisiteQuestWeapon>Khvostov 7G-01</PrerequisiteQuestWeapon>
+		</LocationCoordinates>
 		<Slots>
 			<string>MainWeapon</string>
 		</Slots>
@@ -484,12 +489,24 @@
 			<wavAudioClip>assets\sfx\khvostov_new.wav(not implemented)</wavAudioClip>
 			<WeaponAttackVFXSprite>assets\sprites\vfx\burst\kenetic_bullet.png</WeaponAttackVFXSprite>
 		</customVFX>
+		<questModifiers>
+			<DisplayName>An ancient weapon's reprisal.</DisplayName>
+			<Description>A weapon long since broke, &#10; Begin your search where you woke. &#10; &#10; By clothes you wear on top, &#10; On console it lay atop.</Description>
+			<name>KHVOSTOV_01</name>
+			<next>KHVOSTOV_02</next>
+			<Repeatable>false</Repeatable>
+		</questModifiers>
 	</K2Weapon>
 	<K2Weapon>
 		<Name>Khvostov 7G-0X</Name>
-		<Price>800</Price>
 		<PreviewImage>assets\sprites\icons\khvostov_improved.png</PreviewImage>
 		<Description>An ancient instrument of war, renewed and enhanced by Guardian power—not unlike you.</Description>
+		<LocationCoordinates>
+			<xCoordinate>0.50</xCoordinate>
+			<yCoordinate>2.00</yCoordinate>
+			<MapName>Carceburg_AbandonedHouse</MapName>
+			<PrerequisiteQuestWeapon>Khvostov 7G-02</PrerequisiteQuestWeapon>
+		</LocationCoordinates>
 		<Slots>
 			<string>MainWeapon</string>
 		</Slots>
@@ -528,5 +545,11 @@
 				<DisplaySprite>assets\sprites\abl_icons\the_right_choice.png</DisplaySprite>
 			</CustomAbility>
 		</CustomAbilityItems>
+		<questModifiers>
+			<DisplayName>A modern weapon's reprisal.</DisplayName>
+			<Description>To continue quest,&#10; Return to house where coffee rest. &#10; &#10; Set near place where beans were ground, &#10; Look where water was once found.</Description>
+			<name>KHVOSTOV_02</name>
+			<Repeatable>false</Repeatable>
+		</questModifiers>
 	</K2Weapon>
 </ArrayOfK2Weapon>
