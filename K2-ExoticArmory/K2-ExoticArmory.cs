@@ -301,7 +301,6 @@ namespace K2ExoticArmory
                 }
             }
         }
-
         private void GiveItemToJenna(string itemName)
         {
 
@@ -320,7 +319,6 @@ namespace K2ExoticArmory
                 }
             }
         }
-
         private void WeaponSerialStreamReader(ModManifest manifest, string xmlpath, List<K2Items.K2Weapon> list)
         {
             using StreamReader reader = new StreamReader(Path.Combine(manifest.ModPath, xmlpath));
@@ -345,7 +343,6 @@ namespace K2ExoticArmory
                 K2ItemList.Add(item);
             }
         }
-
         private static T Deserialize<T>(string xmlString)
         {
             if (xmlString == null) return default;
