@@ -1,7 +1,5 @@
-﻿using ANToolkit.FPS.Weapons;
-using ANToolkit.ResourceManagement;
+﻿using ANToolkit.ResourceManagement;
 using Asuna.Items;
-using K2Items;
 using Modding;
 using System;
 using System.Linq;

@@ -5,7 +5,6 @@ using Asuna.Dialogues;
 using Asuna.Items;
 using Asuna.Missions;
 using Asuna.NewMissions;
-using K2Items;
 using Modding;
 using System.Collections.Generic;
 using System.IO;
@@ -38,20 +37,7 @@ namespace K2ExoticArmory
             {
                 Item.All.Remove(item.Name.ToLower());
                 removedItems += item.Name + "\n";
-                foreach (Item EquipmentSlot in Character.Player.EquippedItems.GetAll<Item>())
-                {
-                    if (EquipmentSlot.Name.ToLower() == item.Name.ToLower())
-                    {
-                        Character.Get("Jenna").EquippedItems.Remove(item.Name);
-                    }
-                }
-                foreach (Item inventoryItem in Character.Player.Inventory.GetAll<Item>())
-                {
-                    if (inventoryItem.Name == item.Name)
-                    {
-                        Character.Get("Jenna").Inventory.Remove(item.Name);
-                    }
-                }
+                RemoveItemFromJenna(item.Name);
             }
             Debug.Log(removedItems);
             Item.GenerateErrorDialogue(Character.Player, "I should remember to check to see if I have weapons to defend myself.", "Think");
@@ -122,20 +108,7 @@ namespace K2ExoticArmory
                                                 }
                                             }
                                         }
-                                        foreach (Item EquipmentSlot in Character.Player.EquippedItems.GetAll<Item>())
-                                        {
-                                            if (EquipmentSlot.Name.ToLower() == itemRequired.Name.ToLower())
-                                            {
-                                                Character.Get("Jenna").EquippedItems.Remove(itemRequired.Name);
-                                            }
-                                        }
-                                        foreach (Item inventoryItem in Character.Player.Inventory.GetAll<Item>())
-                                        {
-                                            if (inventoryItem.Name == itemRequired.Name)
-                                            {
-                                                Character.Get("Jenna").Inventory.Remove(itemRequired.Name);
-                                            }
-                                        }
+                                        RemoveItemFromJenna(itemRequired.Name);
                                     }
                                     Item.GenerateErrorDialogue(Character.Player, "I found <color=#00ffff>" + item.Name + "</color> laying here!", "Happy");
                                     GiveItems.GiveToCharacter(Character.Get("Jenna"), false, false, item);
@@ -272,7 +245,7 @@ namespace K2ExoticArmory
                 Catalogue = catalogue,
             };
 
-            ConCommand.Add("ProgressK2Quest", delegate
+            ConCommand.Add("ProgressKhvostovQuest", delegate
             {
                 var mission = MissionContainer.GetMission("KHVOSTOV_01_Quest");
                 var mission2 = MissionContainer.GetMission("KHVOSTOV_02_Quest");
@@ -287,16 +260,18 @@ namespace K2ExoticArmory
                     missionInstance.Completion = TaskCompletion.InProgress;
                     MissionContainer.AddMissionToLookup(missionInstance);
                     MissionContainer.AddTaskToLookup(taskInstance);
+                    RemoveItemFromJenna("Khvostov 7G-01");
+                    GiveItemToJenna("Khvostov 7G-02");
                 }
                 else if (mission2.Completion == TaskCompletion.InProgress)
                 {
                     mission2.Completion = TaskCompletion.Complete;
                     MissionContainer.AddMissionToLookup(mission2);
+                    RemoveItemFromJenna("Khvostov 7G-02");
+                    GiveItemToJenna("Khvostov 7G-0X");
                 }
-
             });
-
-                ConCommand.Add("GiveArmory", delegate
+            ConCommand.Add("GiveArmory", delegate
             {
                 string items = "K2-ExoticAromory items: \n";
                 foreach (var item in K2ItemList)
@@ -306,6 +281,44 @@ namespace K2ExoticArmory
                 }
                 Debug.Log(items);
             });
+        }
+
+        private void RemoveItemFromJenna(string itemName)
+        {
+
+            foreach (Item EquipmentSlot in Character.Player.EquippedItems.GetAll<Item>())
+            {
+                if (EquipmentSlot.Name.ToLower() == itemName.ToLower())
+                {
+                    Character.Get("Jenna").EquippedItems.Remove(itemName);
+                }
+            }
+            foreach (Item inventoryItem in Character.Player.Inventory.GetAll<Item>())
+            {
+                if (inventoryItem.Name.ToLower() == itemName.ToLower())
+                {
+                    Character.Get("Jenna").Inventory.Remove(itemName);
+                }
+            }
+        }
+
+        private void GiveItemToJenna(string itemName)
+        {
+
+            foreach (var weapon in K2AllWeapons)
+            {
+                if (weapon.Name.ToLower() == itemName.ToLower())
+                {
+                    GiveItems.GiveToCharacter(Character.Get("Jenna"), false, false, weapon);
+                }
+            }
+            foreach (var apparel in K2AllApparel)
+            {
+                if (apparel.Name.ToLower() == itemName.ToLower())
+                {
+                    GiveItems.GiveToCharacter(Character.Get("Jenna"), false, false, apparel);
+                }
+            }
         }
 
         private void WeaponSerialStreamReader(ModManifest manifest, string xmlpath, List<K2Items.K2Weapon> list)
