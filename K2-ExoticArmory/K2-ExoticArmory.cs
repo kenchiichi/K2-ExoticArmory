@@ -81,7 +81,15 @@ namespace K2ExoticArmory
                         {
                             Debug.Log("oldItem: " + itemRequired.Name + "\nnewItem: " + item.Name);
                             Debug.Log("oldItem: " + "null" + "\nnewItem: " + item.questModifiers.name);
-                            if (Character.Player.Inventory.Contains(itemRequired))
+                            var itemEquiped = false;
+                            foreach (Item EquipmentSlot in Character.Player.EquippedItems.GetAll<Item>())
+                            {
+                                if (EquipmentSlot.Name.ToLower() == itemRequired.Name.ToLower())
+                                {
+                                    itemEquiped = true;
+                                }
+                            }
+                            if (Character.Player.Inventory.Contains(itemRequired) || itemEquiped)
                             {
                                 var interactableGameObject = new GameObject();
                                 interactableGameObject.transform.position = new Vector3((float)item.LocationCoordinates.xCoordinate, (float)item.LocationCoordinates.yCoordinate);
@@ -90,20 +98,29 @@ namespace K2ExoticArmory
 
                                 var interactable = interactableGameObject.AddComponent<Interactable>();
                                 interactable.TypeOfInteraction = InteractionType.Talk;
-
-
                                 interactable.OnInteracted.AddListener(x =>
                                 {
                                     if (itemRequired != null)
                                     {
-                                        if (itemRequired.questModifiers.name != null)
+                                        if (item.questModifiers != null)
                                         {
-                                            var oldMission = MissionContainer.GetMission(itemRequired.questModifiers.name + "_Quest");
-                                            var oldTask = oldMission.StartTask(itemRequired.questModifiers.name + "_Task");
-                                            oldMission.Completion = TaskCompletion.Complete;
-                                            MissionContainer.AddMissionToLookup(oldMission);
-                                            MissionContainer.AddTaskToLookup(oldTask);
+                                            if (item.questModifiers.next != null)
+                                            {
+                                                var oldMission = MissionContainer.GetMission(item.questModifiers.name + "_Quest");
+                                                var oldTask = oldMission.StartTask(item.questModifiers.name + "_Task");
+                                                oldMission.Completion = TaskCompletion.Complete;
+                                                MissionContainer.AddMissionToLookup(oldMission);
+                                                MissionContainer.AddTaskToLookup(oldTask);
+                                                if (item.questModifiers.next != "" && item.questModifiers.next != null)
+                                                {
+                                                    var newMission = NewMission.StartMissionByID(item.questModifiers.next + "_Quest");
+                                                    var newTask = newMission.StartTask(item.questModifiers.next + "_Task");
+                                                    newMission.Completion = TaskCompletion.InProgress;
+                                                    MissionContainer.AddMissionToLookup(newMission);
+                                                    MissionContainer.AddTaskToLookup(newTask);
 
+                                                }
+                                            }
                                         }
                                         foreach (Item EquipmentSlot in Character.Player.EquippedItems.GetAll<Item>())
                                         {
@@ -118,14 +135,6 @@ namespace K2ExoticArmory
                                             {
                                                 Character.Get("Jenna").Inventory.Remove(itemRequired.Name);
                                             }
-                                        }
-                                        if (item.questModifiers.next != null)
-                                        {
-                                            var newMission = NewMission.StartMissionByID(item.questModifiers.next + "_Quest");
-                                            var newTask = newMission.StartTask(item.questModifiers.next + "_Task");
-                                            newMission.Completion = TaskCompletion.InProgress;
-                                            MissionContainer.AddMissionToLookup(newMission);
-                                            MissionContainer.AddTaskToLookup(newTask);
                                         }
                                     }
                                     Item.GenerateErrorDialogue(Character.Player, "I found <color=#00ffff>" + item.Name + "</color> laying here!", "Happy");
