@@ -10,7 +10,6 @@ namespace K2ExoticArmory
     {
         public void AddSpriteListener()
         {
-
             Item.OnItemCloned.AddListener((newItem, oldItem) =>
             {
                 newItem.DisplaySprite = oldItem.DisplaySprite;

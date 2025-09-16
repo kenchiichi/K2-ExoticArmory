@@ -1,5 +1,6 @@
 ﻿using ANToolkit.Controllers;
 using ANToolkit.Debugging;
+using ANToolkit.UI;
 using Asuna.CharManagement;
 using Asuna.Dialogues;
 using Asuna.Items;
@@ -32,17 +33,21 @@ namespace K2ExoticArmory
         public void OnFrame(float deltaTime) { }
         public void OnModUnLoaded()
         {
-            string removedItems = "Items removed: \n";
-            foreach (var item in K2ItemList)
+            if (MenuManager.InGame)
             {
-                Item.All.Remove(item.Name.ToLower());
-                removedItems += item.Name + "\n";
-                RemoveItemFromJenna(item.Name);
+                string removedItems = "Items removed: \n";
+                foreach (var item in K2ItemList)
+                {
+                    Item.All.Remove(item.Name.ToLower());
+                    removedItems += item.Name + "\n";
+                    RemoveItemFromJenna(item.Name);
+                }
+                Debug.Log(removedItems);
+                Item.GenerateErrorDialogue(Character.Player, "I should remember to check to see if I have weapons to defend myself.", "Think");
             }
-            Debug.Log(removedItems);
-            Item.GenerateErrorDialogue(Character.Player, "I should remember to check to see if I have weapons to defend myself.", "Think");
             UnityEngine.Events.UnityEvent unityEvent = new UnityEngine.Events.UnityEvent();
             unityEvent.RemoveAllListeners();
+            Debug.Log("K2-ExoticArmory uninstalled");
         }
         public void OnLevelChanged(string oldLevel, string newLevel)
         {
@@ -199,6 +204,7 @@ namespace K2ExoticArmory
 
         public void OnModLoaded(ModManifest manifest)
         {
+            Debug.Log("K2-ExoticArmory installed");
             _manifest = manifest;
 
             listener.AddSpriteListener();
@@ -285,7 +291,6 @@ namespace K2ExoticArmory
 
         private void RemoveItemFromJenna(string itemName)
         {
-
             foreach (Item EquipmentSlot in Character.Player.EquippedItems.GetAll<Item>())
             {
                 if (EquipmentSlot.Name.ToLower() == itemName.ToLower())
@@ -303,7 +308,6 @@ namespace K2ExoticArmory
         }
         private void GiveItemToJenna(string itemName)
         {
-
             foreach (var weapon in K2AllWeapons)
             {
                 if (weapon.Name.ToLower() == itemName.ToLower())
