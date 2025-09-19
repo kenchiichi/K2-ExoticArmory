@@ -5,3 +5,4 @@
 /.vs
 /output.lnk
 /K2-ExoticArmory/K2-ExoticArmory.csproj
+*.csproj
