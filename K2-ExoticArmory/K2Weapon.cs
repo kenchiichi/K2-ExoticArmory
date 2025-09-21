@@ -99,10 +99,6 @@ namespace K2ExoticArmory
                 var combatVFX = energyGunBurstState.Actions[0] as PMA_CombatVisualEffect;
                 combatVFX.Prefab = vfxGameObject;
                 combatVFX.AmountToSpawn = burstCount;
-
-                var combatSFX = energyGunBurstState.Actions[1] as PMA_PlaySound;
-                // This needs to be an AudioClip
-                //combatSFX.ClipToPlay = sfxGameObject;
             });
         }
     }
