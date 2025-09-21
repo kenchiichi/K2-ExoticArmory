@@ -37,6 +37,7 @@ namespace K2ExoticArmory
             {
                 Item.All.Add(Name.ToLower(), _instance);
             }
+
             if (questModifiers != null)
             {
                 apparel.questModifiers = questModifiers;

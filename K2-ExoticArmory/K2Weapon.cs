@@ -57,7 +57,6 @@ namespace K2ExoticArmory
                 weapon.AttackVFXType = AttackVFXType.UnarmedMelee;
             }
 
-
             if (questModifiers != null)
             {
                 weapon.questModifiers = questModifiers;
