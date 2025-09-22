@@ -6,9 +6,6 @@
 		<Slots>
 			<string>MainWeapon</string>
 		</Slots>
-		<Slots>
-			<string>OffhandWeapon</string>
-		</Slots>
 		<LocationCoordinates>
 			<xCoordinate>2.50</xCoordinate>
 			<yCoordinate>6.00</yCoordinate>
@@ -38,7 +35,6 @@
 		<customVFX>
 			<BurstCount>3</BurstCount>
 			<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
-			<wavAudioClip>assets\sfx\the_last_word.wav</wavAudioClip>
 			<WeaponAttackVFXSprite>assets\sprites\vfx\burst\kenetic_bullet.png</WeaponAttackVFXSprite>
 		</customVFX>
 	</K2Weapon>
@@ -76,7 +72,6 @@
 		<customVFX>
 			<BurstCount>0</BurstCount>
 			<WeaponAttackVFXType>UnarmedMelee</WeaponAttackVFXType>
-			<wavAudioClip>assets\sfx\raze-lighter.wav</wavAudioClip>
 		</customVFX>
 	</K2Weapon>
 	<K2Weapon>
@@ -123,7 +118,6 @@
 		<customVFX>
 			<BurstCount>1</BurstCount>
 			<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
-			<wavAudioClip>assets\sfx\icebreaker.wav</wavAudioClip>
 			<WeaponAttackVFXSprite>assets\sprites\vfx\single\solar_bullet.png</WeaponAttackVFXSprite>
 		</customVFX>
 	</K2Weapon>
@@ -171,7 +165,6 @@
 		<customVFX>
 			<BurstCount>3</BurstCount>
 			<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
-			<wavAudioClip>assets\sfx\red_death.wav</wavAudioClip>
 			<WeaponAttackVFXSprite>assets\sprites\vfx\burst\kenetic_bullet.png</WeaponAttackVFXSprite>
 		</customVFX>
 	</K2Weapon>
@@ -214,7 +207,6 @@
 		<customVFX>
 			<BurstCount>1</BurstCount>
 			<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
-			<wavAudioClip>assets\sfx\monte_carlo.wav(not implemented)</wavAudioClip>
 			<WeaponAttackVFXSprite>assets\sprites\vfx\burst\kenetic_bullet.png</WeaponAttackVFXSprite>
 		</customVFX>
 	</K2Weapon>
@@ -257,7 +249,6 @@
 		<customVFX>
 			<BurstCount>7</BurstCount>
 			<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
-			<wavAudioClip>assets\sfx\monte_carlo.wav(not implemented)</wavAudioClip>
 			<WeaponAttackVFXSprite>assets\sprites\vfx\burst\kenetic_bullet.png</WeaponAttackVFXSprite>
 		</customVFX>
 	</K2Weapon>
@@ -305,7 +296,6 @@
 		<customVFX>
 			<BurstCount>1</BurstCount>
 			<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
-			<wavAudioClip>assets\sfx\le_monarque.wav</wavAudioClip>
 			<WeaponAttackVFXSprite>assets\sprites\vfx\single\void_bullet.png</WeaponAttackVFXSprite>
 		</customVFX>
 	</K2Weapon>
@@ -353,7 +343,6 @@
 		<customVFX>
 			<BurstCount>1</BurstCount>
 			<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
-			<wavAudioClip>assets\sfx\le_monarque.wav</wavAudioClip>
 			<WeaponAttackVFXSprite>assets\sprites\vfx\custom\repulsor_blast.png</WeaponAttackVFXSprite>
 		</customVFX>
 	</K2Weapon>
@@ -396,7 +385,6 @@
 		<customVFX>
 			<BurstCount>0</BurstCount>
 			<WeaponAttackVFXType>UnarmedMelee</WeaponAttackVFXType>
-			<wavAudioClip>assets\sfx\two_halves.wav</wavAudioClip>
 		</customVFX>
 		<restrictions>
 			<Restrictions>
@@ -407,7 +395,7 @@
 	<K2Weapon>
 		<Name>Half-Truths</Name>
 		<Price>120</Price>
-		<PreviewImage>assets\sprites\icons\half_truths.png</PreviewImage>
+		<PreviewImage>assets\sprites\icons\half-truths.png</PreviewImage>
 		<Description>An incomplete weapon, perhaps there's a companion weapon that'll make it whole?</Description>
 		<Slots>
 			<string>MainWeapon</string>
@@ -422,7 +410,6 @@
 		<customVFX>
 			<BurstCount>0</BurstCount>
 			<WeaponAttackVFXType>UnarmedMelee</WeaponAttackVFXType>
-			<wavAudioClip>assets\sfx\two_halves.wav</wavAudioClip>
 		</customVFX>
 	</K2Weapon>
 	<K2Weapon>
@@ -451,7 +438,6 @@
 		<customVFX>
 			<BurstCount>7</BurstCount>
 			<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
-			<wavAudioClip>assets\sfx\khvostov_old.wav(not implemented)</wavAudioClip>
 			<WeaponAttackVFXSprite>assets\sprites\vfx\burst\kenetic_bullet.png</WeaponAttackVFXSprite>
 		</customVFX>
 	</K2Weapon>
@@ -486,7 +472,6 @@
 		<customVFX>
 			<BurstCount>7</BurstCount>
 			<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
-			<wavAudioClip>assets\sfx\khvostov_new.wav(not implemented)</wavAudioClip>
 			<WeaponAttackVFXSprite>assets\sprites\vfx\burst\kenetic_bullet.png</WeaponAttackVFXSprite>
 		</customVFX>
 		<questModifiers>
@@ -495,6 +480,7 @@
 			<name>KHVOSTOV_01</name>
 			<next>KHVOSTOV_02</next>
 			<Repeatable>false</Repeatable>
+			<TaskDisplay>Upgrade Khvostov 7G-01</TaskDisplay>
 		</questModifiers>
 	</K2Weapon>
 	<K2Weapon>
@@ -533,7 +519,6 @@
 		<customVFX>
 			<BurstCount>7</BurstCount>
 			<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
-			<wavAudioClip>assets\sfx\khvostov_improved.wav(not implemented)</wavAudioClip>
 			<WeaponAttackVFXSprite>assets\sprites\vfx\burst\kenetic_bullet.png</WeaponAttackVFXSprite>
 		</customVFX>
 		<CustomAbilityItems>
@@ -550,6 +535,138 @@
 			<Description>To continue quest,&#10; Return to house where coffee rest. &#10; &#10; Set near place where beans were ground, &#10; Look where water was once found.</Description>
 			<name>KHVOSTOV_02</name>
 			<Repeatable>false</Repeatable>
+			<TaskDisplay>Upgrade Khvostov 7G-02</TaskDisplay>
+		</questModifiers>
+	</K2Weapon>
+	<K2Weapon>
+		<Name>Husk of the Pit</Name>
+		<Price>50</Price>
+		<PreviewImage>assets\sprites\icons\husk_of_the_pit.png</PreviewImage>
+		<Description>Desiccated and nigh inoperable, this artifact still manages to send shivers up your spine when fired.</Description>
+		<Slots>
+			<string>MainWeapon</string>
+		</Slots>
+		<Slots>
+			<string>OffhandWeapon</string>
+		</Slots>
+		<StatModifierInfos>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_physical_power</StatName>
+				<ModifyAmount>5</ModifyAmount>
+			</StatModifierInfo>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_attack_range</StatName>
+				<ModifyAmount>2</ModifyAmount>
+			</StatModifierInfo>
+		</StatModifierInfos>
+		<customVFX>
+			<BurstCount>7</BurstCount>
+			<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
+			<WeaponAttackVFXSprite>assets\sprites\vfx\burst\kenetic_bullet.png</WeaponAttackVFXSprite>
+		</customVFX>
+	</K2Weapon>
+	<K2Weapon>
+		<Name>Eidolon ally</Name>
+		<PreviewImage>assets\sprites\icons\eidolon_ally.png</PreviewImage>
+		<Description>We thought it was inanimate, but it has grown… changed. HQ refuses to analyze it further, but I secretly believe it has become my friend.</Description>
+		<LocationCoordinates>
+			<xCoordinate>13.25</xCoordinate>
+			<yCoordinate>4.50</yCoordinate>
+			<MapName>CarceburgCombatInstance</MapName>
+			<PrerequisiteQuestWeapon>Husk of the Pit</PrerequisiteQuestWeapon>
+		</LocationCoordinates>
+		<Slots>
+			<string>MainWeapon</string>
+		</Slots>
+		<Slots>
+			<string>OffhandWeapon</string>
+		</Slots>
+		<StatModifierInfos>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_physical_power</StatName>
+				<ModifyAmount>10</ModifyAmount>
+			</StatModifierInfo>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_attack_range</StatName>
+				<ModifyAmount>2</ModifyAmount>
+			</StatModifierInfo>
+		</StatModifierInfos>
+		<customVFX>
+			<BurstCount>7</BurstCount>
+			<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
+			<WeaponAttackVFXSprite>assets\sprites\vfx\burst\kenetic_bullet.png</WeaponAttackVFXSprite>
+		</customVFX>
+		<questModifiers>
+			<DisplayName>A Husk's journey</DisplayName>
+			<Description>To begin this quest, you see, &#10; Look for a house's door hidden by a tree. &#10; &#10; In a place that requires a weapon, but do not fear, &#10; You will find your goal hidden here.</Description>
+			<name>NECROCHASM_01</name>
+			<next>NECROCHASM_02</next>
+			<Repeatable>false</Repeatable>
+			<TaskDisplay>Upgrade Husk of the Pit</TaskDisplay>
+		</questModifiers>
+	</K2Weapon>
+	<K2Weapon>
+		<Name>Necrochasm</Name>
+		<PreviewImage>assets\sprites\icons\necrochasm.png</PreviewImage>
+		<Description>Is your Light bright enough to stand in full gaze of the abyss?</Description>
+		<LocationCoordinates>
+			<xCoordinate>00.00</xCoordinate>
+			<yCoordinate>00.00</yCoordinate>
+			<MapName>Carceburg_AbandonedHouse</MapName>
+			<PrerequisiteQuestWeapon>Eidolon ally</PrerequisiteQuestWeapon>
+		</LocationCoordinates>
+		<Slots>
+			<string>MainWeapon</string>
+		</Slots>
+		<Slots>
+			<string>OffhandWeapon</string>
+		</Slots>
+		<StatModifierInfos>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_physical_power</StatName>
+				<ModifyAmount>25</ModifyAmount>
+			</StatModifierInfo>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_attack_range</StatName>
+				<ModifyAmount>2</ModifyAmount>
+			</StatModifierInfo>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_lust_power</StatName>
+				<ModifyAmount>20</ModifyAmount>
+			</StatModifierInfo>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_hitpoints</StatName>
+				<ModifyAmount>-10</ModifyAmount>
+			</StatModifierInfo>
+		</StatModifierInfos>
+		<customVFX>
+			<BurstCount>7</BurstCount>
+			<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
+			<WeaponAttackVFXSprite>assets\sprites\vfx\burst\strand_bullet.png</WeaponAttackVFXSprite>
+		</customVFX>
+		<CustomAbilityItems>
+			<CustomAbility>
+				<AbilityID>Abl_Venus_Kiss</AbilityID>
+				<AbilityName>Cursebringer</AbilityName>
+				<AbilityTooltip>This weapon makes the weilder feel an &lt;color=#FF64FF&gt;intimate&lt;/color&gt; sense of loyalty to the weapon, and a &lt;color=#FF0000&gt;voracious hunger&lt;/color&gt; for it's foes.</AbilityTooltip>
+				<AbilityCooldown>1</AbilityCooldown>
+				<DisplaySprite>assets\sprites\abl_icons\cursebringer.png</DisplaySprite>
+			</CustomAbility>
+		</CustomAbilityItems>
+		<questModifiers>
+			<DisplayName>An ally's ascension</DisplayName>
+			<Description>Add a riddle here,&#10; Add a riddle here. &#10; &#10; Add a riddle here, &#10; Add a riddle here.</Description>
+			<name>NECROCHASM_02</name>
+			<Repeatable>false</Repeatable>
+			<TaskDisplay>Upgrade Eidolon Ally</TaskDisplay>
 		</questModifiers>
 	</K2Weapon>
 </ArrayOfK2Weapon>

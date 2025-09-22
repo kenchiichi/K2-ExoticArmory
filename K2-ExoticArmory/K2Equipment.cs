@@ -51,7 +51,7 @@ namespace K2Items
             }
         }
 
-        public void Quest_Template(string DisplayName, string Description, string name, bool Repeatable)
+        public void Quest_Template(string DisplayName, string Description, string name, bool Repeatable, string TaskDisplay)
         {
             // Create the Template Mission
             var moddedMission = ScriptableObject.CreateInstance<NewMission>();
@@ -62,7 +62,7 @@ namespace K2Items
 
             // Create the Template Task
             var moddedTask1 = ScriptableObject.CreateInstance<NewTask>();
-            moddedTask1.DefaultDisplayName = "Decipher the riddle.";
+            moddedTask1.DefaultDisplayName = TaskDisplay;
             //moddedTask1.TargetCharacter = Character.Get("Klaus");
             moddedTask1.name = name + "_Task";
 
@@ -150,6 +150,8 @@ namespace K2Items
         public string DisplayName = "";
 
         public string Description = "";
+
+        public string TaskDisplay = "";
 
         public string name = "";
 

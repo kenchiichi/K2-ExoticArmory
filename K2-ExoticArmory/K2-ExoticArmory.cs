@@ -187,16 +187,24 @@ namespace K2ExoticArmory
                 adaNPCInteractable.TypeOfInteraction = InteractionType.Talk;
                 adaNPCInteractable.OnInteracted.AddListener(x =>
                 {
-                    Debug.Log("before shop");
                     vendor.Catalogue.OpenShop();
-                    if (missionInstance.Completion == TaskCompletion.None)
+
+                    foreach (var item in K2AllWeapons)
                     {
-                        missionInstance = NewMission.StartMissionByID("KHVOSTOV_01_Quest");
-                        var taskInstance = missionInstance.StartTask("KHVOSTOV_01_Task");
-                        taskInstance.Completion = TaskCompletion.InProgress;
-                        missionInstance.Completion = TaskCompletion.InProgress;
-                        MissionContainer.AddMissionToLookup(missionInstance);
-                        MissionContainer.AddTaskToLookup(taskInstance);
+                        if (item.questModifiers != null)
+                        {
+                            var missionInstance = MissionContainer.GetMission(item.questModifiers.name + "_Quest");
+                            if (missionInstance.Completion == TaskCompletion.None && item.questModifiers.name != "" && item.questModifiers.next != "")
+                            {
+                                Debug.Log(item.Name);
+                                missionInstance = NewMission.StartMissionByID(item.questModifiers.name + "_Quest");
+                                var taskInstance = missionInstance.StartTask(item.questModifiers.name + "_Task");
+                                taskInstance.Completion = TaskCompletion.InProgress;
+                                missionInstance.Completion = TaskCompletion.InProgress;
+                                MissionContainer.AddMissionToLookup(missionInstance);
+                                MissionContainer.AddTaskToLookup(taskInstance);
+                            }
+                        }
                     }
                 });
             }

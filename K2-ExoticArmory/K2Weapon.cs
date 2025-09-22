@@ -60,7 +60,7 @@ namespace K2ExoticArmory
             if (questModifiers != null)
             {
                 weapon.questModifiers = questModifiers;
-                Quest_Template(questModifiers.DisplayName, questModifiers.Description, questModifiers.name, questModifiers.Repeatable);
+                Quest_Template(questModifiers.DisplayName, questModifiers.Description, questModifiers.name, questModifiers.Repeatable, questModifiers.TaskDisplay);
             }
 
             weapon.DisplaySpriteResource = previewImage;
