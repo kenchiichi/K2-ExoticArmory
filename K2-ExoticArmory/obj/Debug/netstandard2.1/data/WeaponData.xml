@@ -480,7 +480,7 @@
 		</customVFX>
 		<questModifiers>
 			<DisplayName>An ancient weapon's reprisal.</DisplayName>
-			<Description>A weapon long since broke, &#10; Begin your search where you woke. &#10; &#10; By clothes you wear on top, &#10; On console it lay atop.</Description>
+			<Description>A weapon long since broke, &#10; Begin your search where you once awoke. &#10; &#10; By clothes you wear on top, &#10; On console it lay on top.</Description>
 			<name>KHVOSTOV_01</name>
 			<next>KHVOSTOV_02</next>
 			<Repeatable>false</Repeatable>
