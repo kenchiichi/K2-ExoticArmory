@@ -70,8 +70,6 @@ namespace K2ExoticArmory
                     {
                         if (itemRequired != null)
                         {
-                            Debug.Log("oldItem: " + itemRequired.Name + "\nnewItem: " + item.Name);
-                            Debug.Log("oldItem: " + "null" + "\nnewItem: " + item.questModifiers.name);
                             var itemEquiped = false;
                             foreach (Item EquipmentSlot in Character.Player.EquippedItems.GetAll<Item>())
                             {
@@ -113,10 +111,21 @@ namespace K2ExoticArmory
                                                 }
                                             }
                                         }
+                                        if (itemEquiped)
+                                        {
+                                            GiveItems.GiveToCharacter(Character.Get("Jenna"), true, false, item);
+                                        }
+                                        else
+                                        {
+                                            GiveItems.GiveToCharacter(Character.Get("Jenna"), false, false, item);
+                                        }
                                         RemoveItemFromJenna(itemRequired.Name);
                                     }
+                                    else
+                                    {
+                                        GiveItems.GiveToCharacter(Character.Get("Jenna"), false, false, item);
+                                    }
                                     Item.GenerateErrorDialogue(Character.Player, "I found <color=#00ffff>" + item.Name + "</color> laying here!", "Happy");
-                                    GiveItems.GiveToCharacter(Character.Get("Jenna"), false, false, item);
                                     interactable.gameObject.SetActive(false);
                                 });
                             }
@@ -188,24 +197,6 @@ namespace K2ExoticArmory
                 adaNPCInteractable.OnInteracted.AddListener(x =>
                 {
                     vendor.Catalogue.OpenShop();
-
-                    foreach (var item in K2AllWeapons)
-                    {
-                        if (item.questModifiers != null)
-                        {
-                            var missionInstance = MissionContainer.GetMission(item.questModifiers.name + "_Quest");
-                            if (missionInstance.Completion == TaskCompletion.None && item.questModifiers.name != "" && item.questModifiers.next != "")
-                            {
-                                Debug.Log(item.Name);
-                                missionInstance = NewMission.StartMissionByID(item.questModifiers.name + "_Quest");
-                                var taskInstance = missionInstance.StartTask(item.questModifiers.name + "_Task");
-                                taskInstance.Completion = TaskCompletion.InProgress;
-                                missionInstance.Completion = TaskCompletion.InProgress;
-                                MissionContainer.AddMissionToLookup(missionInstance);
-                                MissionContainer.AddTaskToLookup(taskInstance);
-                            }
-                        }
-                    }
                 });
             }
         }

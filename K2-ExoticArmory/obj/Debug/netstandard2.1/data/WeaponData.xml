@@ -440,6 +440,10 @@
 			<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
 			<WeaponAttackVFXSprite>assets\sprites\vfx\burst\kenetic_bullet.png</WeaponAttackVFXSprite>
 		</customVFX>
+		<questModifiers>
+			<next>KHVOSTOV_01</next>
+			<BaseWeapon>true</BaseWeapon>
+		</questModifiers>
 	</K2Weapon>
 	<K2Weapon>
 		<Name>Khvostov 7G-02</Name>
@@ -566,6 +570,10 @@
 			<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
 			<WeaponAttackVFXSprite>assets\sprites\vfx\burst\kenetic_bullet.png</WeaponAttackVFXSprite>
 		</customVFX>
+		<questModifiers>
+			<next>NECROCHASM_01</next>
+			<BaseWeapon>true</BaseWeapon>
+		</questModifiers>
 	</K2Weapon>
 	<K2Weapon>
 		<Name>Eidolon ally</Name>
@@ -614,9 +622,9 @@
 		<PreviewImage>assets\sprites\icons\necrochasm.png</PreviewImage>
 		<Description>Is your Light bright enough to stand in full gaze of the abyss?</Description>
 		<LocationCoordinates>
-			<xCoordinate>00.00</xCoordinate>
-			<yCoordinate>00.00</yCoordinate>
-			<MapName>Carceburg_AbandonedHouse</MapName>
+			<xCoordinate>-18.50</xCoordinate>
+			<yCoordinate>-7.50</yCoordinate>
+			<MapName>FF_Hub_SubLevel_2</MapName>
 			<PrerequisiteQuestWeapon>Eidolon ally</PrerequisiteQuestWeapon>
 		</LocationCoordinates>
 		<Slots>
@@ -663,7 +671,7 @@
 		</CustomAbilityItems>
 		<questModifiers>
 			<DisplayName>An ally's ascension</DisplayName>
-			<Description>Add a riddle here,&#10; Add a riddle here. &#10; &#10; Add a riddle here, &#10; Add a riddle here.</Description>
+			<Description>In a place overgrown with green,&#10; On the level with the queen. &#10; &#10; In a room that you can rest, &#10; In the corner right of North-West.</Description>
 			<name>NECROCHASM_02</name>
 			<Repeatable>false</Repeatable>
 			<TaskDisplay>Upgrade Eidolon Ally</TaskDisplay>

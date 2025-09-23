@@ -158,5 +158,7 @@ namespace K2Items
         public string next = "";
 
         public bool Repeatable = false;
+
+        public bool BaseWeapon = false;
     }
 }

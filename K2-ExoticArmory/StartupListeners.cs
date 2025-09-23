@@ -1,6 +1,8 @@
 ﻿using ANToolkit.Utility;
 using Asuna.CharManagement;
 using Asuna.Items;
+using Asuna.Missions;
+using Asuna.NewMissions;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -27,6 +29,20 @@ namespace K2ExoticArmory
                 {
                     if (equipAttemptInfo.Equipment.Name.ToLower() == item.Name.ToLower())
                     {
+                        if (item.questModifiers.BaseWeapon)
+                        {
+                            var missionInstance = MissionContainer.GetMission(item.questModifiers.next + "_Quest");
+                            if (missionInstance.Completion == TaskCompletion.None && item.questModifiers.next != "")
+                            {
+                                missionInstance = NewMission.StartMissionByID(item.questModifiers.next + "_Quest");
+                                var taskInstance = missionInstance.StartTask(item.questModifiers.next + "_Task");
+                                taskInstance.Completion = TaskCompletion.InProgress;
+                                missionInstance.Completion = TaskCompletion.InProgress;
+                                MissionContainer.AddMissionToLookup(missionInstance);
+                                MissionContainer.AddTaskToLookup(taskInstance);
+                            }
+                        }
+                        
                         itemRequirementName = item.restrictions;
                         customWeapon = item;
                     }
