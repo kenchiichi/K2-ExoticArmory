@@ -15,7 +15,7 @@
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_physical_power</StatName>
-				<ModifyAmount>22</ModifyAmount>
+				<ModifyAmount>8</ModifyAmount>
 			</StatModifierInfo>
 			<StatModifierInfo>
 				<Type>Value</Type>
@@ -57,7 +57,7 @@
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_physical_power</StatName>
-				<ModifyAmount>35</ModifyAmount>
+				<ModifyAmount>30</ModifyAmount>
 			</StatModifierInfo>
 		</StatModifierInfos>
 		<CustomAbilityItems>
@@ -93,7 +93,7 @@
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_physical_power</StatName>
-				<ModifyAmount>22</ModifyAmount>
+				<ModifyAmount>9</ModifyAmount>
 			</StatModifierInfo>
 			<StatModifierInfo>
 				<Type>Value</Type>
@@ -103,7 +103,7 @@
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_attack_range</StatName>
-				<ModifyAmount>5</ModifyAmount>
+				<ModifyAmount>8</ModifyAmount>
 			</StatModifierInfo>
 		</StatModifierInfos>
 		<CustomAbilityItems>
@@ -140,7 +140,7 @@
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_physical_power</StatName>
-				<ModifyAmount>16</ModifyAmount>
+				<ModifyAmount>6</ModifyAmount>
 			</StatModifierInfo>
 			<StatModifierInfo>
 				<Type>Value</Type>
@@ -150,7 +150,7 @@
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_attack_range</StatName>
-				<ModifyAmount>4</ModifyAmount>
+				<ModifyAmount>3</ModifyAmount>
 			</StatModifierInfo>
 		</StatModifierInfos>
 		<CustomAbilityItems>
@@ -187,7 +187,7 @@
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_physical_power</StatName>
-				<ModifyAmount>14</ModifyAmount>
+				<ModifyAmount>10</ModifyAmount>
 			</StatModifierInfo>
 			<StatModifierInfo>
 				<Type>Value</Type>
@@ -229,7 +229,7 @@
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_physical_power</StatName>
-				<ModifyAmount>18</ModifyAmount>
+				<ModifyAmount>14</ModifyAmount>
 			</StatModifierInfo>
 			<StatModifierInfo>
 				<Type>Value</Type>
@@ -271,7 +271,7 @@
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_physical_power</StatName>
-				<ModifyAmount>10</ModifyAmount>
+				<ModifyAmount>6</ModifyAmount>
 			</StatModifierInfo>
 			<StatModifierInfo>
 				<Type>Value</Type>
@@ -362,7 +362,7 @@
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_physical_power</StatName>
-				<ModifyAmount>18</ModifyAmount>
+				<ModifyAmount>10</ModifyAmount>
 			</StatModifierInfo>
 		</StatModifierInfos>
 		<CustomAbilityItems>
@@ -394,7 +394,7 @@
 	</K2Weapon>
 	<K2Weapon>
 		<Name>Half-Truths</Name>
-		<Price>120</Price>
+		<Price>70</Price>
 		<PreviewImage>assets\sprites\icons\half-truths.png</PreviewImage>
 		<Description>An incomplete weapon, perhaps there's a companion weapon that'll make it whole?</Description>
 		<Slots>
@@ -404,7 +404,7 @@
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_physical_power</StatName>
-				<ModifyAmount>9</ModifyAmount>
+				<ModifyAmount>5</ModifyAmount>
 			</StatModifierInfo>
 		</StatModifierInfos>
 		<customVFX>
@@ -427,12 +427,12 @@
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_physical_power</StatName>
-				<ModifyAmount>4</ModifyAmount>
+				<ModifyAmount>3</ModifyAmount>
 			</StatModifierInfo>
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_attack_range</StatName>
-				<ModifyAmount>3</ModifyAmount>
+				<ModifyAmount>2</ModifyAmount>
 			</StatModifierInfo>
 		</StatModifierInfos>
 		<customVFX>
@@ -465,7 +465,7 @@
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_physical_power</StatName>
-				<ModifyAmount>8</ModifyAmount>
+				<ModifyAmount>6</ModifyAmount>
 			</StatModifierInfo>
 			<StatModifierInfo>
 				<Type>Value</Type>
@@ -507,7 +507,7 @@
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_physical_power</StatName>
-				<ModifyAmount>15</ModifyAmount>
+				<ModifyAmount>9</ModifyAmount>
 			</StatModifierInfo>
 			<StatModifierInfo>
 				<Type>Value</Type>
@@ -557,12 +557,12 @@
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_physical_power</StatName>
-				<ModifyAmount>5</ModifyAmount>
+				<ModifyAmount>4</ModifyAmount>
 			</StatModifierInfo>
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_attack_range</StatName>
-				<ModifyAmount>2</ModifyAmount>
+				<ModifyAmount>1</ModifyAmount>
 			</StatModifierInfo>
 		</StatModifierInfos>
 		<customVFX>
@@ -595,7 +595,7 @@
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_physical_power</StatName>
-				<ModifyAmount>10</ModifyAmount>
+				<ModifyAmount>8</ModifyAmount>
 			</StatModifierInfo>
 			<StatModifierInfo>
 				<Type>Value</Type>
@@ -637,7 +637,7 @@
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_physical_power</StatName>
-				<ModifyAmount>25</ModifyAmount>
+				<ModifyAmount>20</ModifyAmount>
 			</StatModifierInfo>
 			<StatModifierInfo>
 				<Type>Value</Type>

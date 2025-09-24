@@ -29,7 +29,7 @@ namespace K2ExoticArmory
                 {
                     if (equipAttemptInfo.Equipment.Name.ToLower() == item.Name.ToLower())
                     {
-                        if (item.questModifiers.BaseWeapon)
+                        if (item.questModifiers != null && item.questModifiers.BaseWeapon)
                         {
                             var missionInstance = MissionContainer.GetMission(item.questModifiers.next + "_Quest");
                             if (missionInstance.Completion == TaskCompletion.None && item.questModifiers.next != "")
@@ -60,6 +60,7 @@ namespace K2ExoticArmory
                     foreach (K2Items.K2Weapon itemRequirement in K2AllWeapons)
                     {
                         RequiredItemInInventory(restriction, itemRequirement.Name, equipAttemptInfo);
+
                     }
                     foreach (K2Items.K2Apparel itemRequirement in K2AllApparel)
                     {
