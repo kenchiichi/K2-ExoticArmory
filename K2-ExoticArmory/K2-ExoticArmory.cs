@@ -35,14 +35,11 @@ namespace K2ExoticArmory
         {
             if (MenuManager.InGame)
             {
-                string removedItems = "Items removed: \n";
                 foreach (var item in K2ItemList)
                 {
                     Item.All.Remove(item.Name.ToLower());
-                    removedItems += item.Name + "\n";
                     RemoveItemFromJenna(item.Name);
                 }
-                Debug.Log(removedItems);
                 Item.GenerateErrorDialogue(Character.Player, "I should remember to check to see if I have weapons to defend myself.", "Think");
             }
             UnityEngine.Events.UnityEvent unityEvent = new UnityEngine.Events.UnityEvent();
@@ -249,42 +246,9 @@ namespace K2ExoticArmory
             {
                 Catalogue = catalogue,
             };
-
-            ConCommand.Add("ProgressKhvostovQuest", delegate
-            {
-                var mission = MissionContainer.GetMission("KHVOSTOV_01_Quest");
-                var mission2 = MissionContainer.GetMission("KHVOSTOV_02_Quest");
-                Debug.Log("start " + mission.ID + "\n" + mission.Completion.ToString());
-                if (mission.Completion == TaskCompletion.InProgress)
-                {
-                    mission.Completion = TaskCompletion.Complete;
-                    MissionContainer.AddMissionToLookup(mission);
-                    var missionInstance = NewMission.StartMissionByID("KHVOSTOV_02_Quest");
-                    var taskInstance = missionInstance.StartTask("KHVOSTOV_02_Task");
-                    taskInstance.Completion = TaskCompletion.InProgress;
-                    missionInstance.Completion = TaskCompletion.InProgress;
-                    MissionContainer.AddMissionToLookup(missionInstance);
-                    MissionContainer.AddTaskToLookup(taskInstance);
-                    RemoveItemFromJenna("Khvostov 7G-01");
-                    GiveItemToJenna("Khvostov 7G-02");
-                }
-                else if (mission2.Completion == TaskCompletion.InProgress)
-                {
-                    mission2.Completion = TaskCompletion.Complete;
-                    MissionContainer.AddMissionToLookup(mission2);
-                    RemoveItemFromJenna("Khvostov 7G-02");
-                    GiveItemToJenna("Khvostov 7G-0X");
-                }
-            });
             ConCommand.Add("GiveArmory", delegate
             {
-                string items = "K2-ExoticAromory items: \n";
-                foreach (var item in K2ItemList)
-                {
-                    items += item.Name + "\n";
-                    GiveItems.GiveToCharacter(Character.Get("Jenna"), false, item);
-                }
-                Debug.Log(items);
+                GiveItemToJenna("AllItems");
             });
         }
 
@@ -309,14 +273,14 @@ namespace K2ExoticArmory
         {
             foreach (var weapon in K2AllWeapons)
             {
-                if (weapon.Name.ToLower() == itemName.ToLower())
+                if (weapon.Name.ToLower() == itemName.ToLower() || itemName == "AllItems")
                 {
                     GiveItems.GiveToCharacter(Character.Get("Jenna"), false, false, weapon);
                 }
             }
             foreach (var apparel in K2AllApparel)
             {
-                if (apparel.Name.ToLower() == itemName.ToLower())
+                if (apparel.Name.ToLower() == itemName.ToLower() || itemName == "AllItems")
                 {
                     GiveItems.GiveToCharacter(Character.Get("Jenna"), false, false, apparel);
                 }
