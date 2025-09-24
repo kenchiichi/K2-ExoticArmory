@@ -72,6 +72,7 @@ namespace K2ExoticArmory
             weapon.Price = Price;
             weapon.StatRequirements = StatRequirements;
             weapon.restrictions = restrictions;
+            weapon.StatRequirements.AddRange(StatRequirements);
 
             AddAbilitiesToEquipment(weapon, _manifest);
 

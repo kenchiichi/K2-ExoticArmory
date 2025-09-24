@@ -1,5 +1,6 @@
 ﻿using ANToolkit.Controllers;
 using ANToolkit.Debugging;
+using ANToolkit.FPS.Weapons;
 using ANToolkit.UI;
 using Asuna.CharManagement;
 using Asuna.Dialogues;
@@ -248,7 +249,7 @@ namespace K2ExoticArmory
             };
             ConCommand.Add("GiveArmory", delegate
             {
-                GiveItemToJenna("AllItems");
+                GiveItemToJenna();
             });
         }
 
@@ -269,7 +270,7 @@ namespace K2ExoticArmory
                 }
             }
         }
-        private void GiveItemToJenna(string itemName)
+        private void GiveItemToJenna(string itemName = "AllItems")
         {
             foreach (var weapon in K2AllWeapons)
             {

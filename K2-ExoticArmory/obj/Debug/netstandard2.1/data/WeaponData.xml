@@ -633,6 +633,13 @@
 		<Slots>
 			<string>OffhandWeapon</string>
 		</Slots>
+		<StatRequirements>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_perversion</StatName>
+				<ModifyAmount>300</ModifyAmount>
+			</StatModifierInfo>
+		</StatRequirements>
 		<StatModifierInfos>
 			<StatModifierInfo>
 				<Type>Value</Type>
