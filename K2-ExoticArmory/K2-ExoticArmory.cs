@@ -58,8 +58,6 @@ namespace K2ExoticArmory
                 double xPos = -6.00;
                 double yPos = 16.30;
 
-                var missionInstance = MissionContainer.GetMission("KHVOSTOV_01_Quest");
-
                 GameObject adaNPC = new GameObject();
                 adaNPC.transform.position = new Vector3((float)xPos, (float)yPos);
 
