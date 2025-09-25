@@ -45,28 +45,27 @@ namespace K2Items
                     ability.DisplaySprite = manifest.SpriteResolver.ResolveAsResource(item.DisplaySprite);
                     ability.EnergyCost = item.AbilityEnergyCost;
                     ability.CooldownOnUse = item.AbilityCooldown;
+
                     ANToolkit.ScriptableManagement.ScriptableManager.Add(ability);
+
                     equipment.AddAbility(ability, "Ability");
                 }
             }
         }
 
-        public void Quest_Template(string DisplayName, string Description, string name, bool Repeatable, string TaskDisplay)
+        public void CreateSearchQuest(string DisplayName, string Description, string name, bool Repeatable, string TaskDisplay)
         {
-            // Create the Template Mission
             var moddedMission = ScriptableObject.CreateInstance<NewMission>();
             moddedMission.DisplayName = DisplayName;
             moddedMission.Description = Description;
             moddedMission.name = name + "_Quest";
             moddedMission.Repeatable = Repeatable;
 
-            // Create the Template Task
             var moddedTask1 = ScriptableObject.CreateInstance<NewTask>();
             moddedTask1.DefaultDisplayName = TaskDisplay;
             //moddedTask1.TargetCharacter = Character.Get("Klaus");
             moddedTask1.name = name + "_Task";
 
-            // Add both Mission and Task to the cache
             MissionContainer.AddMissionToLookup(moddedMission);
             MissionContainer.AddTaskToLookup(moddedTask1);
         }

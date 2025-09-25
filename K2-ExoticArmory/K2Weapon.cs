@@ -59,7 +59,7 @@ namespace K2ExoticArmory
             if (questModifiers != null)
             {
                 weapon.questModifiers = questModifiers;
-                Quest_Template(questModifiers.DisplayName, questModifiers.Description, questModifiers.name, questModifiers.Repeatable, questModifiers.TaskDisplay);
+                CreateSearchQuest(questModifiers.DisplayName, questModifiers.Description, questModifiers.name, questModifiers.Repeatable, questModifiers.TaskDisplay);
             }
 
             weapon.DisplaySpriteResource = previewImage;
@@ -86,8 +86,8 @@ namespace K2ExoticArmory
 
                 var vfxGameObject = new GameObject("VFX_Custom");
                 vfxGameObject.transform.position = new Vector3(9999999999, 0);
-                var vfxSpriteRenderer = vfxGameObject.AddComponent<SpriteRenderer>();
 
+                var vfxSpriteRenderer = vfxGameObject.AddComponent<SpriteRenderer>();
                 vfxSpriteRenderer.sprite = Sprite.Create(sprite.texture, new Rect(0, 0, sprite.texture.width, sprite.texture.height), new Vector2(0.5f, 0.5f), 800f);
 
                 var cachedFSM = typeof(Ability)

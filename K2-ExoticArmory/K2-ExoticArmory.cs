@@ -79,6 +79,7 @@ namespace K2ExoticArmory
                             {
                                 var interactableGameObject = new GameObject();
                                 interactableGameObject.transform.position = new Vector3((float)item.LocationCoordinates.xCoordinate, (float)item.LocationCoordinates.yCoordinate);
+
                                 var boxCollider = interactableGameObject.AddComponent<BoxCollider>();
                                 boxCollider.size = new Vector3((float)0.25, (float)0.25);
 
@@ -93,18 +94,22 @@ namespace K2ExoticArmory
                                             if (item.questModifiers.next != null)
                                             {
                                                 var oldMission = MissionContainer.GetMission(item.questModifiers.name + "_Quest");
-                                                var oldTask = oldMission.StartTask(item.questModifiers.name + "_Task");
                                                 oldMission.Completion = TaskCompletion.Complete;
+
+                                                var oldTask = oldMission.StartTask(item.questModifiers.name + "_Task");
+
                                                 MissionContainer.AddMissionToLookup(oldMission);
                                                 MissionContainer.AddTaskToLookup(oldTask);
+
                                                 if (item.questModifiers.next != "" && item.questModifiers.next != null)
                                                 {
                                                     var newMission = NewMission.StartMissionByID(item.questModifiers.next + "_Quest");
-                                                    var newTask = newMission.StartTask(item.questModifiers.next + "_Task");
                                                     newMission.Completion = TaskCompletion.InProgress;
+
+                                                    var newTask = newMission.StartTask(item.questModifiers.next + "_Task");
+
                                                     MissionContainer.AddMissionToLookup(newMission);
                                                     MissionContainer.AddTaskToLookup(newTask);
-
                                                 }
                                             }
                                         }
@@ -131,6 +136,7 @@ namespace K2ExoticArmory
                         {
                             var interactableGameObject = new GameObject();
                             interactableGameObject.transform.position = new Vector3((float)item.LocationCoordinates.xCoordinate, (float)item.LocationCoordinates.yCoordinate);
+
                             var boxCollider = interactableGameObject.AddComponent<BoxCollider>();
                             boxCollider.size = new Vector3((float)0.25, (float)0.25);
 
@@ -154,6 +160,7 @@ namespace K2ExoticArmory
                     {
                         var interactableGameObject = new GameObject();
                         interactableGameObject.transform.position = new Vector3((float)item.LocationCoordinates.xCoordinate, (float)item.LocationCoordinates.yCoordinate);
+
                         var boxCollider = interactableGameObject.AddComponent<BoxCollider>();
                         boxCollider.size = new Vector3((float)0.25, (float)0.25);
 
@@ -201,6 +208,7 @@ namespace K2ExoticArmory
         public void OnModLoaded(ModManifest manifest)
         {
             Debug.Log("K2-ExoticArmory installed");
+
             _manifest = manifest;
 
             listener.AddSpriteListener();

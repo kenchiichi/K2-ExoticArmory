@@ -35,9 +35,11 @@ namespace K2ExoticArmory
                             if (missionInstance.Completion == TaskCompletion.None && item.questModifiers.next != "")
                             {
                                 missionInstance = NewMission.StartMissionByID(item.questModifiers.next + "_Quest");
+                                missionInstance.Completion = TaskCompletion.InProgress;
+
                                 var taskInstance = missionInstance.StartTask(item.questModifiers.next + "_Task");
                                 taskInstance.Completion = TaskCompletion.InProgress;
-                                missionInstance.Completion = TaskCompletion.InProgress;
+
                                 MissionContainer.AddMissionToLookup(missionInstance);
                                 MissionContainer.AddTaskToLookup(taskInstance);
                             }
