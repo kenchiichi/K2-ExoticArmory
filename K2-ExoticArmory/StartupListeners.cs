@@ -42,7 +42,7 @@ namespace K2ExoticArmory
                                 MissionContainer.AddTaskToLookup(taskInstance);
                             }
                         }
-                        
+
                         itemRequirementName = item.restrictions;
                         customWeapon = item;
                     }

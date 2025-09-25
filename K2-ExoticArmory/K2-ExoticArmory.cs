@@ -1,6 +1,5 @@
 ﻿using ANToolkit.Controllers;
 using ANToolkit.Debugging;
-using ANToolkit.FPS.Weapons;
 using ANToolkit.UI;
 using Asuna.CharManagement;
 using Asuna.Dialogues;
