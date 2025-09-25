@@ -4,7 +4,6 @@ using ANToolkit.UI;
 using Asuna.CharManagement;
 using Asuna.Dialogues;
 using Asuna.Items;
-using Asuna.Missions;
 using Asuna.NewMissions;
 using Modding;
 using System.Collections.Generic;
@@ -48,133 +47,11 @@ namespace K2ExoticArmory
         }
         public void OnLevelChanged(string oldLevel, string newLevel)
         {
-            foreach (K2Items.K2Weapon item in K2AllWeapons)
-            {
-                K2Items.K2Weapon itemRequired = null;
-                foreach (K2Items.K2Weapon item2 in K2AllWeapons)
-                {
-                    if (item.LocationCoordinates != null)
-                    {
-                        if (item2.Name == item.LocationCoordinates.PrerequisiteQuestWeapon)
-                        {
-                            itemRequired = item2;
-                        }
-                    }
-                }
-                if (item.LocationCoordinates != null)
-                {
-                    if (item.LocationCoordinates.MapName == newLevel && !Character.Player.Inventory.Contains(item))
-                    {
-                        if (itemRequired != null)
-                        {
-                            var itemEquiped = false;
-                            foreach (Item EquipmentSlot in Character.Player.EquippedItems.GetAll<Item>())
-                            {
-                                if (EquipmentSlot.Name.ToLower() == itemRequired.Name.ToLower())
-                                {
-                                    itemEquiped = true;
-                                }
-                            }
-                            if (Character.Player.Inventory.Contains(itemRequired) || itemEquiped)
-                            {
-                                var interactableGameObject = new GameObject();
-                                interactableGameObject.transform.position = new Vector3((float)item.LocationCoordinates.xCoordinate, (float)item.LocationCoordinates.yCoordinate);
+            K2Weapon k2Weapon = new K2Weapon();
+            k2Weapon.LoadWorldItems(newLevel, K2AllWeapons);
 
-                                var boxCollider = interactableGameObject.AddComponent<BoxCollider>();
-                                boxCollider.size = new Vector3((float)0.25, (float)0.25);
-
-                                var interactable = interactableGameObject.AddComponent<Interactable>();
-                                interactable.TypeOfInteraction = InteractionType.Talk;
-                                interactable.OnInteracted.AddListener(x =>
-                                {
-                                    if (itemRequired != null)
-                                    {
-                                        if (item.questModifiers != null)
-                                        {
-                                            if (item.questModifiers.next != null)
-                                            {
-                                                var oldMission = MissionContainer.GetMission(item.questModifiers.name + "_Quest");
-                                                oldMission.Completion = TaskCompletion.Complete;
-
-                                                var oldTask = oldMission.StartTask(item.questModifiers.name + "_Task");
-
-                                                MissionContainer.AddMissionToLookup(oldMission);
-                                                MissionContainer.AddTaskToLookup(oldTask);
-
-                                                if (item.questModifiers.next != "" && item.questModifiers.next != null)
-                                                {
-                                                    var newMission = NewMission.StartMissionByID(item.questModifiers.next + "_Quest");
-                                                    newMission.Completion = TaskCompletion.InProgress;
-
-                                                    var newTask = newMission.StartTask(item.questModifiers.next + "_Task");
-
-                                                    MissionContainer.AddMissionToLookup(newMission);
-                                                    MissionContainer.AddTaskToLookup(newTask);
-                                                }
-                                            }
-                                        }
-                                        if (itemEquiped)
-                                        {
-                                            GiveItems.GiveToCharacter(Character.Get("Jenna"), true, false, item);
-                                        }
-                                        else
-                                        {
-                                            GiveItems.GiveToCharacter(Character.Get("Jenna"), false, false, item);
-                                        }
-                                        RemoveItemFromJenna(itemRequired.Name);
-                                    }
-                                    else
-                                    {
-                                        GiveItems.GiveToCharacter(Character.Get("Jenna"), false, false, item);
-                                    }
-                                    Item.GenerateErrorDialogue(Character.Player, "I found <color=#00ffff>" + item.Name + "</color> laying here!", "Happy");
-                                    interactable.gameObject.SetActive(false);
-                                });
-                            }
-                        }
-                        else
-                        {
-                            var interactableGameObject = new GameObject();
-                            interactableGameObject.transform.position = new Vector3((float)item.LocationCoordinates.xCoordinate, (float)item.LocationCoordinates.yCoordinate);
-
-                            var boxCollider = interactableGameObject.AddComponent<BoxCollider>();
-                            boxCollider.size = new Vector3((float)0.25, (float)0.25);
-
-                            var interactable = interactableGameObject.AddComponent<Interactable>();
-                            interactable.TypeOfInteraction = InteractionType.Talk;
-                            interactable.OnInteracted.AddListener(x =>
-                            {
-                                Item.GenerateErrorDialogue(Character.Player, "I found <color=#00ffff>" + item.Name + "</color> laying here!", "Happy");
-                                GiveItems.GiveToCharacter(Character.Get("Jenna"), false, false, item);
-                                interactable.gameObject.SetActive(false);
-                            });
-                        }
-                    }
-                }
-            }
-            foreach (K2Items.K2Apparel item in K2AllApparel)
-            {
-                if (item.LocationCoordinates != null)
-                {
-                    if (item.LocationCoordinates.MapName == newLevel && !Character.Player.Inventory.Contains(item))
-                    {
-                        var interactableGameObject = new GameObject();
-                        interactableGameObject.transform.position = new Vector3((float)item.LocationCoordinates.xCoordinate, (float)item.LocationCoordinates.yCoordinate);
-
-                        var boxCollider = interactableGameObject.AddComponent<BoxCollider>();
-                        boxCollider.size = new Vector3((float)0.25, (float)0.25);
-
-                        var interactable = interactableGameObject.AddComponent<Interactable>();
-                        interactable.TypeOfInteraction = InteractionType.Talk;
-                        interactable.OnInteracted.AddListener(x =>
-                        {
-                            Item.GenerateErrorDialogue(Character.Player, "I found <color=#00ffff>" + item.Name + "</color> laying here!", "Happy");
-                            GiveItems.GiveToCharacter(Character.Get("Jenna"), false, false, item);
-                            interactable.gameObject.SetActive(false);
-                        });
-                    }
-                }
-            }
+            K2Apparel k2Apparel = new K2Apparel();
+            k2Apparel.LoadWorldItems(newLevel, K2AllApparel);
 
             if (newLevel == "Motel_UpperFloor")
             {
@@ -260,7 +137,7 @@ namespace K2ExoticArmory
             });
         }
 
-        private void RemoveItemFromJenna(string itemName)
+        public void RemoveItemFromJenna(string itemName)
         {
             foreach (Item EquipmentSlot in Character.Player.EquippedItems.GetAll<Item>())
             {
@@ -277,7 +154,7 @@ namespace K2ExoticArmory
                 }
             }
         }
-        private void GiveItemToJenna(string itemName = "AllItems")
+        public void GiveItemToJenna(string itemName = "AllItems")
         {
             foreach (var weapon in K2AllWeapons)
             {
