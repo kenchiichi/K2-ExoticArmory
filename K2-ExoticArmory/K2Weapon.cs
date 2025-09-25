@@ -27,8 +27,6 @@ namespace K2ExoticArmory
         {
             K2Items.K2Weapon weapon = ScriptableObject.CreateInstance<K2Items.K2Weapon>();
 
-            ANResourceSprite previewImage = manifest.SpriteResolver.ResolveAsResource(PreviewImage);
-
             _manifest = manifest;
 
             _instance = weapon;
@@ -66,7 +64,7 @@ namespace K2ExoticArmory
                 CreateSearchQuest(questModifiers.DisplayName, questModifiers.Description, questModifiers.name, questModifiers.Repeatable, questModifiers.TaskDisplay);
             }
 
-            weapon.DisplaySpriteResource = previewImage;
+            weapon.DisplaySpriteResource = manifest.SpriteResolver.ResolveAsResource(PreviewImage);
             weapon.LocationCoordinates = LocationCoordinates;
             weapon.Name = Name;
             weapon.Slots.AddRange(Slots.Select((string x) => (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), x)));

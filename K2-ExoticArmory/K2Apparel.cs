@@ -14,14 +14,15 @@ namespace K2ExoticArmory
 {
     public class K2Apparel : K2Items.K2Equipment
     {
+        public List<ModEquipmentSprite> Sprites;
+
         private K2Items.K2Apparel _instance;
 
         private ModManifest _manifest;
         public K2Items.K2Apparel CustomInitialize(ModManifest manifest)
         {
-            K2Items.K2Apparel apparel = ScriptableObject.CreateInstance<K2Items.K2Apparel>();
 
-            ANResourceSprite previewImage = manifest.SpriteResolver.ResolveAsResource(PreviewImage);
+            K2Items.K2Apparel apparel = ScriptableObject.CreateInstance<K2Items.K2Apparel>();
 
             _manifest = manifest;
 
@@ -47,7 +48,13 @@ namespace K2ExoticArmory
             {
                 apparel.questModifiers = questModifiers;
             }
-            apparel.DisplaySpriteResource = previewImage;
+
+            if (Sprites != null)
+            {
+                apparel.DurabilityDisplayLayers.AddRange(Sprites.Select((ModEquipmentSprite x) => x.Get(manifest.SpriteResolver)));
+            }
+
+            apparel.DisplaySpriteResource = manifest.SpriteResolver.ResolveAsResource(PreviewImage);
             apparel.LocationCoordinates = LocationCoordinates;
             apparel.Name = Name;
             apparel.Slots.AddRange(Slots.Select((string x) => (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), x)));

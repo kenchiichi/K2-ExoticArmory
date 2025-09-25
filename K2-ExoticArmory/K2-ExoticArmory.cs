@@ -4,7 +4,6 @@ using ANToolkit.UI;
 using Asuna.CharManagement;
 using Asuna.Dialogues;
 using Asuna.Items;
-using Asuna.NewMissions;
 using Modding;
 using System.Collections.Generic;
 using System.IO;

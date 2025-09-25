@@ -100,6 +100,8 @@ namespace K2Items
 
         public MapCoordinate LocationCoordinates;
 
+        public List<ModEquipmentSprite> Sprites;
+
         public int K2ItemCategory = 1;
 
         public int Price;

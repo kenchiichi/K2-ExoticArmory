@@ -32,4 +32,36 @@
 			</CustomAbility>
 		</CustomAbilityItems>
 	</K2Apparel>
+	<K2Apparel>
+		<Name>Ren</Name>
+		<Price>1</Price>
+		<Description>Say hello to my cat Ren!</Description>
+		<PreviewImage>assets\sprites\icons\ren.png</PreviewImage>
+		<Slots>
+			<string>Accessory2</string>
+		</Slots>
+		<Sprites>
+			<ModEquipmentSprite>
+				<Name>Test Item With Apparel Sprite</Name>
+				<Image>assets\sprites\displaysprite\test_item_sprite.png</Image>
+				<Color>#FFFFFFFF</Color>
+				<SortingLayer>Outfit</SortingLayer>
+				<SortingOrder>4</SortingOrder>
+			</ModEquipmentSprite>
+		</Sprites>
+		<StatModifierInfos>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_hitpoints</StatName>
+				<ModifyAmount>-19</ModifyAmount>
+			</StatModifierInfo>
+		</StatModifierInfos>
+		<CustomAbilityItems>
+			<CustomAbility>
+				<AbilityID>Abl_Attack</AbilityID>
+				<AbilityName>Just a boi</AbilityName>
+				<AbilityTooltip>Behold, it's a cat!  Gives the user the ability to be an adorable nuisance.</AbilityTooltip>
+			</CustomAbility>
+		</CustomAbilityItems>
+	</K2Apparel>
 </ArrayOfK2Apparel>
