@@ -3,6 +3,7 @@ using Asuna.CharManagement;
 using Asuna.Items;
 using Asuna.Missions;
 using Asuna.NewMissions;
+using DragonBones;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -27,7 +28,7 @@ namespace K2ExoticArmory
                 K2Items.K2Weapon customWeapon = ScriptableObject.CreateInstance<K2Items.K2Weapon>();
                 foreach (K2Items.K2Weapon item in K2AllWeapons)
                 {
-                    if (equipAttemptInfo.Equipment.Name.ToLower() == item.Name.ToLower())
+                    if (equipAttemptInfo.Equipment.Name == item.Name)
                     {
                         if (item.questModifiers != null && item.questModifiers.BaseWeapon)
                         {
@@ -51,7 +52,7 @@ namespace K2ExoticArmory
                 }
                 foreach (K2Items.K2Apparel item in K2AllApparel)
                 {
-                    if (equipAttemptInfo.Equipment.Name.ToLower() == item.Name.ToLower())
+                    if (equipAttemptInfo.Equipment.Name == item.Name)
                     {
                         itemRequirementName = item.restrictions;
                         customApparel = item;
@@ -79,16 +80,16 @@ namespace K2ExoticArmory
                         bool itemInEquipmentSlot = false;
                         foreach (var EquipmentSlot in Character.Player.EquippedItems.GetAll<Item>())
                         {
-                            if (EquipmentSlot.Name.ToLower() == restriction.RequiredItemEquipped.ToLower())
+                            if (EquipmentSlot.Name == restriction.RequiredItemEquipped)
                             {
                                 itemInEquipmentSlot = true;
                             }
-                            if (EquipmentSlot.Name.ToLower() == item.Name.ToLower())
+                            if (EquipmentSlot.Name == item.Name)
                             {
                                 newitem = EquipmentSlot;
                             }
                         }
-                        if (equipAttemptInfo.Equipment.Name.ToLower() == restriction.RequiredItemEquipped.ToLower() && itemInEquipmentSlot)
+                        if (equipAttemptInfo.Equipment.Name == restriction.RequiredItemEquipped && itemInEquipmentSlot)
                         {
                             Character.Player.UnequipItem((Equipment)newitem);
                         }
@@ -108,16 +109,13 @@ namespace K2ExoticArmory
                         {
                             foreach (var slot in item.Slots)
                             {
-                                foreach (var slot2 in equipAttemptInfo.Equipment.Slots)
+                                if (equipAttemptInfo.Equipment.Slots.Contains(slot))
                                 {
-                                    if (slot == slot2)
-                                    {
-                                        replace = true;
-                                    }
+                                    replace = true;
                                 }
                             }
                         }
-                        if (equipped.Name.ToLower() == item.Name.ToLower() && replace)
+                        if (equipped.Name == item.Name && replace)
                         {
                             if (healthModifier - item.ModHitpoints > -19 && canEquip)
                             {
@@ -129,7 +127,7 @@ namespace K2ExoticArmory
                             }
                         }
                     }
-                    if (item.ModHitpoints != 0 && canEquip && equipAttemptInfo.Equipment.Name.ToLower() == item.Name.ToLower())
+                    if (item.ModHitpoints != 0 && canEquip && equipAttemptInfo.Equipment.Name == item.Name)
                     {
                         bool isEquipped = false;
                         foreach (var equipped in Character.Get("Jenna").EquippedItems.GetAll<Item>())
@@ -167,16 +165,13 @@ namespace K2ExoticArmory
                         {
                             foreach (var slot in item.Slots)
                             {
-                                foreach (var slot2 in equipAttemptInfo.Equipment.Slots)
+                                if (equipAttemptInfo.Equipment.Slots.Contains(slot))
                                 {
-                                    if (slot == slot2)
-                                    {
-                                        replace = true;
-                                    }
+                                    replace = true;
                                 }
                             }
                         }
-                        if (equipped.Name.ToLower() == item.Name.ToLower() && replace)
+                        if (equipped.Name == item.Name && replace)
                         {
                             if (healthModifier - item.ModHitpoints > -19 && canEquip)
                             {
@@ -188,7 +183,7 @@ namespace K2ExoticArmory
                             }
                         }
                     }
-                    if (item.ModHitpoints != 0 && canEquip && equipAttemptInfo.Equipment.Name.ToLower() == item.Name.ToLower())
+                    if (item.ModHitpoints != 0 && canEquip && equipAttemptInfo.Equipment.Name == item.Name)
                     {
                         bool isEquipped = false;
                         foreach (var equipped in Character.Get("Jenna").EquippedItems.GetAll<Item>())
@@ -234,7 +229,7 @@ namespace K2ExoticArmory
                 Restraint restraint = new Restraint();
                 foreach (var EquipmentSlot in Character.Player.EquippedItems.GetAll<Item>())
                 {
-                    if (EquipmentSlot.Name.ToLower() == itemRequirement.ToLower())
+                    if (EquipmentSlot.Name == itemRequirement)
                     {
                         canEquip = true;
                     }
