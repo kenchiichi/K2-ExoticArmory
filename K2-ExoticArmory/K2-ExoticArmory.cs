@@ -1,6 +1,7 @@
 ﻿using ANToolkit.Controllers;
 using ANToolkit.Debugging;
 using ANToolkit.UI;
+using ANToolkit.Utility;
 using Asuna.CharManagement;
 using Asuna.Dialogues;
 using Asuna.Items;
@@ -42,6 +43,13 @@ namespace K2ExoticArmory
             }
             UnityEngine.Events.UnityEvent unityEvent = new UnityEngine.Events.UnityEvent();
             unityEvent.RemoveAllListeners();
+            foreach (var stats in Character.Get("Jenna").Stats.GetAll<Stat>())
+            {
+                if (stats.Name == "Hitpoints")
+                {
+                    stats.BaseMax = 1;
+                }
+            }
             Debug.Log("K2-ExoticArmory uninstalled");
         }
         public void OnLevelChanged(string oldLevel, string newLevel)
