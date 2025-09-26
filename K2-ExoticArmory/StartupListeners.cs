@@ -135,15 +135,27 @@ namespace K2ExoticArmory
                             {
                                 if (stats.Name == "Hitpoints")
                                 {
-                                    if (stats.BaseMax + item.ModHitpoints > -19)
+                                    bool isEquipped = false;
+                                    foreach (var equipped in Character.Get("Jenna").EquippedItems.GetAll<Item>())
                                     {
-                                        stats.BaseMax = stats.BaseMax + item.ModHitpoints;
+                                        if (equipped.Name == equipAttemptInfo.Equipment.Name)
+                                        {
+                                            stats.BaseMax = stats.BaseMax - item.ModHitpoints;
+                                            isEquipped = true;
+                                        }
                                     }
-                                    else
+                                    if (!isEquipped)
                                     {
-                                        restraint.Set("CanEquip", false);
-                                        equipAttemptInfo.CanEquip = restraint;
-                                        Item.GenerateErrorDialogue(Character.Player, "I can't Equip <color=#00ffff>" + item.Name + "</color> right now...  I should increase my max HP.", "Sad");
+                                        if (stats.BaseMax + item.ModHitpoints > -19)
+                                        {
+                                            stats.BaseMax = stats.BaseMax + item.ModHitpoints;
+                                        }
+                                        else
+                                        {
+                                            restraint.Set("CanEquip", false);
+                                            equipAttemptInfo.CanEquip = restraint;
+                                            Item.GenerateErrorDialogue(Character.Player, "I can't Equip <color=#00ffff>" + item.Name + "</color> right now...  I should increase my max HP.", "Sad");
+                                        }
                                     }
                                 }
                             }
@@ -187,15 +199,27 @@ namespace K2ExoticArmory
                             {
                                 if (stats.Name == "Hitpoints")
                                 {
-                                    if (stats.BaseMax + item.ModHitpoints > -19)
+                                    bool isEquipped = false;
+                                    foreach (var equipped in Character.Get("Jenna").EquippedItems.GetAll<Item>())
                                     {
-                                        stats.BaseMax = stats.BaseMax + item.ModHitpoints;
+                                        if (equipped.Name == equipAttemptInfo.Equipment.Name)
+                                        {
+                                            stats.BaseMax = stats.BaseMax - item.ModHitpoints;
+                                            isEquipped = true;
+                                        }
                                     }
-                                    else
+                                    if (!isEquipped)
                                     {
-                                        restraint.Set("CanEquip", false);
-                                        equipAttemptInfo.CanEquip = restraint;
-                                        Item.GenerateErrorDialogue(Character.Player, "I can't Equip <color=#00ffff>" + item.Name + "</color> right now...  I should increase my max HP.", "Sad");
+                                        if (stats.BaseMax + item.ModHitpoints > -19)
+                                        {
+                                            stats.BaseMax = stats.BaseMax + item.ModHitpoints;
+                                        }
+                                        else
+                                        {
+                                            restraint.Set("CanEquip", false);
+                                            equipAttemptInfo.CanEquip = restraint;
+                                            Item.GenerateErrorDialogue(Character.Player, "I can't Equip <color=#00ffff>" + item.Name + "</color> right now...  I should increase my max HP.", "Sad");
+                                        }
                                     }
                                 }
                             }
