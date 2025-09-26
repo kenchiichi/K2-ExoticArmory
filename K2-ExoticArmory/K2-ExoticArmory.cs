@@ -1,7 +1,6 @@
 ﻿using ANToolkit.Controllers;
 using ANToolkit.Debugging;
 using ANToolkit.UI;
-using ANToolkit.Utility;
 using Asuna.CharManagement;
 using Asuna.Dialogues;
 using Asuna.Items;

@@ -3,7 +3,6 @@ using Asuna.CharManagement;
 using Asuna.Items;
 using Asuna.Missions;
 using Asuna.NewMissions;
-using K2Items;
 using System.Collections.Generic;
 using UnityEngine;
 
