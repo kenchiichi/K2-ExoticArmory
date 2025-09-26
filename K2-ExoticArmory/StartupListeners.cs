@@ -3,6 +3,7 @@ using Asuna.CharManagement;
 using Asuna.Items;
 using Asuna.Missions;
 using Asuna.NewMissions;
+using HutongGames.PlayMaker.Actions;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -97,9 +98,18 @@ namespace K2ExoticArmory
 
                 //Hitpoints
                 Restraint restraint = new Restraint();
+                bool replace = false;
+                bool canEquip = true;
+                int healthModifier = 0;
+                foreach (var stats in Character.Get("Jenna").Stats.GetAll<Stat>())
+                {
+                    if (stats.Name == "Hitpoints")
+                    {
+                        healthModifier = stats.BaseMax;
+                    }
+                }
                 foreach (K2Items.K2Apparel item in K2AllApparel)
                 {
-                    bool replace = false;
                     foreach (var equipped in Character.Get("Jenna").EquippedItems.GetAll<Item>())
                     {
                         if (item.Name != equipAttemptInfo.Equipment.Name && item.Name == equipped.Name)
@@ -111,6 +121,7 @@ namespace K2ExoticArmory
                                     if (slot == slot2)
                                     {
                                         replace = true;
+                                        break;
                                     }
                                 }
                             }
@@ -121,12 +132,21 @@ namespace K2ExoticArmory
                             {
                                 if (stats.Name == "Hitpoints")
                                 {
-                                    stats.BaseMax = stats.BaseMax - item.ModHitpoints;
+                                    if (healthModifier - item.ModHitpoints > -19 && canEquip)
+                                    {
+                                        healthModifier -= item.ModHitpoints;
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        canEquip = false;
+                                        break;
+                                    }
                                 }
                             }
                         }
                     }
-                    if (item.ModHitpoints != 0)
+                    if (item.ModHitpoints != 0 && canEquip)
                     {
                         if (equipAttemptInfo.Equipment.Name.ToLower() == item.Name.ToLower())
                         {
@@ -139,21 +159,20 @@ namespace K2ExoticArmory
                                     {
                                         if (equipped.Name == equipAttemptInfo.Equipment.Name)
                                         {
-                                            stats.BaseMax = stats.BaseMax - item.ModHitpoints;
+                                            healthModifier -= item.ModHitpoints;
                                             isEquipped = true;
+                                            break;
                                         }
                                     }
                                     if (!isEquipped)
                                     {
-                                        if (stats.BaseMax + item.ModHitpoints > -19)
+                                        if (healthModifier + item.ModHitpoints > -19)
                                         {
-                                            stats.BaseMax = stats.BaseMax + item.ModHitpoints;
+                                            healthModifier += item.ModHitpoints;
                                         }
                                         else
                                         {
-                                            restraint.Set("CanEquip", false);
-                                            equipAttemptInfo.CanEquip = restraint;
-                                            Item.GenerateErrorDialogue(Character.Player, "I can't Equip <color=#00ffff>" + item.Name + "</color> right now...  I should increase my max HP.", "Sad");
+                                            canEquip = false;
                                         }
                                     }
                                 }
@@ -163,7 +182,6 @@ namespace K2ExoticArmory
                 }
                 foreach (K2Items.K2Weapon item in K2AllWeapons)
                 {
-                    bool replace = false;
                     foreach (var equipped in Character.Get("Jenna").EquippedItems.GetAll<Item>())
                     {
                         if (item.Name != equipAttemptInfo.Equipment.Name && item.Name == equipped.Name)
@@ -175,6 +193,7 @@ namespace K2ExoticArmory
                                     if (slot == slot2)
                                     {
                                         replace = true;
+                                        break;
                                     }
                                 }
                             }
@@ -185,12 +204,21 @@ namespace K2ExoticArmory
                             {
                                 if (stats.Name == "Hitpoints")
                                 {
-                                    stats.BaseMax = stats.BaseMax - item.ModHitpoints;
+                                    if (healthModifier - item.ModHitpoints > -19 && canEquip)
+                                    {
+                                        healthModifier -= item.ModHitpoints;
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        canEquip = false;
+                                        break;
+                                    }
                                 }
                             }
                         }
                     }
-                    if (item.ModHitpoints != 0)
+                    if (item.ModHitpoints != 0 && canEquip)
                     {
                         if (equipAttemptInfo.Equipment.Name.ToLower() == item.Name.ToLower())
                         {
@@ -203,25 +231,40 @@ namespace K2ExoticArmory
                                     {
                                         if (equipped.Name == equipAttemptInfo.Equipment.Name)
                                         {
-                                            stats.BaseMax = stats.BaseMax - item.ModHitpoints;
+                                            healthModifier -= item.ModHitpoints;
                                             isEquipped = true;
+                                            break;
                                         }
                                     }
                                     if (!isEquipped)
                                     {
-                                        if (stats.BaseMax + item.ModHitpoints > -19)
+                                        if (healthModifier + item.ModHitpoints > -19)
                                         {
-                                            stats.BaseMax = stats.BaseMax + item.ModHitpoints;
+                                            healthModifier += item.ModHitpoints;
                                         }
                                         else
                                         {
-                                            restraint.Set("CanEquip", false);
-                                            equipAttemptInfo.CanEquip = restraint;
-                                            Item.GenerateErrorDialogue(Character.Player, "I can't Equip <color=#00ffff>" + item.Name + "</color> right now...  I should increase my max HP.", "Sad");
+                                            canEquip = false;
                                         }
                                     }
                                 }
                             }
+                        }
+                    }
+                }
+                foreach (var stats in Character.Get("Jenna").Stats.GetAll<Stat>())
+                {
+                    if (stats.Name == "Hitpoints")
+                    {
+                        if (healthModifier > -19 && canEquip)
+                        {
+                            stats.BaseMax = healthModifier;
+                        }
+                        else
+                        {
+                            restraint.Set("CanEquip", false);
+                            equipAttemptInfo.CanEquip = restraint;
+                            Item.GenerateErrorDialogue(Character.Player, "I can't Equip <color=#00ffff>" + equipAttemptInfo.Equipment.Name + "</color> right now...  I should increase my max HP.", "Sad");
                         }
                     }
                 }
