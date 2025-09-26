@@ -514,12 +514,8 @@
 				<StatName>stat_attack_range</StatName>
 				<ModifyAmount>3</ModifyAmount>
 			</StatModifierInfo>
-			<StatModifierInfo>
-				<Type>Value</Type>
-				<StatName>stat_hitpoints</StatName>
-				<ModifyAmount>10</ModifyAmount>
-			</StatModifierInfo>
 		</StatModifierInfos>
+		<ModHitpoints>10</ModHitpoints>
 		<customVFX>
 			<BurstCount>7</BurstCount>
 			<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
@@ -529,7 +525,7 @@
 			<CustomAbility>
 				<AbilityID>Abl_Attack</AbilityID>
 				<AbilityName>The Right Choice</AbilityName>
-				<AbilityTooltip>Gives the user 10 extra hit points.</AbilityTooltip>
+				<AbilityTooltip>Gives the user &lt;color=#00FFFF&gt;+10&lt;/color&gt; extra hit points.</AbilityTooltip>
 				<AbilityCooldown>0</AbilityCooldown>
 				<DisplaySprite>assets\sprites\abl_icons\the_right_choice.png</DisplaySprite>
 			</CustomAbility>
@@ -656,12 +652,8 @@
 				<StatName>stat_lust_power</StatName>
 				<ModifyAmount>20</ModifyAmount>
 			</StatModifierInfo>
-			<StatModifierInfo>
-				<Type>Value</Type>
-				<StatName>stat_hitpoints</StatName>
-				<ModifyAmount>-10</ModifyAmount>
-			</StatModifierInfo>
 		</StatModifierInfos>
+		<ModHitpoints>-10</ModHitpoints>
 		<customVFX>
 			<BurstCount>7</BurstCount>
 			<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
@@ -671,7 +663,7 @@
 			<CustomAbility>
 				<AbilityID>Abl_Venus_Kiss</AbilityID>
 				<AbilityName>Cursebringer</AbilityName>
-				<AbilityTooltip>This weapon makes the weilder feel an &lt;color=#FF64FF&gt;intimate&lt;/color&gt; sense of loyalty to the weapon, and a &lt;color=#FF0000&gt;voracious hunger&lt;/color&gt; for it's foes.</AbilityTooltip>
+				<AbilityTooltip>This weapon makes the weilder feel an &lt;color=#FF64FF&gt;intimate&lt;/color&gt; sense of loyalty to the weapon, and a &lt;color=#FF0000&gt;voracious hunger&lt;/color&gt; for it's foes.  Subtracts &lt;color=#FF0000&gt;10 HP&lt;/color&gt;, but increases damage.</AbilityTooltip>
 				<AbilityCooldown>1</AbilityCooldown>
 				<DisplaySprite>assets\sprites\abl_icons\cursebringer.png</DisplaySprite>
 			</CustomAbility>

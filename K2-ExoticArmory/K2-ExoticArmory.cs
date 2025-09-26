@@ -85,10 +85,6 @@ namespace K2ExoticArmory
 
             _manifest = manifest;
 
-            listener.AddSpriteListener();
-
-            listener.AddRequirementListener(K2AllApparel, K2AllWeapons);
-
             WeaponSerialStreamReader(manifest, "data\\WeaponData.xml", K2AllWeapons);
 
             ApparelSerialStreamReader(manifest, "data\\ApparelData.xml", K2AllApparel);
@@ -132,6 +128,10 @@ namespace K2ExoticArmory
             {
                 GiveItemToJenna();
             });
+
+            listener.AddSpriteListener();
+
+            listener.EquipAttemptListener(K2AllApparel, K2AllWeapons);
         }
 
         public void RemoveItemFromJenna(string itemName)

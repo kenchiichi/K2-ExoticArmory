@@ -14,6 +14,8 @@ namespace K2Items
 
         public int Price;
 
+        public int ModHitpoints = 0;
+
         public string PreviewImage;
 
         public string Description;
@@ -87,6 +89,8 @@ namespace K2Items
         public int K2ItemCategory = 2;
 
         public int Price;
+
+        public int ModHitpoints = 0;
     }
     public class K2Apparel : Asuna.Items.Apparel
     {
@@ -105,6 +109,8 @@ namespace K2Items
         public int K2ItemCategory = 1;
 
         public int Price;
+
+        public int ModHitpoints = 0;
     }
     public class MapCoordinate
     {

@@ -64,6 +64,7 @@ namespace K2ExoticArmory
             apparel.StatRequirements = StatRequirements;
             apparel.restrictions = restrictions;
             apparel.questModifiers = questModifiers;
+            apparel.ModHitpoints = ModHitpoints;
 
             AddAbilitiesToEquipment(apparel, _manifest);
 

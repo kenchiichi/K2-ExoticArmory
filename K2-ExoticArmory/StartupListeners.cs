@@ -3,6 +3,7 @@ using Asuna.CharManagement;
 using Asuna.Items;
 using Asuna.Missions;
 using Asuna.NewMissions;
+using K2Items;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,7 +19,7 @@ namespace K2ExoticArmory
                 newItem.DisplaySpriteResource = oldItem.DisplaySpriteResource;
             });
         }
-        public void AddRequirementListener(List<K2Items.K2Apparel> K2AllApparel, List<K2Items.K2Weapon> K2AllWeapons)
+        public void EquipAttemptListener(List<K2Items.K2Apparel> K2AllApparel, List<K2Items.K2Weapon> K2AllWeapons)
         {
             K2Items.K2Weapon.OnEquipAttempt.AddListener(equipAttemptInfo =>
             {
@@ -70,6 +71,7 @@ namespace K2ExoticArmory
                     }
                 }
 
+                //Unequip Required Weapon
                 foreach (K2Items.K2Weapon item in K2AllWeapons)
                 {
                     foreach (K2Items.Restrictions restriction in item.restrictions)
@@ -93,26 +95,88 @@ namespace K2ExoticArmory
                         }
                     }
                 }
+
+                //Hitpoints
+                Restraint restraint = new Restraint();
                 foreach (K2Items.K2Apparel item in K2AllApparel)
                 {
-                    foreach (K2Items.Restrictions restriction in item.restrictions)
+                    foreach (var equipped in Character.Get("Jenna").EquippedItems.GetAll<Item>())
                     {
-                        Item newitem = null;
-                        bool itemInEquipmentSlot = false;
-                        foreach (var EquipmentSlot in Character.Player.EquippedItems.GetAll<Item>())
+                        if (equipped.Name.ToLower() == item.Name.ToLower())
                         {
-                            if (EquipmentSlot.Name.ToLower() == restriction.RequiredItemEquipped.ToLower())
+                            foreach (var stats in Character.Get("Jenna").Stats.GetAll<Stat>())
                             {
-                                itemInEquipmentSlot = true;
-                            }
-                            if (EquipmentSlot.Name.ToLower() == item.Name.ToLower())
-                            {
-                                newitem = EquipmentSlot;
+                                if (stats.Name == "Hitpoints")
+                                {
+                                    stats.BaseMax = stats.BaseMax - item.ModHitpoints;
+                                }
                             }
                         }
-                        if (equipAttemptInfo.Equipment.Name.ToLower() == restriction.RequiredItemEquipped.ToLower() && itemInEquipmentSlot)
+                    }
+                    if (item.ModHitpoints != 0)
+                    {
+                        if (equipAttemptInfo.Equipment.Name.ToLower() == item.Name.ToLower())
                         {
-                            Character.Player.UnequipItem((Equipment)newitem);
+                            foreach (var stats in Character.Get("Jenna").Stats.GetAll<Stat>())
+                            {
+                                if (stats.Name == "Hitpoints")
+                                {
+                                    Debug.Log("Stats max value: " + stats.Name + stats.BaseMax);
+                                    if (stats.BaseMax + item.ModHitpoints > -19)
+                                    {
+                                        Debug.Log("Apparel true\nModHitpoints" + item.ModHitpoints + "\nbase hp" + stats.BaseMax);
+                                        stats.BaseMax = stats.BaseMax + item.ModHitpoints;
+                                    }
+                                    else
+                                    {
+                                        Debug.Log("Apparel false\nModHitpoints" + item.ModHitpoints + "\nbase hp" + stats.BaseMax);
+                                        restraint.Set("CanEquip", false);
+                                        equipAttemptInfo.CanEquip = restraint;
+                                        Item.GenerateErrorDialogue(Character.Player, "I can't Equip <color=#00ffff>" + item.Name + "</color> right now...  I should increase my max HP.", "Sad");
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                foreach (K2Items.K2Weapon item in K2AllWeapons)
+                {
+                    foreach (var equipped in Character.Get("Jenna").EquippedItems.GetAll<Item>())
+                    {
+                        if (equipped.Name.ToLower() == item.Name.ToLower())
+                        {
+                            foreach (var stats in Character.Get("Jenna").Stats.GetAll<Stat>())
+                            {
+                                if (stats.Name == "Hitpoints")
+                                {
+                                    stats.BaseMax = stats.BaseMax - item.ModHitpoints;
+                                }
+                            }
+                        }
+                    }
+                    if (item.ModHitpoints != 0)
+                    {
+                        if (equipAttemptInfo.Equipment.Name.ToLower() == item.Name.ToLower())
+                        {
+                            foreach (var stats in Character.Get("Jenna").Stats.GetAll<Stat>())
+                            {
+                                if (stats.Name == "Hitpoints")
+                                {
+                                    Debug.Log("Stats max value: " + stats.Name + stats.BaseMax);
+                                    if (stats.BaseMax + item.ModHitpoints > -19)
+                                    {
+                                        Debug.Log("Weapon true\nModHitpoints" + item.ModHitpoints + "\nbase hp" + stats.BaseMax);
+                                        stats.BaseMax = stats.BaseMax + item.ModHitpoints;
+                                    }
+                                    else
+                                    {
+                                        Debug.Log("Weapon false\nModHitpoints" + item.ModHitpoints + "\nbase hp" + stats.BaseMax);
+                                        restraint.Set("CanEquip", false);
+                                        equipAttemptInfo.CanEquip = restraint;
+                                        Item.GenerateErrorDialogue(Character.Player, "I can't Equip <color=#00ffff>" + item.Name + "</color> right now...  I should increase my max HP.", "Sad");
+                                    }
+                                }
+                            }
                         }
                     }
                 }

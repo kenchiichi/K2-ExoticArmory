@@ -18,11 +18,6 @@
 				<StatName>stat_physical_defense</StatName>
 				<ModifyAmount>1</ModifyAmount>
 			</StatModifierInfo>
-			<StatModifierInfo>
-				<Type>Value</Type>
-				<StatName>stat_hitpoints</StatName>
-				<ModifyAmount>1</ModifyAmount>
-			</StatModifierInfo>
 		</StatModifierInfos>
 		<CustomAbilityItems>
 			<CustomAbility>
@@ -49,13 +44,7 @@
 				<SortingOrder>4</SortingOrder>
 			</ModEquipmentSprite>
 		</Sprites>
-		<StatModifierInfos>
-			<StatModifierInfo>
-				<Type>Value</Type>
-				<StatName>stat_hitpoints</StatName>
-				<ModifyAmount>-19</ModifyAmount>
-			</StatModifierInfo>
-		</StatModifierInfos>
+		<ModHitpoints>-19</ModHitpoints>
 		<CustomAbilityItems>
 			<CustomAbility>
 				<AbilityID>Abl_Attack</AbilityID>
