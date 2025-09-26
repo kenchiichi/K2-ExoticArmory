@@ -33,9 +33,9 @@ After installing K2-EXOTICARMORY, it is recommended to reload the save, or enter
 
 
 <h3>Mod Uninstallation Instructions</h3>
-After Uninstalling K2-EXOTICARMORY, it is recommended, to close the game, and reopen it, as there may be some leftover code running, that may cause bugs.
+After Uninstalling K2-EXOTICARMORY, it is recommended, to close the game, as there may be some leftover code running, that may cause bugs.
 
-If reinstalling K2-EXOTICARMORY, closing the game is almost required.
+If reinstalling K2-EXOTICARMORY, closing the game is almost required.  If not closed, the mod will not function properly.
 
 
 <h2>Special Thanks</h2>
