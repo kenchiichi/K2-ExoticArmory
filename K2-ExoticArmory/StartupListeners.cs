@@ -3,7 +3,6 @@ using Asuna.CharManagement;
 using Asuna.Items;
 using Asuna.Missions;
 using Asuna.NewMissions;
-using K2Items;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -100,9 +99,23 @@ namespace K2ExoticArmory
                 Restraint restraint = new Restraint();
                 foreach (K2Items.K2Apparel item in K2AllApparel)
                 {
+                    bool replace = false;
                     foreach (var equipped in Character.Get("Jenna").EquippedItems.GetAll<Item>())
                     {
-                        if (equipped.Name.ToLower() == item.Name.ToLower())
+                        if (item.Name != equipAttemptInfo.Equipment.Name && item.Name == equipped.Name)
+                        {
+                            foreach (var slot in item.Slots)
+                            {
+                                foreach (var slot2 in equipAttemptInfo.Equipment.Slots)
+                                {
+                                    if (slot == slot2)
+                                    {
+                                        replace = true;
+                                    }
+                                }
+                            }
+                        }
+                        if (equipped.Name.ToLower() == item.Name.ToLower() && replace)
                         {
                             foreach (var stats in Character.Get("Jenna").Stats.GetAll<Stat>())
                             {
@@ -121,15 +134,12 @@ namespace K2ExoticArmory
                             {
                                 if (stats.Name == "Hitpoints")
                                 {
-                                    Debug.Log("Stats max value: " + stats.Name + stats.BaseMax);
                                     if (stats.BaseMax + item.ModHitpoints > -19)
                                     {
-                                        Debug.Log("Apparel true\nModHitpoints" + item.ModHitpoints + "\nbase hp" + stats.BaseMax);
                                         stats.BaseMax = stats.BaseMax + item.ModHitpoints;
                                     }
                                     else
                                     {
-                                        Debug.Log("Apparel false\nModHitpoints" + item.ModHitpoints + "\nbase hp" + stats.BaseMax);
                                         restraint.Set("CanEquip", false);
                                         equipAttemptInfo.CanEquip = restraint;
                                         Item.GenerateErrorDialogue(Character.Player, "I can't Equip <color=#00ffff>" + item.Name + "</color> right now...  I should increase my max HP.", "Sad");
@@ -141,9 +151,23 @@ namespace K2ExoticArmory
                 }
                 foreach (K2Items.K2Weapon item in K2AllWeapons)
                 {
+                    bool replace = false;
                     foreach (var equipped in Character.Get("Jenna").EquippedItems.GetAll<Item>())
                     {
-                        if (equipped.Name.ToLower() == item.Name.ToLower())
+                        if (item.Name != equipAttemptInfo.Equipment.Name && item.Name == equipped.Name)
+                        {
+                            foreach (var slot in item.Slots)
+                            {
+                                foreach (var slot2 in equipAttemptInfo.Equipment.Slots)
+                                {
+                                    if (slot == slot2)
+                                    {
+                                        replace = true;
+                                    }
+                                }
+                            }
+                        }
+                        if (equipped.Name.ToLower() == item.Name.ToLower() && replace)
                         {
                             foreach (var stats in Character.Get("Jenna").Stats.GetAll<Stat>())
                             {
@@ -162,15 +186,12 @@ namespace K2ExoticArmory
                             {
                                 if (stats.Name == "Hitpoints")
                                 {
-                                    Debug.Log("Stats max value: " + stats.Name + stats.BaseMax);
                                     if (stats.BaseMax + item.ModHitpoints > -19)
                                     {
-                                        Debug.Log("Weapon true\nModHitpoints" + item.ModHitpoints + "\nbase hp" + stats.BaseMax);
                                         stats.BaseMax = stats.BaseMax + item.ModHitpoints;
                                     }
                                     else
                                     {
-                                        Debug.Log("Weapon false\nModHitpoints" + item.ModHitpoints + "\nbase hp" + stats.BaseMax);
                                         restraint.Set("CanEquip", false);
                                         equipAttemptInfo.CanEquip = restraint;
                                         Item.GenerateErrorDialogue(Character.Player, "I can't Equip <color=#00ffff>" + item.Name + "</color> right now...  I should increase my max HP.", "Sad");
