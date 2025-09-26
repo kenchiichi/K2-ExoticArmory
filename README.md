@@ -23,11 +23,20 @@ Requirements for C# modding:
 
 K2-ExoticArmory is a mod that adds Destiny, by Bungie, themed weapons to a shop for you to use
 
-This mod is not complete.
-
 Ada-1 will sell you a few miscellaneous items, she likes to camp out on the second floor of the Motel, otherwise, I've hidden most of the items around the world, eyes up guardian!
 
 If you want to skip the search, I've added a command to give all items from my mod.  "givearmory"
+
+
+<h3>Mod Installation Instructions</h3>
+After installing K2-EXOTICARMORY, it is recommended to reload the save, or enter a new area.  Items do not spawn, unless the level was changed after mod installation.
+
+
+<h3>Mod Uninstallation Instructions</h3>
+After Uninstalling K2-EXOTICARMORY, it is recommended, to close the game, and reopen it, as there may be some leftover code running, that may cause bugs.
+
+If reinstalling K2-EXOTICARMORY, closing the game is almost required.
+
 
 <h2>Special Thanks</h2>
 Thanks to BlauKitten for the support in making this SDK! ♥
