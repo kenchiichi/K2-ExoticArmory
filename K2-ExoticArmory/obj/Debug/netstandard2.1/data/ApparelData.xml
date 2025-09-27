@@ -83,7 +83,7 @@
 			<CustomAbility>
 				<AbilityID>Abl_Attack</AbilityID>
 				<AbilityName>Just a boi</AbilityName>
-				<AbilityTooltip>Behold, it's a cat!  Gives the user the ability to be an adorable nuisance.  Reduces HP to &lt;color=#FF0000&gt;1&lt;/color&gt;.</AbilityTooltip>
+				<AbilityTooltip>Behold, it's a cat!  Gives the user the ability to be an adorable nuisance.  Reduces HP by &lt;color=#FF0000&gt;19&lt;/color&gt;.</AbilityTooltip>
 			</CustomAbility>
 		</CustomAbilityItems>
 	</K2Apparel>

@@ -15,7 +15,7 @@
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_physical_power</StatName>
-				<ModifyAmount>8</ModifyAmount>
+				<ModifyAmount>22</ModifyAmount>
 			</StatModifierInfo>
 			<StatModifierInfo>
 				<Type>Value</Type>
@@ -57,7 +57,7 @@
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_physical_power</StatName>
-				<ModifyAmount>30</ModifyAmount>
+				<ModifyAmount>50</ModifyAmount>
 			</StatModifierInfo>
 		</StatModifierInfos>
 		<CustomAbilityItems>
@@ -93,7 +93,7 @@
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_physical_power</StatName>
-				<ModifyAmount>9</ModifyAmount>
+				<ModifyAmount>18</ModifyAmount>
 			</StatModifierInfo>
 			<StatModifierInfo>
 				<Type>Value</Type>
@@ -140,12 +140,12 @@
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_physical_power</StatName>
-				<ModifyAmount>6</ModifyAmount>
+				<ModifyAmount>20</ModifyAmount>
 			</StatModifierInfo>
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_lust_power</StatName>
-				<ModifyAmount>12</ModifyAmount>
+				<ModifyAmount>10</ModifyAmount>
 			</StatModifierInfo>
 			<StatModifierInfo>
 				<Type>Value</Type>
@@ -187,7 +187,7 @@
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_physical_power</StatName>
-				<ModifyAmount>10</ModifyAmount>
+				<ModifyAmount>18</ModifyAmount>
 			</StatModifierInfo>
 			<StatModifierInfo>
 				<Type>Value</Type>
@@ -229,7 +229,7 @@
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_physical_power</StatName>
-				<ModifyAmount>14</ModifyAmount>
+				<ModifyAmount>20</ModifyAmount>
 			</StatModifierInfo>
 			<StatModifierInfo>
 				<Type>Value</Type>
@@ -271,12 +271,12 @@
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_physical_power</StatName>
-				<ModifyAmount>6</ModifyAmount>
+				<ModifyAmount>16</ModifyAmount>
 			</StatModifierInfo>
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_lust_power</StatName>
-				<ModifyAmount>18</ModifyAmount>
+				<ModifyAmount>20</ModifyAmount>
 			</StatModifierInfo>
 			<StatModifierInfo>
 				<Type>Value</Type>
@@ -318,7 +318,7 @@
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_physical_power</StatName>
-				<ModifyAmount>6</ModifyAmount>
+				<ModifyAmount>14</ModifyAmount>
 			</StatModifierInfo>
 			<StatModifierInfo>
 				<Type>Value</Type>
@@ -362,7 +362,7 @@
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_physical_power</StatName>
-				<ModifyAmount>10</ModifyAmount>
+				<ModifyAmount>22</ModifyAmount>
 			</StatModifierInfo>
 		</StatModifierInfos>
 		<CustomAbilityItems>
@@ -465,7 +465,7 @@
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_physical_power</StatName>
-				<ModifyAmount>6</ModifyAmount>
+				<ModifyAmount>9</ModifyAmount>
 			</StatModifierInfo>
 			<StatModifierInfo>
 				<Type>Value</Type>
@@ -507,7 +507,7 @@
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_physical_power</StatName>
-				<ModifyAmount>9</ModifyAmount>
+				<ModifyAmount>20</ModifyAmount>
 			</StatModifierInfo>
 			<StatModifierInfo>
 				<Type>Value</Type>
@@ -572,7 +572,7 @@
 		</questModifiers>
 	</K2Weapon>
 	<K2Weapon>
-		<Name>Eidolon ally</Name>
+		<Name>Eidolon Ally</Name>
 		<PreviewImage>assets\sprites\icons\eidolon_ally.png</PreviewImage>
 		<Description>We thought it was inanimate, but it has grown… changed. HQ refuses to analyze it further, but I secretly believe it has become my friend.</Description>
 		<LocationCoordinates>
@@ -621,7 +621,7 @@
 			<xCoordinate>-18.50</xCoordinate>
 			<yCoordinate>-7.50</yCoordinate>
 			<MapName>FF_Hub_SubLevel_2</MapName>
-			<PrerequisiteQuestWeapon>Eidolon ally</PrerequisiteQuestWeapon>
+			<PrerequisiteQuestWeapon>Eidolon Ally</PrerequisiteQuestWeapon>
 		</LocationCoordinates>
 		<Slots>
 			<string>MainWeapon</string>
@@ -640,7 +640,7 @@
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_physical_power</StatName>
-				<ModifyAmount>20</ModifyAmount>
+				<ModifyAmount>30</ModifyAmount>
 			</StatModifierInfo>
 			<StatModifierInfo>
 				<Type>Value</Type>
