@@ -218,7 +218,6 @@ namespace K2ExoticArmory
                     equipAttemptInfo.CanEquip = restraint;
                     Item.GenerateErrorDialogue(Character.Player, "I can't Equip <color=#00ffff>" + equipAttemptInfo.Equipment.Name + "</color> right now...  I should increase my max HP.", "Sad");
                 }
-                Debug.Log("Health Max\n " + Character.Get("Jenna").GetStat("stat_hitpoints").BaseMax);
             });
         }
         private void RequiredItemInInventory(K2Items.Restrictions restriction, string itemRequirement, EquipAttemptInfo equipAttemptInfo)
