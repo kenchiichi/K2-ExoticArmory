@@ -33,8 +33,42 @@
 		<Description>Say hello to my cat Ren!</Description>
 		<PreviewImage>assets\sprites\icons\ren.png</PreviewImage>
 		<Slots>
+			<string>Head</string>
+		</Slots>
+		<Slots>
+			<string>Bra</string>
+		</Slots>
+		<Slots>
+			<string>Underwear</string>
+		</Slots>
+		<Slots>
+			<string>Shirt</string>
+		</Slots>
+		<Slots>
+			<string>Pants</string>
+		</Slots>
+		<Slots>
+			<string>Jacket</string>
+		</Slots>
+		<Slots>
+			<string>Accessory1</string>
+		</Slots>
+		<Slots>
 			<string>Accessory2</string>
 		</Slots>
+		<Slots>
+			<string>MainWeapon</string>
+		</Slots>
+		<Slots>
+			<string>OffhandWeapon</string>
+		</Slots>
+		<StatRequirements>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_perversion</StatName>
+				<ModifyAmount>1000</ModifyAmount>
+			</StatModifierInfo>
+		</StatRequirements>
 		<Sprites>
 			<ModEquipmentSprite>
 				<Name>Test Item With Apparel Sprite</Name>

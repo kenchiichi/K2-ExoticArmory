@@ -105,25 +105,29 @@ namespace K2ExoticArmory
                 {
                     foreach (var equipped in Character.Get("Jenna").EquippedItems.GetAll<Item>())
                     {
-                        if (item.Name != equipAttemptInfo.Equipment.Name && item.Name == equipped.Name)
+                        if (item.Name == equipped.Name)
                         {
-                            foreach (var slot in item.Slots)
+                            if (item.Name != equipAttemptInfo.Equipment.Name)
                             {
-                                if (equipAttemptInfo.Equipment.Slots.Contains(slot))
+                                foreach (var slot in item.Slots)
                                 {
-                                    replace = true;
+                                    if (equipAttemptInfo.Equipment.Slots.Contains(slot))
+                                    {
+                                        replace = true;
+                                        break;
+                                    }
                                 }
                             }
-                        }
-                        if (equipped.Name == item.Name && replace)
-                        {
-                            if (healthModifier - item.ModHitpoints > -19 && canEquip)
+                            if (replace)
                             {
-                                healthModifier -= item.ModHitpoints;
-                            }
-                            else
-                            {
-                                canEquip = false;
+                                if (healthModifier - item.ModHitpoints > -19 && canEquip)
+                                {
+                                    healthModifier -= item.ModHitpoints;
+                                }
+                                else
+                                {
+                                    canEquip = false;
+                                }
                             }
                         }
                     }
@@ -136,6 +140,7 @@ namespace K2ExoticArmory
                             {
                                 healthModifier -= item.ModHitpoints;
                                 isEquipped = true;
+                                break;
                             }
                         }
                         if (!isEquipped)
@@ -149,37 +154,35 @@ namespace K2ExoticArmory
                                 canEquip = false;
                             }
                         }
-                        foreach (var stats in Character.Get("Jenna").Stats.GetAll<Stat>())
-                        {
-                            if (stats.Name == "Hitpoints")
-                            {
-                            }
-                        }
                     }
                 }
                 foreach (K2Items.K2Weapon item in K2AllWeapons)
                 {
                     foreach (var equipped in Character.Get("Jenna").EquippedItems.GetAll<Item>())
                     {
-                        if (item.Name != equipAttemptInfo.Equipment.Name && item.Name == equipped.Name)
+                        if (item.Name == equipped.Name)
                         {
-                            foreach (var slot in item.Slots)
+                            if (item.Name != equipAttemptInfo.Equipment.Name)
                             {
-                                if (equipAttemptInfo.Equipment.Slots.Contains(slot))
+                                foreach (var slot in item.Slots)
                                 {
-                                    replace = true;
+                                    if (equipAttemptInfo.Equipment.Slots.Contains(slot))
+                                    {
+                                        replace = true;
+                                        break;
+                                    }
                                 }
                             }
-                        }
-                        if (equipped.Name == item.Name && replace)
-                        {
-                            if (healthModifier - item.ModHitpoints > -19 && canEquip)
+                            if (replace)
                             {
-                                healthModifier -= item.ModHitpoints;
-                            }
-                            else
-                            {
-                                canEquip = false;
+                                if (healthModifier - item.ModHitpoints > -19 && canEquip)
+                                {
+                                    healthModifier -= item.ModHitpoints;
+                                }
+                                else
+                                {
+                                    canEquip = false;
+                                }
                             }
                         }
                     }
