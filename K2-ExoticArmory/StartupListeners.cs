@@ -96,69 +96,8 @@ namespace K2ExoticArmory
                 }
 
                 UpdateHealth(K2AllApparel, K2AllWeapons, equipAttemptInfo);
-
-                UpdateDamage(K2AllApparel, K2AllWeapons);
             });
         }
-        public void UpdateDamage(List<K2Items.K2Apparel> K2AllApparel, List<K2Items.K2Weapon> K2AllWeapons)
-        {
-            Stat statPhysicalPower = Stat.Get("stat_physical_power").Clone();
-            statPhysicalPower.BaseMax = -1;
-            statPhysicalPower.BaseValue = 7;
-            Character.Get("Jenna").GetStat("stat_physical_power").RemoveFromCharacter();
-            statPhysicalPower.AddToCharacter(Character.Get("Jenna"));
-
-
-            Stat statLustPower = Stat.Get("stat_lust_power").Clone();
-            statLustPower.BaseMax = -1;
-            statLustPower.BaseValue = 3;
-            Character.Get("Jenna").GetStat("stat_lust_power").RemoveFromCharacter();
-            statLustPower.AddToCharacter(Character.Get("Jenna"));
-
-            foreach (K2Items.K2Apparel item in K2AllApparel)
-            {
-                foreach (var equipped in Character.Get("Jenna").EquippedItems.GetAll<Item>())
-                {
-                    if (item.Name == equipped.Name)
-                    {
-                        foreach (StatModifierInfo statModifierInfo in item.StatModifierInfos)
-                        {
-                            if (statModifierInfo.StatName == "stat_physical_power")
-                            {
-                                Character.Get("Jenna").GetStat("stat_physical_power").AddModifier(statModifierInfo);
-                            }
-                            if (statModifierInfo.StatName == "stat_lust_power")
-                            {
-                                Character.Get("Jenna").GetStat("stat_lust_power").AddModifier(statModifierInfo);
-                            }
-                        }
-                        continue;
-                    }
-                }
-            }
-            foreach (K2Items.K2Weapon item in K2AllWeapons)
-            {
-                foreach (var equipped in Character.Get("Jenna").EquippedItems.GetAll<Item>())
-                {
-                    if (item.Name == equipped.Name)
-                    {
-                        foreach (StatModifierInfo statModifierInfo in item.StatModifierInfos)
-                        {
-                            if (statModifierInfo.StatName == "stat_physical_power")
-                            {
-                                Character.Get("Jenna").GetStat("stat_physical_power").AddModifier(statModifierInfo);
-                            }
-                            if (statModifierInfo.StatName == "stat_lust_power")
-                            {
-                                Character.Get("Jenna").GetStat("stat_lust_power").AddModifier(statModifierInfo);
-                            }
-                        }
-                        continue;
-                    }
-                }
-            }
-        }
-
         private void UpdateHealth(List<K2Items.K2Apparel> K2AllApparel, List<K2Items.K2Weapon> K2AllWeapons, EquipAttemptInfo equipAttemptInfo)
         {
 

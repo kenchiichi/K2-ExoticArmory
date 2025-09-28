@@ -29,28 +29,9 @@ namespace K2ExoticArmory
 
         private readonly StartupListeners startupListeners = new StartupListeners();
 
-        private int timer = 5000;
-
         public void OnDialogueStarted(Dialogue dialogue) { }
         public void OnLineStarted(DialogueLine line) { }
-        public void OnFrame(float deltaTime)
-        {
-            if (timer >= 5000 && TabMenu.IsOpen)
-            {
-                if (Character.Get("Jenna").GetStat("stat_physical_power").Value != 7 || Character.Get("Jenna").GetStat("stat_lust_power").Value != 3)
-                {
-                    foreach (var item in K2ItemList)
-                    {
-                        if (!Character.Get("Jenna").EquippedItems.Contains((Item)item))
-                        {
-                            startupListeners.UpdateDamage(K2AllApparel, K2AllWeapons);
-                            timer = 0;
-                        }
-                    }
-                }
-            }
-            timer += 1;
-        }
+        public void OnFrame(float deltaTime) { }
         public void OnModUnLoaded()
         {
             if (MenuManager.InGame)
@@ -105,17 +86,6 @@ namespace K2ExoticArmory
                 {
                     vendor.Catalogue.OpenShop();
                 });
-            }
-
-            if (Character.Get("Jenna").GetStat("stat_physical_power").Value != 7 || Character.Get("Jenna").GetStat("stat_lust_power").Value != 3)
-            {
-                foreach (var item in K2ItemList)
-                {
-                    if (!Character.Get("Jenna").EquippedItems.Contains((Item)item))
-                    {
-                        startupListeners.UpdateDamage(K2AllApparel, K2AllWeapons);
-                    }
-                }
             }
         }
 
