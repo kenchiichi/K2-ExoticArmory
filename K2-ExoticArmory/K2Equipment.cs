@@ -91,6 +91,18 @@ namespace K2Items
         public int Price;
 
         public int ModHitpoints = 0;
+
+        public K2Weapon GetItemByName(string itemName, List<K2Items.K2Weapon> K2AllWeapons)
+        {
+            foreach (var item in K2AllWeapons)
+            {
+                if (item.Name == itemName)
+                {
+                    return item;
+                }
+            }
+            return null;
+        }
     }
     public class K2Apparel : Asuna.Items.Apparel
     {
@@ -111,6 +123,18 @@ namespace K2Items
         public int Price;
 
         public int ModHitpoints = 0;
+
+        public K2Apparel GetItemByName(string itemName, List<K2Items.K2Apparel> K2AllApparel)
+        {
+            foreach (var item in K2AllApparel)
+            {
+                if (item.Name == itemName)
+                {
+                    return item;
+                }
+            }
+            return null;
+        }
     }
     public class MapCoordinate
     {

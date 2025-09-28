@@ -4,6 +4,7 @@ using Asuna.Items;
 using Asuna.Missions;
 using Asuna.NewMissions;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace K2ExoticArmory
 {
@@ -21,63 +22,75 @@ namespace K2ExoticArmory
         {
             K2Items.K2Weapon.OnEquipAttempt.AddListener(equipAttemptInfo =>
             {
-                List<K2Items.Restrictions> itemRequirementName = new List<K2Items.Restrictions>();
+                K2Items.K2Weapon equippedWeapon = ScriptableObject.CreateInstance<K2Items.K2Weapon>();
+                equippedWeapon = equippedWeapon.GetItemByName(equipAttemptInfo.Equipment.Name, K2AllWeapons);
 
-                foreach (K2Items.K2Weapon item in K2AllWeapons)
-                {
-                    if (equipAttemptInfo.Equipment.Name == item.Name)
-                    {
-                        itemRequirementName = item.restrictions;
-                    }
-                }
-                foreach (K2Items.K2Apparel item in K2AllApparel)
-                {
-                    if (equipAttemptInfo.Equipment.Name == item.Name)
-                    {
-                        itemRequirementName = item.restrictions;
-                    }
-                }
-                foreach (K2Items.Restrictions restriction in itemRequirementName)
-                {
-                    foreach (K2Items.K2Weapon itemRequirement in K2AllWeapons)
-                    {
-                        RequiredItemInInventory(restriction, itemRequirement.Name, equipAttemptInfo);
+                K2Items.K2Apparel equippedApparel = ScriptableObject.CreateInstance<K2Items.K2Apparel>();
+                equippedApparel = equippedApparel.GetItemByName(equipAttemptInfo.Equipment.Name, K2AllApparel);
 
-                    }
-                    foreach (K2Items.K2Apparel itemRequirement in K2AllApparel)
-                    {
-                        RequiredItemInInventory(restriction, itemRequirement.Name, equipAttemptInfo);
-                    }
-                }
-                foreach (K2Items.K2Weapon item in K2AllWeapons)
+                List<K2Items.Restrictions> itemRestrictions = new List<K2Items.Restrictions>();
+                if (equippedWeapon != null || equippedApparel != null)
                 {
-                    foreach (K2Items.Restrictions restriction in item.restrictions)
+                    if (equippedWeapon != null)
                     {
-                        Item newitem = null;
-                        bool itemInEquipmentSlot = false;
-                        foreach (var EquipmentSlot in Character.Get("Jenna").EquippedItems.GetAll<Item>())
+                        itemRestrictions.AddRange(equippedWeapon.restrictions);
+                    }
+                    if (equippedApparel != null)
+                    {
+                        itemRestrictions.AddRange(equippedApparel.restrictions);
+                    }
+                    foreach (K2Items.Restrictions restriction in itemRestrictions)
+                    {
+                        foreach (K2Items.K2Weapon itemRequirement in K2AllWeapons)
                         {
-                            if (EquipmentSlot.Name == restriction.RequiredItemEquipped)
-                            {
-                                itemInEquipmentSlot = true;
-                            }
-                            if (EquipmentSlot.Name == item.Name)
-                            {
-                                newitem = EquipmentSlot;
-                            }
+                            RequiredItemInInventory(restriction, itemRequirement.Name, equipAttemptInfo);
+
                         }
-                        if (equipAttemptInfo.Equipment.Name == restriction.RequiredItemEquipped && itemInEquipmentSlot)
+                        foreach (K2Items.K2Apparel itemRequirement in K2AllApparel)
                         {
-                            Character.Get("Jenna").UnequipItem((Equipment)newitem);
+                            RequiredItemInInventory(restriction, itemRequirement.Name, equipAttemptInfo);
                         }
                     }
                 }
+
                 UpdateHealth(K2AllApparel, K2AllWeapons, equipAttemptInfo);
             });
 
-            Character.Get("Jenna").OnItemUnequipped.AddListener(unequipInfo =>
+            Character.Get("Jenna").OnItemUnequipped.AddListener(unEquipInfo =>
             {
-                //Debug.Log(unequipInfo.Name + " was unequipped");
+                foreach (var equippedItem in Character.Get("Jenna").EquippedItems.GetAll<Item>())
+                {
+                    K2Items.K2Apparel equippedApparel = ScriptableObject.CreateInstance<K2Items.K2Apparel>();
+                    K2Items.K2Weapon equippedWeapon = ScriptableObject.CreateInstance<K2Items.K2Weapon>();
+                    equippedWeapon = equippedWeapon.GetItemByName(equippedItem.Name, K2AllWeapons);
+                    equippedApparel = equippedApparel.GetItemByName(equippedItem.Name, K2AllApparel);
+                    if (equippedWeapon != null)
+                    {
+                        if (equippedWeapon.restrictions != null)
+                        {
+                            foreach (var restriction in equippedWeapon.restrictions)
+                            {
+                                if (restriction.RequiredItemEquipped == unEquipInfo.Name)
+                                {
+                                    Character.Get("Jenna").UnequipItem((Equipment)equippedItem);
+                                }
+                            }
+                        }
+                    }
+                    if (equippedApparel != null)
+                    {
+                        if (equippedApparel.restrictions != null)
+                        {
+                            foreach (var restriction in equippedApparel.restrictions)
+                            {
+                                if (restriction.RequiredItemEquipped == unEquipInfo.Name)
+                                {
+                                    Character.Get("Jenna").UnequipItem((Equipment)equippedItem);
+                                }
+                            }
+                        }
+                    }
+                }
             });
 
             Character.Get("Jenna").OnItemEquipped.AddListener(equipInfo =>
