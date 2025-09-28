@@ -3,7 +3,6 @@ using Asuna.CharManagement;
 using Asuna.Items;
 using Asuna.Missions;
 using Asuna.NewMissions;
-using DragonBones;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -96,132 +95,197 @@ namespace K2ExoticArmory
                     }
                 }
 
-                //Hitpoints
-                Restraint restraint = new Restraint();
-                bool replace = false;
-                bool canEquip = true;
-                int healthModifier = Character.Get("Jenna").GetStat("stat_hitpoints").BaseMax;
-                foreach (K2Items.K2Apparel item in K2AllApparel)
-                {
-                    foreach (var equipped in Character.Get("Jenna").EquippedItems.GetAll<Item>())
-                    {
-                        if (item.Name == equipped.Name)
-                        {
-                            if (item.Name != equipAttemptInfo.Equipment.Name)
-                            {
-                                foreach (var slot in item.Slots)
-                                {
-                                    if (equipAttemptInfo.Equipment.Slots.Contains(slot))
-                                    {
-                                        replace = true;
-                                        break;
-                                    }
-                                }
-                            }
-                            if (replace)
-                            {
-                                if (healthModifier - item.ModHitpoints > -19 && canEquip)
-                                {
-                                    healthModifier -= item.ModHitpoints;
-                                }
-                                else
-                                {
-                                    canEquip = false;
-                                }
-                            }
-                        }
-                    }
-                    if (item.ModHitpoints != 0 && canEquip && equipAttemptInfo.Equipment.Name == item.Name)
-                    {
-                        bool isEquipped = false;
-                        foreach (var equipped in Character.Get("Jenna").EquippedItems.GetAll<Item>())
-                        {
-                            if (equipped.Name == equipAttemptInfo.Equipment.Name)
-                            {
-                                healthModifier -= item.ModHitpoints;
-                                isEquipped = true;
-                                break;
-                            }
-                        }
-                        if (!isEquipped)
-                        {
-                            if (healthModifier + item.ModHitpoints > -19)
-                            {
-                                healthModifier += item.ModHitpoints;
-                            }
-                            else
-                            {
-                                canEquip = false;
-                            }
-                        }
-                    }
-                }
-                foreach (K2Items.K2Weapon item in K2AllWeapons)
-                {
-                    foreach (var equipped in Character.Get("Jenna").EquippedItems.GetAll<Item>())
-                    {
-                        if (item.Name == equipped.Name)
-                        {
-                            if (item.Name != equipAttemptInfo.Equipment.Name)
-                            {
-                                foreach (var slot in item.Slots)
-                                {
-                                    if (equipAttemptInfo.Equipment.Slots.Contains(slot))
-                                    {
-                                        replace = true;
-                                        break;
-                                    }
-                                }
-                            }
-                            if (replace)
-                            {
-                                if (healthModifier - item.ModHitpoints > -19 && canEquip)
-                                {
-                                    healthModifier -= item.ModHitpoints;
-                                }
-                                else
-                                {
-                                    canEquip = false;
-                                }
-                            }
-                        }
-                    }
-                    if (item.ModHitpoints != 0 && canEquip && equipAttemptInfo.Equipment.Name == item.Name)
-                    {
-                        bool isEquipped = false;
-                        foreach (var equipped in Character.Get("Jenna").EquippedItems.GetAll<Item>())
-                        {
-                            if (equipped.Name == equipAttemptInfo.Equipment.Name)
-                            {
-                                healthModifier -= item.ModHitpoints;
-                                isEquipped = true;
-                                break;
-                            }
-                        }
-                        if (!isEquipped)
-                        {
-                            if (healthModifier + item.ModHitpoints > -19)
-                            {
-                                healthModifier += item.ModHitpoints;
-                            }
-                            else
-                            {
-                                canEquip = false;
-                            }
-                        }
-                    }
-                }
-                if (healthModifier > -19 && canEquip)
-                {
-                    Character.Get("Jenna").GetStat("stat_hitpoints").BaseMax = healthModifier;
-                }
-                else
-                {
-                    restraint.Set("CanEquip", false);
-                    equipAttemptInfo.CanEquip = restraint;
-                    Item.GenerateErrorDialogue(Character.Player, "I can't Equip <color=#00ffff>" + equipAttemptInfo.Equipment.Name + "</color> right now...  I should increase my max HP.", "Sad");
-                }
+                UpdateHealth(K2AllApparel, K2AllWeapons, equipAttemptInfo);
+
+                UpdateDamage(K2AllApparel, K2AllWeapons);
             });
+        }
+        public void UpdateDamage(List<K2Items.K2Apparel> K2AllApparel, List<K2Items.K2Weapon> K2AllWeapons)
+        {
+            Stat statPhysicalPower = Stat.Get("stat_physical_power").Clone();
+            statPhysicalPower.BaseMax = -1;
+            statPhysicalPower.BaseValue = 7;
+            Character.Get("Jenna").GetStat("stat_physical_power").RemoveFromCharacter();
+            statPhysicalPower.AddToCharacter(Character.Get("Jenna"));
+
+
+            Stat statLustPower = Stat.Get("stat_lust_power").Clone();
+            statLustPower.BaseMax = -1;
+            statLustPower.BaseValue = 3;
+            Character.Get("Jenna").GetStat("stat_lust_power").RemoveFromCharacter();
+            statLustPower.AddToCharacter(Character.Get("Jenna"));
+
+            foreach (K2Items.K2Apparel item in K2AllApparel)
+            {
+                foreach (var equipped in Character.Get("Jenna").EquippedItems.GetAll<Item>())
+                {
+                    if (item.Name == equipped.Name)
+                    {
+                        foreach (StatModifierInfo statModifierInfo in item.StatModifierInfos)
+                        {
+                            if (statModifierInfo.StatName == "stat_physical_power")
+                            {
+                                Character.Get("Jenna").GetStat("stat_physical_power").AddModifier(statModifierInfo);
+                            }
+                            if (statModifierInfo.StatName == "stat_lust_power")
+                            {
+                                Character.Get("Jenna").GetStat("stat_lust_power").AddModifier(statModifierInfo);
+                            }
+                        }
+                        continue;
+                    }
+                }
+            }
+            foreach (K2Items.K2Weapon item in K2AllWeapons)
+            {
+                foreach (var equipped in Character.Get("Jenna").EquippedItems.GetAll<Item>())
+                {
+                    if (item.Name == equipped.Name)
+                    {
+                        foreach (StatModifierInfo statModifierInfo in item.StatModifierInfos)
+                        {
+                            if (statModifierInfo.StatName == "stat_physical_power")
+                            {
+                                Character.Get("Jenna").GetStat("stat_physical_power").AddModifier(statModifierInfo);
+                            }
+                            if (statModifierInfo.StatName == "stat_lust_power")
+                            {
+                                Character.Get("Jenna").GetStat("stat_lust_power").AddModifier(statModifierInfo);
+                            }
+                        }
+                        continue;
+                    }
+                }
+            }
+        }
+
+        private void UpdateHealth(List<K2Items.K2Apparel> K2AllApparel, List<K2Items.K2Weapon> K2AllWeapons, EquipAttemptInfo equipAttemptInfo)
+        {
+
+            Restraint restraint = new Restraint();
+            bool replace = false;
+            bool canEquip = true;
+            int healthModifier = Character.Get("Jenna").GetStat("stat_hitpoints").BaseMax;
+            foreach (K2Items.K2Apparel item in K2AllApparel)
+            {
+                foreach (var equipped in Character.Get("Jenna").EquippedItems.GetAll<Item>())
+                {
+                    if (item.Name == equipped.Name)
+                    {
+                        if (item.Name != equipAttemptInfo.Equipment.Name)
+                        {
+                            foreach (var slot in item.Slots)
+                            {
+                                if (equipAttemptInfo.Equipment.Slots.Contains(slot))
+                                {
+                                    replace = true;
+                                    break;
+                                }
+                            }
+                        }
+                        if (replace)
+                        {
+                            if (healthModifier - item.ModHitpoints > -19 && canEquip)
+                            {
+                                healthModifier -= item.ModHitpoints;
+                            }
+                            else
+                            {
+                                canEquip = false;
+                            }
+                        }
+                    }
+                }
+                if (item.ModHitpoints != 0 && canEquip && equipAttemptInfo.Equipment.Name == item.Name)
+                {
+                    bool isEquipped = false;
+                    foreach (var equipped in Character.Get("Jenna").EquippedItems.GetAll<Item>())
+                    {
+                        if (equipped.Name == equipAttemptInfo.Equipment.Name)
+                        {
+                            healthModifier -= item.ModHitpoints;
+                            isEquipped = true;
+                            break;
+                        }
+                    }
+                    if (!isEquipped)
+                    {
+                        if (healthModifier + item.ModHitpoints > -19)
+                        {
+                            healthModifier += item.ModHitpoints;
+                        }
+                        else
+                        {
+                            canEquip = false;
+                        }
+                    }
+                }
+            }
+            foreach (K2Items.K2Weapon item in K2AllWeapons)
+            {
+                foreach (var equipped in Character.Get("Jenna").EquippedItems.GetAll<Item>())
+                {
+                    if (item.Name == equipped.Name)
+                    {
+                        if (item.Name != equipAttemptInfo.Equipment.Name)
+                        {
+                            foreach (var slot in item.Slots)
+                            {
+                                if (equipAttemptInfo.Equipment.Slots.Contains(slot))
+                                {
+                                    replace = true;
+                                    break;
+                                }
+                            }
+                        }
+                        if (replace)
+                        {
+                            if (healthModifier - item.ModHitpoints > -19 && canEquip)
+                            {
+                                healthModifier -= item.ModHitpoints;
+                            }
+                            else
+                            {
+                                canEquip = false;
+                            }
+                        }
+                    }
+                }
+                if (item.ModHitpoints != 0 && canEquip && equipAttemptInfo.Equipment.Name == item.Name)
+                {
+                    bool isEquipped = false;
+                    foreach (var equipped in Character.Get("Jenna").EquippedItems.GetAll<Item>())
+                    {
+                        if (equipped.Name == equipAttemptInfo.Equipment.Name)
+                        {
+                            healthModifier -= item.ModHitpoints;
+                            isEquipped = true;
+                            break;
+                        }
+                    }
+                    if (!isEquipped)
+                    {
+                        if (healthModifier + item.ModHitpoints > -19)
+                        {
+                            healthModifier += item.ModHitpoints;
+                        }
+                        else
+                        {
+                            canEquip = false;
+                        }
+                    }
+                }
+            }
+            if (healthModifier > -19 && canEquip)
+            {
+                Character.Get("Jenna").GetStat("stat_hitpoints").BaseMax = healthModifier;
+            }
+            else
+            {
+                restraint.Set("CanEquip", false);
+                equipAttemptInfo.CanEquip = restraint;
+                Item.GenerateErrorDialogue(Character.Player, "I can't Equip <color=#00ffff>" + equipAttemptInfo.Equipment.Name + "</color> right now...  I should increase my max HP.", "Sad");
+            }
         }
         private void RequiredItemInInventory(K2Items.Restrictions restriction, string itemRequirement, EquipAttemptInfo equipAttemptInfo)
         {

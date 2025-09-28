@@ -87,4 +87,31 @@
 			</CustomAbility>
 		</CustomAbilityItems>
 	</K2Apparel>
+	<K2Apparel>
+		<Name>Test Item</Name>
+		<Slots>
+			<string>Accessory2</string>
+		</Slots>
+		<StatModifierInfos>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_hitpoints</StatName>
+				<ModifyAmount>5</ModifyAmount>
+			</StatModifierInfo>
+		</StatModifierInfos>
+	</K2Apparel>
+	<K2Apparel>
+		<Name>Test Item 2</Name>
+		<Slots>
+			<string>Accessory2</string>
+		</Slots>
+		<CustomAbilityItems>
+			<CustomAbility>
+				<AbilityID>Abl_Attack</AbilityID>
+				<AbilityName>Custom Solution</AbilityName>
+				<AbilityTooltip>+5 hp</AbilityTooltip>
+			</CustomAbility>
+		</CustomAbilityItems>
+		<ModHitpoints>5</ModHitpoints>
+	</K2Apparel>
 </ArrayOfK2Apparel>

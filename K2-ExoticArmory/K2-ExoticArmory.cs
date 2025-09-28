@@ -4,6 +4,7 @@ using ANToolkit.UI;
 using Asuna.CharManagement;
 using Asuna.Dialogues;
 using Asuna.Items;
+using Asuna.UI;
 using Modding;
 using System.Collections.Generic;
 using System.IO;
@@ -26,9 +27,30 @@ namespace K2ExoticArmory
 
         public List<Equipment> K2ItemList = new List<Equipment>();
 
+        private readonly StartupListeners startupListeners = new StartupListeners();
+
+        private int timer = 5000;
+
         public void OnDialogueStarted(Dialogue dialogue) { }
         public void OnLineStarted(DialogueLine line) { }
-        public void OnFrame(float deltaTime) { }
+        public void OnFrame(float deltaTime)
+        {
+            if (timer >= 5000 && TabMenu.IsOpen)
+            {
+                if (Character.Get("Jenna").GetStat("stat_physical_power").Value != 7 || Character.Get("Jenna").GetStat("stat_lust_power").Value != 3)
+                {
+                    foreach (var item in K2ItemList)
+                    {
+                        if (!Character.Get("Jenna").EquippedItems.Contains((Item)item))
+                        {
+                            startupListeners.UpdateDamage(K2AllApparel, K2AllWeapons);
+                            timer = 0;
+                        }
+                    }
+                }
+            }
+            timer += 1;
+        }
         public void OnModUnLoaded()
         {
             if (MenuManager.InGame)
@@ -38,7 +60,7 @@ namespace K2ExoticArmory
                     Item.All.Remove(item.Name.ToLower());
                     RemoveItemFromJenna(item.Name);
                 }
-                Item.GenerateErrorDialogue(Character.Player, "I should remember to check to see if I have weapons to defend myself.", "Think");
+                Item.GenerateErrorDialogue(Character.Get("Jenna"), "I should remember to check to see if I have weapons to defend myself.", "Think");
             }
             UnityEngine.Events.UnityEvent unityEvent = new UnityEngine.Events.UnityEvent();
             unityEvent.RemoveAllListeners();
@@ -83,6 +105,17 @@ namespace K2ExoticArmory
                 {
                     vendor.Catalogue.OpenShop();
                 });
+            }
+
+            if (Character.Get("Jenna").GetStat("stat_physical_power").Value != 7 || Character.Get("Jenna").GetStat("stat_lust_power").Value != 3)
+            {
+                foreach (var item in K2ItemList)
+                {
+                    if (!Character.Get("Jenna").EquippedItems.Contains((Item)item))
+                    {
+                        startupListeners.UpdateDamage(K2AllApparel, K2AllWeapons);
+                    }
+                }
             }
         }
 
@@ -143,14 +176,14 @@ namespace K2ExoticArmory
 
         public void RemoveItemFromJenna(string itemName)
         {
-            foreach (Item EquipmentSlot in Character.Player.EquippedItems.GetAll<Item>())
+            foreach (Item EquipmentSlot in Character.Get("Jenna").EquippedItems.GetAll<Item>())
             {
                 if (EquipmentSlot.Name.ToLower() == itemName.ToLower())
                 {
                     Character.Get("Jenna").EquippedItems.Remove(itemName);
                 }
             }
-            foreach (Item inventoryItem in Character.Player.Inventory.GetAll<Item>())
+            foreach (Item inventoryItem in Character.Get("Jenna").Inventory.GetAll<Item>())
             {
                 if (inventoryItem.Name.ToLower() == itemName.ToLower())
                 {

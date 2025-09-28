@@ -89,19 +89,19 @@ namespace K2ExoticArmory
                 }
                 if (item.LocationCoordinates != null)
                 {
-                    if (item.LocationCoordinates.MapName == newLevel && !Character.Player.Inventory.Contains(item))
+                    if (item.LocationCoordinates.MapName == newLevel && !Character.Get("Jenna").Inventory.Contains(item))
                     {
                         if (itemRequired != null)
                         {
                             var itemEquiped = false;
-                            foreach (Item EquipmentSlot in Character.Player.EquippedItems.GetAll<Item>())
+                            foreach (Item EquipmentSlot in Character.Get("Jenna").EquippedItems.GetAll<Item>())
                             {
                                 if (EquipmentSlot.Name.ToLower() == itemRequired.Name.ToLower())
                                 {
                                     itemEquiped = true;
                                 }
                             }
-                            if (Character.Player.Inventory.Contains(itemRequired) || itemEquiped)
+                            if (Character.Get("Jenna").Inventory.Contains(itemRequired) || itemEquiped)
                             {
                                 var interactableGameObject = new GameObject();
                                 interactableGameObject.transform.position = new Vector3((float)item.LocationCoordinates.xCoordinate, (float)item.LocationCoordinates.yCoordinate);
@@ -146,7 +146,7 @@ namespace K2ExoticArmory
                                     {
                                         GiveItems.GiveToCharacter(Character.Get("Jenna"), false, false, item);
                                     }
-                                    Item.GenerateErrorDialogue(Character.Player, "I found <color=#00ffff>" + item.Name + "</color> laying here!", "Happy");
+                                    Item.GenerateErrorDialogue(Character.Get("Jenna"), "I found <color=#00ffff>" + item.Name + "</color> laying here!", "Happy");
                                     interactable.gameObject.SetActive(false);
                                 });
                             }
@@ -163,7 +163,7 @@ namespace K2ExoticArmory
                             interactable.TypeOfInteraction = InteractionType.Talk;
                             interactable.OnInteracted.AddListener(x =>
                             {
-                                Item.GenerateErrorDialogue(Character.Player, "I found <color=#00ffff>" + item.Name + "</color> laying here!", "Happy");
+                                Item.GenerateErrorDialogue(Character.Get("Jenna"), "I found <color=#00ffff>" + item.Name + "</color> laying here!", "Happy");
                                 GiveItems.GiveToCharacter(Character.Get("Jenna"), false, false, item);
                                 interactable.gameObject.SetActive(false);
                             });

@@ -92,13 +92,8 @@
 		<StatModifierInfos>
 			<StatModifierInfo>
 				<Type>Value</Type>
-				<StatName>stat_physical_power</StatName>
-				<ModifyAmount>18</ModifyAmount>
-			</StatModifierInfo>
-			<StatModifierInfo>
-				<Type>Value</Type>
 				<StatName>stat_lust_power</StatName>
-				<ModifyAmount>5</ModifyAmount>
+				<ModifyAmount>18</ModifyAmount>
 			</StatModifierInfo>
 			<StatModifierInfo>
 				<Type>Value</Type>
@@ -140,7 +135,7 @@
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_physical_power</StatName>
-				<ModifyAmount>20</ModifyAmount>
+				<ModifyAmount>10</ModifyAmount>
 			</StatModifierInfo>
 			<StatModifierInfo>
 				<Type>Value</Type>
@@ -270,13 +265,8 @@
 		<StatModifierInfos>
 			<StatModifierInfo>
 				<Type>Value</Type>
-				<StatName>stat_physical_power</StatName>
-				<ModifyAmount>16</ModifyAmount>
-			</StatModifierInfo>
-			<StatModifierInfo>
-				<Type>Value</Type>
 				<StatName>stat_lust_power</StatName>
-				<ModifyAmount>20</ModifyAmount>
+				<ModifyAmount>18</ModifyAmount>
 			</StatModifierInfo>
 			<StatModifierInfo>
 				<Type>Value</Type>
@@ -317,18 +307,8 @@
 		<StatModifierInfos>
 			<StatModifierInfo>
 				<Type>Value</Type>
-				<StatName>stat_physical_power</StatName>
-				<ModifyAmount>14</ModifyAmount>
-			</StatModifierInfo>
-			<StatModifierInfo>
-				<Type>Value</Type>
 				<StatName>stat_lust_power</StatName>
-				<ModifyAmount>25</ModifyAmount>
-			</StatModifierInfo>
-			<StatModifierInfo>
-				<Type>Value</Type>
-				<StatName>stat_attack_range</StatName>
-				<ModifyAmount>1</ModifyAmount>
+				<ModifyAmount>15</ModifyAmount>
 			</StatModifierInfo>
 		</StatModifierInfos>
 		<CustomAbilityItems>
@@ -640,7 +620,7 @@
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_physical_power</StatName>
-				<ModifyAmount>30</ModifyAmount>
+				<ModifyAmount>15</ModifyAmount>
 			</StatModifierInfo>
 			<StatModifierInfo>
 				<Type>Value</Type>
@@ -650,7 +630,7 @@
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_lust_power</StatName>
-				<ModifyAmount>20</ModifyAmount>
+				<ModifyAmount>15</ModifyAmount>
 			</StatModifierInfo>
 		</StatModifierInfos>
 		<ModHitpoints>-10</ModHitpoints>
