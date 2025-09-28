@@ -4,7 +4,6 @@ using Asuna.Items;
 using Asuna.Missions;
 using Asuna.NewMissions;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace K2ExoticArmory
 {
