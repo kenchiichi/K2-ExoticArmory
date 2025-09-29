@@ -3,7 +3,6 @@ using Asuna.CharManagement;
 using Asuna.Items;
 using Asuna.Missions;
 using Asuna.NewMissions;
-using HutongGames.PlayMaker.Actions;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -47,7 +46,7 @@ namespace K2ExoticArmory
 
                         if (restrictedWeapon != null)
                         {
-                            RequiredItemInInventory((Item)restrictedWeapon, equipAttemptInfo);
+                            CheckForRequiredItem((Item)restrictedWeapon, equipAttemptInfo);
                         }
 
                         K2Items.K2Apparel restrictedApparel = ScriptableObject.CreateInstance<K2Items.K2Apparel>();
@@ -55,7 +54,7 @@ namespace K2ExoticArmory
 
                         if (restrictedApparel != null)
                         {
-                            RequiredItemInInventory((Item)restrictedApparel, equipAttemptInfo);
+                            CheckForRequiredItem((Item)restrictedApparel, equipAttemptInfo);
                         }
                     }
                 }
@@ -144,7 +143,7 @@ namespace K2ExoticArmory
                 }
             });
         }
-        private void RequiredItemInInventory(Item itemRequirement, EquipAttemptInfo equipAttemptInfo)
+        private void CheckForRequiredItem(Item itemRequirement, EquipAttemptInfo equipAttemptInfo)
         {
             bool canEquip = false;
             Restraint restraint = new Restraint();
@@ -172,7 +171,7 @@ namespace K2ExoticArmory
                 Item.GenerateErrorDialogue(Character.Get("Jenna"), "I need <color=#00ffff>" + knownItem + "</color> equipped to equip this!", "Distressed");
             }
         }
-        private int HealthCheck(Equipment equipment, EquipAttemptInfo equipAttemptInfo, int healthModifier, int modHitopints) 
+        private int HealthCheck(Equipment equipment, EquipAttemptInfo equipAttemptInfo, int healthModifier, int modHitopints)
         {
             bool replace = false;
             bool canEquip = true;
