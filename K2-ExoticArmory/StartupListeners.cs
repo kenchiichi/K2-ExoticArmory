@@ -221,10 +221,6 @@ namespace K2ExoticArmory
                     {
                         healthModifier += modHitopints;
                     }
-                    else
-                    {
-                        canEquip = false;
-                    }
                 }
             }
             return healthModifier;
