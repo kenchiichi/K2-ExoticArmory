@@ -65,7 +65,6 @@ namespace K2Items
 
             var moddedTask1 = ScriptableObject.CreateInstance<NewTask>();
             moddedTask1.DefaultDisplayName = TaskDisplay;
-            //moddedTask1.TargetCharacter = Character.Get("Klaus");
             moddedTask1.name = name + "_Task";
 
             MissionContainer.AddMissionToLookup(moddedMission);

@@ -41,14 +41,20 @@ namespace K2ExoticArmory
                     }
                     foreach (K2Items.Restrictions restriction in itemRestrictions)
                     {
-                        foreach (K2Items.K2Weapon itemRequirement in K2AllWeapons)
-                        {
-                            RequiredItemInInventory(restriction, itemRequirement.Name, equipAttemptInfo);
+                        K2Items.K2Weapon restrictedWeapon = ScriptableObject.CreateInstance<K2Items.K2Weapon>();
+                        restrictedWeapon = restrictedWeapon.GetItemByName(restriction.RequiredItemEquipped, K2AllWeapons);
 
-                        }
-                        foreach (K2Items.K2Apparel itemRequirement in K2AllApparel)
+                        if (restrictedWeapon != null)
                         {
-                            RequiredItemInInventory(restriction, itemRequirement.Name, equipAttemptInfo);
+                            RequiredItemInInventory((Item)restrictedWeapon, equipAttemptInfo);
+                        }
+
+                        K2Items.K2Apparel restrictedApparel = ScriptableObject.CreateInstance<K2Items.K2Apparel>();
+                        restrictedApparel = restrictedApparel.GetItemByName(restriction.RequiredItemEquipped, K2AllApparel);
+
+                        if (restrictedApparel != null)
+                        {
+                            RequiredItemInInventory((Item)restrictedApparel, equipAttemptInfo);
                         }
                     }
                 }
@@ -60,10 +66,9 @@ namespace K2ExoticArmory
             {
                 foreach (var equippedItem in Character.Get("Jenna").EquippedItems.GetAll<Item>())
                 {
-                    K2Items.K2Apparel equippedApparel = ScriptableObject.CreateInstance<K2Items.K2Apparel>();
                     K2Items.K2Weapon equippedWeapon = ScriptableObject.CreateInstance<K2Items.K2Weapon>();
                     equippedWeapon = equippedWeapon.GetItemByName(equippedItem.Name, K2AllWeapons);
-                    equippedApparel = equippedApparel.GetItemByName(equippedItem.Name, K2AllApparel);
+
                     if (equippedWeapon != null)
                     {
                         if (equippedWeapon.restrictions != null)
@@ -77,6 +82,10 @@ namespace K2ExoticArmory
                             }
                         }
                     }
+
+                    K2Items.K2Apparel equippedApparel = ScriptableObject.CreateInstance<K2Items.K2Apparel>();
+                    equippedApparel = equippedApparel.GetItemByName(equippedItem.Name, K2AllApparel);
+
                     if (equippedApparel != null)
                     {
                         if (equippedApparel.restrictions != null)
@@ -114,6 +123,34 @@ namespace K2ExoticArmory
                     }
                 }
             });
+        }
+        private void RequiredItemInInventory(Item itemRequirement, EquipAttemptInfo equipAttemptInfo)
+        {
+            bool canEquip = false;
+            Restraint restraint = new Restraint();
+            foreach (var EquipmentSlot in Character.Get("Jenna").EquippedItems.GetAll<Item>())
+            {
+                if (EquipmentSlot.Name == itemRequirement.Name)
+                {
+                    canEquip = true;
+                }
+            }
+            if (canEquip)
+            {
+                restraint.Set("CanEquip", true);
+                equipAttemptInfo.CanEquip = restraint;
+            }
+            else
+            {
+                restraint.Set("CanEquip", false);
+                equipAttemptInfo.CanEquip = restraint;
+                string knownItem = "another item";
+                if (Character.Get("Jenna").Inventory.Contains(itemRequirement))
+                {
+                    knownItem = itemRequirement.Name;
+                }
+                Item.GenerateErrorDialogue(Character.Get("Jenna"), "I need <color=#00ffff>" + knownItem + "</color> equipped to equip this!", "Distressed");
+            }
         }
         private void UpdateHealth(List<K2Items.K2Apparel> K2AllApparel, List<K2Items.K2Weapon> K2AllWeapons, EquipAttemptInfo equipAttemptInfo)
         {
@@ -240,37 +277,6 @@ namespace K2ExoticArmory
                 restraint.Set("CanEquip", false);
                 equipAttemptInfo.CanEquip = restraint;
                 Item.GenerateErrorDialogue(Character.Get("Jenna"), "I can't Equip <color=#00ffff>" + equipAttemptInfo.Equipment.Name + "</color> right now...  I should increase my max HP.", "Sad");
-            }
-        }
-        private void RequiredItemInInventory(K2Items.Restrictions restriction, string itemRequirement, EquipAttemptInfo equipAttemptInfo)
-        {
-            bool canEquip = false;
-            if (restriction.RequiredItemEquipped == itemRequirement)
-            {
-                Restraint restraint = new Restraint();
-                foreach (var EquipmentSlot in Character.Get("Jenna").EquippedItems.GetAll<Item>())
-                {
-                    if (EquipmentSlot.Name == itemRequirement)
-                    {
-                        canEquip = true;
-                    }
-                }
-                if (canEquip)
-                {
-                    restraint.Set("CanEquip", true);
-                    equipAttemptInfo.CanEquip = restraint;
-                }
-                else
-                {
-                    restraint.Set("CanEquip", false);
-                    equipAttemptInfo.CanEquip = restraint;
-                    string knownItem = "another item";
-                    if (Character.Get("Jenna").Inventory.Contains(itemRequirement))
-                    {
-                        knownItem = itemRequirement;
-                    }
-                    Item.GenerateErrorDialogue(Character.Get("Jenna"), "I need <color=#00ffff>" + knownItem + "</color> equipped to equip this!", "Distressed");
-                }
             }
         }
     }
