@@ -41,15 +41,7 @@ namespace K2ExoticArmory
                     RemoveItemFromJenna(item.Name);
                 }
                 Item.GenerateErrorDialogue(Character.Get("Jenna"), "I should remember to check to see if I have weapons to defend myself.", "Think");
-            }
-            UnityEngine.Events.UnityEvent unityEvent = new UnityEngine.Events.UnityEvent();
-            unityEvent.RemoveAllListeners();
-            foreach (var stats in Character.Get("Jenna").Stats.GetAll<Stat>())
-            {
-                if (stats.Name == "Hitpoints")
-                {
-                    stats.BaseMax = 1;
-                }
+                Character.Get("Jenna").GetStat("stat_hitpoints").BaseMax = 1;
             }
             Debug.Log("K2-ExoticArmory uninstalled");
         }
