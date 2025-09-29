@@ -133,7 +133,7 @@ namespace K2ExoticArmory
 
             listener.AddSpriteListener();
 
-            listener.EquipAttemptListener(K2AllApparel, K2AllWeapons);
+            listener.EquipmentListeners(K2AllApparel, K2AllWeapons);
         }
     }
 }

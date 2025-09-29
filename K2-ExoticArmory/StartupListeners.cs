@@ -18,7 +18,7 @@ namespace K2ExoticArmory
                 newItem.DisplaySpriteResource = oldItem.DisplaySpriteResource;
             });
         }
-        public void EquipAttemptListener(List<K2CustomApparel> K2AllApparel, List<K2CustomWeapon> K2AllWeapons)
+        public void EquipmentListeners(List<K2CustomApparel> K2AllApparel, List<K2CustomWeapon> K2AllWeapons)
         {
             K2CustomWeapon.OnEquipAttempt.AddListener(equipAttemptInfo =>
             {
