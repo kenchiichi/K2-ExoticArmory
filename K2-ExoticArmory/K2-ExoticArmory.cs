@@ -85,9 +85,7 @@ namespace K2ExoticArmory
 
             _manifest = manifest;
 
-            itemSetup.WeaponSerialStreamReader(manifest, "data\\WeaponData.xml", itemSetup.K2AllWeapons);
-
-            itemSetup.ApparelSerialStreamReader(manifest, "data\\ApparelData.xml", itemSetup.K2AllApparel);
+            itemSetup.SerialStreamReader(manifest);
 
             List<ShopItemInfo> shopItems = new List<ShopItemInfo>();
 

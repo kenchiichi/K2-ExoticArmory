@@ -10,26 +10,23 @@ namespace K2ExoticArmory
         public List<K2CustomWeapon> K2AllWeapons = new List<K2CustomWeapon>();
 
         public List<K2CustomApparel> K2AllApparel = new List<K2CustomApparel>();
-        public void WeaponSerialStreamReader(ModManifest manifest, string xmlpath, List<K2CustomWeapon> list)
+        public void SerialStreamReader(ModManifest manifest)
         {
-            using StreamReader reader = new StreamReader(Path.Combine(manifest.ModPath, xmlpath));
-            List<K2Weapon> k2Weapons = Deserialize<List<K2Weapon>>(reader.ReadToEnd());
+            using StreamReader k2WeaponsReader = new StreamReader(Path.Combine(manifest.ModPath, "data\\WeaponData.xml"));
+            using StreamReader k2ApparelsReader = new StreamReader(Path.Combine(manifest.ModPath, "data\\ApparelData.xml"));
+
+            List<K2Weapon> k2Weapons = Deserialize<List<K2Weapon>>(k2WeaponsReader.ReadToEnd());
+            List<K2Apparel> k2Apparels = Deserialize<List<K2Apparel>>(k2ApparelsReader.ReadToEnd());
 
             foreach (K2Weapon k2Weapon in k2Weapons)
             {
                 var item = k2Weapon.CustomInitialize(manifest);
-                list.Add(item);
+                K2AllWeapons.Add(item);
             }
-        }
-        public void ApparelSerialStreamReader(ModManifest manifest, string xmlpath, List<K2CustomApparel> list)
-        {
-            using StreamReader reader = new StreamReader(Path.Combine(manifest.ModPath, xmlpath));
-            List<K2Apparel> k2Apparels = Deserialize<List<K2Apparel>>(reader.ReadToEnd());
-
             foreach (K2Apparel k2Apparel in k2Apparels)
             {
                 var item = k2Apparel.CustomInitialize(manifest);
-                list.Add(item);
+                K2AllApparel.Add(item);
             }
         }
         private static T Deserialize<T>(string xmlString)
