@@ -6,8 +6,6 @@ using Asuna.Dialogues;
 using Asuna.Items;
 using Modding;
 using System.Collections.Generic;
-using System.IO;
-using System.Xml.Serialization;
 using UnityEngine;
 
 namespace K2ExoticArmory
@@ -24,7 +22,7 @@ namespace K2ExoticArmory
 
         public List<K2CustomApparel> K2AllApparel = new List<K2CustomApparel>();
 
-        public List<Equipment> K2ItemList = new List<Equipment>();
+        public K2Equipment k2Equipment = new K2Equipment();
 
         public void OnDialogueStarted(Dialogue dialogue) { }
         public void OnLineStarted(DialogueLine line) { }
@@ -33,10 +31,15 @@ namespace K2ExoticArmory
         {
             if (MenuManager.InGame)
             {
-                foreach (var item in K2ItemList)
+                foreach (var item in K2AllWeapons)
                 {
                     Item.All.Remove(item.Name.ToLower());
-                    RemoveItemFromJenna(item.Name);
+                    k2Equipment.RemoveItemFromJenna(item.Name);
+                }
+                foreach (var item in K2AllApparel)
+                {
+                    Item.All.Remove(item.Name.ToLower());
+                    k2Equipment.RemoveItemFromJenna(item.Name);
                 }
                 Item.GenerateErrorDialogue(Character.Get("Jenna"), "I should remember to check to see if I have weapons to defend myself.", "Think");
                 Character.Get("Jenna").GetStat("stat_hitpoints").BaseMax = 1;
@@ -84,9 +87,9 @@ namespace K2ExoticArmory
 
             _manifest = manifest;
 
-            WeaponSerialStreamReader(manifest, "data\\WeaponData.xml", K2AllWeapons);
+            k2Equipment.WeaponSerialStreamReader(manifest, "data\\WeaponData.xml", K2AllWeapons);
 
-            ApparelSerialStreamReader(manifest, "data\\ApparelData.xml", K2AllApparel);
+            k2Equipment.ApparelSerialStreamReader(manifest, "data\\ApparelData.xml", K2AllApparel);
 
             List<ShopItemInfo> shopItems = new List<ShopItemInfo>();
 
@@ -125,78 +128,12 @@ namespace K2ExoticArmory
             };
             ConCommand.Add("GiveArmory", delegate
             {
-                GiveItemToJenna();
+                k2Equipment.GiveItemToJenna(K2AllWeapons, K2AllApparel);
             });
 
             listener.AddSpriteListener();
 
             listener.EquipAttemptListener(K2AllApparel, K2AllWeapons);
-        }
-
-        public void RemoveItemFromJenna(string itemName)
-        {
-            foreach (Item EquipmentSlot in Character.Get("Jenna").EquippedItems.GetAll<Item>())
-            {
-                if (EquipmentSlot.Name.ToLower() == itemName.ToLower())
-                {
-                    Character.Get("Jenna").EquippedItems.Remove(itemName);
-                }
-            }
-            foreach (Item inventoryItem in Character.Get("Jenna").Inventory.GetAll<Item>())
-            {
-                if (inventoryItem.Name.ToLower() == itemName.ToLower())
-                {
-                    Character.Get("Jenna").Inventory.Remove(itemName);
-                }
-            }
-        }
-        public void GiveItemToJenna(string itemName = "AllItems")
-        {
-            foreach (var weapon in K2AllWeapons)
-            {
-                if (weapon.Name.ToLower() == itemName.ToLower() || itemName == "AllItems")
-                {
-                    GiveItems.GiveToCharacter(Character.Get("Jenna"), false, false, weapon);
-                }
-            }
-            foreach (var apparel in K2AllApparel)
-            {
-                if (apparel.Name.ToLower() == itemName.ToLower() || itemName == "AllItems")
-                {
-                    GiveItems.GiveToCharacter(Character.Get("Jenna"), false, false, apparel);
-                }
-            }
-        }
-        private void WeaponSerialStreamReader(ModManifest manifest, string xmlpath, List<K2CustomWeapon> list)
-        {
-            using StreamReader reader = new StreamReader(Path.Combine(manifest.ModPath, xmlpath));
-            List<K2Weapon> k2Weapons = Deserialize<List<K2Weapon>>(reader.ReadToEnd());
-
-            foreach (K2Weapon k2Weapon in k2Weapons)
-            {
-                var item = k2Weapon.CustomInitialize(manifest);
-                list.Add(item);
-                K2ItemList.Add(item);
-            }
-        }
-        private void ApparelSerialStreamReader(ModManifest manifest, string xmlpath, List<K2CustomApparel> list)
-        {
-            using StreamReader reader = new StreamReader(Path.Combine(manifest.ModPath, xmlpath));
-            List<K2Apparel> k2Apparels = Deserialize<List<K2Apparel>>(reader.ReadToEnd());
-
-            foreach (K2Apparel k2Apparel in k2Apparels)
-            {
-                var item = k2Apparel.CustomInitialize(manifest);
-                list.Add(item);
-                K2ItemList.Add(item);
-            }
-        }
-        private static T Deserialize<T>(string xmlString)
-        {
-            if (xmlString == null) return default;
-            var serializer = new XmlSerializer(typeof(T));
-            using var reader = new StringReader(xmlString);
-            return (T)serializer.Deserialize(reader);
         }
     }
 }
