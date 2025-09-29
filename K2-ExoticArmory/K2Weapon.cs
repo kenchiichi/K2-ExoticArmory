@@ -6,7 +6,6 @@ using Asuna.Missions;
 using Asuna.NewCombat;
 using Asuna.NewMissions;
 using HutongGames.PlayMaker;
-using K2Items;
 using Modding;
 using System;
 using System.Collections.Generic;
@@ -15,7 +14,7 @@ using System.Reflection;
 using UnityEngine;
 namespace K2ExoticArmory
 {
-    public class K2Weapon : K2Items.K2Equipment
+    public class K2Weapon : K2Equipment
     {
         public CustomVFX customVFX;
 

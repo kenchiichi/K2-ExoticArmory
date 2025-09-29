@@ -18,17 +18,17 @@ namespace K2ExoticArmory
                 newItem.DisplaySpriteResource = oldItem.DisplaySpriteResource;
             });
         }
-        public void EquipAttemptListener(List<K2Items.K2CustomApparel> K2AllApparel, List<K2Items.K2CustomWeapon> K2AllWeapons)
+        public void EquipAttemptListener(List<K2CustomApparel> K2AllApparel, List<K2CustomWeapon> K2AllWeapons)
         {
-            K2Items.K2CustomWeapon.OnEquipAttempt.AddListener(equipAttemptInfo =>
+            K2CustomWeapon.OnEquipAttempt.AddListener(equipAttemptInfo =>
             {
-                K2Items.K2CustomWeapon equippedWeapon = ScriptableObject.CreateInstance<K2Items.K2CustomWeapon>();
+                K2CustomWeapon equippedWeapon = ScriptableObject.CreateInstance<K2CustomWeapon>();
                 equippedWeapon = equippedWeapon.GetItemByName(equipAttemptInfo.Equipment.Name, K2AllWeapons);
 
-                K2Items.K2CustomApparel equippedApparel = ScriptableObject.CreateInstance<K2Items.K2CustomApparel>();
+                K2CustomApparel equippedApparel = ScriptableObject.CreateInstance<K2CustomApparel>();
                 equippedApparel = equippedApparel.GetItemByName(equipAttemptInfo.Equipment.Name, K2AllApparel);
 
-                List<K2Items.Restrictions> itemRestrictions = new List<K2Items.Restrictions>();
+                List<Restrictions> itemRestrictions = new List<Restrictions>();
                 if (equippedWeapon != null || equippedApparel != null)
                 {
                     if (equippedWeapon != null)
@@ -39,9 +39,9 @@ namespace K2ExoticArmory
                     {
                         itemRestrictions.AddRange(equippedApparel.restrictions);
                     }
-                    foreach (K2Items.Restrictions restriction in itemRestrictions)
+                    foreach (Restrictions restriction in itemRestrictions)
                     {
-                        K2Items.K2CustomWeapon restrictedWeapon = ScriptableObject.CreateInstance<K2Items.K2CustomWeapon>();
+                        K2CustomWeapon restrictedWeapon = ScriptableObject.CreateInstance<K2CustomWeapon>();
                         restrictedWeapon = restrictedWeapon.GetItemByName(restriction.RequiredItemEquipped, K2AllWeapons);
 
                         if (restrictedWeapon != null)
@@ -49,7 +49,7 @@ namespace K2ExoticArmory
                             CheckForRequiredItem((Item)restrictedWeapon, equipAttemptInfo);
                         }
 
-                        K2Items.K2CustomApparel restrictedApparel = ScriptableObject.CreateInstance<K2Items.K2CustomApparel>();
+                        K2CustomApparel restrictedApparel = ScriptableObject.CreateInstance<K2CustomApparel>();
                         restrictedApparel = restrictedApparel.GetItemByName(restriction.RequiredItemEquipped, K2AllApparel);
 
                         if (restrictedApparel != null)
@@ -60,11 +60,11 @@ namespace K2ExoticArmory
                 }
 
                 int healthModifier = Character.Get("Jenna").GetStat("stat_hitpoints").BaseMax;
-                foreach (K2Items.K2CustomApparel item in K2AllApparel)
+                foreach (K2CustomApparel item in K2AllApparel)
                 {
                     healthModifier = HealthCheck((Equipment)item, equipAttemptInfo, healthModifier, item.ModHitpoints);
                 }
-                foreach (K2Items.K2CustomWeapon item in K2AllWeapons)
+                foreach (K2CustomWeapon item in K2AllWeapons)
                 {
                     healthModifier = HealthCheck((Equipment)item, equipAttemptInfo, healthModifier, item.ModHitpoints);
                 }
@@ -85,7 +85,7 @@ namespace K2ExoticArmory
             {
                 foreach (var equippedItem in Character.Get("Jenna").EquippedItems.GetAll<Item>())
                 {
-                    K2Items.K2CustomWeapon equippedWeapon = ScriptableObject.CreateInstance<K2Items.K2CustomWeapon>();
+                    K2CustomWeapon equippedWeapon = ScriptableObject.CreateInstance<K2CustomWeapon>();
                     equippedWeapon = equippedWeapon.GetItemByName(equippedItem.Name, K2AllWeapons);
 
                     if (equippedWeapon != null)
@@ -102,7 +102,7 @@ namespace K2ExoticArmory
                         }
                     }
 
-                    K2Items.K2CustomApparel equippedApparel = ScriptableObject.CreateInstance<K2Items.K2CustomApparel>();
+                    K2CustomApparel equippedApparel = ScriptableObject.CreateInstance<K2CustomApparel>();
                     equippedApparel = equippedApparel.GetItemByName(equippedItem.Name, K2AllApparel);
 
                     if (equippedApparel != null)
@@ -123,7 +123,7 @@ namespace K2ExoticArmory
 
             Character.Get("Jenna").OnItemEquipped.AddListener(equipInfo =>
             {
-                foreach (K2Items.K2CustomWeapon item in K2AllWeapons)
+                foreach (K2CustomWeapon item in K2AllWeapons)
                 {
                     if (equipInfo.Name == item.Name && item.questModifiers != null && item.questModifiers.BaseWeapon)
                     {

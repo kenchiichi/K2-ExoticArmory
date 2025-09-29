@@ -6,7 +6,7 @@ using Modding;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace K2Items
+namespace K2ExoticArmory
 {
     public class K2Equipment
     {
