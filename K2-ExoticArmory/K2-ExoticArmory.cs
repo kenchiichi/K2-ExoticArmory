@@ -18,11 +18,9 @@ namespace K2ExoticArmory
 
         private readonly StartupListeners listener = new StartupListeners();
 
-        public List<K2CustomWeapon> K2AllWeapons = new List<K2CustomWeapon>();
+        public K2Equipment K2Equipment = new K2Equipment();
 
-        public List<K2CustomApparel> K2AllApparel = new List<K2CustomApparel>();
-
-        public K2Equipment k2Equipment = new K2Equipment();
+        public ItemSetup itemSetup = new ItemSetup();
 
         public void OnDialogueStarted(Dialogue dialogue) { }
         public void OnLineStarted(DialogueLine line) { }
@@ -31,15 +29,15 @@ namespace K2ExoticArmory
         {
             if (MenuManager.InGame)
             {
-                foreach (var item in K2AllWeapons)
+                foreach (var item in itemSetup.K2AllWeapons)
                 {
                     Item.All.Remove(item.Name.ToLower());
-                    k2Equipment.RemoveItemFromJenna(item.Name);
+                    K2Equipment.RemoveItemFromJenna(item.Name);
                 }
-                foreach (var item in K2AllApparel)
+                foreach (var item in itemSetup.K2AllApparel)
                 {
                     Item.All.Remove(item.Name.ToLower());
-                    k2Equipment.RemoveItemFromJenna(item.Name);
+                    K2Equipment.RemoveItemFromJenna(item.Name);
                 }
                 Item.GenerateErrorDialogue(Character.Get("Jenna"), "I should remember to check to see if I have weapons to defend myself.", "Think");
                 Character.Get("Jenna").GetStat("stat_hitpoints").BaseMax = 1;
@@ -49,10 +47,10 @@ namespace K2ExoticArmory
         public void OnLevelChanged(string oldLevel, string newLevel)
         {
             K2Weapon k2Weapon = new K2Weapon();
-            k2Weapon.LoadWorldItems(newLevel, K2AllWeapons);
+            k2Weapon.LoadWorldItems(newLevel, itemSetup.K2AllWeapons);
 
             K2Apparel k2Apparel = new K2Apparel();
-            k2Apparel.LoadWorldItems(newLevel, K2AllApparel);
+            k2Apparel.LoadWorldItems(newLevel, itemSetup.K2AllApparel);
 
             if (newLevel == "Motel_UpperFloor")
             {
@@ -87,15 +85,15 @@ namespace K2ExoticArmory
 
             _manifest = manifest;
 
-            k2Equipment.WeaponSerialStreamReader(manifest, "data\\WeaponData.xml", K2AllWeapons);
+            itemSetup.WeaponSerialStreamReader(manifest, "data\\WeaponData.xml", itemSetup.K2AllWeapons);
 
-            k2Equipment.ApparelSerialStreamReader(manifest, "data\\ApparelData.xml", K2AllApparel);
+            itemSetup.ApparelSerialStreamReader(manifest, "data\\ApparelData.xml", itemSetup.K2AllApparel);
 
             List<ShopItemInfo> shopItems = new List<ShopItemInfo>();
 
             ItemShopCatalogue catalogue = ScriptableObject.CreateInstance<ItemShopCatalogue>();
 
-            foreach (var item in K2AllApparel)
+            foreach (var item in itemSetup.K2AllApparel)
             {
                 if (item.Price > 0)
                 {
@@ -108,7 +106,7 @@ namespace K2ExoticArmory
                 );
                 }
             }
-            foreach (var item in K2AllWeapons)
+            foreach (var item in itemSetup.K2AllWeapons)
             {
                 if (item.Price > 0)
                 {
@@ -128,12 +126,12 @@ namespace K2ExoticArmory
             };
             ConCommand.Add("GiveArmory", delegate
             {
-                k2Equipment.GiveItemToJenna(K2AllWeapons, K2AllApparel);
+                K2Equipment.GiveItemToJenna(itemSetup.K2AllWeapons, itemSetup.K2AllApparel);
             });
 
             listener.AddSpriteListener();
 
-            listener.EquipmentListeners(K2AllApparel, K2AllWeapons);
+            listener.EquipmentListeners(itemSetup.K2AllApparel, itemSetup.K2AllWeapons);
         }
     }
 }

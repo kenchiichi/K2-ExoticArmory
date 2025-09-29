@@ -202,7 +202,7 @@ namespace K2ExoticArmory
                                             }
                                         }
                                         GiveItems.GiveToCharacter(Character.Get("Jenna"), itemEquiped, false, item);
-                                        k2ExoticArmory.k2Equipment.RemoveItemFromJenna(itemRequired.Name);
+                                        k2ExoticArmory.K2Equipment.RemoveItemFromJenna(itemRequired.Name);
                                     }
                                     else
                                     {

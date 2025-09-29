@@ -4,8 +4,6 @@ using Asuna.NewCombat;
 using Asuna.NewMissions;
 using Modding;
 using System.Collections.Generic;
-using System.IO;
-using System.Xml.Serialization;
 using UnityEngine;
 
 namespace K2ExoticArmory
@@ -37,69 +35,6 @@ namespace K2ExoticArmory
         public MapCoordinate LocationCoordinates;
 
 
-        public void RemoveItemFromJenna(string itemName)
-        {
-            foreach (Item EquipmentSlot in Character.Get("Jenna").EquippedItems.GetAll<Item>())
-            {
-                if (EquipmentSlot.Name.ToLower() == itemName.ToLower())
-                {
-                    Character.Get("Jenna").EquippedItems.Remove(itemName);
-                }
-            }
-            foreach (Item inventoryItem in Character.Get("Jenna").Inventory.GetAll<Item>())
-            {
-                if (inventoryItem.Name.ToLower() == itemName.ToLower())
-                {
-                    Character.Get("Jenna").Inventory.Remove(itemName);
-                }
-            }
-        }
-        public void GiveItemToJenna(List<K2CustomWeapon> K2AllWeapons, List<K2CustomApparel> K2AllApparel, string itemName = "AllItems" )
-        {
-            foreach (var weapon in K2AllWeapons)
-            {
-                if (weapon.Name.ToLower() == itemName.ToLower() || itemName == "AllItems")
-                {
-                    GiveItems.GiveToCharacter(Character.Get("Jenna"), false, false, weapon);
-                }
-            }
-            foreach (var apparel in K2AllApparel)
-            {
-                if (apparel.Name.ToLower() == itemName.ToLower() || itemName == "AllItems")
-                {
-                    GiveItems.GiveToCharacter(Character.Get("Jenna"), false, false, apparel);
-                }
-            }
-        }
-        public void WeaponSerialStreamReader(ModManifest manifest, string xmlpath, List<K2CustomWeapon> list)
-        {
-            using StreamReader reader = new StreamReader(Path.Combine(manifest.ModPath, xmlpath));
-            List<K2Weapon> k2Weapons = Deserialize<List<K2Weapon>>(reader.ReadToEnd());
-
-            foreach (K2Weapon k2Weapon in k2Weapons)
-            {
-                var item = k2Weapon.CustomInitialize(manifest);
-                list.Add(item);
-            }
-        }
-        public void ApparelSerialStreamReader(ModManifest manifest, string xmlpath, List<K2CustomApparel> list)
-        {
-            using StreamReader reader = new StreamReader(Path.Combine(manifest.ModPath, xmlpath));
-            List<K2Apparel> k2Apparels = Deserialize<List<K2Apparel>>(reader.ReadToEnd());
-
-            foreach (K2Apparel k2Apparel in k2Apparels)
-            {
-                var item = k2Apparel.CustomInitialize(manifest);
-                list.Add(item);
-            }
-        }
-        private static T Deserialize<T>(string xmlString)
-        {
-            if (xmlString == null) return default;
-            var serializer = new XmlSerializer(typeof(T));
-            using var reader = new StringReader(xmlString);
-            return (T)serializer.Deserialize(reader);
-        }
         public void AddAbilitiesToEquipment(Equipment equipment, ModManifest manifest)
         {
             if (CustomAbilityItems != null)
@@ -117,6 +52,40 @@ namespace K2ExoticArmory
                     ANToolkit.ScriptableManagement.ScriptableManager.Add(ability);
 
                     equipment.AddAbility(ability, "Ability");
+                }
+            }
+        }
+        public void RemoveItemFromJenna(string itemName)
+        {
+            foreach (Item EquipmentSlot in Character.Get("Jenna").EquippedItems.GetAll<Item>())
+            {
+                if (EquipmentSlot.Name.ToLower() == itemName.ToLower())
+                {
+                    Character.Get("Jenna").EquippedItems.Remove(itemName);
+                }
+            }
+            foreach (Item inventoryItem in Character.Get("Jenna").Inventory.GetAll<Item>())
+            {
+                if (inventoryItem.Name.ToLower() == itemName.ToLower())
+                {
+                    Character.Get("Jenna").Inventory.Remove(itemName);
+                }
+            }
+        }
+        public void GiveItemToJenna(List<K2CustomWeapon> K2AllWeapons, List<K2CustomApparel> K2AllApparel, string itemName = "AllItems")
+        {
+            foreach (var weapon in K2AllWeapons)
+            {
+                if (weapon.Name.ToLower() == itemName.ToLower() || itemName == "AllItems")
+                {
+                    GiveItems.GiveToCharacter(Character.Get("Jenna"), false, false, weapon);
+                }
+            }
+            foreach (var apparel in K2AllApparel)
+            {
+                if (apparel.Name.ToLower() == itemName.ToLower() || itemName == "AllItems")
+                {
+                    GiveItems.GiveToCharacter(Character.Get("Jenna"), false, false, apparel);
                 }
             }
         }
