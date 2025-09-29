@@ -71,7 +71,7 @@ namespace K2Items
             MissionContainer.AddTaskToLookup(moddedTask1);
         }
     }
-    public class K2Weapon : Asuna.Items.Weapon
+    public class K2CustomWeapon : Asuna.Items.Weapon
     {
         public List<StatModifierInfo> StatModifierInfos;
 
@@ -91,7 +91,7 @@ namespace K2Items
 
         public int ModHitpoints = 0;
 
-        public K2Weapon GetItemByName(string itemName, List<K2Items.K2Weapon> K2AllWeapons)
+        public K2CustomWeapon GetItemByName(string itemName, List<K2CustomWeapon> K2AllWeapons)
         {
             foreach (var item in K2AllWeapons)
             {
@@ -103,7 +103,7 @@ namespace K2Items
             return null;
         }
     }
-    public class K2Apparel : Asuna.Items.Apparel
+    public class K2CustomApparel : Asuna.Items.Apparel
     {
         public List<StatModifierInfo> StatModifierInfos;
 
@@ -123,7 +123,7 @@ namespace K2Items
 
         public int ModHitpoints = 0;
 
-        public K2Apparel GetItemByName(string itemName, List<K2Items.K2Apparel> K2AllApparel)
+        public K2CustomApparel GetItemByName(string itemName, List<K2CustomApparel> K2AllApparel)
         {
             foreach (var item in K2AllApparel)
             {

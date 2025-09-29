@@ -18,15 +18,13 @@ namespace K2ExoticArmory
 
         private ModManifest _manifest;
 
-        private StartupListeners listener = new StartupListeners();
+        private readonly StartupListeners listener = new StartupListeners();
 
-        public List<K2Items.K2Weapon> K2AllWeapons = new List<K2Items.K2Weapon>();
+        public List<K2Items.K2CustomWeapon> K2AllWeapons = new List<K2Items.K2CustomWeapon>();
 
-        public List<K2Items.K2Apparel> K2AllApparel = new List<K2Items.K2Apparel>();
+        public List<K2Items.K2CustomApparel> K2AllApparel = new List<K2Items.K2CustomApparel>();
 
         public List<Equipment> K2ItemList = new List<Equipment>();
-
-        private readonly StartupListeners startupListeners = new StartupListeners();
 
         public void OnDialogueStarted(Dialogue dialogue) { }
         public void OnLineStarted(DialogueLine line) { }
@@ -169,7 +167,7 @@ namespace K2ExoticArmory
                 }
             }
         }
-        private void WeaponSerialStreamReader(ModManifest manifest, string xmlpath, List<K2Items.K2Weapon> list)
+        private void WeaponSerialStreamReader(ModManifest manifest, string xmlpath, List<K2Items.K2CustomWeapon> list)
         {
             using StreamReader reader = new StreamReader(Path.Combine(manifest.ModPath, xmlpath));
             List<K2Weapon> k2Weapons = Deserialize<List<K2Weapon>>(reader.ReadToEnd());
@@ -181,7 +179,7 @@ namespace K2ExoticArmory
                 K2ItemList.Add(item);
             }
         }
-        private void ApparelSerialStreamReader(ModManifest manifest, string xmlpath, List<K2Items.K2Apparel> list)
+        private void ApparelSerialStreamReader(ModManifest manifest, string xmlpath, List<K2Items.K2CustomApparel> list)
         {
             using StreamReader reader = new StreamReader(Path.Combine(manifest.ModPath, xmlpath));
             List<K2Apparel> k2Apparels = Deserialize<List<K2Apparel>>(reader.ReadToEnd());

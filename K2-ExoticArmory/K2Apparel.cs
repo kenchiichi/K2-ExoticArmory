@@ -3,6 +3,7 @@ using Asuna.CharManagement;
 using Asuna.Items;
 using Asuna.Missions;
 using Asuna.NewMissions;
+using K2Items;
 using Modding;
 using System;
 using System.Collections.Generic;
@@ -15,13 +16,13 @@ namespace K2ExoticArmory
     {
         public List<ModEquipmentSprite> Sprites;
 
-        private K2Items.K2Apparel _instance;
+        private K2CustomApparel _instance;
 
         private ModManifest _manifest;
-        public K2Items.K2Apparel CustomInitialize(ModManifest manifest)
+        public K2CustomApparel CustomInitialize(ModManifest manifest)
         {
 
-            K2Items.K2Apparel apparel = ScriptableObject.CreateInstance<K2Items.K2Apparel>();
+            K2CustomApparel apparel = ScriptableObject.CreateInstance<K2CustomApparel>();
 
             _manifest = manifest;
 
@@ -70,14 +71,14 @@ namespace K2ExoticArmory
             return apparel;
         }
 
-        public void LoadWorldItems(string newLevel, List<K2Items.K2Apparel> K2AllApparel)
+        public void LoadWorldItems(string newLevel, List<K2CustomApparel> K2AllApparel)
         {
             K2ExoticArmory k2ExoticArmory = new K2ExoticArmory();
 
-            foreach (K2Items.K2Apparel item in K2AllApparel)
+            foreach (K2CustomApparel item in K2AllApparel)
             {
-                K2Items.K2Apparel itemRequired = null;
-                foreach (K2Items.K2Apparel item2 in K2AllApparel)
+                K2CustomApparel itemRequired = null;
+                foreach (K2CustomApparel item2 in K2AllApparel)
                 {
                     if (item.LocationCoordinates != null)
                     {

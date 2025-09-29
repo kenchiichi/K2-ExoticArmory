@@ -19,13 +19,13 @@ namespace K2ExoticArmory
     {
         public CustomVFX customVFX;
 
-        private K2Items.K2Weapon _instance;
+        private K2CustomWeapon _instance;
 
         private ModManifest _manifest;
 
-        public K2Items.K2Weapon CustomInitialize(ModManifest manifest)
+        public K2CustomWeapon CustomInitialize(ModManifest manifest)
         {
-            K2Items.K2Weapon weapon = ScriptableObject.CreateInstance<K2Items.K2Weapon>();
+            K2CustomWeapon weapon = ScriptableObject.CreateInstance<K2CustomWeapon>();
 
             _manifest = manifest;
 
@@ -133,14 +133,14 @@ namespace K2ExoticArmory
                 combatVFX.AmountToSpawn = burstCount;
             });
         }
-        public void LoadWorldItems(string newLevel, List<K2Items.K2Weapon> K2AllWeapons)
+        public void LoadWorldItems(string newLevel, List<K2CustomWeapon> K2AllWeapons)
         {
             K2ExoticArmory k2ExoticArmory = new K2ExoticArmory();
 
-            foreach (K2Items.K2Weapon item in K2AllWeapons)
+            foreach (K2CustomWeapon item in K2AllWeapons)
             {
-                K2Items.K2Weapon itemRequired = null;
-                foreach (K2Items.K2Weapon item2 in K2AllWeapons)
+                K2CustomWeapon itemRequired = null;
+                foreach (K2CustomWeapon item2 in K2AllWeapons)
                 {
                     if (item.LocationCoordinates != null)
                     {
