@@ -1,5 +1,4 @@
-﻿using ANToolkit.UI;
-using ANToolkit.Utility;
+﻿using ANToolkit.Utility;
 using Asuna.CharManagement;
 using Asuna.Items;
 using Asuna.Missions;
@@ -107,14 +106,6 @@ namespace K2ExoticArmory
                         }
                     }
                 }
-                if (unEquipInfo.GetStatModifier("stat_hitpoints") != null)
-                {
-                    if (Character.Get("Jenna").GetStat("stat_hitpoints").BaseMax - unEquipInfo.GetStatModifier("stat_hitpoints").ModifyAmount > Character.Get("Jenna").GetStat("stat_hitpoints").BaseMax)
-                    {
-                        Item.GenerateErrorDialogue(Character.Get("Jenna"), "My Hitpoints are lower than maximum, I should rest to recover", "Think");
-                    }
-
-                }
             });
 
             Character.Get("Jenna").OnItemEquipped.AddListener(equipInfo =>
@@ -136,14 +127,6 @@ namespace K2ExoticArmory
                             MissionContainer.AddTaskToLookup(taskInstance);
                         }
                     }
-                }
-                if (equipInfo.GetStatModifier("stat_hitpoints") != null)
-                {
-                    if (Character.Get("Jenna").GetStat("stat_hitpoints").BaseMax + equipInfo.GetStatModifier("stat_hitpoints").ModifyAmount > Character.Get("Jenna").GetStat("stat_hitpoints").BaseMax)
-                    {
-                        Item.GenerateErrorDialogue(Character.Get("Jenna"), "My Hitpoints are lower than maximum, I should rest to recover", "Think");
-                    }
-
                 }
             });
         }

@@ -87,44 +87,10 @@
 		</StatModifierInfos>
 		<CustomAbilityItems>
 			<CustomAbility>
-				<AbilityID>Abl_Attack_Rida_Damage_Return</AbilityID>
-				<AbilityName>Dinklebot</AbilityName>
-				<AbilityTooltip>An ancient compainion, who is now lifeless, but once was a most trusted friend.  Awakens when the user is attacked to defend his friend.</AbilityTooltip>
-			</CustomAbility>
-		</CustomAbilityItems>
-		<CustomAbilityItems>
-			<CustomAbility>
 				<AbilityID>Abl_Attack</AbilityID>
 				<AbilityName>Just a boi</AbilityName>
 				<AbilityTooltip>Behold, it's a cat!  Gives the user the ability to be an adorable nuisance.  Reduces HP by &lt;color=#FF0000&gt;19&lt;/color&gt;.</AbilityTooltip>
 			</CustomAbility>
 		</CustomAbilityItems>
-	</K2Apparel>
-	<K2Apparel>
-		<Name>Test Item</Name>
-		<Slots>
-			<string>Accessory2</string>
-		</Slots>
-		<StatModifierInfos>
-			<StatModifierInfo>
-				<Type>Value</Type>
-				<StatName>stat_hitpoints</StatName>
-				<ModifyAmount>5</ModifyAmount>
-			</StatModifierInfo>
-		</StatModifierInfos>
-	</K2Apparel>
-	<K2Apparel>
-		<Name>Test Item 2</Name>
-		<Slots>
-			<string>Accessory2</string>
-		</Slots>
-		<CustomAbilityItems>
-			<CustomAbility>
-				<AbilityID>Abl_Attack</AbilityID>
-				<AbilityName>Custom Solution</AbilityName>
-				<AbilityTooltip>+5 hp</AbilityTooltip>
-			</CustomAbility>
-		</CustomAbilityItems>
-		<ModHitpoints>5</ModHitpoints>
 	</K2Apparel>
 </ArrayOfK2Apparel>
