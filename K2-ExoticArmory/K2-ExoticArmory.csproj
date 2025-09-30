@@ -6,19 +6,19 @@
 
   <ItemGroup>
     <Reference Include="Assembly-CSharp">
-      <HintPath>D:\SteamLibrary\steamapps\common\Third Crisis\ThirdCrisis_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <HintPath>D:\Non-Steam-Games\Third Crisis\Third Crisis_Data\Managed\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="PlayMaker">
-      <HintPath>D:\SteamLibrary\steamapps\common\Third Crisis\ThirdCrisis_Data\Managed\PlayMaker.dll</HintPath>
+      <HintPath>D:\Non-Steam-Games\Third Crisis\Third Crisis_Data\Managed\PlayMaker.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>D:\SteamLibrary\steamapps\common\Third Crisis\ThirdCrisis_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>D:\Non-Steam-Games\Third Crisis\Third Crisis_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ImageConversionModule">
-      <HintPath>D:\SteamLibrary\steamapps\common\Third Crisis\ThirdCrisis_Data\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
+      <HintPath>D:\Non-Steam-Games\Third Crisis\Third Crisis_Data\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.PhysicsModule">
-      <HintPath>D:\SteamLibrary\steamapps\common\Third Crisis\ThirdCrisis_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
+      <HintPath>D:\Non-Steam-Games\Third Crisis\Third Crisis_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
     </Reference>
   </ItemGroup>
 
