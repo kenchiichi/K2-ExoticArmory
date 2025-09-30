@@ -78,7 +78,20 @@
 				<SortingOrder>4</SortingOrder>
 			</ModEquipmentSprite>
 		</Sprites>
-		<ModHitpoints>-19</ModHitpoints>
+		<StatModifierInfos>
+			<StatModifierInfo>
+				<Type>Max</Type>
+				<StatName>stat_hitpoints</StatName>
+				<ModifyAmount>-19</ModifyAmount>
+			</StatModifierInfo>
+		</StatModifierInfos>
+		<CustomAbilityItems>
+			<CustomAbility>
+				<AbilityID>Abl_Attack_Rida_Damage_Return</AbilityID>
+				<AbilityName>Dinklebot</AbilityName>
+				<AbilityTooltip>An ancient compainion, who is now lifeless, but once was a most trusted friend.  Awakens when the user is attacked to defend his friend.</AbilityTooltip>
+			</CustomAbility>
+		</CustomAbilityItems>
 		<CustomAbilityItems>
 			<CustomAbility>
 				<AbilityID>Abl_Attack</AbilityID>

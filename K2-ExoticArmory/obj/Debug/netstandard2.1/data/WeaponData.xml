@@ -494,8 +494,12 @@
 				<StatName>stat_attack_range</StatName>
 				<ModifyAmount>3</ModifyAmount>
 			</StatModifierInfo>
+			<StatModifierInfo>
+				<Type>Max</Type>
+				<StatName>stat_hitpoints</StatName>
+				<ModifyAmount>10</ModifyAmount>
+			</StatModifierInfo>
 		</StatModifierInfos>
-		<ModHitpoints>10</ModHitpoints>
 		<customVFX>
 			<BurstCount>7</BurstCount>
 			<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
@@ -632,8 +636,12 @@
 				<StatName>stat_lust_power</StatName>
 				<ModifyAmount>15</ModifyAmount>
 			</StatModifierInfo>
+			<StatModifierInfo>
+				<Type>Max</Type>
+				<StatName>stat_hitpoints</StatName>
+				<ModifyAmount>-10</ModifyAmount>
+			</StatModifierInfo>
 		</StatModifierInfos>
-		<ModHitpoints>-10</ModHitpoints>
 		<customVFX>
 			<BurstCount>7</BurstCount>
 			<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
