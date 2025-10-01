@@ -95,8 +95,8 @@
 	</K2Apparel>
 	<K2Apparel>
 		<Name>Cabal Shield Generator</Name>
-		<Price>50</Price>
-		<PreviewImage>assets\sprites\icons\heavy_slug_thrower.png</PreviewImage>
+		<Price>5</Price>
+		<PreviewImage>assets\sprites\icons\armor_of_the_colossus.png</PreviewImage>
 		<Description>A device made from an unfamiliar technology, there is no obvious way to activate the device.</Description>
 		<Slots>
 			<string>Accessory2</string>
@@ -110,5 +110,26 @@
 				<SortingOrder>4</SortingOrder>
 			</ModEquipmentSprite>
 		</Sprites>
+		<StatModifierInfos>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_physical_defense</StatName>
+				<ModifyAmount>20</ModifyAmount>
+			</StatModifierInfo>
+		</StatModifierInfos>
+		<CustomAbilityItems>
+			<CustomAbility>
+				<AbilityID>Abl_Attack</AbilityID>
+				<AbilityName>Armor Of The Colossus</AbilityName>
+				<AbilityTooltip>This item gives the user increadable resistance to physical trauma, if paired with an item that can activate it.</AbilityTooltip>
+				<AbilityCooldown>1</AbilityCooldown>
+				<DisplaySprite>assets\sprites\icons\armor_of_the_colossus.png</DisplaySprite>
+			</CustomAbility>
+		</CustomAbilityItems>
+		<restrictions>
+			<Restrictions>
+				<RequiredItemEquipped>Heir Apparent</RequiredItemEquipped>
+			</Restrictions>
+		</restrictions>
 	</K2Apparel>
 </ArrayOfK2Apparel>

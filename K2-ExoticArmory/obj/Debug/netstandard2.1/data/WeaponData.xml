@@ -665,13 +665,13 @@
 		</questModifiers>
 	</K2Weapon>	
 	<K2Weapon>
-		<Name>Heir Apparant</Name>
+		<Name>Heir Apparent</Name>
 		<PreviewImage>assets\sprites\icons\heir_apparent.png</PreviewImage>
 		<Description>Airship shall rise again.</Description>
 		<LocationCoordinates>
-			<xCoordinate>00.00</xCoordinate>
-			<yCoordinate>00.00</yCoordinate>
-			<MapName>DestroyedStronghold</MapName>
+			<xCoordinate>-3.50</xCoordinate>
+			<yCoordinate>7.00</yCoordinate>
+			<MapName>Townhall</MapName>
 		</LocationCoordinates>
 		<Slots>
 			<string>MainWeapon</string>
@@ -681,7 +681,7 @@
 		</Slots>
 		<Sprites>
 			<ModEquipmentSprite>
-				<Name>HeirApparant</Name>
+				<Name>HeirApparent</Name>
 				<Image>assets\sprites\displaysprite\large_bubble.png</Image>
 				<Color>#FFFFFFFF</Color>
 				<SortingLayer>Outfit</SortingLayer>
@@ -692,7 +692,7 @@
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_physical_power</StatName>
-				<ModifyAmount>20</ModifyAmount>
+				<ModifyAmount>25</ModifyAmount>
 			</StatModifierInfo>
 			<StatModifierInfo>
 				<Type>Value</Type>
@@ -703,11 +703,6 @@
 				<Type>Value</Type>
 				<StatName>stat_lust_defense</StatName>
 				<ModifyAmount>-20</ModifyAmount>
-			</StatModifierInfo>
-			<StatModifierInfo>
-				<Type>Value</Type>
-				<StatName>stat_physical_defense</StatName>
-				<ModifyAmount>20</ModifyAmount>
 			</StatModifierInfo>
 			<StatModifierInfo>
 				<Type>Value</Type>
@@ -728,16 +723,11 @@
 		<CustomAbilityItems>
 			<CustomAbility>
 				<AbilityID>Abl_Attack</AbilityID>
-				<AbilityName>Armor Of The Colossus</AbilityName>
-				<AbilityTooltip>This weapon gives the user increadable resistance to physical trauma, however, due to the focus required to weild the weapon, it causes the user to be extremely &lt;color=#FF64FF&gt;vulnerable to their lust&lt;/color&gt;.  The weight of the weapon causes the user to move more slowly, and have less actions in battle.&#10;&#10;Requires a Cabal Shield Generator to function.</AbilityTooltip>
+				<AbilityName>Heavy Slug Thrower</AbilityName>
+				<AbilityTooltip>Due to the weight of the weapon, the user moves more slowly, has less actions in battle, and is extremely &lt;color=#FF64FF&gt;vulnerable to their lust&lt;/color&gt;.</AbilityTooltip>
 				<AbilityCooldown>1</AbilityCooldown>
-				<DisplaySprite>assets\sprites\abl_icons\armor_of_the_colossus.png</DisplaySprite>
+				<DisplaySprite>assets\sprites\abl_icons\heavy_slug_thrower.png</DisplaySprite>
 			</CustomAbility>
-		<restrictions>
-			<Restrictions>
-				<RequiredItemEquipped>Cabal Shield Generator</RequiredItemEquipped>
-			</Restrictions>
-		</restrictions>
 		</CustomAbilityItems>
 	</K2Weapon>
 </ArrayOfK2Weapon>
