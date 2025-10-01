@@ -73,6 +73,28 @@ namespace K2ExoticArmory
                 }
             });
 
+            Character.Get("Jenna").OnItemEquipped.AddListener(equipInfo =>
+            {
+                foreach (K2CustomWeapon item in K2AllWeapons)
+                {
+                    if (equipInfo.Name == item.Name && item.questModifiers != null && item.questModifiers.BaseWeapon)
+                    {
+                        var missionInstance = MissionContainer.GetMission(item.questModifiers.next + "_Quest");
+                        if (missionInstance.Completion == TaskCompletion.None && item.questModifiers.next != "")
+                        {
+                            missionInstance = NewMission.StartMissionByID(item.questModifiers.next + "_Quest");
+                            missionInstance.Completion = TaskCompletion.InProgress;
+
+                            var taskInstance = missionInstance.StartTask(item.questModifiers.next + "_Task");
+                            taskInstance.Completion = TaskCompletion.InProgress;
+
+                            MissionContainer.AddMissionToLookup(missionInstance);
+                            MissionContainer.AddTaskToLookup(taskInstance);
+                        }
+                    }
+                }
+            });
+
             Character.Get("Jenna").OnItemUnequipped.AddListener(unEquipInfo =>
             {
                 foreach (var equippedItem in Character.Get("Jenna").EquippedItems.GetAll<Item>())
@@ -111,27 +133,9 @@ namespace K2ExoticArmory
                         }
                     }
                 }
-            });
-
-            Character.Get("Jenna").OnItemEquipped.AddListener(equipInfo =>
-            {
-                foreach (K2CustomWeapon item in K2AllWeapons)
+                if (unEquipInfo.GetStatModifier("stat_hitpoints") != null)
                 {
-                    if (equipInfo.Name == item.Name && item.questModifiers != null && item.questModifiers.BaseWeapon)
-                    {
-                        var missionInstance = MissionContainer.GetMission(item.questModifiers.next + "_Quest");
-                        if (missionInstance.Completion == TaskCompletion.None && item.questModifiers.next != "")
-                        {
-                            missionInstance = NewMission.StartMissionByID(item.questModifiers.next + "_Quest");
-                            missionInstance.Completion = TaskCompletion.InProgress;
-
-                            var taskInstance = missionInstance.StartTask(item.questModifiers.next + "_Task");
-                            taskInstance.Completion = TaskCompletion.InProgress;
-
-                            MissionContainer.AddMissionToLookup(missionInstance);
-                            MissionContainer.AddTaskToLookup(taskInstance);
-                        }
-                    }
+                    Character.Get("Jenna").GetStat("stat_hitpoints").BaseValue = Character.Get("Jenna").GetStat("stat_hitpoints").Max - unEquipInfo.GetStatModifier("stat_hitpoints").ModifyAmount;
                 }
             });
         }

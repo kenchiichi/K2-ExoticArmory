@@ -14,8 +14,6 @@ namespace K2ExoticArmory
 
         public int Price;
 
-        public int ModHitpoints = 0;
-
         public string PreviewImage;
 
         public string Description;
@@ -124,8 +122,6 @@ namespace K2ExoticArmory
 
         public int Price;
 
-        public int ModHitpoints = 0;
-
         public K2CustomWeapon GetItemByName(string itemName, List<K2CustomWeapon> K2AllWeapons)
         {
             foreach (var item in K2AllWeapons)
@@ -155,8 +151,6 @@ namespace K2ExoticArmory
         public int K2ItemCategory = 1;
 
         public int Price;
-
-        public int ModHitpoints = 0;
 
         public K2CustomApparel GetItemByName(string itemName, List<K2CustomApparel> K2AllApparel)
         {

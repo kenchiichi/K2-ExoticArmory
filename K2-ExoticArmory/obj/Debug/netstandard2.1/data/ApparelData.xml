@@ -72,7 +72,7 @@
 		<Sprites>
 			<ModEquipmentSprite>
 				<Name>Ren</Name>
-				<Image>assets\sprites\displaysprite\large_bubble.png</Image>
+				<Image>assets\sprites\icons\ren.png</Image>
 				<Color>#FFFFFFFF</Color>
 				<SortingLayer>Outfit</SortingLayer>
 				<SortingOrder>4</SortingOrder>

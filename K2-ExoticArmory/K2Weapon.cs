@@ -102,7 +102,6 @@ namespace K2ExoticArmory
             weapon.StatRequirements = StatRequirements;
             weapon.restrictions = restrictions;
             weapon.StatRequirements.AddRange(StatRequirements);
-            weapon.ModHitpoints = ModHitpoints;
 
             AddAbilitiesToEquipment(weapon, _manifest);
 

@@ -20,7 +20,6 @@ namespace K2ExoticArmory
         private ModManifest _manifest;
         public K2CustomApparel CustomInitialize(ModManifest manifest)
         {
-
             K2CustomApparel apparel = ScriptableObject.CreateInstance<K2CustomApparel>();
 
             _manifest = manifest;
@@ -46,6 +45,7 @@ namespace K2ExoticArmory
             if (questModifiers != null)
             {
                 apparel.questModifiers = questModifiers;
+                CreateSearchQuest(questModifiers.DisplayName, questModifiers.Description, questModifiers.name, questModifiers.Repeatable, questModifiers.TaskDisplay);
             }
 
             if (Sprites != null)
@@ -63,7 +63,6 @@ namespace K2ExoticArmory
             apparel.StatRequirements = StatRequirements;
             apparel.restrictions = restrictions;
             apparel.questModifiers = questModifiers;
-            apparel.ModHitpoints = ModHitpoints;
 
             AddAbilitiesToEquipment(apparel, _manifest);
 

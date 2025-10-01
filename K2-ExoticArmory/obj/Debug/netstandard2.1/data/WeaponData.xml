@@ -679,6 +679,15 @@
 		<Slots>
 			<string>OffhandWeapon</string>
 		</Slots>
+		<Sprites>
+			<ModEquipmentSprite>
+				<Name>Ren</Name>
+				<Image>assets\sprites\displaysprite\large_bubble.png</Image>
+				<Color>#FFFFFFFF</Color>
+				<SortingLayer>Overlay</SortingLayer>
+				<SortingOrder>4</SortingOrder>
+			</ModEquipmentSprite>
+		</Sprites>
 		<StatModifierInfos>
 			<StatModifierInfo>
 				<Type>Value</Type>
