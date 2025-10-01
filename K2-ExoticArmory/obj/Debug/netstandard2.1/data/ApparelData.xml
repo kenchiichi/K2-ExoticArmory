@@ -93,4 +93,22 @@
 			</CustomAbility>
 		</CustomAbilityItems>
 	</K2Apparel>
+	<K2Apparel>
+		<Name>Cabal Shield Generator</Name>
+		<Price>50</Price>
+		<PreviewImage>assets\sprites\icons\heavy_slug_thrower.png</PreviewImage>
+		<Description>A device made from an unfamiliar technology, there is no obvious way to activate the device.</Description>
+		<Slots>
+			<string>Accessory2</string>
+		</Slots>
+		<Sprites>
+			<ModEquipmentSprite>
+				<Name>HeirApparant</Name>
+				<Image>assets\sprites\displaysprite\large_bubble.png</Image>
+				<Color>#FFFFFFFF</Color>
+				<SortingLayer>Outfit</SortingLayer>
+				<SortingOrder>4</SortingOrder>
+			</ModEquipmentSprite>
+		</Sprites>
+	</K2Apparel>
 </ArrayOfK2Apparel>

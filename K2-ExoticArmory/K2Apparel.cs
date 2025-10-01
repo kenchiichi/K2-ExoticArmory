@@ -13,8 +13,6 @@ namespace K2ExoticArmory
 {
     public class K2Apparel : K2Equipment
     {
-        public List<ModEquipmentSprite> Sprites;
-
         private K2CustomApparel _instance;
 
         private ModManifest _manifest;

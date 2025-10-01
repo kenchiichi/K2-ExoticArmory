@@ -681,10 +681,10 @@
 		</Slots>
 		<Sprites>
 			<ModEquipmentSprite>
-				<Name>Ren</Name>
+				<Name>HeirApparant</Name>
 				<Image>assets\sprites\displaysprite\large_bubble.png</Image>
 				<Color>#FFFFFFFF</Color>
-				<SortingLayer>Overlay</SortingLayer>
+				<SortingLayer>Outfit</SortingLayer>
 				<SortingOrder>4</SortingOrder>
 			</ModEquipmentSprite>
 		</Sprites>
@@ -701,13 +701,13 @@
 			</StatModifierInfo>
 			<StatModifierInfo>
 				<Type>Value</Type>
-				<StatName>stat_physical_defense</StatName>
-				<ModifyAmount>10</ModifyAmount>
+				<StatName>stat_lust_defense</StatName>
+				<ModifyAmount>-20</ModifyAmount>
 			</StatModifierInfo>
 			<StatModifierInfo>
 				<Type>Value</Type>
-				<StatName>stat_lust_defense</StatName>
-				<ModifyAmount>-10</ModifyAmount>
+				<StatName>stat_physical_defense</StatName>
+				<ModifyAmount>20</ModifyAmount>
 			</StatModifierInfo>
 			<StatModifierInfo>
 				<Type>Value</Type>
@@ -729,10 +729,15 @@
 			<CustomAbility>
 				<AbilityID>Abl_Attack</AbilityID>
 				<AbilityName>Armor Of The Colossus</AbilityName>
-				<AbilityTooltip>This weapon gives the user increadable resistance to physical trauma, however, due to the focus required to weild the weapon, it causes the user to be extremely &lt;color=#FF64FF&gt;vulnerable to their lust&lt;/color&gt;.  The weight of the weapon causes the user to move more slowly, and have less actions in battle.</AbilityTooltip>
+				<AbilityTooltip>This weapon gives the user increadable resistance to physical trauma, however, due to the focus required to weild the weapon, it causes the user to be extremely &lt;color=#FF64FF&gt;vulnerable to their lust&lt;/color&gt;.  The weight of the weapon causes the user to move more slowly, and have less actions in battle.&#10;&#10;Requires a Cabal Shield Generator to function.</AbilityTooltip>
 				<AbilityCooldown>1</AbilityCooldown>
 				<DisplaySprite>assets\sprites\abl_icons\armor_of_the_colossus.png</DisplaySprite>
 			</CustomAbility>
+		<restrictions>
+			<Restrictions>
+				<RequiredItemEquipped>Cabal Shield Generator</RequiredItemEquipped>
+			</Restrictions>
+		</restrictions>
 		</CustomAbilityItems>
 	</K2Weapon>
 </ArrayOfK2Weapon>

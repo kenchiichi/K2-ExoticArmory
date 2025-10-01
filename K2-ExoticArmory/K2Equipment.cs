@@ -32,6 +32,8 @@ namespace K2ExoticArmory
 
         public MapCoordinate LocationCoordinates;
 
+        public List<ModEquipmentSprite> Sprites;
+
 
         public void AddAbilitiesToEquipment(Equipment equipment, ModManifest manifest)
         {
@@ -106,6 +108,7 @@ namespace K2ExoticArmory
     }
     public class K2CustomWeapon : Asuna.Items.Weapon
     {
+
         public List<StatModifierInfo> StatModifierInfos;
 
         public List<CustomAbility> CustomAbilityItems;
@@ -115,6 +118,8 @@ namespace K2ExoticArmory
         public QuestModifiers questModifiers;
 
         public MapCoordinate LocationCoordinates;
+
+        public List<ModEquipmentSprite> Sprites;
 
         public CustomVFX customVFX;
 

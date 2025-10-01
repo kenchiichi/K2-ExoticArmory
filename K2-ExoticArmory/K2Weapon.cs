@@ -92,6 +92,11 @@ namespace K2ExoticArmory
                 CreateSearchQuest(questModifiers.DisplayName, questModifiers.Description, questModifiers.name, questModifiers.Repeatable, questModifiers.TaskDisplay);
             }
 
+            if (Sprites != null)
+            {
+                weapon.DurabilityDisplayLayers.AddRange(Sprites.Select((ModEquipmentSprite x) => x.Get(manifest.SpriteResolver)));
+            }
+
             weapon.DisplaySpriteResource = manifest.SpriteResolver.ResolveAsResource(PreviewImage);
             weapon.LocationCoordinates = LocationCoordinates;
             weapon.Name = Name;
