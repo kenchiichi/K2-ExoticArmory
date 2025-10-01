@@ -58,8 +58,13 @@ namespace K2ExoticArmory
                         }
                     }
                 }
+                int modifyAmount = 0;
+                if (equipAttemptInfo.Equipment.GetStatModifier("stat_hitpoints") != null)
+                {
+                    modifyAmount = equipAttemptInfo.Equipment.GetStatModifier("stat_hitpoints").ModifyAmount;
+                }
 
-                if (!(Character.Get("Jenna").GetStat("stat_hitpoints").BaseMax + equipAttemptInfo.Equipment.GetStatModifier("stat_hitpoints").ModifyAmount > -19))
+                if (!(Character.Get("Jenna").GetStat("stat_hitpoints").BaseMax + modifyAmount > -19))
                 {
                     Restraint restraint = new Restraint();
                     restraint.Set("CanEquip", false);

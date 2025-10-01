@@ -71,8 +71,8 @@
 		</StatRequirements>
 		<Sprites>
 			<ModEquipmentSprite>
-				<Name>Test Item With Apparel Sprite</Name>
-				<Image>assets\sprites\displaysprite\test_item_sprite.png</Image>
+				<Name>Ren</Name>
+				<Image>assets\sprites\displaysprite\large_bubble.png</Image>
 				<Color>#FFFFFFFF</Color>
 				<SortingLayer>Outfit</SortingLayer>
 				<SortingOrder>4</SortingOrder>

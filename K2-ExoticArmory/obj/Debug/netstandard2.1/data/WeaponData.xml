@@ -663,5 +663,67 @@
 			<Repeatable>false</Repeatable>
 			<TaskDisplay>Upgrade Eidolon Ally</TaskDisplay>
 		</questModifiers>
+	</K2Weapon>	
+	<K2Weapon>
+		<Name>Heir Apparant</Name>
+		<PreviewImage>assets\sprites\icons\heir_apparent.png</PreviewImage>
+		<Description>Airship shall rise again.</Description>
+		<LocationCoordinates>
+			<xCoordinate>00.00</xCoordinate>
+			<yCoordinate>00.00</yCoordinate>
+			<MapName>DestroyedStronghold</MapName>
+		</LocationCoordinates>
+		<Slots>
+			<string>MainWeapon</string>
+		</Slots>
+		<Slots>
+			<string>OffhandWeapon</string>
+		</Slots>
+		<StatModifierInfos>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_physical_power</StatName>
+				<ModifyAmount>20</ModifyAmount>
+			</StatModifierInfo>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_attack_range</StatName>
+				<ModifyAmount>3</ModifyAmount>
+			</StatModifierInfo>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_physical_defense</StatName>
+				<ModifyAmount>10</ModifyAmount>
+			</StatModifierInfo>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_lust_defense</StatName>
+				<ModifyAmount>-10</ModifyAmount>
+			</StatModifierInfo>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_speed</StatName>
+				<ModifyAmount>-4</ModifyAmount>
+			</StatModifierInfo>
+			<StatModifierInfo>
+				<Type>Max</Type>
+				<StatName>stat_energy</StatName>
+				<ModifyAmount>-2</ModifyAmount>
+			</StatModifierInfo>
+		</StatModifierInfos>
+		<customVFX>
+			<BurstCount>15</BurstCount>
+			<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
+			<WeaponAttackVFXSprite>assets\sprites\vfx\burst\solar_bullet.png</WeaponAttackVFXSprite>
+		</customVFX>
+		<CustomAbilityItems>
+			<CustomAbility>
+				<AbilityID>Abl_Attack</AbilityID>
+				<AbilityName>Armor Of The Colossus</AbilityName>
+				<AbilityTooltip>This weapon gives the user increadable resistance to physical trauma, however, due to the focus required to weild the weapon, it causes the user to be extremely &lt;color=#FF64FF&gt;vulnerable to their lust&lt;/color&gt;.  The weight of the weapon causes the user to move more slowly, and have less actions in battle.</AbilityTooltip>
+				<AbilityCooldown>1</AbilityCooldown>
+				<DisplaySprite>assets\sprites\abl_icons\armor_of_the_colossus.png</DisplaySprite>
+			</CustomAbility>
+		</CustomAbilityItems>
 	</K2Weapon>
 </ArrayOfK2Weapon>
