@@ -104,7 +104,7 @@
 		<Sprites>
 			<ModEquipmentSprite>
 				<Name>HeirApparant</Name>
-				<Image>assets\sprites\displaysprite\large_bubble.png</Image>
+				<Image>assets\sprites\displaysprite\Bubble_Character_Apparel.png</Image>
 				<Color>#FFFFFFFF</Color>
 				<SortingLayer>Outfit</SortingLayer>
 				<SortingOrder>4</SortingOrder>
