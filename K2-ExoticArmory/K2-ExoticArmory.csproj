@@ -11,6 +11,9 @@
     <Reference Include="PlayMaker">
       <HintPath>D:\Non-Steam-Games\Third Crisis\Third Crisis_Data\Managed\PlayMaker.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.AnimationModule">
+      <HintPath>D:\Non-Steam-Games\Third Crisis\Third Crisis_Data\Managed\UnityEngine.AnimationModule.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>D:\Non-Steam-Games\Third Crisis\Third Crisis_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
     </Reference>

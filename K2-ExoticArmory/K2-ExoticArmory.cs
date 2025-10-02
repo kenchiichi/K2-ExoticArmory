@@ -1,11 +1,15 @@
-﻿using ANToolkit.Controllers;
+﻿using ANToolkit;
+using ANToolkit.Controllers;
 using ANToolkit.Debugging;
 using ANToolkit.UI;
 using Asuna.CharManagement;
 using Asuna.Dialogues;
 using Asuna.Items;
+using Asuna.NewCombat;
+using DragonBones;
 using Modding;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 namespace K2ExoticArmory
@@ -81,6 +85,35 @@ namespace K2ExoticArmory
 
         public void OnModLoaded(ModManifest manifest)
         {
+
+            //GameObject handler = new GameObject();
+
+            //SpriteRenderer spriteRenderer = handler.AddComponent<SpriteRenderer>();
+
+            //var visual = handler.GetComponent<SpriteRenderer>();
+
+            //visual.name = "Bubble";
+            //visual.sprite = manifest.SpriteResolver.ResolveAsResource("assets\\sprites\\overworld\\Bubble_Overworld_Base.png");
+            //visual.size = new Vector3((float)1.2, (float)1.2);
+            //visual.color = Color.white;
+            //visual.tileMode = SpriteTileMode.Continuous;
+            //visual.spriteSortPoint = SpriteSortPoint.Center;
+
+            //Character.Get("Jenna").Handlers[0].GetComponent<SpriteRenderer>().sprite = (Sprite)manifest.SpriteResolver.ResolveAsResource("assets\\sprites\\overworld\\Bubble_Overworld_Base.png");
+
+            //handler.GetComponentInChildren<Animator>().ForEach(x => x.enabled = false);
+            //foreach (Animator item in handler.GetComponentsInChildren<Animator>())
+            //{
+            //    item.enabled = false;
+            //}
+
+
+
+
+
+
+
+
             Debug.Log("K2-ExoticArmory installed");
 
             _manifest = manifest;
