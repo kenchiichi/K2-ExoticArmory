@@ -1,9 +1,7 @@
-﻿using ANToolkit.UI;
-using ANToolkit.Utility;
+﻿using ANToolkit.Utility;
 using Asuna.CharManagement;
 using Asuna.Items;
 using Asuna.Missions;
-using Asuna.NewCombat;
 using Asuna.NewMissions;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,7 +19,7 @@ namespace K2ExoticArmory
             });
         }
         public void EquipmentListeners(List<K2CustomApparel> K2AllApparel, List<K2CustomWeapon> K2AllWeapons)
-        {            
+        {
             K2CustomWeapon.OnEquipAttempt.AddListener(equipAttemptInfo =>
             {
                 K2CustomWeapon equippedWeapon = ScriptableObject.CreateInstance<K2CustomWeapon>();
@@ -97,7 +95,7 @@ namespace K2ExoticArmory
                 }
                 if (equipInfo.GetStatModifier("stat_hitpoints") != null)
                 {
-                    if (Character.Get("Jenna").GetStat("stat_hitpoints").BaseValue != Character.Get("Jenna").GetStat("stat_hitpoints").Max) 
+                    if (Character.Get("Jenna").GetStat("stat_hitpoints").BaseValue != Character.Get("Jenna").GetStat("stat_hitpoints").Max)
                     {
                         Character.Get("Jenna").GetStat("stat_hitpoints").BaseValue = Character.Get("Jenna").GetStat("stat_hitpoints").Max + equipInfo.GetStatModifier("stat_hitpoints").ModifyAmount;
                     }
