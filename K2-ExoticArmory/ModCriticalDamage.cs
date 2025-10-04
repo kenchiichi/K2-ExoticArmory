@@ -39,5 +39,24 @@ namespace K2ExoticArmory
                 }
             }
         }
+        public void SaveKeySetup()
+        {
+            StatModifierInfo statModifierInfo = new StatModifierInfo
+            {
+                ModifierID = "stat_crit_chance",
+                Type = StatModifierType.Value,
+                ModifyAmount = -15
+            };
+            if (SaveManager.GetKey("ModCritChance").Value == null)
+            {
+                Character.Get("Jenna").GetStat("stat_crit_chance").AddModifier(statModifierInfo);
+                SaveManager.SetKey("ModCritChance", Character.Get("Jenna").GetStat("stat_crit_chance").Clone().Value);
+            }
+            else if ((int)SaveManager.GetKey("ModCritChance").Value != Character.Get("Jenna").GetStat("stat_crit_chance").Value)
+            {
+                Character.Get("Jenna").GetStat("stat_crit_chance").AddModifier(statModifierInfo);
+                SaveManager.SetKey("ModCritChance", Character.Get("Jenna").GetStat("stat_crit_chance").Clone().Value);
+            }
+        }
     }
 }

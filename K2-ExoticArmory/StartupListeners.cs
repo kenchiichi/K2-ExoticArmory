@@ -6,6 +6,7 @@ using Asuna.Missions;
 using Asuna.NewMissions;
 using System.Collections.Generic;
 using UnityEngine;
+using ANToolkit.Save;
 
 namespace K2ExoticArmory
 {
@@ -32,10 +33,10 @@ namespace K2ExoticArmory
             K2CustomWeapon.OnEquipAttempt.AddListener(equipAttemptInfo =>
             {
                 K2CustomWeapon equippedWeapon = ScriptableObject.CreateInstance<K2CustomWeapon>();
-                equippedWeapon = equippedWeapon.GetItemByName(equipAttemptInfo.Equipment.Name);
+                equippedWeapon = equippedWeapon.GetItemByName(equipAttemptInfo.Equipment.Name, K2AllWeapons);
 
                 K2CustomApparel equippedApparel = ScriptableObject.CreateInstance<K2CustomApparel>();
-                equippedApparel = equippedApparel.GetItemByName(equipAttemptInfo.Equipment.Name);
+                equippedApparel = equippedApparel.GetItemByName(equipAttemptInfo.Equipment.Name, K2AllApparel);
 
                 List<Restrictions> itemRestrictions = new List<Restrictions>();
                 if (equippedWeapon != null || equippedApparel != null)
@@ -51,7 +52,7 @@ namespace K2ExoticArmory
                     foreach (Restrictions restriction in itemRestrictions)
                     {
                         K2CustomWeapon restrictedWeapon = ScriptableObject.CreateInstance<K2CustomWeapon>();
-                        restrictedWeapon = restrictedWeapon.GetItemByName(restriction.RequiredItemEquipped);
+                        restrictedWeapon = restrictedWeapon.GetItemByName(restriction.RequiredItemEquipped, K2AllWeapons);
 
                         if (restrictedWeapon != null)
                         {
@@ -59,7 +60,7 @@ namespace K2ExoticArmory
                         }
 
                         K2CustomApparel restrictedApparel = ScriptableObject.CreateInstance<K2CustomApparel>();
-                        restrictedApparel = restrictedApparel.GetItemByName(restriction.RequiredItemEquipped);
+                        restrictedApparel = restrictedApparel.GetItemByName(restriction.RequiredItemEquipped, K2AllApparel);
 
                         if (restrictedApparel != null)
                         {
@@ -109,6 +110,10 @@ namespace K2ExoticArmory
                         Character.Get("Jenna").GetStat("stat_hitpoints").BaseValue = Character.Get("Jenna").GetStat("stat_hitpoints").Max + equipInfo.GetStatModifier("stat_hitpoints").ModifyAmount;
                     }
                 }
+                if (equipInfo.GetStatModifier("stat_crit_chance") != null)
+                {
+                    SaveManager.SetKey("ModCritChance", Character.Get("Jenna").GetStat("stat_crit_chance").Clone().Value + equipInfo.GetStatModifier("stat_crit_chance").ModifyAmount);
+                }
             });
 
             Character.Get("Jenna").OnItemUnequipped.AddListener(unEquipInfo =>
@@ -116,7 +121,7 @@ namespace K2ExoticArmory
                 foreach (var equippedItem in Character.Get("Jenna").EquippedItems.GetAll<Item>())
                 {
                     K2CustomWeapon equippedWeapon = ScriptableObject.CreateInstance<K2CustomWeapon>();
-                    equippedWeapon = equippedWeapon.GetItemByName(equippedItem.Name);
+                    equippedWeapon = equippedWeapon.GetItemByName(equippedItem.Name, K2AllWeapons);
 
                     if (equippedWeapon != null)
                     {
@@ -133,7 +138,7 @@ namespace K2ExoticArmory
                     }
 
                     K2CustomApparel equippedApparel = ScriptableObject.CreateInstance<K2CustomApparel>();
-                    equippedApparel = equippedApparel.GetItemByName(equippedItem.Name);
+                    equippedApparel = equippedApparel.GetItemByName(equippedItem.Name, K2AllApparel);
 
                     if (equippedApparel != null)
                     {
@@ -156,6 +161,7 @@ namespace K2ExoticArmory
                         Character.Get("Jenna").GetStat("stat_hitpoints").BaseValue = Character.Get("Jenna").GetStat("stat_hitpoints").Max + unEquipInfo.GetStatModifier("stat_hitpoints").ModifyAmount;
                     }
                 }
+                SaveManager.SetKey("ModCritChance", Character.Get("Jenna").GetStat("stat_crit_chance").Clone().Value);
             });
         }
         private void CheckForRequiredItem(Item itemRequirement, EquipAttemptInfo equipAttemptInfo)

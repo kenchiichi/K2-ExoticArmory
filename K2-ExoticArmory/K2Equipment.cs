@@ -34,6 +34,7 @@ namespace K2ExoticArmory
 
         public List<ModEquipmentSprite> Sprites;
 
+
         public void AddAbilitiesToEquipment(Equipment equipment, ModManifest manifest)
         {
             if (CustomAbilityItems != null)
@@ -126,11 +127,9 @@ namespace K2ExoticArmory
 
         public int Price;
 
-        private readonly ItemSetup itemSetup = new ItemSetup();
-
-        public K2CustomWeapon GetItemByName(string itemName)
+        public K2CustomWeapon GetItemByName(string itemName, List<K2CustomWeapon> K2AllWeapons)
         {
-            foreach (var item in itemSetup.K2AllWeapons)
+            foreach (var item in K2AllWeapons)
             {
                 if (item.Name == itemName)
                 {
@@ -158,11 +157,9 @@ namespace K2ExoticArmory
 
         public int Price;
 
-        private readonly ItemSetup itemSetup = new ItemSetup();
-
-        public K2CustomApparel GetItemByName(string itemName)
+        public K2CustomApparel GetItemByName(string itemName, List<K2CustomApparel> K2AllApparel)
         {
-            foreach (var item in itemSetup.K2AllApparel)
+            foreach (var item in K2AllApparel)
             {
                 if (item.Name == itemName)
                 {

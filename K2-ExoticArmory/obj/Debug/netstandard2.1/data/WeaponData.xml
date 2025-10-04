@@ -685,7 +685,7 @@
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_crit_chance</StatName>
-				<ModifyAmount>35</ModifyAmount>
+				<ModifyAmount>50</ModifyAmount>
 			</StatModifierInfo>
 			<StatModifierInfo>
 				<Type>Value</Type>

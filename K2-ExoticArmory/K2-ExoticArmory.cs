@@ -1,5 +1,6 @@
 ﻿using ANToolkit.Controllers;
 using ANToolkit.Debugging;
+using ANToolkit.Save;
 using ANToolkit.UI;
 using Asuna.CharManagement;
 using Asuna.Dialogues;
@@ -44,15 +45,21 @@ namespace K2ExoticArmory
                 Item.GenerateErrorDialogue(Character.Get("Jenna"), "I should remember to check to see if I have weapons to defend myself.", "Think");
                 Character.Get("Jenna").GetStat("stat_hitpoints").BaseMax = 1;
             }
-            if (!MenuManager.InGame)
+
+            StatModifierInfo statModifierInfo = new StatModifierInfo
             {
-                Stat stat = Character.Get("Jenna").GetStat("stat_crit_chance");
-                stat.BaseValue = 15;
-            }
+                ModifierID = "stat_crit_chance",
+                Type = StatModifierType.Value,
+                ModifyAmount = 15
+            };
+
+            Character.Get("Jenna").GetStat("stat_crit_chance").AddModifier(statModifierInfo);
             Debug.Log("K2-ExoticArmory uninstalled");
         }
         public void OnLevelChanged(string oldLevel, string newLevel)
         {
+            modCriticalDamage.SaveKeySetup();
+
             K2Weapon k2Weapon = new K2Weapon();
             k2Weapon.LoadWorldItems(newLevel, itemSetup.K2AllWeapons);
 
@@ -138,6 +145,11 @@ namespace K2ExoticArmory
             listener.EquipmentListeners(itemSetup.K2AllApparel, itemSetup.K2AllWeapons);
 
             listener.CombatListener();
+
+            if (MenuManager.InGame)
+            {
+                modCriticalDamage.SaveKeySetup();
+            }
         }
     }
 }
