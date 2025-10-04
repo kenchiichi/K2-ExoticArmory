@@ -69,7 +69,6 @@ namespace K2ExoticArmory
                     weapon.DamageTypesDealt.Add(damageFractionInfo);
                 }
             }
-
             if (!Item.All.ContainsKey(Name.ToLower()))
             {
                 Item.All.Add(Name.ToLower(), _instance);

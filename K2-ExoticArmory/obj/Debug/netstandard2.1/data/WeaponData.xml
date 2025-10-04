@@ -665,9 +665,9 @@
 		</questModifiers>
 	</K2Weapon>	
 	<K2Weapon>
-		<Name>Heir Apparent</Name>
-		<PreviewImage>assets\sprites\icons\heir_apparent.png</PreviewImage>
-		<Description>Airship shall rise again.</Description>
+		<Name>Hawkmoon</Name>
+		<PreviewImage>assets\sprites\icons\hawkmoon.png</PreviewImage>
+		<Description>Stalk thy prey and let loose thy talons upon the Darkness.</Description>
 		<LocationCoordinates>
 			<xCoordinate>-3.50</xCoordinate>
 			<yCoordinate>7.00</yCoordinate>
@@ -676,57 +676,35 @@
 		<Slots>
 			<string>MainWeapon</string>
 		</Slots>
-		<Slots>
-			<string>OffhandWeapon</string>
-		</Slots>
-		<Sprites>
-			<ModEquipmentSprite>
-				<Name>HeirApparent</Name>
-				<Image>assets\sprites\displaysprite\Bubble_Character_Apparel.png</Image>
-				<Color>#FFFFFFFF</Color>
-				<SortingLayer>Outfit</SortingLayer>
-				<SortingOrder>4</SortingOrder>
-			</ModEquipmentSprite>
-		</Sprites>
 		<StatModifierInfos>
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_physical_power</StatName>
-				<ModifyAmount>25</ModifyAmount>
+				<ModifyAmount>17</ModifyAmount>
+			</StatModifierInfo>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_crit_chance</StatName>
+				<ModifyAmount>35</ModifyAmount>
 			</StatModifierInfo>
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_attack_range</StatName>
 				<ModifyAmount>3</ModifyAmount>
 			</StatModifierInfo>
-			<StatModifierInfo>
-				<Type>Value</Type>
-				<StatName>stat_lust_defense</StatName>
-				<ModifyAmount>-20</ModifyAmount>
-			</StatModifierInfo>
-			<StatModifierInfo>
-				<Type>Value</Type>
-				<StatName>stat_speed</StatName>
-				<ModifyAmount>-4</ModifyAmount>
-			</StatModifierInfo>
-			<StatModifierInfo>
-				<Type>Max</Type>
-				<StatName>stat_energy</StatName>
-				<ModifyAmount>-2</ModifyAmount>
-			</StatModifierInfo>
 		</StatModifierInfos>
 		<customVFX>
-			<BurstCount>15</BurstCount>
+			<BurstCount>1</BurstCount>
 			<WeaponAttackVFXType>EnergyGunBurst</WeaponAttackVFXType>
-			<WeaponAttackVFXSprite>assets\sprites\vfx\burst\solar_bullet.png</WeaponAttackVFXSprite>
+			<WeaponAttackVFXSprite>assets\sprites\vfx\single\kenetic_bullet.png</WeaponAttackVFXSprite>
 		</customVFX>
 		<CustomAbilityItems>
 			<CustomAbility>
 				<AbilityID>Abl_Attack</AbilityID>
-				<AbilityName>Heavy Slug Thrower</AbilityName>
-				<AbilityTooltip>Due to the weight of the weapon, the user moves more slowly, has less actions in battle, and is extremely &lt;color=#FF64FF&gt;vulnerable to their lust&lt;/color&gt;.</AbilityTooltip>
+				<AbilityName>Holding Aces</AbilityName>
+				<AbilityTooltip>This weapon is incredibly lucky, allowing the user to hit vital spots more frequently than normal weapons.</AbilityTooltip>
 				<AbilityCooldown>1</AbilityCooldown>
-				<DisplaySprite>assets\sprites\abl_icons\heavy_slug_thrower.png</DisplaySprite>
+				<DisplaySprite>assets\sprites\abl_icons\holding_aces.png</DisplaySprite>
 			</CustomAbility>
 		</CustomAbilityItems>
 	</K2Weapon>

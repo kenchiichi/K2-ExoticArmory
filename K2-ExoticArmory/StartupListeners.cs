@@ -1,5 +1,6 @@
 ﻿using ANToolkit.Utility;
 using Asuna.CharManagement;
+using Asuna.NewCombat;
 using Asuna.Items;
 using Asuna.Missions;
 using Asuna.NewMissions;
@@ -16,6 +17,14 @@ namespace K2ExoticArmory
             {
                 newItem.DisplaySprite = oldItem.DisplaySprite;
                 newItem.DisplaySpriteResource = oldItem.DisplaySpriteResource;
+            });
+        }
+        readonly ModCriticalDamage modCriticalDamage = new ModCriticalDamage();
+        public void CombatListener()
+        {
+            CombatCharacter.OnDamageCalculated.AddListener(info =>
+            {
+                modCriticalDamage.OnDamageCalculated(info);
             });
         }
         public void EquipmentListeners(List<K2CustomApparel> K2AllApparel, List<K2CustomWeapon> K2AllWeapons)

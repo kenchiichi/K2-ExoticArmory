@@ -18,6 +18,8 @@ namespace K2ExoticArmory
 
         private readonly StartupListeners listener = new StartupListeners();
 
+        private readonly ModCriticalDamage modCriticalDamage = new ModCriticalDamage();
+
         public K2Equipment K2Equipment = new K2Equipment();
 
         public ItemSetup itemSetup = new ItemSetup();
@@ -41,6 +43,11 @@ namespace K2ExoticArmory
                 }
                 Item.GenerateErrorDialogue(Character.Get("Jenna"), "I should remember to check to see if I have weapons to defend myself.", "Think");
                 Character.Get("Jenna").GetStat("stat_hitpoints").BaseMax = 1;
+            }
+            if (!MenuManager.InGame)
+            {
+                Stat stat = Character.Get("Jenna").GetStat("stat_crit_chance");
+                stat.BaseValue = 15;
             }
             Debug.Log("K2-ExoticArmory uninstalled");
         }
@@ -129,6 +136,8 @@ namespace K2ExoticArmory
             listener.AddSpriteListener();
 
             listener.EquipmentListeners(itemSetup.K2AllApparel, itemSetup.K2AllWeapons);
+
+            listener.CombatListener();
         }
     }
 }
