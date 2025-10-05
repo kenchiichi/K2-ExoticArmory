@@ -689,6 +689,16 @@
 			</StatModifierInfo>
 			<StatModifierInfo>
 				<Type>Value</Type>
+				<StatName>stat_bonus_crit_chance</StatName>
+				<ModifyAmount>25</ModifyAmount>
+			</StatModifierInfo>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_bonus_crit_multiplier</StatName>
+				<ModifyAmount>3</ModifyAmount>
+			</StatModifierInfo>
+			<StatModifierInfo>
+				<Type>Value</Type>
 				<StatName>stat_attack_range</StatName>
 				<ModifyAmount>3</ModifyAmount>
 			</StatModifierInfo>

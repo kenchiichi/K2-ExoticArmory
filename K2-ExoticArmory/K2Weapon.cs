@@ -117,12 +117,12 @@ namespace K2ExoticArmory
             {
                 if (!Character.Get("Jenna").EquippedItems.Contains(weapon)) return;
 
-                string tem = "abilities: \n";
-                foreach (var item in Character.Get("Jenna").GetAbilities())
-                {
-                    tem += item.DisplayName += "\n";
-                }
-                Debug.Log(tem);
+                //string tem = "abilities: \n";
+                //foreach (var item in Character.Get("Jenna").GetAbilities())
+                //{
+                //    tem += item.DisplayName += "\n";
+                //}
+                //Debug.Log(tem);
 
                 Debug.Log(1);
                 var ability = Character.Get("Jenna").GetAbilities().First(x => x.DisplayName == "Attack");
