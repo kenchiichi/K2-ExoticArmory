@@ -1,10 +1,10 @@
 ﻿using ANToolkit.Controllers;
 using ANToolkit.Debugging;
-using ANToolkit.Save;
 using ANToolkit.UI;
 using Asuna.CharManagement;
 using Asuna.Dialogues;
 using Asuna.Items;
+using Asuna.NewCombat;
 using Modding;
 using System.Collections.Generic;
 using UnityEngine;
@@ -97,6 +97,30 @@ namespace K2ExoticArmory
             Debug.Log("K2-ExoticArmory installed");
 
             _manifest = manifest;
+
+            Stat bonusCritical = new Stat()
+            {
+                Name = "Bonus Critical Chance",
+                BaseMax = 100,
+                BaseValue = 0,
+                ID = "stat_bonus_crit_chance",
+                DisplayColor = Color.gray
+            };
+
+            bonusCritical.Initialize();
+            bonusCritical.AddToCharacter(Character.Get("Jenna"));
+
+            Stat bonusCriticalMultiplier = new Stat()
+            {
+                Name = "Bonus Critical Multipler",
+                BaseMax = -1,
+                BaseValue = 0,
+                ID = "stat_bonus_crit_multiplier",
+                DisplayColor = Color.gray
+            };
+
+            bonusCriticalMultiplier.Initialize();
+            bonusCriticalMultiplier.AddToCharacter(Character.Get("Jenna"));
 
             itemSetup.SerialStreamReader(manifest);
 

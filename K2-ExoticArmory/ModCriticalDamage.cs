@@ -1,20 +1,19 @@
-﻿using System.Collections.Generic;
-using ANToolkit.Save;
+﻿using ANToolkit.Save;
 using ANToolkit.Utility;
 using Asuna.CharManagement;
 using Asuna.NewCombat;
+using System.Collections.Generic;
 using UnityEngine;
 namespace K2ExoticArmory
 {
     public class ModCriticalDamage
     {
-        public float CritMultiplier = (float)3;
-
         private static List<DamageType> critableDamageTypes = new List<DamageType>
         {
             DamageType.Physical,
             DamageType.Lust
         };
+
         public static Restraint IsEnabled => SaveManager.GetKey("__CriticalSystem_Enabled", new Restraint());
 
         public void OnDamageCalculated(DamageInfo info)
@@ -29,16 +28,17 @@ namespace K2ExoticArmory
                 info.IsCritical = true;
             }
 
-            Stat stat = info.Origin?.GetStat("stat_crit_chance");
-            if (stat != null && info.IsCritical == true)
+            Stat stat = info.Origin?.GetStat("stat_bonus_crit_chance");
+            if (stat != null)
             {
                 int value = stat.Value;
                 if (value > 0 && Mathf.FloorToInt(Random.value * 100f) <= value)
                 {
-                    info.Amount = Mathf.RoundToInt((float)info.Amount * CritMultiplier);
+                    info.Amount = Mathf.RoundToInt((float)info.Amount * (float)info.Origin?.GetStat("stat_bonus_crit_multiplier").Value);
                 }
             }
         }
+
         public void SaveKeySetup()
         {
             StatModifierInfo statModifierInfo = new StatModifierInfo

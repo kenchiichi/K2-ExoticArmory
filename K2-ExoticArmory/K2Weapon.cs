@@ -116,23 +116,42 @@ namespace K2ExoticArmory
             CombatTurnManager.OnTurnStart.AddListener(() =>
             {
                 if (!Character.Get("Jenna").EquippedItems.Contains(weapon)) return;
+
+                string tem = "abilities: \n";
+                foreach (var item in Character.Get("Jenna").GetAbilities())
+                {
+                    tem += item.DisplayName += "\n";
+                }
+                Debug.Log(tem);
+
+                Debug.Log(1);
                 var ability = Character.Get("Jenna").GetAbilities().First(x => x.DisplayName == "Attack");
+                Debug.Log(ability.DisplayName);
 
                 var vfxGameObject = new GameObject("VFX_Custom");
+                Debug.Log(3);
                 vfxGameObject.transform.position = new Vector3(9999999999, 0);
+                Debug.Log(4);
 
                 var vfxSpriteRenderer = vfxGameObject.AddComponent<SpriteRenderer>();
+                Debug.Log(5);
                 vfxSpriteRenderer.sprite = Sprite.Create(sprite.texture, new Rect(0, 0, sprite.texture.width, sprite.texture.height), new Vector2(0.5f, 0.5f), 800f);
+                Debug.Log(6);
 
                 var cachedFSM = typeof(Ability)
                     .GetField("CachedFsm", BindingFlags.Instance | BindingFlags.NonPublic)
                     .GetValue(ability) as Fsm;
+                Debug.Log(7);
 
                 var energyGunBurstState = cachedFSM.States.First(x => x.Name == "EnergyGunBurst");
+                Debug.Log(8);
 
                 var combatVFX = energyGunBurstState.Actions[0] as PMA_CombatVisualEffect;
+                Debug.Log(9);
                 combatVFX.Prefab = vfxGameObject;
+                Debug.Log(10);
                 combatVFX.AmountToSpawn = burstCount;
+                Debug.Log(11);
             });
         }
         public void LoadWorldItems(string newLevel, List<K2CustomWeapon> K2AllWeapons)

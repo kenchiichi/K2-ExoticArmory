@@ -1,12 +1,12 @@
-﻿using ANToolkit.Utility;
+﻿using ANToolkit.Save;
+using ANToolkit.Utility;
 using Asuna.CharManagement;
-using Asuna.NewCombat;
 using Asuna.Items;
 using Asuna.Missions;
+using Asuna.NewCombat;
 using Asuna.NewMissions;
 using System.Collections.Generic;
 using UnityEngine;
-using ANToolkit.Save;
 
 namespace K2ExoticArmory
 {
@@ -115,6 +115,7 @@ namespace K2ExoticArmory
                     SaveManager.SetKey("ModCritChance", Character.Get("Jenna").GetStat("stat_crit_chance").Clone().Value + equipInfo.GetStatModifier("stat_crit_chance").ModifyAmount);
                 }
             });
+
 
             Character.Get("Jenna").OnItemUnequipped.AddListener(unEquipInfo =>
             {
