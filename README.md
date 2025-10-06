@@ -35,7 +35,8 @@ If you save with a modded weapon equipped, loading that save will cause the next
 
 If you have already saved the game with the modded weapon equipped, do not worry, you can remove the bug. 
 
-1. To remove the bug, unequip the weapon, save the game, and then load that save.  Just remember to reequip the weapon for combat.
+To remove the bug:
+1. Unequip the weapon, save the game, and then load that save.  Just remember to reequip the weapon for combat.
 
 <h3>Mod Installation Instructions</h3>
 After installing K2-EXOTICARMORY, it is recommended to reload the save, or enter a new area.  Items do not spawn, unless the level was changed after mod installation.
